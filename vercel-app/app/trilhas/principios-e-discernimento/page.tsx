@@ -116,10 +116,11 @@ const perguntas = [
 
 export default function Trilha01Page() {
   return (
-    <main className="learning-page">
+    <main className="learning-page" id="topo">
+      <a className="skip-to-content" href="#investigacao">Ir para o conteúdo da trilha</a>
       <header className="topbar">
         <BrandLogo />
-        <nav><Link href="/">Todas as trilhas</Link><Link href="/entrar" className="nav-login">Área de acesso ↗</Link></nav>
+        <nav aria-label="Navegação principal da trilha"><Link href="/">Todas as trilhas</Link><Link href="/entrar" className="nav-login">Área de acesso ↗</Link></nav>
       </header>
 
       <section className="learning-hero">
@@ -246,7 +247,7 @@ export default function Trilha01Page() {
         <CadernoDiscernimento />
       </section>
       <section className="learning-end"><div className="learning-wrap"><span className="eyebrow">A INVESTIGAÇÃO CONTINUA</span><h2>O que você escolhe <em>sustentar?</em></h2><p>Explore as fontes, coloque um princípio à prova do cotidiano e retorne à trilha com novas perguntas.</p><Link href="/" className="primary light">Voltar às seis trilhas ↗</Link></div></section>
-      <footer><span>© Escola Atemporal · Biblioteca Atemporal</span><span>Trilha 01 · Curadoria pública de fontes verificadas</span></footer>
+      <footer><span>© Escola Atemporal · Biblioteca Atemporal</span><a className="learning-top-link" href="#topo">↑ Voltar ao início</a><span>Trilha 01 · Curadoria pública de fontes verificadas</span></footer>
     </main>
   );
 }
