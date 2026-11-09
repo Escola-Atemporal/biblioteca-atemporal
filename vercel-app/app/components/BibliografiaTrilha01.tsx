@@ -33,7 +33,7 @@ function BookCard({ livro, index }: { livro: LivroTrilha01; index: number }) {
         <p className="book-reference-question"><strong>Para refletir:</strong> {livro.pergunta}</p>
         <p className="book-reference-access">{livro.acesso}</p>
         <div className="book-reference-actions">
-          {livro.urlDownload ? <a className="book-download" href={livro.urlDownload} target="_blank" rel="noopener noreferrer" aria-label={"Abrir ou baixar " + livro.formato + ": " + livro.titulo}>{livro.formato === "EPUB" ? "Abrir EPUB" : "Abrir / baixar PDF"} <span aria-hidden="true">↗</span></a> : <span className="book-record-only">Arquivo pelo site da fonte</span>}
+          {livro.urlDownload ? <a className="book-download" href={livro.urlDownload} target="_blank" rel="noopener noreferrer" aria-label={(livro.formato === "EPUB" ? "Abrir EPUB: " : "Abrir / baixar PDF: ") + livro.titulo}>{livro.formato === "EPUB" ? "Abrir EPUB" : "Abrir / baixar PDF"} <span aria-hidden="true">↗</span></a> : <span className="book-record-only">Arquivo pelo site da fonte</span>}
           <a className="book-source" href={livro.urlFonte} target="_blank" rel="noopener noreferrer">Ver fonte e licença <span aria-hidden="true">↗</span></a>
         </div>
         <p className="book-reference-rights">{livro.direitos}</p>
