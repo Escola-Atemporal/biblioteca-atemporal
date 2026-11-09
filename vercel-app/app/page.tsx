@@ -24,7 +24,7 @@ export default function HomePage() {
       <section id="trilhas" className="section">
         <div className="section-head"><div><span className="eyebrow dark">PERCURSOS DE CONHECIMENTO</span><h2>As seis trilhas</h2></div><p>Temas que convidam a investigar o humano em suas diferentes dimensões.</p></div>
         <div className="tracks">
-          {catalog.items.map((item) => <article className="track" key={item.id}><div className="track-num">{item.track} <span>↗</span></div><h3>{tracks[item.track]}</h3><h4>{item.title}</h4><p>{item.description}</p><div className="tags">{item.tags.slice(0,3).map(tag=><span key={tag}>{tag}</span>)}</div></article>)}
+          {catalog.items.map((item) => <article className="track" key={item.id}><div className="track-num">{item.track} <span>↗</span></div><h3>{item.track === "01" ? <Link href="/trilhas/principios-e-discernimento">{tracks[item.track]} ↗</Link> : tracks[item.track]}</h3><h4>{item.title}</h4><p>{item.description}</p><div className="tags">{item.tags.slice(0,3).map(tag=><span key={tag}>{tag}</span>)}</div>{item.track === "01" && <Link href="/trilhas/principios-e-discernimento" className="track-cta">Explorar a trilha completa →</Link>}</article>)}
         </div>
       </section>
       <section className="access-cta"><div><span className="eyebrow">UM ESPAÇO PARA APROFUNDAR</span><h2>O seu percurso continua aqui.</h2><p>Os materiais internos ficarão disponíveis apenas para pessoas autorizadas pela Escola.</p></div><Link href="/entrar" className="primary light">Entrar na Biblioteca ↗</Link></section>
