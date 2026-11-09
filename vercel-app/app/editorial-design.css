@@ -1,0 +1,240 @@
+
+/* Biblioteca Atemporal: composição editorial inspirada nas páginas oficiais
+   da Escola (início, Princípios Norteadores e Nossa Metodologia).
+   Escopo: aplicação pública no Render; sem alterações no WordPress. */
+:root{--ea-black:#141414;--ea-graphite:#242424;--ea-white:#fff;--ea-violet:#634995;--ea-yellow:#ffd309;--ea-blue:#12b4d7;--ea-pink:#c70744;--ea-green:#83b61a;--ea-orange:#e45a18;--ea-muted:#666;}
+html{scroll-padding-top:84px}
+::selection{background:#ffd309;color:#141414}
+:focus-visible{outline:3px solid #ffd309;outline-offset:4px}
+.atemporal-container{max-width:1500px;padding-left:clamp(24px,6vw,96px);padding-right:clamp(24px,6vw,96px);margin-left:auto;margin-right:auto}
+.skip-to-content{position:absolute;left:24px;top:-90px;z-index:999;background:#ffd309;color:#141414;padding:12px 20px;font-family:'Roboto Mono',monospace;font-weight:700}
+.skip-to-content:focus{top:12px}
+.biblioteca-home{background:#fff;color:#141414}
+.biblioteca-home .topbar{background:#141414;border:0;border-bottom:1px solid #333;padding-left:clamp(24px,6vw,96px);padding-right:clamp(24px,6vw,96px)}
+.biblioteca-home .brand{flex-shrink:0}
+.biblioteca-home .topbar nav{gap:clamp(13px,2.3vw,38px)}
+.biblioteca-home .topbar .nav-login{border-color:#ffd309;color:#ffd309;transition:background-color .2s ease,color .2s ease}
+.biblioteca-home .topbar .nav-login:hover{background:#ffd309;color:#141414}
+.atemporal-overline{font:600 11px/1.4 'Roboto Mono',monospace;letter-spacing:.13em;color:#efefef;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.square-dot{display:inline-block;width:11px;height:11px;background:#ffd309}
+.overline-divider{color:#b59acb}
+.atemporal-masthead{background:#141414 url('https://escolaatemporal.com.br/wp-content/uploads/2023/03/bgl.png') center/cover no-repeat;color:#fff;position:relative;overflow:hidden}
+.atemporal-masthead:before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,15,15,.94) 0%,rgba(15,15,15,.9) 58%,rgba(15,15,15,.54) 100%);pointer-events:none}
+.atemporal-masthead-main{position:relative;display:grid;grid-template-columns:minmax(0,1.18fr) minmax(320px,.82fr);min-height:690px;max-width:1500px;margin:auto;align-items:stretch}
+.atemporal-masthead-content{padding:clamp(72px,8vw,118px) 0 76px clamp(24px,6vw,96px);position:relative;z-index:2;display:flex;flex-direction:column;align-items:start}
+.atemporal-masthead h1{font:400 clamp(84px,10vw,154px)/.9 'Bebas Neue',Impact,'Arial Narrow',sans-serif;letter-spacing:.002em;margin:42px 0 28px;max-width:850px;text-wrap:balance}
+.atemporal-masthead h1 span{color:#ffd309}
+.atemporal-masthead-question{font:650 clamp(21px,2.15vw,30px)/1.35 Montserrat,Arial,sans-serif;letter-spacing:-.045em;margin:0 0 20px}
+.atemporal-masthead-description{font:400 clamp(14px,1.2vw,17px)/1.8 Montserrat,Arial,sans-serif;color:#dbdbdb;margin:0;max-width:630px}
+.atemporal-hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:36px 0 0;align-items:center}
+.atemporal-hero-actions .primary,.atemporal-hero-actions .outline{padding:16px 21px;font:700 12px/1.4 'Roboto Mono',monospace;gap:23px}
+.atemporal-hero-actions .outline{background:#ffffff05}
+.atemporal-hero-actions .outline:hover{border-color:#ffd309}
+.atemporal-masthead-visual{position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;isolation:isolate}
+.atemporal-masthead-visual:before{content:'';position:absolute;inset:10% 0 0 0;background:radial-gradient(circle at 60% 45%,rgba(99,73,149,.47),transparent 56%);z-index:-2}
+.atemporal-masthead-visual img{display:block;width:108%;height:100%;object-fit:contain;object-position:center bottom;filter:grayscale(.12) contrast(1.05);position:relative;z-index:-1}
+.masthead-art-ring{position:absolute;border:1px solid #ffd30982;width:min(33vw,470px);aspect-ratio:1;border-radius:50%;right:-12%;top:13%;z-index:-2}
+.masthead-art-ring:after{content:'';position:absolute;inset:22px;border:1px solid #ffd30952;border-radius:50%}
+.masthead-art-label{position:absolute;right:11%;bottom:13%;font:500 12px/1.5 'Roboto Mono',monospace;letter-spacing:.16em;text-align:right;color:#f1f1f1;text-shadow:0 2px 10px #000}
+.atemporal-masthead-bottom{position:relative;max-width:1500px;margin:auto;display:flex;justify-content:space-between;gap:22px;padding:20px clamp(24px,6vw,96px);border-top:1px solid #ffffff30;font:500 10px/1.6 'Roboto Mono',monospace;letter-spacing:.12em;color:#ddd}
+.atemporal-masthead-bottom span:last-child{color:#ffd309}
+.spectrum-strip{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));height:8px}
+.spectrum-strip i:nth-child(1){background:#634995}.spectrum-strip i:nth-child(2){background:#12b4d7}.spectrum-strip i:nth-child(3){background:#c70744}.spectrum-strip i:nth-child(4){background:#83b61a}.spectrum-strip i:nth-child(5){background:#ffd309}.spectrum-strip i:nth-child(6){background:#e45a18}
+.atemporal-statement{padding:clamp(70px,9vw,132px) 0;background:#fff}
+.statement-grid{display:grid;grid-template-columns:minmax(130px,.34fr) minmax(0,1.66fr);gap:5vw}
+.statement-grid>.eyebrow{padding-top:10px;color:#634995}
+.atemporal-statement h2,.atemporal-section-heading h2,.atemporal-feature h2,.atemporal-manifesto h2,.atemporal-cta h2{font:400 clamp(48px,6.1vw,88px)/1 'Bebas Neue',Impact,sans-serif;letter-spacing:0;margin:0}
+.atemporal-statement h2{max-width:1000px}
+.atemporal-statement h2 span,.atemporal-section-heading h2 span,.atemporal-sources h2 span,.atemporal-cta h2 span{color:#634995}
+.atemporal-statement p{font:400 17px/1.9 Montserrat,Arial,sans-serif;color:#525252;max-width:780px;margin:24px 0 0}
+.atemporal-journeys{background:#f4f3f5;padding:clamp(80px,8.7vw,118px) 0}
+.atemporal-section-heading{display:flex;justify-content:space-between;align-items:end;gap:45px;margin-bottom:42px}
+.atemporal-section-heading>div{max-width:830px}
+.atemporal-section-heading h2{margin-top:17px}
+.atemporal-section-heading>p{font:400 14px/1.85 Montserrat,Arial,sans-serif;color:#5f5f5f;max-width:380px;margin:0 0 6px}
+.atemporal-tracks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.atemporal-track{--accent:#634995;position:relative;min-height:378px;background:#fff;border-top:7px solid var(--accent);padding:26px 27px 24px;display:flex;flex-direction:column;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease}
+.atemporal-track:hover{transform:translateY(-4px);box-shadow:0 18px 40px #16161612}
+.track-color-02{--accent:#12b4d7}.track-color-03{--accent:#c70744}.track-color-04{--accent:#83b61a}.track-color-05{--accent:#ffd309}.track-color-06{--accent:#e45a18}
+.atemporal-track-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;position:relative;z-index:2;font:700 10px/1.5 'Roboto Mono',monospace;letter-spacing:.08em;color:var(--accent)}
+.atemporal-track-status{font-weight:500;letter-spacing:.035em;color:#6f6f6f;text-align:right}
+.atemporal-track-content{position:relative;flex:1;padding-top:77px;z-index:1}
+.atemporal-track-index{font:400 190px/.8 'Bebas Neue',Impact,sans-serif;color:var(--accent);opacity:.11;position:absolute;right:0;top:6px;pointer-events:none}
+.atemporal-track-kicker{font:600 10px/1.5 'Roboto Mono',monospace;text-transform:uppercase;letter-spacing:.09em;color:#626262;display:block;position:relative;margin-bottom:9px}
+.atemporal-track h3{position:relative;font:750 clamp(21px,2.1vw,29px)/1.22 Montserrat,Arial,sans-serif;letter-spacing:-.055em;margin:0 0 16px;max-width:330px}
+.atemporal-track-content>p{position:relative;font:400 13px/1.7 Montserrat,Arial,sans-serif;color:#555;max-width:340px;margin:0}
+.atemporal-track-foot{padding-top:20px;border-top:1px solid #dcdcdc;margin-top:23px;font:700 12px 'Roboto Mono',monospace;color:#747474;position:relative;z-index:2}
+.atemporal-track-foot a{display:flex;justify-content:space-between;gap:15px;color:#161616}
+.atemporal-track-foot a span{font-size:18px;line-height:1}
+.atemporal-track-foot a:hover{text-decoration:underline;text-underline-offset:4px}
+.atemporal-track.track-is-live{background:#1c1922;border-color:#b197e7;color:#fff}
+.track-is-live .atemporal-track-top{color:#c6b1ff}
+.track-is-live .atemporal-track-status{color:#ffd309}
+.track-is-live .atemporal-track-index{color:#c6b1ff;opacity:.17}
+.track-is-live .atemporal-track-kicker{color:#c4adeb}
+.track-is-live .atemporal-track-content>p{color:#e5e0eb}
+.track-is-live .atemporal-track-foot{border-color:#ffffff42}
+.track-is-live .atemporal-track-foot a{color:#ffd309}
+.atemporal-feature{display:grid;grid-template-columns:minmax(0,.98fr) minmax(0,1.02fr);min-height:600px;background:#171717;color:white}
+.atemporal-feature-image{position:relative;min-height:530px;overflow:hidden;background:#222}
+.atemporal-feature-image:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 65%,rgba(0,0,0,.62));pointer-events:none}
+.atemporal-feature-image img{height:100%;width:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.atemporal-feature-image>span{position:absolute;left:clamp(25px,5vw,70px);bottom:35px;z-index:1;color:#fff;font:700 11px 'Roboto Mono',monospace;letter-spacing:.11em}
+.atemporal-feature-content{padding:clamp(62px,7vw,110px) clamp(30px,6vw,100px);display:flex;flex-direction:column;align-items:start;justify-content:center;background:radial-gradient(circle at 100% 0%,#392b4d,transparent 52%),#171717}
+.atemporal-feature h2{font-size:clamp(64px,6vw,96px);margin:18px 0}
+.atemporal-feature h2 span{color:#ffd309}
+.feature-lead{font:700 21px/1.35 Montserrat,Arial,sans-serif;letter-spacing:-.04em;margin:0 0 14px;color:white}
+.atemporal-feature-content>p:not(.feature-lead){font:400 14px/1.85 Montserrat,Arial,sans-serif;color:#ddd;max-width:515px;margin:0 0 20px}
+.atemporal-feature-data{display:flex;gap:14px 24px;flex-wrap:wrap;color:#d5c3ff;font:600 10px/1.4 'Roboto Mono',monospace;margin:18px 0 30px}
+.atemporal-feature-content .primary{font:700 12px 'Roboto Mono',monospace}
+.atemporal-sources{padding:clamp(80px,9vw,130px) 0;background:#fff}
+.atemporal-source-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.atemporal-source-card{background:#fafafa;display:flex;flex-direction:column;border:1px solid #ebebeb;min-width:0}
+.source-card-figure{height:255px;display:block;background:#e9e6ec;position:relative;overflow:hidden}
+.source-card-figure img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .3s ease}
+.source-card-figure:hover img{transform:scale(1.04)}
+.source-card-figure>span{position:absolute;right:15px;top:15px;color:#141414;background:#ffd309;width:38px;height:38px;display:grid;place-items:center;font:700 19px sans-serif}
+.source-card-copy{padding:27px 27px 30px;display:flex;flex-direction:column;flex:1}
+.source-card-copy h3{font:750 clamp(20px,2vw,27px)/1.23 Montserrat,Arial,sans-serif;letter-spacing:-.055em;margin:18px 0 12px}
+.source-card-copy p{font:400 13px/1.8 Montserrat,Arial,sans-serif;color:#5d5d5d;margin:0 0 32px;flex:1}
+.source-card-copy a{font:700 11px 'Roboto Mono',monospace;color:#634995;display:flex;justify-content:space-between;gap:8px;align-items:center;border-top:1px solid #ddd;padding-top:17px}
+.atemporal-manifesto{color:#fff;padding:clamp(86px,9vw,135px) 0;background:radial-gradient(circle at 95% 10%,#332543,transparent 43%),#141414}
+.atemporal-manifesto h2{margin:28px 0 62px;max-width:1080px;font-size:clamp(69px,8vw,120px)}
+.atemporal-manifesto h2 span{color:#ffd309}
+.atemporal-values{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:25px;border-top:1px solid #595959}
+.atemporal-values>div{padding-top:27px}
+.atemporal-values>div>span{font:600 12px 'Roboto Mono',monospace;color:#ffd309}
+.atemporal-values h3{font:700 clamp(18px,1.9vw,23px)/1.3 Montserrat,Arial,sans-serif;letter-spacing:-.045em;max-width:310px;margin:22px 0 13px}
+.atemporal-values p{font:400 13px/1.85 Montserrat,Arial,sans-serif;color:#ccc;max-width:360px}
+.manifesto-source{display:inline-flex;margin-top:45px;border-bottom:1px solid #ffd309;padding-bottom:9px;font:700 12px 'Roboto Mono',monospace;color:#ffd309}
+.atemporal-cta{padding:clamp(75px,8vw,110px) 0;background:#f2f0f7}
+.atemporal-cta-inner{display:flex;justify-content:space-between;align-items:center;gap:50px}
+.atemporal-cta h2{margin:18px 0;font-size:clamp(48px,5.3vw,79px)}
+.atemporal-cta p{font:400 14px/1.8 Montserrat,Arial,sans-serif;color:#525252;max-width:640px;margin:0}
+.atemporal-cta .primary{flex-shrink:0;font:700 12px/1.4 'Roboto Mono',monospace}
+.atemporal-footer{background:#111;color:#ccc}
+.atemporal-footer .atemporal-container{display:flex;gap:16px;align-items:center;justify-content:space-between;min-height:90px;flex-wrap:wrap;font:400 11px/1.8 'Roboto Mono',monospace}
+.atemporal-footer a{color:#ffd309}
+
+/* Trilha: mais próxima da fotografia conceitual e das composições institucionais. */
+.learning-page .learning-hero{background:#141414 url('https://escolaatemporal.com.br/wp-content/uploads/2023/03/bgl.png') center/cover no-repeat}
+.learning-page .learning-hero:before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#111 0%,#17121c 59%,rgba(19,17,26,.8) 100%);pointer-events:none}
+.learning-page .learning-hero:after{border-color:rgba(255,211,9,.16)}
+.learning-page .learning-hero .learning-wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr);align-items:center;column-gap:40px;position:relative;z-index:2}
+.learning-hero-copy{padding-bottom:28px}
+.learning-page .learning-hero h1{font:400 clamp(72px,7vw,112px)/.94 'Bebas Neue',Impact,sans-serif;letter-spacing:.003em;max-width:740px;margin-top:37px;margin-bottom:26px;text-wrap:balance}
+.learning-page .learning-hero h1 em{color:#ffd309}
+.learning-page .learning-hero .learning-lead{font:700 clamp(18px,2vw,25px)/1.45 Montserrat,Arial,sans-serif}
+.learning-page .learning-hero .learning-intro{max-width:680px;font:400 14px/1.9 Montserrat,Arial,sans-serif}
+.learning-page .learning-hero .eyebrow{color:#ffd309}
+.learning-hero-picture{align-self:stretch;min-height:550px;position:relative;display:flex;align-items:end;justify-content:center;overflow:hidden}
+.learning-hero-picture img{display:block;width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:contrast(1.03)}
+.learning-hero-picture:before{content:'';width:80%;aspect-ratio:1;border:1px solid #ffd30970;border-radius:50%;position:absolute;left:9%;top:10%;pointer-events:none}
+.learning-hero-picture-label{position:absolute;right:0;bottom:20px;background:#ffd309;color:#141414;font:700 11px 'Roboto Mono',monospace;padding:12px 16px}
+.learning-page .learning-hero .learning-facts{grid-column:1/-1;border-color:#ffffff47}
+.learning-image-note{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);background:#171717;color:white;margin-top:68px;overflow:hidden}
+.learning-image-note figure{margin:0;min-height:355px;position:relative}
+.learning-image-note img{position:absolute;width:100%;height:100%;object-fit:cover}
+.learning-image-note-copy{padding:clamp(32px,4.5vw,65px);display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
+.learning-image-note-copy .eyebrow{color:#ffd309}
+.learning-image-note-copy h3{font:400 clamp(38px,4vw,59px)/1 'Bebas Neue',Impact,sans-serif;letter-spacing:0;color:#fff;margin:18px 0}
+.learning-image-note-copy p{font:400 13px/1.9 Montserrat,Arial,sans-serif;color:#ddd;margin:0 0 23px}
+.learning-image-note-copy a{border-bottom:1px solid #ffd309;color:#ffd309;font:700 11px 'Roboto Mono',monospace;padding-bottom:7px}
+.learning-video-icon{position:relative;overflow:hidden;height:230px;background:#1a1522}
+.learning-video-icon img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.75)}
+.learning-video-play{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.learning-video-play span{width:68px;height:68px;background:#ffd309;color:#141414;border-radius:50%;display:grid;place-items:center;font:700 30px sans-serif;padding-left:5px}
+.learning-page .learning-article{transition:background .2s ease}
+.learning-page .learning-article:hover{background:#faf8fd}
+.learning-page .learning-quote{background:#f0ebf8}
+.learning-page .learning-quote span{color:#634995}
+.learning-page .learning-practice h3{font-family:'Bebas Neue',Impact,sans-serif;letter-spacing:0;font-size:clamp(40px,4.8vw,60px);font-weight:400}
+.learning-page .learning-practice p{max-width:740px}
+.learning-page .learning-end{background:#f2f0f7}
+.learning-page .learning-end h2{font-size:clamp(50px,6vw,85px)}
+.learning-page .learning-end .primary{background:#141414;color:#fff}
+.learning-page footer{background:#141414}
+@media(max-width:1200px){
+ .atemporal-masthead h1{font-size:clamp(75px,8.4vw,123px)}
+ .atemporal-masthead-main{grid-template-columns:minmax(0,1.1fr) minmax(270px,.9fr)}
+ .atemporal-feature-content{padding:65px 45px}
+ .atemporal-track{padding:24px 22px;min-height:385px}
+ .atemporal-track h3{font-size:23px}
+}
+@media(max-width:930px){
+ .biblioteca-home .topbar nav{gap:15px}
+ .biblioteca-home .topbar nav a:not(.nav-login){font-size:11px}
+ .atemporal-masthead-main{grid-template-columns:minmax(0,1.2fr) minmax(230px,.8fr)}
+ .atemporal-masthead h1{font-size:clamp(67px,8vw,95px)}
+ .atemporal-masthead-content{padding-top:80px;padding-bottom:65px}
+ .atemporal-section-heading{display:block}
+ .atemporal-section-heading>p{max-width:610px;margin:25px 0 0}
+ .atemporal-tracks{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .atemporal-feature{grid-template-columns:1fr 1fr}
+ .atemporal-feature-image{min-height:530px}
+ .atemporal-feature-content{padding:48px 35px}
+ .atemporal-source-grid{gap:12px}
+ .source-card-figure{height:205px}
+ .source-card-copy{padding:22px}
+ .learning-page .learning-hero .learning-wrap{grid-template-columns:1.15fr .85fr;gap:25px}
+ .learning-page .learning-hero h1{font-size:clamp(65px,7.3vw,91px)}
+}
+@media(max-width:700px){
+ .biblioteca-home .topbar nav a:not(.nav-login){display:none}
+ .biblioteca-home .topbar{gap:10px}
+ .biblioteca-home .topbar .brand{gap:7px}
+ .biblioteca-home .topbar .brand span{font-size:9px}
+ .atemporal-masthead-main{display:block;min-height:auto}
+ .atemporal-masthead-content{padding:76px 24px 36px}
+ .atemporal-masthead h1{font-size:clamp(75px,16vw,114px);margin:31px 0 25px}
+ .atemporal-masthead-question{font-size:21px}
+ .atemporal-masthead-description{font-size:14px}
+ .atemporal-hero-actions{margin-top:29px}
+ .atemporal-hero-actions .primary,.atemporal-hero-actions .outline{flex:1 1 100%;justify-content:space-between}
+ .atemporal-masthead-visual{height:345px;max-height:345px}
+ .atemporal-masthead-visual img{height:100%;width:100%;object-position:center bottom}
+ .masthead-art-ring{width:290px;right:0;top:10%}
+ .masthead-art-label{font-size:9px;right:8%;bottom:30px}
+ .atemporal-masthead-bottom{padding:17px 24px;font-size:9px}
+ .statement-grid{display:block}
+ .statement-grid>.eyebrow{display:block;margin-bottom:25px}
+ .atemporal-statement h2,.atemporal-section-heading h2,.atemporal-cta h2{font-size:clamp(45px,10vw,66px)}
+ .atemporal-statement p{font-size:14px}
+ .atemporal-tracks{grid-template-columns:1fr}
+ .atemporal-track{min-height:345px}
+ .atemporal-feature{display:flex;flex-direction:column}
+ .atemporal-feature-image{min-height:340px}
+ .atemporal-feature-content{padding:54px 24px}
+ .atemporal-feature h2{font-size:66px}
+ .atemporal-source-grid{grid-template-columns:1fr;gap:17px}
+ .source-card-figure{height:245px}
+ .atemporal-manifesto h2{font-size:clamp(66px,13vw,93px)}
+ .atemporal-values{grid-template-columns:1fr;gap:12px}
+ .atemporal-values>div{border-bottom:1px solid #ffffff30;padding-bottom:18px}
+ .atemporal-cta-inner{display:block}
+ .atemporal-cta .primary{margin-top:32px;display:flex}
+ .atemporal-footer .atemporal-container{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding-top:24px;padding-bottom:24px}
+ .learning-page .learning-hero .learning-wrap{display:block}
+ .learning-page .learning-hero h1{font-size:clamp(65px,13vw,100px)}
+ .learning-hero-copy{padding-bottom:12px}
+ .learning-hero-picture{height:360px;min-height:360px}
+ .learning-page .learning-hero .learning-facts{display:flex}
+ .learning-image-note{grid-template-columns:1fr}
+ .learning-image-note figure{min-height:260px}
+ .learning-image-note-copy{padding:38px 27px}
+ .learning-video-icon{height:230px}
+}
+@media(max-width:400px){
+ .biblioteca-home .brand-logo{max-width:119px}
+ .biblioteca-home .topbar .nav-login{padding:10px}
+ .atemporal-masthead h1{font-size:clamp(64px,16vw,76px)}
+ .atemporal-masthead-bottom{font-size:8px}
+ .atemporal-masthead-bottom>span:first-child{max-width:220px}
+ .atemporal-section-heading h2{font-size:43px}
+ .atemporal-track-index{font-size:160px}
+}
+@media(prefers-reduced-motion:reduce){
+ .atemporal-track,.source-card-figure img{transition:none}
+ .atemporal-track:hover{transform:none}
+ .source-card-figure:hover img{transform:none}
+}
