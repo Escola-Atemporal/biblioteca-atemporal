@@ -1,15 +1,37 @@
 import { livrosTrilha01, referenciasComplementaresTrilha01 } from "../../../data/referencias-trilha-01";
 import BibliografiaTrilha01 from "../../components/BibliografiaTrilha01";
+import CadernoDiscernimento from "../../components/CadernoDiscernimento";
 import BrandLogo from "../../components/BrandLogo";
 import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Trilha 01 — Princípios e Discernimento | Biblioteca Atemporal",
-  description: "Investigue princípios, coerência, integridade e decisões responsáveis. Textos autorais de curadoria, artigos da Escola Atemporal e vídeos de referência.",
+  description: "Princípios, coerência e decisões responsáveis com 8 leituras da Escola, 17 livros e materiais, vídeos e um caderno pessoal de reflexão.",
 };
 
 const artigos = [
+  {
+    title: "O que não muda quando tudo muda? O que permanece essencial na liderança",
+    label: "ARTIGO · ESCOLA ATEMPORAL · 2026",
+    detail: "Síntese da investigação da Escola a partir de conversas do podcast Liderança Atemporal. Distingue aquilo que pode mudar — ferramentas, estratégias e práticas — dos fundamentos humanos que precisam orientar as escolhas.",
+    question: "Em meio às mudanças do seu contexto, o que você precisa transformar sem abandonar seus princípios?",
+    href: "https://escolaatemporal.com.br/blog/o-que-nao-muda-quando-tudo-muda-lideranca/",
+  },
+  {
+    title: "As escolhas que nos tornam quem somos: o que a liderança aprende quando precisa mudar?",
+    label: "ARTIGO · ESCOLA ATEMPORAL · 2026",
+    detail: "Uma investigação sobre decisões que moldam trajetórias, o custo humano das alternativas e os hábitos que dão continuidade às escolhas importantes.",
+    question: "Que escolha marcou você — e qual hábito concreto demonstra o compromisso assumido?",
+    href: "https://escolaatemporal.com.br/blog/escolhas-dificeis-lideranca-habitos/",
+  },
+  {
+    title: "Cultura não se implementa, se encarna",
+    label: "ARTIGO · ESCOLA ATEMPORAL",
+    detail: "Reflexão sobre como a cultura se torna visível em gestos, exemplos, escuta e coerência entre o que se comunica e o que se pratica.",
+    question: "Qual comportamento cotidiano de sua liderança confirma — ou contradiz — os valores da equipe?",
+    href: "https://escolaatemporal.com.br/blog/cultura-nao-se-implementa/",
+  },
   {
     title: "O preço da coerência: quais princípios permanecem quando tudo nos convida a ceder?",
     label: "ARTIGO · ESCOLA ATEMPORAL",
@@ -102,12 +124,12 @@ export default function Trilha01Page() {
           <div className="learning-hero-links"><a href="#investigacao" className="primary">Iniciar investigação <span>↗</span></a><a href="#biblioteca" className="outline">Explorar referências ↓</a></div>
           </div>
           <div className="learning-hero-picture"><img src="https://escolaatemporal.com.br/wp-content/uploads/2026/04/Conceitual-Homem-Atemporal-2.png" width="840" height="860" alt="Ilustração conceitual da Escola Atemporal para a página Princípios Norteadores" /><span className="learning-hero-picture-label">O ESSENCIAL PERMANECE</span></div>
-          <div className="learning-facts"><span>05 leituras institucionais</span><span>{livrosTrilha01.length} livros e materiais</span><span>02 vídeos externos</span><span>05 perguntas essenciais</span><span>01 prática de aplicação</span></div>
+          <div className="learning-facts"><span>{artigos.length} leituras da Escola</span><span>{livrosTrilha01.length} livros e materiais</span><span>02 vídeos externos</span><span>05 perguntas essenciais</span><span>01 caderno de reflexão</span></div>
         </div>
       </section>
 
       <nav className="learning-nav" aria-label="Seções da trilha">
-        <div className="learning-wrap"><a href="#investigacao">A investigação</a><a href="#percurso">Percurso</a><a href="#biblioteca">Artigos e fontes</a><a href="#livros">Livros e e-books</a><a href="#videos">Vídeos</a><a href="#pratica">Aplicação</a></div>
+        <div className="learning-wrap"><a href="#investigacao">A investigação</a><a href="#percurso">Percurso</a><a href="#biblioteca">Artigos e fontes</a><a href="#livros">Livros e e-books</a><a href="#videos">Vídeos</a><a href="#pratica">Aplicação</a><a href="#caderno">Caderno</a></div>
       </nav>
 
       <section id="investigacao" className="learning-section learning-wrap">
@@ -132,7 +154,7 @@ export default function Trilha01Page() {
       </section>
 
       <section id="biblioteca" className="learning-section learning-wrap">
-        <div className="learning-section-header"><div><span className="eyebrow dark">CURADORIA DA ESCOLA</span><h2>Para ler, relacionar e <em>questionar.</em></h2></div><p>Fontes publicadas pela Escola Atemporal. Os textos completos permanecem no site original, com indicação clara de autoria institucional.</p></div>
+        <div className="learning-section-header"><div><span className="eyebrow dark">CURADORIA DA ESCOLA</span><h2>Para ler, relacionar e <em>questionar.</em></h2></div><p>Artigos e páginas publicados pela Escola Atemporal, organizados para conectar princípios, hábitos e decisões. Os textos completos permanecem no site original, com indicação de autoria.</p></div>
         <div className="learning-articles">{artigos.map((artigo,i)=><article className="learning-article" key={artigo.href}><div className="learning-article-number">{String(i+1).padStart(2,"0")}</div><div><span className="learning-source-label">{artigo.label}</span><h3>{artigo.title}</h3><p>{artigo.detail}</p><p className="learning-prompt"><strong>Para refletir:</strong> {artigo.question}</p></div><a target="_blank" rel="noopener noreferrer" href={artigo.href} className="learning-source-link" aria-label={"Ler fonte: "+artigo.title}>Ler fonte ↗</a></article>)}</div>
       </section>
 
@@ -211,7 +233,8 @@ export default function Trilha01Page() {
       <section id="pratica" className="learning-section learning-wrap">
         <div className="learning-section-header"><div><span className="eyebrow dark">LEVE PARA A VIDA REAL</span><h2>Uma decisão, <em>cinco perguntas.</em></h2></div><p>Convite original da curadoria. Use individualmente, em uma conversa de liderança ou como abertura de uma roda de aprendizagem.</p></div>
         <ol className="learning-questions">{perguntas.map((q,i)=><li key={q}><span>{String(i+1).padStart(2,"0")}</span><p>{q}</p></li>)}</ol>
-        <div className="learning-practice"><div><span className="eyebrow">EXERCÍCIO · 15–20 MINUTOS</span><h3>O mapa de uma escolha real</h3><p>Escolha uma decisão que esteja próxima. Registre: <strong>o resultado desejado</strong>, <strong>as pessoas afetadas</strong>, <strong>o princípio em tensão</strong> e <strong>uma ação observável</strong> que demonstre coerência. Antes de decidir, converse com alguém capaz de oferecer outra perspectiva. Depois, revise o que aconteceu.</p></div><div className="learning-practice-mark" aria-hidden="true">↗</div></div>
+        <div className="learning-practice"><div><span className="eyebrow">EXERCÍCIO · 15–20 MINUTOS</span><h3>O mapa de uma escolha real</h3><p>Escolha uma decisão que esteja próxima. Registre: <strong>o resultado desejado</strong>, <strong>as pessoas afetadas</strong>, <strong>o princípio em tensão</strong> e <strong>uma ação observável</strong> que demonstre coerência. Antes de decidir, converse com alguém capaz de oferecer outra perspectiva. Depois, revise o que aconteceu.</p><a className="workbook-cta-link" href="#caderno">Preencher o Caderno de Discernimento ↓</a></div><div className="learning-practice-mark" aria-hidden="true">↗</div></div>
+        <CadernoDiscernimento />
       </section>
       <section className="learning-end"><div className="learning-wrap"><span className="eyebrow">A INVESTIGAÇÃO CONTINUA</span><h2>O que você escolhe <em>sustentar?</em></h2><p>Explore as fontes, coloque um princípio à prova do cotidiano e retorne à trilha com novas perguntas.</p><Link href="/" className="primary light">Voltar às seis trilhas ↗</Link></div></section>
       <footer><span>© Escola Atemporal · Biblioteca Atemporal</span><span>Trilha 01 · Curadoria pública de fontes verificadas</span></footer>
