@@ -3,6 +3,12 @@ name: Publicar Biblioteca Atemporal
 on:
   push:
     branches: [main]
+    paths:
+      - 'index.html'
+      - 'acervo.html'
+      - '.nojekyll'
+      - 'data/catalogo-publico.json'
+      - '.github/workflows/pages.yml'
   workflow_dispatch:
 
 permissions:
