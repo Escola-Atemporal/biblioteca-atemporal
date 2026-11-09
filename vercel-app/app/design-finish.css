@@ -372,3 +372,61 @@
     display: none !important;
   }
 }
+
+
+/* Auditoria mobile Lighthouse (2026-11-09): corrigir contraste de detalhes
+   e dar nome visivel aos atalhos de leitura, mantendo as cores oficiais. */
+.biblioteca-home .track-color-02:not(.track-is-live) .atemporal-track-top {
+  color: #005b73;
+}
+.biblioteca-home .track-color-04:not(.track-is-live) .atemporal-track-top {
+  color: #3e6400;
+}
+.biblioteca-home .track-color-05:not(.track-is-live) .atemporal-track-top {
+  color: #604e00;
+}
+.biblioteca-home .track-color-06:not(.track-is-live) .atemporal-track-top {
+  color: #8a2d0b;
+}
+.biblioteca-home .atemporal-track-status {
+  color: #555;
+}
+.biblioteca-home .track-is-live .atemporal-track-status {
+  color: #ffd309;
+}
+.biblioteca-home .source-card-figure>span.source-card-open {
+  display: inline-flex;
+  width: auto;
+  min-width: 123px;
+  height: 41px;
+  gap: 9px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12px;
+  background: #ffd309;
+  color: #141414;
+  font: 700 11px/1.25 'Roboto Mono',monospace;
+}
+.biblioteca-home .source-card-figure:hover>span.source-card-open,
+.biblioteca-home .source-card-figure:focus-visible>span.source-card-open {
+  background: #fff;
+}
+.learning-page .learning-books-jump a span {
+  color: #554363;
+}
+.learning-page .learning-books-jump a:hover span,
+.learning-page .learning-books-jump a:focus-visible span {
+  color: #fff;
+}
+.learning-page .learning-book-search-head>p {
+  color: #606060;
+}
+.learning-page .learning-essay .learning-essay-author {
+  color: #64586a;
+}
+.learning-page .learning-source-link {
+  gap: 5px;
+}
+.learning-page .book-reference-rights {
+  color: #61586a;
+}
