@@ -1,0 +1,89 @@
+{
+  "version": "0.2.0",
+  "publication_status": "public_demo",
+  "rights_notice": "Somente descrições temáticas gerais. Nenhuma ficha metodológica, obra integral ou documento interno publicado.",
+  "items": [
+    {
+      "id": "tema-principios",
+      "type": "tema",
+      "track": "01",
+      "title": "Discernimento nas decisões",
+      "description": "Exploração temática de princípios, integridade e dilemas em contextos de liderança.",
+      "tags": [
+        "princípios",
+        "decisões",
+        "ética",
+        "integridade"
+      ],
+      "status": "orientacao"
+    },
+    {
+      "id": "tema-emocoes",
+      "type": "tema",
+      "track": "02",
+      "title": "Reconhecer emoções e escolhas",
+      "description": "Exploração temática da relação entre emoções, reações e autoconsciência.",
+      "tags": [
+        "emoções",
+        "autoconsciência",
+        "relações"
+      ],
+      "status": "orientacao"
+    },
+    {
+      "id": "tema-habitos",
+      "type": "tema",
+      "track": "03",
+      "title": "Padrões e hábitos",
+      "description": "Exploração temática sobre comportamentos recorrentes, autoconhecimento e pequenas mudanças.",
+      "tags": [
+        "autoconhecimento",
+        "hábitos",
+        "comportamentos"
+      ],
+      "status": "orientacao"
+    },
+    {
+      "id": "tema-confianca",
+      "type": "tema",
+      "track": "04",
+      "title": "Construção de confiança",
+      "description": "Exploração temática de escuta, colaboração, conflitos e relações de trabalho.",
+      "tags": [
+        "confiança",
+        "escuta",
+        "colaboração",
+        "conflitos"
+      ],
+      "status": "orientacao"
+    },
+    {
+      "id": "tema-paradoxos",
+      "type": "tema",
+      "track": "05",
+      "title": "Controle e autonomia",
+      "description": "Exploração temática das tensões entre direção, liberdade e responsabilidade.",
+      "tags": [
+        "autonomia",
+        "controle",
+        "paradoxos",
+        "liderança"
+      ],
+      "status": "orientacao"
+    },
+    {
+      "id": "tema-legado",
+      "type": "tema",
+      "track": "06",
+      "title": "Resultados sustentáveis e continuidade",
+      "description": "Exploração temática sobre metas, sucessão e construção de legado.",
+      "tags": [
+        "resultados",
+        "legado",
+        "sucessão",
+        "metas"
+      ],
+      "status": "orientacao"
+    }
+  ]
+}
