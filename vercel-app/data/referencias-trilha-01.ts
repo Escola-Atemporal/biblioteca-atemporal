@@ -296,10 +296,10 @@ export const livrosTrilha01: LivroTrilha01[] = [
     resumo: "Introdução abrangente à filosofia, com perspectivas de diferentes tradições e capítulos dedicados às teorias morais, à ética aplicada, ao raciocínio e à reflexão crítica.",
     pergunta: "Como tradições éticas diferentes poderiam interpretar uma mesma decisão difícil?",
     recomendacao: "Comece pelos capítulos 8, 9 e 10: valores, teorias morais e ética aplicada.",
-    acesso: "Livro completo gratuito em PDF no site do editor",
+    acesso: "Leitura online e download gratuito de PDF na página oficial do OpenStax",
     direitos: "OpenStax: acesso gratuito; consulte os termos de licença da edição e as regras de atribuição.",
     urlFonte: "https://openstax.org/details/books/introduction-philosophy",
-    urlDownload: "https://assets.openstax.org/oscms-prodcms/media/documents/Introduction_to_Philosophy-WEB_cszrKYp.pdf",
+
     tom: "blue",
     capa: "FILOSOFIA E ESCOLHAS",
   },
