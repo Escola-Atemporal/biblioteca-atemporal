@@ -130,7 +130,7 @@ export default function HomePage() {
           <h2>O ESSENCIAL <span>PERMANECE.</span></h2>
           <p className="feature-lead">Princípios e Discernimento</p>
           <p>Em tempos de pressão e mudanças, o desafio não é apenas chegar ao resultado. É reconhecer quais valores precisam atravessar nossas decisões.</p>
-          <div className="atemporal-feature-data"><span>05 LEITURAS DA ESCOLA</span><span>02 VÍDEOS</span><span>01 PRÁTICA</span></div>
+          <div className="atemporal-feature-data"><span>08 LEITURAS DA ESCOLA</span><span>17 LIVROS E MATERIAIS</span><span>03 VÍDEOS</span><span>01 CADERNO INTERATIVO</span></div>
           <Link href="/trilhas/principios-e-discernimento" className="primary">Entrar na Trilha 01 <span aria-hidden="true">↗</span></Link>
         </div>
       </section>
