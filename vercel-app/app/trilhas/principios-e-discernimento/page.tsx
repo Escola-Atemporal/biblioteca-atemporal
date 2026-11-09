@@ -88,6 +88,15 @@ const videos = [
     href: "https://www.youtube.com/watch?v=lmyZMtPVodo",
     image: "https://img.youtube.com/vi/lmyZMtPVodo/hqdefault.jpg",
   },
+  {
+    title: "Liderança e Legado — conversa com Bruno Stuchi",
+    creator: "Podcast Liderança Atemporal · Escola Atemporal",
+    topic: "Princípios, cultura e adaptação em tempos de mudança",
+    observation: "Neste episódio da Escola, Gabriela Jardim Presto conversa com Bruno Stuchi sobre o desafio de adaptar organizações sem perder os valores que orientam a liderança.",
+    question: "Como reconhecer quais práticas podem evoluir e quais princípios precisam permanecer?",
+    href: "https://www.youtube.com/watch?v=2vfuWjQ8Ztk",
+    image: "https://img.youtube.com/vi/2vfuWjQ8Ztk/hqdefault.jpg",
+  },
 ];
 
 const etapas = [
@@ -124,7 +133,7 @@ export default function Trilha01Page() {
           <div className="learning-hero-links"><a href="#investigacao" className="primary">Iniciar investigação <span>↗</span></a><a href="#biblioteca" className="outline">Explorar referências ↓</a></div>
           </div>
           <div className="learning-hero-picture"><img src="https://escolaatemporal.com.br/wp-content/uploads/2026/04/Conceitual-Homem-Atemporal-2.png" width="840" height="860" alt="Ilustração conceitual da Escola Atemporal para a página Princípios Norteadores" /><span className="learning-hero-picture-label">O ESSENCIAL PERMANECE</span></div>
-          <div className="learning-facts"><span>{artigos.length} leituras da Escola</span><span>{livrosTrilha01.length} livros e materiais</span><span>02 vídeos externos</span><span>05 perguntas essenciais</span><span>01 caderno de reflexão</span></div>
+          <div className="learning-facts"><span>{artigos.length} leituras da Escola</span><span>{livrosTrilha01.length} livros e materiais</span><span>{videos.length} vídeos e episódios</span><span>05 perguntas essenciais</span><span>01 caderno de reflexão</span></div>
         </div>
       </section>
 
@@ -224,9 +233,9 @@ export default function Trilha01Page() {
 
       <section id="videos" className="learning-section learning-muted">
         <div className="learning-wrap">
-          <div className="learning-section-header"><div><span className="eyebrow dark">REPERTÓRIOS EM DIÁLOGO</span><h2>Vídeos para <em>ampliar a lente.</em></h2></div><p>Referências externas verificadas no YouTube. Os links levam aos vídeos originais dos canais responsáveis; nenhuma gravação é republicada aqui.</p></div>
+          <div className="learning-section-header"><div><span className="eyebrow dark">REPERTÓRIOS EM DIÁLOGO</span><h2>Vídeos para <em>ampliar a lente.</em></h2></div><p>Um episódio do Podcast Liderança Atemporal e duas referências externas. Os links levam aos vídeos originais de seus canais; nenhum vídeo é republicado aqui.</p></div>
           <div className="learning-videos">{videos.map(v=><article className="learning-video" key={v.href}><div className="learning-video-icon"><img src={v.image} alt="" loading="lazy" /><span className="learning-video-play" aria-hidden="true"><span>▶</span></span></div><div className="learning-video-body"><span>{v.creator}</span><h3>{v.title}</h3><p className="learning-video-theme">{v.topic}</p><p>{v.observation}</p><p className="learning-prompt"><strong>Pergunta-guia:</strong> {v.question}</p><a href={v.href} target="_blank" rel="noopener noreferrer">Assistir no YouTube ↗</a></div></article>)}</div>
-          <p className="learning-disclaimer">Sobre os cortes do podcast da Escola: o artigo “O preço da coerência” menciona trechos com Dagoberto Gabriel e Allan Finkel disponíveis no Drive. Esses materiais não estão incorporados porque não foi verificado um link público autorizado para cada corte. A curadoria pode adicioná-los após a verificação dos links e dos direitos.</p>
+          <p className="learning-disclaimer">O episódio com Bruno Stuchi foi divulgado oficialmente pela Escola Atemporal com link para o YouTube. Outros cortes do podcast mencionados nos artigos da Escola não foram incorporados sem um endereço público autorizado e identificado. Nenhum vídeo é baixado ou republicado nesta Biblioteca.</p>
         </div>
       </section>
 
