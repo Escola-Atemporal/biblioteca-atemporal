@@ -1,3 +1,4 @@
+import BrandLogo from "./components/BrandLogo";
 import Link from "next/link";
 import type { Metadata } from "next";
 import catalog from "../data/catalogo-publico.json";
@@ -48,10 +49,7 @@ export default function HomePage() {
     <main className="biblioteca-home">
       <a className="skip-to-content" href="#trilhas">Ir para as trilhas</a>
       <header className="topbar">
-        <Link className="brand" href="/" aria-label="Biblioteca Atemporal — início">
-          <img className="brand-logo" src="https://escolaatemporal.com.br/wp-content/uploads/2026/08/hor-e1787682735563.png" alt="Escola Atemporal" width="1350" height="454" />
-          <span>/ BIBLIOTECA</span>
-        </Link>
+        <BrandLogo />
         <nav aria-label="Navegação principal">
           <Link href="#trilhas">Trilhas</Link>
           <Link href="#fontes">Referências</Link>
