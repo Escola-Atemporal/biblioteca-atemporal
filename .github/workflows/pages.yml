@@ -30,7 +30,10 @@ jobs:
         run: |
           mkdir -p _site
           cp index.html _site/index.html
+          cp acervo.html _site/acervo.html
           cp .nojekyll _site/.nojekyll
+          mkdir -p _site/data
+          cp data/catalogo-publico.json _site/data/catalogo-publico.json
       - name: Enviar arquivos para publicacao
         uses: actions/upload-pages-artifact@v4
         with:
