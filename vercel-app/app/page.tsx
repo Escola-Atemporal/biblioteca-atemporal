@@ -13,7 +13,7 @@ const tracks: Record<string, string> = {
 export default function HomePage() {
   return (
     <main>
-      <header className="topbar"><Link className="brand" href="/">✳ ESCOLA ATEMPORAL <span> / BIBLIOTECA</span></Link><nav><Link href="#trilhas">Explorar trilhas</Link><Link href="/entrar" className="nav-login">Área de acesso ↗</Link></nav></header>
+      <header className="topbar"><Link className="brand" href="/"><img className="brand-logo" src="https://escolaatemporal.com.br/wp-content/uploads/2026/08/hor-e1787682735563.png" alt="Escola Atemporal" width="1350" height="454" /><span> / BIBLIOTECA</span></Link><nav><Link href="#trilhas">Explorar trilhas</Link><Link href="/entrar" className="nav-login">Área de acesso ↗</Link></nav></header>
       <section className="hero">
         <div className="eyebrow">CONHECIMENTO EM MOVIMENTO <span>·</span> ACERVO EXPERIENCIALISTA</div>
         <h1>Conhecimento que <em>atravessa</em> o tempo.</h1>
