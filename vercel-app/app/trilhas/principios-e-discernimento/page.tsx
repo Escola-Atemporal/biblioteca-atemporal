@@ -1,5 +1,5 @@
 import { livrosTrilha01, referenciasComplementaresTrilha01 } from "../../../data/referencias-trilha-01";
-import type { LivroTrilha01 } from "../../../data/referencias-trilha-01";
+import BibliografiaTrilha01 from "../../components/BibliografiaTrilha01";
 import BrandLogo from "../../components/BrandLogo";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -83,35 +83,6 @@ const perguntas = [
   "Que microcomportamento seu ajuda a transformar valores declarados em cultura vivida?",
 ];
 
-function LivroReferencia({ livro, index }: { livro: LivroTrilha01; index: number }) {
-  return (
-    <article className="book-reference-card" id={livro.id}>
-      <div className={`book-reference-cover tone-${livro.tom}`} aria-hidden="true">
-        <span className="book-cover-mark">ESCOLA ATEMPORAL / TRILHA 01</span>
-        <span className="book-cover-index">{String(index + 1).padStart(2, "0")}</span>
-        <strong>{livro.capa}</strong>
-        <span className="book-cover-base">REFERÊNCIA DE LEITURA ↗</span>
-      </div>
-      <div className="book-reference-info">
-        <div className="book-reference-eyebrow">
-          <span>{livro.tipo}</span><span>·</span><span>{livro.ano}</span><span>·</span><span>{livro.formato}</span>
-        </div>
-        <h4>{livro.titulo}</h4>
-        <p className="book-reference-author">{livro.autor} <span>· {livro.instituicao}</span></p>
-        <div className="book-reference-taxonomy"><span>{livro.categoria}</span><span>{livro.idioma}</span></div>
-        <p className="book-reference-summary">{livro.resumo}</p>
-        <p className="book-reference-guide"><strong>Por onde começar:</strong> {livro.recomendacao}</p>
-        <p className="book-reference-question"><strong>Para refletir:</strong> {livro.pergunta}</p>
-        <div className="book-reference-actions">
-          {livro.urlDownload && <a className="book-download" href={livro.urlDownload} target="_blank" rel="noopener noreferrer" aria-label={`Acessar arquivo ${livro.formato}: ${livro.titulo}`}>{livro.formato === "EPUB" ? "Baixar EPUB" : "Abrir / baixar PDF"} <span aria-hidden="true">↗</span></a>}
-          <a className="book-source" href={livro.urlFonte} target="_blank" rel="noopener noreferrer">Fonte e condições de uso <span aria-hidden="true">↗</span></a>
-        </div>
-        <p className="book-reference-rights">{livro.direitos}</p>
-      </div>
-    </article>
-  );
-}
-
 export default function Trilha01Page() {
   return (
     <main className="learning-page">
@@ -131,7 +102,7 @@ export default function Trilha01Page() {
           <div className="learning-hero-links"><a href="#investigacao" className="primary">Iniciar investigação <span>↗</span></a><a href="#biblioteca" className="outline">Explorar referências ↓</a></div>
           </div>
           <div className="learning-hero-picture"><img src="https://escolaatemporal.com.br/wp-content/uploads/2026/04/Conceitual-Homem-Atemporal-2.png" width="840" height="860" alt="Ilustração conceitual da Escola Atemporal para a página Princípios Norteadores" /><span className="learning-hero-picture-label">O ESSENCIAL PERMANECE</span></div>
-          <div className="learning-facts"><span>05 leituras institucionais</span><span>10 livros e materiais</span><span>02 vídeos externos</span><span>05 perguntas essenciais</span><span>01 prática de aplicação</span></div>
+          <div className="learning-facts"><span>05 leituras institucionais</span><span>{livrosTrilha01.length} livros e materiais</span><span>02 vídeos externos</span><span>05 perguntas essenciais</span><span>01 prática de aplicação</span></div>
         </div>
       </section>
 
@@ -177,36 +148,31 @@ export default function Trilha01Page() {
           <div className="learning-books-intro">
             <div><span className="learning-books-preamble">LEITURAS QUE AMPLIAM O REPERTÓRIO</span>
               <h3>Não basta ter uma resposta. <em>É preciso formar critérios.</em></h3>
-              <p>Selecionamos dez obras e materiais de fontes reconhecidas. Cada indicação explica por que ler, o que observar e qual pergunta levar para a prática. Os arquivos são acessados diretamente nos portais de origem.</p>
+              <p>Selecionamos obras e materiais de fontes acadêmicas e institucionais reconhecidas. Cada indicação explica por que ler, o que observar e qual pergunta levar para a prática. Os arquivos são acessados diretamente nos portais de origem.</p>
             </div>
-            <div className="learning-books-count" aria-label="Dez obras selecionadas"><strong>10</strong><span>OBRAS<br />E MATERIAIS</span></div>
+            <div className="learning-books-count" aria-label="Quantidade de obras selecionadas"><strong>{livrosTrilha01.length}</strong><span>OBRAS<br />E MATERIAIS</span></div>
           </div>
 
           <nav className="learning-books-jump" aria-label="Navegar pelo acervo bibliográfico">
-            <a href="#livros-portugues">Em português <span>05 ↘</span></a>
-            <a href="#livros-ingles">Em inglês <span>05 ↘</span></a>
-            <a href="#referencias-academicas">Referências acadêmicas <span>03 ↘</span></a>
+            <a href="#roteiro-leitura">Percurso sugerido <span>04 ↘</span></a>
+            <a href="#bibliografia-filtros">Buscar materiais <span>{livrosTrilha01.length} ↘</span></a>
+            <a href="#referencias-academicas">Artigos acadêmicos <span>03 ↘</span></a>
           </nav>
 
-          <div className="learning-book-group" id="livros-portugues">
+          <div id="roteiro-leitura" className="learning-reading-route">
             <div className="learning-book-group-head">
-              <div><span className="learning-book-group-number">A / 01</span><h3>LEITURAS EM PORTUGUÊS</h3></div>
-              <p>Para começar por dilemas reais de liderança, cultura de integridade e ética aplicada às novas tecnologias.</p>
+              <div><span className="learning-book-group-number">UM COMEÇO POSSÍVEL</span><h3>QUATRO LEITURAS PARA FORMAR CRITÉRIOS</h3></div>
+              <p>Não é necessário ler o acervo inteiro. Este percurso conecta fundamentos, decisões concretas e impactos de longo prazo.</p>
             </div>
-            <div className="learning-book-grid">
-              {livrosTrilha01.filter(livro => livro.idioma === "Português").map((livro,index) => <LivroReferencia livro={livro} index={index} key={livro.id}/>)}
-            </div>
+            <ol className="reading-route-grid">
+              <li><span>01 / FUNDAMENTAR</span><h4>De onde vêm nossos critérios?</h4><p>Comece com <strong>Ética e Serviço Público — Conceitos Básicos</strong>, da Enap, para confrontar perspectivas filosóficas.</p><a href="#enap-etica-servico-mod1">Ver leitura ↗</a></li>
+              <li><span>02 / QUESTIONAR</span><h4>O que torna uma ação coerente?</h4><p>Leia <strong>Filosofia e Ética</strong>, de Selvino José Assmann, e examine a relação entre convicção e responsabilidade.</p><a href="#uab-filosofia-etica">Ver leitura ↗</a></li>
+              <li><span>03 / PROJETAR</span><h4>Que consequências não enxergamos?</h4><p>Explore <strong>Da Técnica à Ética</strong> para investigar responsabilidades que atravessam o tempo.</p><a href="#hans-jonas-responsabilidade">Ver leitura ↗</a></li>
+              <li><span>04 / COLOCAR EM PRÁTICA</span><h4>Como valores se tornam cultura?</h4><p>Use o <strong>Manual de Integridade Pública da OCDE</strong> para conectar princípios a comportamentos, padrões e liderança.</p><a href="#ocde-manual-integridade-2022">Ver leitura ↗</a></li>
+            </ol>
           </div>
 
-          <div className="learning-book-group" id="livros-ingles">
-            <div className="learning-book-group-head">
-              <div><span className="learning-book-group-number">B / 02</span><h3>CLÁSSICOS E LIVROS EM INGLÊS</h3></div>
-              <p>Da ética das virtudes e do estoicismo à filosofia moral contemporânea e à ética empresarial.</p>
-            </div>
-            <div className="learning-book-grid">
-              {livrosTrilha01.filter(livro => livro.idioma === "Inglês").map((livro,index) => <LivroReferencia livro={livro} index={index+5} key={livro.id}/>)}
-            </div>
-          </div>
+          <BibliografiaTrilha01 />
 
           <div className="learning-biblio-note">
             <span className="learning-biblio-note-icon" aria-hidden="true">i</span>
