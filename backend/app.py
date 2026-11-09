@@ -26,8 +26,8 @@ OIDC_JWKS_URL = os.environ.get("OIDC_JWKS_URL", "")
 ALLOW_ORIGIN = os.environ.get("ALLOWED_ORIGIN", "")
 
 ADMIN_API_ENABLED = os.environ.get("ADMIN_API_ENABLED", "false").strip().lower() == "true"
-if not DATABASE_URL:
-    raise RuntimeError("DATABASE_URL is required")
+if ADMIN_API_ENABLED and not DATABASE_URL:
+    raise RuntimeError("DATABASE_URL is required when administrative access is enabled")
 if ADMIN_API_ENABLED and not all([OIDC_ISSUER, OIDC_AUDIENCE, OIDC_JWKS_URL, ALLOW_ORIGIN]):
     raise RuntimeError("Admin API requires OIDC_ISSUER, OIDC_AUDIENCE, OIDC_JWKS_URL and ALLOWED_ORIGIN")
 if ALLOW_ORIGIN and (ALLOW_ORIGIN == "*" or not ALLOW_ORIGIN.startswith("https://")):
