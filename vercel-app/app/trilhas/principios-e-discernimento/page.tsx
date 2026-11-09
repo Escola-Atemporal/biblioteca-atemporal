@@ -133,7 +133,7 @@ export default function Trilha01Page() {
           <p className="learning-intro">A liderança é colocada à prova quando interesses, urgências e valores entram em tensão. Esta trilha convida a reconhecer o que permanece, questionar o custo das escolhas e agir com responsabilidade — inclusive quando ninguém está observando.</p>
           <div className="learning-hero-links"><a href="#investigacao" className="primary">Iniciar investigação <span>↗</span></a><a href="#biblioteca" className="outline">Explorar referências ↓</a></div>
           </div>
-          <div className="learning-hero-picture"><img src="https://escolaatemporal.com.br/wp-content/uploads/2026/04/Conceitual-Homem-Atemporal-2.png" width="840" height="860" alt="Ilustração conceitual da Escola Atemporal para a página Princípios Norteadores" /><span className="learning-hero-picture-label">O ESSENCIAL PERMANECE</span></div>
+          <div className="learning-hero-picture"><img src="https://escolaatemporal.com.br/wp-content/uploads/2026/04/Conceitual-Homem-Atemporal-2.png" width="840" height="860" alt="Ilustração conceitual da Escola Atemporal para a página Princípios Norteadores" fetchPriority="high" loading="eager" decoding="async" /><span className="learning-hero-picture-label">O ESSENCIAL PERMANECE</span></div>
           <div className="learning-facts"><span>{artigos.length} leituras da Escola</span><span>{livrosTrilha01.length} livros e materiais</span><span>{videos.length} vídeos e episódios</span><span>05 perguntas essenciais</span><span>01 caderno de reflexão</span></div>
         </div>
       </section>
@@ -165,7 +165,7 @@ export default function Trilha01Page() {
 
       <section id="biblioteca" className="learning-section learning-wrap">
         <div className="learning-section-header"><div><span className="eyebrow dark">CURADORIA DA ESCOLA</span><h2>Para ler, relacionar e <em>questionar.</em></h2></div><p>Artigos e páginas publicados pela Escola Atemporal, organizados para conectar princípios, hábitos e decisões. Os textos completos permanecem no site original, com indicação de autoria.</p></div>
-        <div className="learning-articles">{artigos.map((artigo,i)=><article className="learning-article" key={artigo.href}><div className="learning-article-number">{String(i+1).padStart(2,"0")}</div><div><span className="learning-source-label">{artigo.label}</span><h3>{artigo.title}</h3><p>{artigo.detail}</p><p className="learning-prompt"><strong>Para refletir:</strong> {artigo.question}</p></div><a target="_blank" rel="noopener noreferrer" href={artigo.href} className="learning-source-link" aria-label={"Ler fonte: "+artigo.title}>Ler fonte ↗</a></article>)}</div>
+        <div className="learning-articles">{artigos.map((artigo,i)=><article className="learning-article" key={artigo.href}><div className="learning-article-number">{String(i+1).padStart(2,"0")}</div><div><span className="learning-source-label">{artigo.label}</span><h3>{artigo.title}</h3><p>{artigo.detail}</p><p className="learning-prompt"><strong>Para refletir:</strong> {artigo.question}</p></div><a target="_blank" rel="noopener noreferrer" href={artigo.href} className="learning-source-link" aria-label={"Ler fonte: "+artigo.title}>Ler fonte <span aria-hidden="true">↗</span></a></article>)}</div>
       </section>
 
       <section id="livros" className="learning-section learning-books">
