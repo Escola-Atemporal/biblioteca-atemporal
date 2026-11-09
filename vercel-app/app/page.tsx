@@ -72,7 +72,7 @@ export default function HomePage() {
           </div>
           <div className="atemporal-masthead-visual" aria-hidden="true">
             <div className="masthead-art-ring" />
-            <img src="https://escolaatemporal.com.br/wp-content/uploads/2026/04/Conceitual-Homem-Atemporal-2.png" alt="" width="840" height="860" />
+            <img src="https://escolaatemporal.com.br/wp-content/uploads/2026/04/Conceitual-Homem-Atemporal-2.png" alt="" width="840" height="860" fetchPriority="high" loading="eager" decoding="async" />
             <div className="masthead-art-label">A PROFUNDIDADE<br/>COMEÇA EM NÓS.</div>
           </div>
         </div>
