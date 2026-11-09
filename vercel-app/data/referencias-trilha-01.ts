@@ -140,7 +140,7 @@ export const livrosTrilha01: LivroTrilha01[] = [
     acesso: "Livro completo gratuito em PDF no site do editor",
     direitos: "OpenStax: acesso gratuito; consulte a licença e a atribuição indicadas na edição vigente.",
     urlFonte: "https://openstax.org/details/books/business-ethics",
-    urlDownload: "https://assets.openstax.org/oscms-prodcms/media/documents/BusinessEthics-OP.pdf",
+    urlDownload: "https://assets.openstax.org/oscms-prodcms/media/documents/business-ethics_-_WEB.pdf",
     tom: "violet",
     capa: "BUSINESS ETHICS",
   },
