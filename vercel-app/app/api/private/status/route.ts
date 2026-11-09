@@ -1,9 +1,10 @@
 import { NextResponse } from "next/server";
-import { auth } from "../../../../auth";
+import { auth, authConfigured } from "../../../../auth";
 import { roleForEmail } from "../../../../lib/access";
 
 export const dynamic = "force-dynamic";
 export async function GET() {
+  if (!authConfigured) return NextResponse.json({ error: "Login not configured" }, { status: 503 });
   const session = await auth();
   const role = roleForEmail(session?.user?.email);
   if (!session?.user?.email) return NextResponse.json({ error: "Authentication required" }, { status: 401 });
