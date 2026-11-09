@@ -86,7 +86,7 @@ const perguntas = [
 function LivroReferencia({ livro, index }: { livro: LivroTrilha01; index: number }) {
   return (
     <article className="book-reference-card" id={livro.id}>
-      <div className={\`book-reference-cover tone-\${livro.tom}\`} aria-hidden="true">
+      <div className={`book-reference-cover tone-${livro.tom}`} aria-hidden="true">
         <span className="book-cover-mark">ESCOLA ATEMPORAL / TRILHA 01</span>
         <span className="book-cover-index">{String(index + 1).padStart(2, "0")}</span>
         <strong>{livro.capa}</strong>
@@ -103,7 +103,7 @@ function LivroReferencia({ livro, index }: { livro: LivroTrilha01; index: number
         <p className="book-reference-guide"><strong>Por onde começar:</strong> {livro.recomendacao}</p>
         <p className="book-reference-question"><strong>Para refletir:</strong> {livro.pergunta}</p>
         <div className="book-reference-actions">
-          {livro.urlDownload && <a className="book-download" href={livro.urlDownload} target="_blank" rel="noopener noreferrer" aria-label={\`Acessar arquivo \${livro.formato}: \${livro.titulo}\`}>{livro.formato === "EPUB" ? "Baixar EPUB" : "Abrir / baixar PDF"} <span aria-hidden="true">↗</span></a>}
+          {livro.urlDownload && <a className="book-download" href={livro.urlDownload} target="_blank" rel="noopener noreferrer" aria-label={`Acessar arquivo ${livro.formato}: ${livro.titulo}`}>{livro.formato === "EPUB" ? "Baixar EPUB" : "Abrir / baixar PDF"} <span aria-hidden="true">↗</span></a>}
           <a className="book-source" href={livro.urlFonte} target="_blank" rel="noopener noreferrer">Fonte e condições de uso <span aria-hidden="true">↗</span></a>
         </div>
         <p className="book-reference-rights">{livro.direitos}</p>
