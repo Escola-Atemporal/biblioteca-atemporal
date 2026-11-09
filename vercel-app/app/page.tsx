@@ -97,12 +97,13 @@ export default function HomePage() {
         <div className="atemporal-container">
           <div className="atemporal-section-heading">
             <div><span className="eyebrow dark">PERCURSOS DE INVESTIGAÇÃO · 01 — 06</span><h2>SEIS TRILHAS.<br/><span>MÚLTIPLAS PERSPECTIVAS.</span></h2></div>
-            <p>Temas que se conectam e se desdobram em textos, vídeos, referências e perguntas para a vida real. Vamos desenvolver uma trilha de cada vez.</p>
+            <p>Temas que se conectam e se desdobram em textos, vídeos, referências e perguntas para a vida real. As duas primeiras trilhas já estão disponíveis para exploração.</p>
           </div>
           <div className="atemporal-tracks">
             {catalog.items.map((item) => {
               const track = tracks[item.track];
-              const available = item.track === "01";
+              const available = item.track === "01" || item.track === "02";
+              const trackHref = item.track === "02" ? "/trilhas/emocoes-e-autoconsciencia" : "/trilhas/principios-e-discernimento";
               return <article className={`atemporal-track track-color-${item.track}${available ? " track-is-live" : ""}`} key={item.id}>
                 <div className="atemporal-track-top"><span>TRILHA {item.track}</span><span className="atemporal-track-status">{available ? "DISPONÍVEL" : "EM DESENVOLVIMENTO"}</span></div>
                 <div className="atemporal-track-content">
@@ -112,10 +113,18 @@ export default function HomePage() {
                   <p>{track.inquiry}</p>
                 </div>
                 <div className="atemporal-track-foot">
-                  {available ? <Link href="/trilhas/principios-e-discernimento" aria-label="Explorar trilha 01 — Princípios e Discernimento">Explorar trilha <span aria-hidden="true">↗</span></Link> : <span>Conteúdo em preparação <span aria-hidden="true">·</span></span>}
+                  {available ? <Link href={trackHref} aria-label={"Explorar trilha " + item.track + " — " + track.name}>Explorar trilha <span aria-hidden="true">↗</span></Link> : <span>Conteúdo em preparação <span aria-hidden="true">·</span></span>}
                 </div>
               </article>;
             })}
+          </div>
+          <div className="atemporal-new-track">
+            <div>
+              <span className="atemporal-new-track-label">RECÉM-PUBLICADA · TRILHA 02</span>
+              <h3>EMOÇÕES E <em>AUTOCONSCIÊNCIA.</em></h3>
+              <p>Antes da decisão, existe um movimento interno. Um percurso para observar emoções, reconhecer padrões e criar espaço para respostas mais conscientes.</p>
+            </div>
+            <Link href="/trilhas/emocoes-e-autoconsciencia" className="primary">Explorar a Trilha 02 <span aria-hidden="true">↗</span></Link>
           </div>
         </div>
       </section>
