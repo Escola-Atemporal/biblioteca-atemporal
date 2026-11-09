@@ -44,6 +44,12 @@ A aplicação falha no início se as variáveis essenciais não estiverem config
 
 A interface `prototipos/curadoria.html` **não está ligada a esta API**. Ela continua apenas como demonstração sem dados reais. A conexão só deve ocorrer após aprovação de provedores de identidade, ambientes e regras de acesso.
 
+## Testes automatizados (isolados)
+
+O workflow `.github/workflows/backend-tests.yml` agora inicia um PostgreSQL temporário do GitHub Actions, aplica `migrations/001_init.sql` e executa testes de segurança com `pytest`. A variável `TEST_DATABASE_URL` é exclusiva dos testes. O conjunto recusa executar contra URLs diferentes de `localhost` e `127.0.0.1`, evitando o uso acidental de bancos Neon reais.
+
+Os testes cobrem a exigência de autenticação, restrições de papéis, validação de campos e algumas restrições estruturais do banco. Eles não representam uma homologação para produção e ainda faltam testes end-to-end de sessões reais e revisão de segurança independente.
+
 ## Limites desta entrega
 
 Ainda faltam: testes automatizados completos, bootstrap seguro de identidade, política de publicação e revisão, API para perfis autorizados, UI administrativa autenticada, regras de upload e revisão de materiais, backups e configuração/implantação em servidor dedicado.
