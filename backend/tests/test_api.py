@@ -10,7 +10,9 @@ os.environ.setdefault("OIDC_JWKS_URL","https://issuer.example.test/.well-known/j
 os.environ.setdefault("ALLOWED_ORIGIN","https://admin.example.test")
 
 from fastapi.testclient import TestClient
+import app as api_module
 from app import app, require_staff
+api_module.ADMIN_API_ENABLED = True
 
 client = TestClient(app)
 DRAFT = {
@@ -30,6 +32,11 @@ def setup_function():
 
 def teardown_function():
     app.dependency_overrides.clear()
+
+def test_disabled_admin_api_returns_503(monkeypatch):
+    monkeypatch.setattr(api_module, "ADMIN_API_ENABLED", False)
+    response = client.get("/api/admin/records")
+    assert response.status_code == 503
 
 def test_health_does_not_expose_database_or_user_info():
     response = client.get("/health")
