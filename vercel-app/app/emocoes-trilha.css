@@ -629,3 +629,76 @@
     font:9pt Arial,sans-serif!important;
   }
 }
+
+
+/* Divulgacao da Trilha 02 na home: sem afetar a estrutura editorial da 01. */
+.biblioteca-home .track-color-02.track-is-live {
+  background:#09232c;
+  border-top-color:#12b4d7;
+}
+.biblioteca-home .track-color-02.track-is-live .atemporal-track-top,
+.biblioteca-home .track-color-02.track-is-live .atemporal-track-kicker,
+.biblioteca-home .track-color-02.track-is-live .atemporal-track-index {
+  color:#76deef;
+}
+.biblioteca-home .track-color-02.track-is-live .atemporal-track-content>p {
+  color:#e2f5f8;
+}
+.biblioteca-home .track-color-02.track-is-live .atemporal-track-status,
+.biblioteca-home .track-color-02.track-is-live .atemporal-track-foot a {
+  color:#ffd309;
+}
+.biblioteca-home .atemporal-new-track {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:50px;
+  padding:clamp(27px,4.5vw,48px);
+  margin:22px 0 0;
+  border-left:6px solid #12b4d7;
+  background:linear-gradient(106deg,#0e252e 10%,#111d25 65%,#17232b 100%);
+  color:#fff;
+}
+.biblioteca-home .atemporal-new-track>div {
+  max-width:785px;
+}
+.biblioteca-home .atemporal-new-track-label {
+  display:block;
+  color:#70dcf0;
+  font:700 11px/1.5 'Roboto Mono',monospace;
+  letter-spacing:.09em;
+}
+.biblioteca-home .atemporal-new-track h3 {
+  color:#fff;
+  font:400 clamp(40px,5vw,70px)/1.05 'Bebas Neue',Impact,sans-serif;
+  margin:16px 0;
+  letter-spacing:0;
+}
+.biblioteca-home .atemporal-new-track h3 em {
+  font-style:normal;
+  color:#70dcf0;
+}
+.biblioteca-home .atemporal-new-track p {
+  color:#d9e8eb;
+  font:400 13px/1.85 Montserrat,Arial,sans-serif;
+  margin:0;
+}
+.biblioteca-home .atemporal-new-track .primary {
+  background:#ffd309;
+  color:#111;
+  font:700 12px/1.5 'Roboto Mono',monospace;
+  display:inline-flex;
+  flex-shrink:0;
+}
+.biblioteca-home .atemporal-new-track .primary:hover {background:#f89533}
+@media(max-width:750px) {
+  .biblioteca-home .atemporal-new-track {
+    display:block;
+  }
+  .biblioteca-home .atemporal-new-track .primary {
+    display:flex;
+    margin-top:25px;
+    width:100%;
+    justify-content:space-between;
+  }
+}
