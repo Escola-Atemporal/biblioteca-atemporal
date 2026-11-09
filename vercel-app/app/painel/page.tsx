@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { auth, signOut } from "../../auth";
+import { auth, authConfigured, signOut } from "../../auth";
 import { roleForEmail } from "../../lib/access";
 export const dynamic = "force-dynamic";
 
 export default async function Painel() {
+  if (!authConfigured) redirect("/entrar");
   const session = await auth();
   if (!session?.user?.email) redirect("/entrar");
   const role = roleForEmail(session.user.email);
