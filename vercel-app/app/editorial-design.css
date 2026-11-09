@@ -438,3 +438,58 @@ html{scroll-padding-top:84px}
  .learning-biblio-note{padding:20px;gap:13px}
 }
 @media(prefers-reduced-motion:reduce){.book-reference-card{transition:none}.book-reference-card:hover{transform:none}}
+
+
+/* TRILHA 01 — Roteiro de leitura + busca bibliográfica interativa */
+.learning-reading-route{scroll-margin-top:100px;margin:65px 0 85px}
+.learning-reading-route .learning-book-group-head{border-bottom-color:#cfc8da}
+.reading-route-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;list-style:none;padding:0;margin:0}
+.reading-route-grid li{position:relative;background:#fff;border:1px solid #e0dbe7;border-top:5px solid #634995;padding:24px 22px 22px;min-height:300px;display:flex;flex-direction:column}
+.reading-route-grid li:nth-child(2){border-top-color:#12b4d7}
+.reading-route-grid li:nth-child(3){border-top-color:#c70744}
+.reading-route-grid li:nth-child(4){border-top-color:#83b61a}
+.reading-route-grid li>span{font:700 10px/1.5 'Roboto Mono',monospace;letter-spacing:.065em;color:#634995}
+.reading-route-grid h4{font:700 20px/1.28 Montserrat,Arial,sans-serif;letter-spacing:-.04em;margin:24px 0 12px;color:#161616}
+.reading-route-grid p{font:400 12px/1.8 Montserrat,Arial,sans-serif;color:#5d5a61;flex:1;margin:0}
+.reading-route-grid p strong{color:#27232d}
+.reading-route-grid li>a{font:700 11px/1.4 'Roboto Mono',monospace;color:#634995;border-top:1px solid #e0dbe7;padding-top:15px;margin-top:18px}
+.reading-route-grid li>a:hover{text-decoration:underline;text-underline-offset:4px}
+.learning-book-search{scroll-margin-top:100px;margin:0 0 15px;border:1px solid #ddd7e6;background:#fff;padding:clamp(22px,3.5vw,39px)}
+.learning-book-search-head{display:flex;justify-content:space-between;align-items:end;gap:22px;margin-bottom:23px}
+.learning-book-search-head>div>span{font:700 11px/1.5 'Roboto Mono',monospace;color:#634995;letter-spacing:.08em}
+.learning-book-search-head h3{font:400 clamp(31px,4vw,48px)/1.1 'Bebas Neue',Impact,sans-serif;color:#181818;margin:10px 0 0}
+.learning-book-search-head>p{font:400 12px/1.7 Montserrat,Arial,sans-serif;color:#777;margin:0}
+.learning-book-search-head>p strong{color:#634995}
+.learning-book-controls{display:grid;grid-template-columns:minmax(0,2.25fr) minmax(0,1fr) minmax(0,1.45fr);gap:14px}
+.learning-book-controls label{min-width:0;display:flex;flex-direction:column;gap:10px}
+.learning-book-controls label>span{font:700 11px/1.4 'Roboto Mono',monospace;color:#48434d}
+.learning-book-controls input,.learning-book-controls select{width:100%;min-width:0;min-height:48px;border:1px solid #ccc4d7;background:#fff;color:#1b1720;border-radius:0;padding:11px 14px;font:500 13px/1.4 Montserrat,Arial,sans-serif;outline-offset:2px}
+.learning-book-controls input::placeholder{color:#8a8392}
+.learning-book-controls input:focus,.learning-book-controls select:focus{border-color:#634995;outline:2px solid #ad9ac8}
+.learning-book-controls select{cursor:pointer}
+.learning-book-search-footer{display:flex;justify-content:space-between;align-items:center;gap:20px;min-height:33px;margin-top:17px;border-top:1px solid #ebe7f0;padding-top:15px}
+.learning-book-search-footer p{margin:0;color:#69626d;font:500 12px/1.5 Montserrat,Arial,sans-serif}
+.learning-book-search-footer p strong{color:#634995}
+.learning-book-search-footer button,.learning-book-empty button{border:0;background:transparent;padding:5px 0;color:#634995;text-decoration:underline;text-underline-offset:4px;font:700 12px 'Roboto Mono',monospace;cursor:pointer}
+.learning-book-empty{border:1px dashed #a496b8;padding:45px 28px;text-align:center;background:#fff;margin:18px 0 50px}
+.learning-book-empty strong{font:700 18px Montserrat,Arial,sans-serif;color:#30203a}
+.learning-book-empty p{font:400 13px/1.8 Montserrat,Arial,sans-serif;color:#666}
+.book-record-only{font:600 10px/1.6 'Roboto Mono',monospace;color:#73697c;background:#f3f0f6;padding:10px 12px}
+@media(max-width:1120px){
+ .reading-route-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .reading-route-grid li{min-height:280px}
+}
+@media(max-width:760px){
+ .learning-book-search-head{display:block}
+ .learning-book-search-head>p{margin-top:10px}
+ .learning-book-controls{grid-template-columns:1fr 1fr}
+ .learning-book-controls label:first-child{grid-column:1/-1}
+}
+@media(max-width:540px){
+ .reading-route-grid{grid-template-columns:1fr}
+ .reading-route-grid li{min-height:0}
+ .learning-book-controls{grid-template-columns:1fr}
+ .learning-book-controls label:first-child{grid-column:auto}
+ .learning-book-search-footer{align-items:flex-start}
+ .learning-book-search{padding:22px 18px}
+}
