@@ -112,7 +112,7 @@ export default function HomePage() {
                   <p>{track.inquiry}</p>
                 </div>
                 <div className="atemporal-track-foot">
-                  {available ? <Link href="/trilhas/principios-e-discernimento" aria-label="Explorar a Trilha 01 — Princípios e Discernimento">Explorar trilha <span aria-hidden="true">↗</span></Link> : <span>Conteúdo em preparação <span aria-hidden="true">·</span></span>}
+                  {available ? <Link href="/trilhas/principios-e-discernimento" aria-label="Explorar trilha 01 — Princípios e Discernimento">Explorar trilha <span aria-hidden="true">↗</span></Link> : <span>Conteúdo em preparação <span aria-hidden="true">·</span></span>}
                 </div>
               </article>;
             })}
@@ -145,7 +145,7 @@ export default function HomePage() {
             {schoolArticles.map((article) => <article key={article.href} className="atemporal-source-card">
               <a className="source-card-figure" href={article.href} target="_blank" rel="noopener noreferrer" aria-label={`Abrir fonte: ${article.title}`}>
                 <img src={article.image} alt={article.alt} loading="lazy" />
-                <span aria-hidden="true">↗</span>
+                <span className="source-card-open">Abrir fonte <span aria-hidden="true">↗</span></span>
               </a>
               <div className="source-card-copy"><span className="eyebrow dark">{article.type}</span><h3>{article.title}</h3><p>{article.desc}</p><a href={article.href} target="_blank" rel="noopener noreferrer">Ler na Escola Atemporal <span aria-hidden="true">↗</span></a></div>
             </article>)}
