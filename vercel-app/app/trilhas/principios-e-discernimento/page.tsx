@@ -1,3 +1,5 @@
+import { livrosTrilha01, referenciasComplementaresTrilha01 } from "../../../data/referencias-trilha-01";
+import type { LivroTrilha01 } from "../../../data/referencias-trilha-01";
 import BrandLogo from "../../components/BrandLogo";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -81,6 +83,35 @@ const perguntas = [
   "Que microcomportamento seu ajuda a transformar valores declarados em cultura vivida?",
 ];
 
+function LivroReferencia({ livro, index }: { livro: LivroTrilha01; index: number }) {
+  return (
+    <article className="book-reference-card" id={livro.id}>
+      <div className={\`book-reference-cover tone-\${livro.tom}\`} aria-hidden="true">
+        <span className="book-cover-mark">ESCOLA ATEMPORAL / TRILHA 01</span>
+        <span className="book-cover-index">{String(index + 1).padStart(2, "0")}</span>
+        <strong>{livro.capa}</strong>
+        <span className="book-cover-base">REFERÊNCIA DE LEITURA ↗</span>
+      </div>
+      <div className="book-reference-info">
+        <div className="book-reference-eyebrow">
+          <span>{livro.tipo}</span><span>·</span><span>{livro.ano}</span><span>·</span><span>{livro.formato}</span>
+        </div>
+        <h4>{livro.titulo}</h4>
+        <p className="book-reference-author">{livro.autor} <span>· {livro.instituicao}</span></p>
+        <div className="book-reference-taxonomy"><span>{livro.categoria}</span><span>{livro.idioma}</span></div>
+        <p className="book-reference-summary">{livro.resumo}</p>
+        <p className="book-reference-guide"><strong>Por onde começar:</strong> {livro.recomendacao}</p>
+        <p className="book-reference-question"><strong>Para refletir:</strong> {livro.pergunta}</p>
+        <div className="book-reference-actions">
+          {livro.urlDownload && <a className="book-download" href={livro.urlDownload} target="_blank" rel="noopener noreferrer" aria-label={\`Acessar arquivo \${livro.formato}: \${livro.titulo}\`}>{livro.formato === "EPUB" ? "Baixar EPUB" : "Abrir / baixar PDF"} <span aria-hidden="true">↗</span></a>}
+          <a className="book-source" href={livro.urlFonte} target="_blank" rel="noopener noreferrer">Fonte e condições de uso <span aria-hidden="true">↗</span></a>
+        </div>
+        <p className="book-reference-rights">{livro.direitos}</p>
+      </div>
+    </article>
+  );
+}
+
 export default function Trilha01Page() {
   return (
     <main className="learning-page">
@@ -100,12 +131,12 @@ export default function Trilha01Page() {
           <div className="learning-hero-links"><a href="#investigacao" className="primary">Iniciar investigação <span>↗</span></a><a href="#biblioteca" className="outline">Explorar referências ↓</a></div>
           </div>
           <div className="learning-hero-picture"><img src="https://escolaatemporal.com.br/wp-content/uploads/2026/04/Conceitual-Homem-Atemporal-2.png" width="840" height="860" alt="Ilustração conceitual da Escola Atemporal para a página Princípios Norteadores" /><span className="learning-hero-picture-label">O ESSENCIAL PERMANECE</span></div>
-          <div className="learning-facts"><span>05 leituras institucionais</span><span>02 vídeos externos</span><span>05 perguntas essenciais</span><span>01 prática de aplicação</span></div>
+          <div className="learning-facts"><span>05 leituras institucionais</span><span>10 livros e materiais</span><span>02 vídeos externos</span><span>05 perguntas essenciais</span><span>01 prática de aplicação</span></div>
         </div>
       </section>
 
       <nav className="learning-nav" aria-label="Seções da trilha">
-        <div className="learning-wrap"><a href="#investigacao">A investigação</a><a href="#percurso">Percurso</a><a href="#biblioteca">Artigos e fontes</a><a href="#videos">Vídeos</a><a href="#pratica">Aplicação</a></div>
+        <div className="learning-wrap"><a href="#investigacao">A investigação</a><a href="#percurso">Percurso</a><a href="#biblioteca">Artigos e fontes</a><a href="#livros">Livros e e-books</a><a href="#videos">Vídeos</a><a href="#pratica">Aplicação</a></div>
       </nav>
 
       <section id="investigacao" className="learning-section learning-wrap">
@@ -132,6 +163,75 @@ export default function Trilha01Page() {
       <section id="biblioteca" className="learning-section learning-wrap">
         <div className="learning-section-header"><div><span className="eyebrow dark">CURADORIA DA ESCOLA</span><h2>Para ler, relacionar e <em>questionar.</em></h2></div><p>Fontes publicadas pela Escola Atemporal. Os textos completos permanecem no site original, com indicação clara de autoria institucional.</p></div>
         <div className="learning-articles">{artigos.map((artigo,i)=><article className="learning-article" key={artigo.href}><div className="learning-article-number">{String(i+1).padStart(2,"0")}</div><div><span className="learning-source-label">{artigo.label}</span><h3>{artigo.title}</h3><p>{artigo.detail}</p><p className="learning-prompt"><strong>Para refletir:</strong> {artigo.question}</p></div><a target="_blank" rel="noopener noreferrer" href={artigo.href} className="learning-source-link" aria-label={"Ler fonte: "+artigo.title}>Ler fonte ↗</a></article>)}</div>
+      </section>
+
+      <section id="livros" className="learning-section learning-books">
+        <div className="learning-wrap">
+          <div className="learning-section-header">
+            <div>
+              <span className="eyebrow dark">ACERVO BIBLIOGRÁFICO · TRILHA 01</span>
+              <h2>Biblioteca de <em>princípios e escolhas.</em></h2>
+            </div>
+            <p>Clássicos, livros didáticos, guias institucionais e materiais formativos para aprofundar ética, discernimento e liderança responsável.</p>
+          </div>
+          <div className="learning-books-intro">
+            <div><span className="learning-books-preamble">LEITURAS QUE AMPLIAM O REPERTÓRIO</span>
+              <h3>Não basta ter uma resposta. <em>É preciso formar critérios.</em></h3>
+              <p>Selecionamos dez obras e materiais de fontes reconhecidas. Cada indicação explica por que ler, o que observar e qual pergunta levar para a prática. Os arquivos são acessados diretamente nos portais de origem.</p>
+            </div>
+            <div className="learning-books-count" aria-label="Dez obras selecionadas"><strong>10</strong><span>OBRAS<br />E MATERIAIS</span></div>
+          </div>
+
+          <nav className="learning-books-jump" aria-label="Navegar pelo acervo bibliográfico">
+            <a href="#livros-portugues">Em português <span>05 ↘</span></a>
+            <a href="#livros-ingles">Em inglês <span>05 ↘</span></a>
+            <a href="#referencias-academicas">Referências acadêmicas <span>03 ↘</span></a>
+          </nav>
+
+          <div className="learning-book-group" id="livros-portugues">
+            <div className="learning-book-group-head">
+              <div><span className="learning-book-group-number">A / 01</span><h3>LEITURAS EM PORTUGUÊS</h3></div>
+              <p>Para começar por dilemas reais de liderança, cultura de integridade e ética aplicada às novas tecnologias.</p>
+            </div>
+            <div className="learning-book-grid">
+              {livrosTrilha01.filter(livro => livro.idioma === "Português").map((livro,index) => <LivroReferencia livro={livro} index={index} key={livro.id}/>)}
+            </div>
+          </div>
+
+          <div className="learning-book-group" id="livros-ingles">
+            <div className="learning-book-group-head">
+              <div><span className="learning-book-group-number">B / 02</span><h3>CLÁSSICOS E LIVROS EM INGLÊS</h3></div>
+              <p>Da ética das virtudes e do estoicismo à filosofia moral contemporânea e à ética empresarial.</p>
+            </div>
+            <div className="learning-book-grid">
+              {livrosTrilha01.filter(livro => livro.idioma === "Inglês").map((livro,index) => <LivroReferencia livro={livro} index={index+5} key={livro.id}/>)}
+            </div>
+          </div>
+
+          <div className="learning-biblio-note">
+            <span className="learning-biblio-note-icon" aria-hidden="true">i</span>
+            <div>
+              <strong>Downloads e direitos autorais</strong>
+              <p>Os botões de PDF e EPUB abrem arquivos disponibilizados pelos próprios autores ou repositórios oficiais; não armazenamos cópias dos livros nesta Biblioteca. Para as obras cuja página de registro não oferece um arquivo direto verificado, usamos somente o link da instituição. Consulte os termos de cada fonte antes de reproduzir, adaptar ou compartilhar. O Project Gutenberg informa domínio público nos Estados Unidos; outros países podem ter condições diferentes.</p>
+            </div>
+          </div>
+
+          <div id="referencias-academicas" className="learning-essays">
+            <div className="learning-book-group-head">
+              <div><span className="learning-book-group-number">C / 03</span><h3>REFERÊNCIAS ACADÊMICAS</h3></div>
+              <p>Textos de consulta aberta para comparar perspectivas antes de formular um julgamento.</p>
+            </div>
+            <div className="learning-essays-grid">
+              {referenciasComplementaresTrilha01.map((referencia,i) => <article key={referencia.href} className="learning-essay">
+                <span className="learning-essay-num">{String(i+1).padStart(2,"0")} / TEXTO ONLINE</span>
+                <h4>{referencia.titulo}</h4><p className="learning-essay-author">{referencia.autor} · {referencia.idioma}</p>
+                <p>{referencia.tema}</p>
+                <p className="learning-essay-prompt"><strong>Investigue:</strong> {referencia.pergunta}</p>
+                <a href={referencia.href} target="_blank" rel="noopener noreferrer">Ler referência original ↗</a>
+              </article>)}
+            </div>
+          </div>
+        </div>
       </section>
 
       <section id="videos" className="learning-section learning-muted">
