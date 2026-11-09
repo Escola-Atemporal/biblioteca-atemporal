@@ -1,0 +1,16 @@
+# Never commit credentials or local data
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!backend/.env.example
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.sqlite3
+*.db
+*.pem
+*.key
+.DS_Store
