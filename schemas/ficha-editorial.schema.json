@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Biblioteca Atemporal — ficha editorial",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "type",
+    "track",
+    "status",
+    "access",
+    "source",
+    "rights"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "type": {
+      "enum": [
+        "tema",
+        "livro",
+        "ferramenta",
+        "conceito",
+        "video",
+        "roteiro"
+      ]
+    },
+    "track": {
+      "type": "string",
+      "pattern": "^0[1-6]$"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "inventariado",
+        "curadoria_interna",
+        "validado",
+        "publicado"
+      ]
+    },
+    "access": {
+      "enum": [
+        "publico",
+        "interno_escola",
+        "experiencialista_autorizado",
+        "confidencial"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "title"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "author": {
+          "type": "string"
+        }
+      }
+    },
+    "rights": {
+      "type": "object",
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "verificar",
+            "autorizado",
+            "dominio_publico",
+            "referencia_externa",
+            "restrito"
+          ]
+        },
+        "verified_by": {
+          "type": "string"
+        },
+        "verified_at": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "approved_by": {
+      "type": "string"
+    },
+    "approved_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "publicado"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "approved_by",
+          "approved_at"
+        ],
+        "properties": {
+          "rights": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "autorizado",
+                  "dominio_publico",
+                  "referencia_externa"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
