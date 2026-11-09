@@ -8,7 +8,7 @@ import Link from "next/link";
 export default function BrandLogo() {
   const base = "https://escolaatemporal.com.br/wp-content/uploads/2026/08";
   return (
-    <Link className="brand brand-lockup" href="/" aria-label="Biblioteca Atemporal — página inicial">
+    <Link className="brand brand-lockup" href="/" aria-label="Escola Atemporal — Biblioteca Atemporal, página inicial">
       <img
         className="brand-logo"
         src={`${base}/hor-e1787682735563.png`}
