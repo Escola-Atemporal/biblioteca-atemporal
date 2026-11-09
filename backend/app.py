@@ -25,18 +25,21 @@ OIDC_AUDIENCE = os.environ.get("OIDC_AUDIENCE", "")
 OIDC_JWKS_URL = os.environ.get("OIDC_JWKS_URL", "")
 ALLOW_ORIGIN = os.environ.get("ALLOWED_ORIGIN", "")
 
-if not all([DATABASE_URL, OIDC_ISSUER, OIDC_AUDIENCE, OIDC_JWKS_URL, ALLOW_ORIGIN]):
-    raise RuntimeError("Required settings: DATABASE_URL, OIDC_ISSUER, OIDC_AUDIENCE, OIDC_JWKS_URL, ALLOWED_ORIGIN")
-if ALLOW_ORIGIN == "*" or not ALLOW_ORIGIN.startswith("https://"):
+ADMIN_API_ENABLED = os.environ.get("ADMIN_API_ENABLED", "false").strip().lower() == "true"
+if not DATABASE_URL:
+    raise RuntimeError("DATABASE_URL is required")
+if ADMIN_API_ENABLED and not all([OIDC_ISSUER, OIDC_AUDIENCE, OIDC_JWKS_URL, ALLOW_ORIGIN]):
+    raise RuntimeError("Admin API requires OIDC_ISSUER, OIDC_AUDIENCE, OIDC_JWKS_URL and ALLOWED_ORIGIN")
+if ALLOW_ORIGIN and (ALLOW_ORIGIN == "*" or not ALLOW_ORIGIN.startswith("https://")):
     raise RuntimeError("ALLOWED_ORIGIN must be an exact HTTPS origin")
 
 app = FastAPI(title="Biblioteca Atemporal — Admin API", docs_url=None, redoc_url=None, openapi_url=None)
 app.add_middleware(
-    CORSMiddleware, allow_origins=[ALLOW_ORIGIN], allow_credentials=False,
+    CORSMiddleware, allow_origins=[ALLOW_ORIGIN] if ALLOW_ORIGIN else [], allow_credentials=False,
     allow_methods=["GET", "POST"], allow_headers=["Authorization", "Content-Type"]
 )
 bearer = HTTPBearer(auto_error=False)
-jwks = PyJWKClient(OIDC_JWKS_URL, cache_jwk_set=True, lifespan=300)
+jwks = PyJWKClient(OIDC_JWKS_URL, cache_jwk_set=True, lifespan=300) if ADMIN_API_ENABLED else None
 ROLES = {"administrator", "curator"}
 
 @contextmanager
@@ -45,6 +48,8 @@ def conn():
         yield db
 
 def require_staff(credentials: HTTPAuthorizationCredentials | None = Depends(bearer)):
+    if not ADMIN_API_ENABLED:
+        raise HTTPException(503, "Administrative access is not configured")
     if credentials is None:
         raise HTTPException(401, "Bearer token required")
     try:
