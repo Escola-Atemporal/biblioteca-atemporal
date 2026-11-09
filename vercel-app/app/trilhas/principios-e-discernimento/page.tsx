@@ -52,6 +52,7 @@ const videos = [
     observation: "Observe por que seguir um procedimento pode ser insuficiente quando a situação exige bom julgamento.",
     question: "Em que momento a regra deixa de ajudar e passa a substituir o discernimento?",
     href: "https://www.youtube.com/watch?v=VYu0kMCxFEE",
+    image: "https://img.youtube.com/vi/VYu0kMCxFEE/hqdefault.jpg",
   },
   {
     title: "Why good leaders make you feel safe",
@@ -60,6 +61,7 @@ const videos = [
     observation: "Explore a relação entre liderança, segurança e responsabilidade pelas pessoas que são afetadas pelas decisões.",
     question: "O que nossas decisões comunicam sobre quem estamos dispostos a proteger?",
     href: "https://www.youtube.com/watch?v=lmyZMtPVodo",
+    image: "https://img.youtube.com/vi/lmyZMtPVodo/hqdefault.jpg",
   },
 ];
 
@@ -88,12 +90,15 @@ export default function Trilha01Page() {
 
       <section className="learning-hero">
         <div className="learning-wrap">
+          <div className="learning-hero-copy">
           <div className="learning-crumb"><Link href="/">Biblioteca</Link> <span>/</span> Trilha 01</div>
           <span className="eyebrow">JORNADA DE INVESTIGAÇÃO · 01 / 06</span>
           <h1>Princípios e <em>Discernimento.</em></h1>
           <p className="learning-lead">O que orienta nossas escolhas quando não existe uma resposta simples?</p>
           <p className="learning-intro">A liderança é colocada à prova quando interesses, urgências e valores entram em tensão. Esta trilha convida a reconhecer o que permanece, questionar o custo das escolhas e agir com responsabilidade — inclusive quando ninguém está observando.</p>
           <div className="learning-hero-links"><a href="#investigacao" className="primary">Iniciar investigação <span>↗</span></a><a href="#biblioteca" className="outline">Explorar referências ↓</a></div>
+          </div>
+          <div className="learning-hero-picture"><img src="https://escolaatemporal.com.br/wp-content/uploads/2026/04/Conceitual-Homem-Atemporal-2.png" width="840" height="860" alt="Ilustração conceitual da Escola Atemporal para a página Princípios Norteadores" /><span className="learning-hero-picture-label">O ESSENCIAL PERMANECE</span></div>
           <div className="learning-facts"><span>05 leituras institucionais</span><span>02 vídeos externos</span><span>05 perguntas essenciais</span><span>01 prática de aplicação</span></div>
         </div>
       </section>
@@ -112,6 +117,7 @@ export default function Trilha01Page() {
             <p className="source-note">Síntese editorial produzida para a Biblioteca a partir de <a href="https://escolaatemporal.com.br/hub-de-desenvolvimento-humano/principios-norteadores/" target="_blank" rel="noopener noreferrer">Princípios Norteadores ↗</a>, <a href="https://escolaatemporal.com.br/hub-de-desenvolvimento-humano/nossa-metodologia/" target="_blank" rel="noopener noreferrer">Nossa Metodologia ↗</a> e <a href="https://escolaatemporal.com.br/blog/principios-lideranca-preco-coerencia/" target="_blank" rel="noopener noreferrer">O preço da coerência ↗</a>.</p>
           </div>
         </div>
+        <div className="learning-image-note"><figure><img src="https://escolaatemporal.com.br/wp-content/uploads/2026/08/2150526023.jpg" width="980" height="690" loading="lazy" alt="Fotografia publicada pela Escola Atemporal na página de Princípios Norteadores" /></figure><div className="learning-image-note-copy"><span className="eyebrow">NOSSOS PRINCÍPIOS NORTEADORES</span><h3>O ESSENCIAL PERMANECE.</h3><p>Na Escola, discernimento, presença, ética, responsabilidade e compromisso com o bem comum não são apenas palavras. São referências para escolher, agir e construir relações de confiança.</p><a href="https://escolaatemporal.com.br/hub-de-desenvolvimento-humano/principios-norteadores/" target="_blank" rel="noopener noreferrer">Conhecer os princípios da Escola ↗</a></div></div>
         <div className="learning-quote"><span>PERGUNTA QUE ATRAVESSA A TRILHA</span><p>Quando uma escolha parece eficiente, como reconhecemos se ela também é coerente?</p></div>
       </section>
 
@@ -130,7 +136,7 @@ export default function Trilha01Page() {
       <section id="videos" className="learning-section learning-muted">
         <div className="learning-wrap">
           <div className="learning-section-header"><div><span className="eyebrow dark">REPERTÓRIOS EM DIÁLOGO</span><h2>Vídeos para <em>ampliar a lente.</em></h2></div><p>Referências externas verificadas no YouTube. Os links levam aos vídeos originais dos canais responsáveis; nenhuma gravação é republicada aqui.</p></div>
-          <div className="learning-videos">{videos.map(v=><article className="learning-video" key={v.href}><div className="learning-video-icon" aria-hidden="true">▶</div><div className="learning-video-body"><span>{v.creator}</span><h3>{v.title}</h3><p className="learning-video-theme">{v.topic}</p><p>{v.observation}</p><p className="learning-prompt"><strong>Pergunta-guia:</strong> {v.question}</p><a href={v.href} target="_blank" rel="noopener noreferrer">Assistir no YouTube ↗</a></div></article>)}</div>
+          <div className="learning-videos">{videos.map(v=><article className="learning-video" key={v.href}><div className="learning-video-icon"><img src={v.image} alt="" loading="lazy" /><span className="learning-video-play" aria-hidden="true"><span>▶</span></span></div><div className="learning-video-body"><span>{v.creator}</span><h3>{v.title}</h3><p className="learning-video-theme">{v.topic}</p><p>{v.observation}</p><p className="learning-prompt"><strong>Pergunta-guia:</strong> {v.question}</p><a href={v.href} target="_blank" rel="noopener noreferrer">Assistir no YouTube ↗</a></div></article>)}</div>
           <p className="learning-disclaimer">Sobre os cortes do podcast da Escola: o artigo “O preço da coerência” menciona trechos com Dagoberto Gabriel e Allan Finkel disponíveis no Drive. Esses materiais não estão incorporados porque não foi verificado um link público autorizado para cada corte. A curadoria pode adicioná-los após a verificação dos links e dos direitos.</p>
         </div>
       </section>
