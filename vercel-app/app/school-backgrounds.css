@@ -1,0 +1,510 @@
+/*
+ * Biblioteca Atemporal — fundos visuais oficiais da Escola Atemporal.
+ *
+ * Referência: Elementor nas páginas oficiais Inicio (4405),
+ * Princípios Norteadores (4560) e Nossa Metodologia (4591).
+ * Arquivos públicos institucionais usados no próprio WordPress:
+ * bgl.png, onda.png e bg-escola-2.png.
+ * Escopo exclusivo do site Next.js da Biblioteca no Render.
+ * Última camada de CSS para preservar componentes editoriais claros.
+ */
+:root{
+  --school-black:#141414;
+  --school-black-deep:#080808;
+  --school-dark-panel:#1b1b1d;
+  --school-offwhite:#f7f5f9;
+  --school-light-text:#ecebea;
+  --school-soft-text:#cecbce;
+  --school-wave:url("https://escolaatemporal.com.br/wp-content/uploads/2026/08/onda.png");
+  --school-bgl:url("https://escolaatemporal.com.br/wp-content/uploads/2023/03/bgl.png");
+  --school-background:url("https://escolaatemporal.com.br/wp-content/uploads/2026/08/bg-escola-2.png");
+}
+
+html,body{
+  background-color:var(--school-black);
+}
+.biblioteca-home,.learning-page{
+  background-color:var(--school-black);
+  color:var(--school-light-text);
+}
+.biblioteca-home .topbar,.learning-page .topbar,.topbar{
+  background-color:rgba(15,15,15,.98);
+  border-bottom:1px solid #3a353d;
+}
+
+/* 1. PAGINA INICIAL: as texturas usadas nas paginas institucionais. */
+.biblioteca-home .atemporal-masthead{
+  background-color:#080808;
+  background-image:var(--school-bgl);
+  background-position:center;
+  background-size:cover;
+}
+.biblioteca-home .atemporal-masthead:before{
+  background:linear-gradient(90deg,rgba(0,0,0,.89) 0%,rgba(0,0,0,.82) 58%,rgba(0,0,0,.62) 100%);
+}
+.biblioteca-home .atemporal-statement{
+  background-color:var(--school-black);
+  background-image:
+    linear-gradient(100deg,rgba(5,5,5,.92),rgba(19,16,24,.87)),
+    var(--school-wave);
+  background-position:center,center;
+  background-size:cover,cover;
+  background-repeat:no-repeat;
+}
+.biblioteca-home .atemporal-statement h2{
+  color:#fff;
+}
+.biblioteca-home .atemporal-statement h2 span{
+  color:#d0b6f2;
+}
+.biblioteca-home .atemporal-statement p{
+  color:#dedade;
+}
+.biblioteca-home .atemporal-statement .eyebrow.dark{
+  color:#ffd309;
+}
+.biblioteca-home .atemporal-journeys{
+  background-color:#101010;
+  background-image:
+    linear-gradient(125deg,rgba(0,0,0,.89),rgba(11,9,16,.89)),
+    var(--school-background);
+  background-position:center,center;
+  background-size:cover,cover;
+  background-repeat:no-repeat;
+}
+.biblioteca-home .atemporal-journeys .atemporal-section-heading h2{
+  color:#fff;
+}
+.biblioteca-home .atemporal-journeys .atemporal-section-heading h2 span{
+  color:#d6baff;
+}
+.biblioteca-home .atemporal-journeys .atemporal-section-heading>p{
+  color:var(--school-soft-text);
+}
+.biblioteca-home .atemporal-journeys .eyebrow.dark{
+  color:#ffd309;
+}
+/* Cartoes de trilhas continuam claros e legiveis, como blocos editoriais. */
+.biblioteca-home .atemporal-track:not(.track-is-live){
+  background:#fff;
+  color:#141414;
+}
+.biblioteca-home .atemporal-track:not(.track-is-live) h3{
+  color:#141414;
+}
+.biblioteca-home .atemporal-track:not(.track-is-live) .atemporal-track-content>p{
+  color:#555;
+}
+.biblioteca-home .atemporal-feature{
+  background-color:#141414;
+}
+.biblioteca-home .atemporal-sources{
+  background-color:#141414;
+  background-image:
+    linear-gradient(105deg,rgba(0,0,0,.93),rgba(11,8,15,.9)),
+    var(--school-bgl);
+  background-position:center,center;
+  background-size:cover,cover;
+}
+.biblioteca-home .atemporal-sources .atemporal-section-heading h2{
+  color:#fff;
+}
+.biblioteca-home .atemporal-sources .atemporal-section-heading h2 span{
+  color:#cfb6f3;
+}
+.biblioteca-home .atemporal-sources .atemporal-section-heading>p{
+  color:#d2ced3;
+}
+.biblioteca-home .atemporal-sources .eyebrow.dark{
+  color:#ffd309;
+}
+.biblioteca-home .atemporal-sources .atemporal-source-card{
+  background:#fff;
+  color:#141414;
+}
+.biblioteca-home .atemporal-sources .source-card-copy .eyebrow.dark{
+  color:#634995;
+}
+.biblioteca-home .atemporal-sources .source-card-copy h3{
+  color:#141414;
+}
+.biblioteca-home .atemporal-sources .source-card-copy p{
+  color:#565656;
+}
+.biblioteca-home .atemporal-manifesto{
+  background-color:#101010;
+  background-image:
+    radial-gradient(circle at 95% 12%,rgba(86,33,214,.24),transparent 47%),
+    linear-gradient(110deg,rgba(0,0,0,.95),rgba(14,12,18,.93)),
+    var(--school-wave);
+  background-position:center,center,center;
+  background-size:cover,cover,cover;
+}
+.biblioteca-home .atemporal-cta{
+  background-color:#141414;
+  background-image:
+    linear-gradient(108deg,rgba(0,0,0,.91),rgba(24,18,33,.91)),
+    var(--school-wave);
+  background-position:center,center;
+  background-size:cover,cover;
+}
+.biblioteca-home .atemporal-cta h2{
+  color:#fff;
+}
+.biblioteca-home .atemporal-cta h2 span{
+  color:#ffd309;
+}
+.biblioteca-home .atemporal-cta p{
+  color:#ddd9de;
+}
+.biblioteca-home .atemporal-cta .eyebrow.dark{
+  color:#ffd309;
+}
+.biblioteca-home .atemporal-cta .primary{
+  background:#ffd309;
+  color:#141414;
+}
+.biblioteca-home .atemporal-footer{
+  background:#080808;
+  border-top:1px solid #403841;
+}
+
+/* 2. TRILHA 01: mesma base grafica da pagina Principios Norteadores. */
+.learning-page{
+  background-color:var(--school-black);
+}
+.learning-page .learning-hero{
+  background-color:#080808;
+  background-image:var(--school-bgl);
+  background-position:center;
+  background-size:cover;
+}
+.learning-page .learning-hero:before{
+  background:linear-gradient(95deg,rgba(0,0,0,.87) 0%,rgba(0,0,0,.76) 60%,rgba(0,0,0,.56) 100%);
+}
+.learning-page .learning-nav{
+  background:#171717;
+  border-bottom:1px solid #38343b;
+}
+.learning-page .learning-nav a{
+  color:#e0dae4;
+}
+.learning-page .learning-nav a:hover,
+.learning-page .learning-nav a:focus-visible{
+  color:#ffd309;
+}
+/* As secoes transparentes revelam o fundo institucional escuro da pagina. */
+.learning-page .learning-section.learning-wrap{
+  background:transparent;
+}
+.learning-page .learning-section.learning-muted{
+  background-color:#141414;
+  background-image:
+    linear-gradient(110deg,rgba(0,0,0,.90),rgba(19,14,24,.88)),
+    var(--school-wave);
+  background-position:center,center;
+  background-size:cover,cover;
+  background-repeat:no-repeat;
+}
+.learning-page .learning-section.learning-books{
+  background-color:#101010;
+  background-image:
+    linear-gradient(105deg,rgba(0,0,0,.91),rgba(14,12,19,.91)),
+    var(--school-background);
+  background-position:center,center;
+  background-size:cover,cover;
+  background-repeat:no-repeat;
+}
+.learning-page .learning-section .learning-section-header h2,
+.learning-page #investigacao h2,
+.learning-page .learning-section .learning-two-col h2{
+  color:#fff;
+}
+.learning-page .learning-section .learning-section-header h2 em,
+.learning-page #investigacao h2 em{
+  color:#d7c0f7;
+}
+.learning-page .learning-section .learning-section-header>p,
+.learning-page .reading-copy p{
+  color:#d6d1d7;
+}
+.learning-page .reading-copy strong{
+  color:#fff;
+}
+.learning-page .learning-section .eyebrow.dark{
+  color:#ffd309;
+}
+.learning-page .reading-copy .source-note{
+  border-color:#48414b;
+  color:#b7afb8;
+}
+.learning-page .reading-copy .source-note a{
+  color:#ffd309;
+  text-decoration-color:#ffd309;
+}
+.learning-page .learning-quote{
+  background-color:#efeaf5;
+  border-left-color:#ffd309;
+}
+.learning-page .learning-quote p{
+  color:#1c1920;
+}
+.learning-page .learning-quote span{
+  color:#634995;
+}
+.learning-page .learning-steps article{
+  background:#fff;
+  color:#171717;
+  border-color:#dbd6df;
+  border-top-color:#634995;
+}
+.learning-page .learning-steps article:nth-child(2){border-top-color:#12b4d7}
+.learning-page .learning-steps article:nth-child(3){border-top-color:#c70744}
+.learning-page .learning-steps article:nth-child(4){border-top-color:#83b61a}
+.learning-page .learning-steps article h3{
+  color:#1b1b1b;
+}
+.learning-page .learning-steps article p{
+  color:#5b5b5b;
+}
+/* Lista de artigos sobre fundo escuro: titulo e descricao com contraste. */
+.learning-page .learning-articles,
+.learning-page .learning-article{
+  border-color:#514b55;
+}
+.learning-page .learning-article h3{
+  color:#f9f6fc;
+}
+.learning-page .learning-article>div>p:not(.learning-prompt){
+  color:#d4ccd6;
+}
+.learning-page .learning-article .learning-source-label,
+.learning-page .learning-article .learning-article-number{
+  color:#ddc7f9;
+}
+.learning-page .learning-article .learning-source-link{
+  color:#ffd309;
+}
+.learning-page .learning-article:hover{
+  background:rgba(255,255,255,.045);
+}
+.learning-page .learning-article .learning-prompt{
+  background:#eae4f1;
+  border-color:#ffd309;
+  color:#342b40;
+}
+.learning-page .learning-article .learning-prompt strong{
+  color:#634995;
+}
+/* Area bibliografica: o fundo muda, mas as fichas continuam brancas. */
+.learning-page .learning-books .learning-book-group-head{
+  border-color:#554e5e;
+}
+.learning-page .learning-books .learning-book-group-head h3{
+  color:#fff;
+}
+.learning-page .learning-books .learning-book-group-head>p{
+  color:#cbc5cf;
+}
+.learning-page .learning-books .learning-book-group-number,
+.learning-page .learning-books .learning-book-group-head .learning-book-group-number{
+  color:#ffd309;
+}
+.learning-page .learning-books .learning-books-intro{
+  border:1px solid #53465f;
+}
+.learning-page .learning-books .learning-book-grid .book-reference-card,
+.learning-page .learning-books .learning-essays-grid .learning-essay,
+.learning-page .learning-books .reading-route-grid li,
+.learning-page .learning-books .learning-book-search,
+.learning-page .learning-books .learning-book-empty,
+.learning-page .learning-books .learning-books-jump a{
+  background-color:#fff;
+  color:#171717;
+}
+.learning-page .learning-books .learning-essay .learning-essay-num{
+  color:#634995;
+}
+.learning-page .learning-books .learning-biblio-note{
+  background-color:#ece5f4;
+  color:#302337;
+}
+.learning-page .learning-books .learning-biblio-note p{
+  color:#49404c;
+}
+.learning-page .learning-books .book-reference-rights{
+  color:#615968;
+}
+.learning-page .learning-books .reading-route-grid li p,
+.learning-page .learning-books .learning-book-search-head>p{
+  color:#605a63;
+}
+.learning-page .learning-books .learning-books-intro p{
+  color:#e1dae7;
+}
+/* Videos: cards brancos sobre os fundos de ondas. */
+.learning-page .learning-videos .learning-video{
+  background:#fff;
+  color:#151515;
+}
+.learning-page .learning-video-body h3{
+  color:#171717;
+}
+.learning-page .learning-video-body>p:not(.learning-prompt){
+  color:#56515a;
+}
+.learning-page .learning-video-body .learning-prompt{
+  color:#403547;
+}
+.learning-page .learning-disclaimer{
+  color:#c9c4cc;
+}
+/* Perguntas e aplicacao sobre preto, como o encerramento oficial. */
+.learning-page .learning-questions,
+.learning-page .learning-questions li{
+  border-color:#514a53;
+}
+.learning-page .learning-questions li p{
+  color:#fff;
+}
+.learning-page .learning-questions li>span{
+  color:#ffd309;
+}
+.learning-page .learning-practice{
+  background:#1b1b1b;
+  border-left-color:#ffd309;
+  outline:1px solid #494349;
+}
+.learning-page .learning-practice h3{
+  color:#fff;
+}
+.learning-page .learning-practice p{
+  color:#dedade;
+}
+/* O caderno continua com fundo claro para escrita e impressao. */
+.learning-page .reflection-workbook{
+  background:#fff;
+  color:#1b1720;
+  border-color:#bcb5c5;
+}
+.learning-page .reflection-workbook-head{
+  background-color:#141414;
+}
+.learning-page .reflection-workbook-field label>strong,
+.learning-page .reflection-workbook-actions strong{
+  color:#25202b;
+}
+.learning-page .learning-end{
+  background-color:#141414;
+  background-image:
+    linear-gradient(110deg,rgba(0,0,0,.93),rgba(21,16,27,.90)),
+    var(--school-wave);
+  background-position:center,center;
+  background-size:cover,cover;
+}
+.learning-page .learning-end h2{
+  color:#fff;
+}
+.learning-page .learning-end h2 em{
+  color:#d6bff6;
+}
+.learning-page .learning-end p{
+  color:#dbd6df;
+}
+.learning-page .learning-end .eyebrow{
+  color:#ffd309;
+}
+.learning-page .learning-end .primary.light{
+  background:#ffd309;
+  color:#141414;
+}
+.learning-page footer{
+  background:#080808;
+  border-top:1px solid #4a3d4e;
+}
+/* 3. AREA DE ACESSO E PAINEL: fundos oficiais, sem escurecer formularios. */
+.login-shell{
+  background-color:#141414;
+  background-image:
+    linear-gradient(110deg,rgba(0,0,0,.88),rgba(18,13,26,.84)),
+    var(--school-bgl);
+  background-position:center,center;
+  background-size:cover,cover;
+  background-repeat:no-repeat;
+}
+.login-panel{
+  background-color:#fff;
+  color:#1b1920;
+  box-shadow:0 25px 80px rgba(0,0,0,.32);
+  border-top:5px solid #634995;
+}
+.login-panel p,
+.login-panel small{
+  color:#55515b;
+}
+.login-panel .eyebrow.dark{
+  color:#634995;
+}
+.login-panel h1{
+  color:#141414;
+}
+.login-panel a.back{
+  color:#634995;
+}
+.dashboard{
+  background-color:#141414;
+  background-image:
+    linear-gradient(110deg,rgba(0,0,0,.90),rgba(18,14,23,.88)),
+    var(--school-wave);
+  background-position:center,center;
+  background-size:cover,cover;
+  background-repeat:no-repeat;
+  color:#f5f2f5;
+}
+.dashboard h1{
+  color:#fff;
+}
+.dashboard h1 em{
+  color:#ffd309;
+}
+.dashboard>.eyebrow.dark{
+  color:#ffd309;
+}
+.dashboard>p{
+  color:#d9d3dc;
+}
+.dashboard .dashboard-card{
+  background:#fff;
+  color:#141414;
+}
+.dashboard .dashboard-card h2{
+  color:#141414;
+}
+.dashboard .dashboard-card p{
+  color:#56515a;
+}
+.dashboard .text-button{
+  color:#ffd309;
+}
+@media(max-width:700px){
+  .biblioteca-home .atemporal-statement,
+  .biblioteca-home .atemporal-journeys,
+  .biblioteca-home .atemporal-sources,
+  .biblioteca-home .atemporal-cta,
+  .learning-page .learning-section.learning-muted,
+  .learning-page .learning-section.learning-books,
+  .learning-page .learning-end{
+    background-position:center;
+    background-attachment:scroll;
+  }
+}
+@media print{
+  html,body{
+    background:#fff!important;
+  }
+  /* A folha impressa do Caderno nao precisa dos fundos escuros. */
+  body:has(#caderno) .reflection-workbook{
+    background:#fff!important;
+    color:#111!important;
+  }
+}
