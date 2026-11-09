@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./editorial-design.css";
 import "./school-backgrounds.css";
+import "./design-finish.css";
 
 export const metadata: Metadata = {
   title: "Biblioteca Atemporal | Escola Atemporal",
