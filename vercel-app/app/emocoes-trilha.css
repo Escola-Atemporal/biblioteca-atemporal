@@ -1,0 +1,631 @@
+/*
+ * Biblioteca Atemporal · Trilha 02 — Emoções e Autoconsciência.
+ * Tema derivado do sistema Escola Atemporal: grafite, azul-ciano,
+ * violeta, amarelo e imagens oficiais da experiência Emoções em Jogo.
+ * Todas as regras são escopadas para .emotion-page. Trilha 01 preservada.
+ */
+
+.emotion-page {
+  --emotion-accent: #12b4d7;
+  --emotion-accent-ink: #00738e;
+  --emotion-pink: #c70744;
+  --emotion-violet: #634995;
+  --emotion-soft: #eaf7fb;
+}
+.emotion-page .emotion-hero {
+  background-color: #0a1014;
+  background-image: url("https://escolaatemporal.com.br/wp-content/uploads/2023/03/bgl.png");
+  background-position:center;
+  background-size:cover;
+}
+.emotion-page .emotion-hero:before {
+  background:linear-gradient(100deg,rgba(0,7,12,.93) 0%,rgba(3,15,25,.84) 57%,rgba(13,10,22,.71) 100%);
+}
+.emotion-page .emotion-hero:after {
+  border-color:rgba(18,180,215,.20);
+}
+.emotion-page .emotion-hero .learning-wrap {
+  grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+}
+.emotion-page .emotion-hero h1 {
+  font-size:clamp(69px,7vw,106px);
+  max-width:780px;
+}
+.emotion-page .emotion-hero h1 em {
+  color:#70dcf0;
+}
+.emotion-page .emotion-hero .eyebrow {
+  color:#ffd309;
+}
+.emotion-page .learning-hero-links a.primary {
+  background:#ffd309;
+  color:#151515;
+}
+.emotion-page .learning-hero-links a.primary:hover {
+  background:#f89533;
+}
+.emotion-page .emotion-hero-picture {
+  min-height:500px;
+  align-items:center;
+  padding:30px 0 22px;
+}
+.emotion-page .emotion-hero-picture:before {
+  border-color:rgba(18,180,215,.43);
+  width:78%;
+  left:11%;
+}
+.emotion-page .emotion-hero-picture img {
+  width:110%;
+  max-width:100%;
+  height:auto;
+  max-height:580px;
+  object-fit:contain;
+  filter:drop-shadow(0 12px 40px rgba(0,0,0,.40));
+}
+.emotion-page .learning-hero-picture-label {
+  background:#12b4d7;
+  color:#101719;
+  right:2%;
+}
+.emotion-page .learning-facts {
+  gap:12px 28px;
+  border-color:rgba(112,220,240,.32);
+}
+.emotion-page .learning-facts span {
+  color:#e4f7fa;
+}
+.emotion-page .learning-nav {
+  background:#101a1f;
+  border-bottom:1px solid #2d4a51;
+}
+.emotion-page .learning-nav a {
+  color:#d9edf0;
+}
+.emotion-page .learning-nav a:hover,
+.emotion-page .learning-nav a:focus-visible {
+  color:#ffd309;
+}
+.emotion-page .learning-section .eyebrow.dark {
+  color:#82deed;
+}
+.emotion-page .learning-section h2 {
+  color:#fff;
+}
+.emotion-page .learning-section h2 em,
+.emotion-page .learning-section .learning-section-header h2 em,
+.emotion-page .learning-section .learning-two-col h2 em {
+  color:#70dcf0;
+  font-style:normal;
+}
+.emotion-page .reading-copy strong {color:#fff}
+.emotion-page .reading-copy em {color:#d1f1f7}
+.emotion-page .reading-copy .source-note a {color:#ffd309}
+.emotion-page .emotion-image-note {
+  background:radial-gradient(circle at 100% 0%,#1c4250,transparent 65%),#111a21;
+  border:1px solid #334b51;
+}
+.emotion-page .emotion-image-note figure {
+  min-height:390px;
+  background:#e9f5f8;
+}
+.emotion-page .emotion-image-note figure img {
+  object-fit:contain;
+  object-position:center;
+  padding:clamp(12px,2vw,30px);
+}
+.emotion-page .emotion-image-note .learning-image-note-copy h3 em {
+  font-style:normal;
+  color:#70dcf0;
+}
+.emotion-page .emotion-image-note .learning-image-note-copy a {
+  color:#ffd309;
+  border-color:#ffd309;
+}
+.emotion-page .learning-quote {
+  background:#e5f3f7;
+  border-left-color:#12b4d7;
+}
+.emotion-page .learning-quote span {color:#126c7f}
+.emotion-page .learning-quote p {color:#11232c}
+.emotion-page .learning-section.learning-muted {
+  background-color:#0a151b;
+  background-image:linear-gradient(110deg,rgba(3,10,14,.92),rgba(8,21,27,.82)),var(--school-wave);
+}
+.emotion-page .learning-steps article {
+  border-top-width:5px;
+  border-top-color:#12b4d7;
+  background:#fff;
+  min-height:300px;
+  display:flex;
+  flex-direction:column;
+}
+.emotion-page .learning-steps article:nth-child(2) {border-top-color:#c70744}
+.emotion-page .learning-steps article:nth-child(3) {border-top-color:#634995}
+.emotion-page .learning-steps article:nth-child(4) {border-top-color:#83b61a}
+.emotion-page .learning-steps article > span {color:#00738e}
+.emotion-page .learning-steps article h3 {color:#151a1d;margin:23px 0 8px}
+.emotion-page .learning-steps article p {
+  color:#50575a;
+  font:400 12px/1.85 Montserrat,Arial,sans-serif;
+  margin:4px 0 0;
+}
+.emotion-page .learning-steps article .emotion-stage-label {
+  color:#005e74;
+  font-weight:700;
+  font-size:11px;
+  margin:0 0 8px;
+}
+.emotion-page .learning-steps article .emotion-stage-question {
+  border-top:1px solid #d5e9ed;
+  padding-top:15px;
+  margin-top:auto;
+  color:#154755;
+  font-weight:700;
+}
+.emotion-page .emotion-lenses {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:15px;
+  margin:35px 0 0;
+}
+.emotion-page .emotion-lens {
+  --emotion-lens-color:#12b4d7;
+  min-width:0;
+  padding:26px 24px;
+  background:#f9f9fa;
+  border-top:6px solid var(--emotion-lens-color);
+  min-height:225px;
+}
+.emotion-page .emotion-lens-medo {--emotion-lens-color:#634995}
+.emotion-page .emotion-lens-raiva {--emotion-lens-color:#c70744}
+.emotion-page .emotion-lens-alegria {--emotion-lens-color:#ffd309}
+.emotion-page .emotion-lens-tristeza {--emotion-lens-color:#12b4d7}
+.emotion-page .emotion-lens-repulsa {--emotion-lens-color:#83b61a}
+.emotion-page .emotion-lens-culpa {--emotion-lens-color:#e45a18}
+.emotion-page .emotion-lens-vergonha {--emotion-lens-color:#7c3aed}
+.emotion-page .emotion-lens > span {
+  color:#515358;
+  font:700 10px/1.45 'Roboto Mono',monospace;
+  letter-spacing:.065em;
+}
+.emotion-page .emotion-lens h3 {
+  color:#161616;
+  margin:27px 0 12px;
+  font:750 clamp(20px,2.15vw,27px)/1.17 Montserrat,Arial,sans-serif;
+  letter-spacing:-.04em;
+}
+.emotion-page .emotion-lens p {
+  color:#4e5356;
+  margin:0;
+  font:400 12px/1.8 Montserrat,Arial,sans-serif;
+}
+.emotion-page .emotion-lenses-caption {
+  font:400 12px/1.9 Montserrat,Arial,sans-serif;
+  color:#d1dce0;
+  margin:22px 0 0;
+}
+.emotion-page .learning-article {
+  border-bottom-color:#3f5962;
+}
+.emotion-page .learning-article h3 {
+  color:#fff;
+}
+.emotion-page .learning-article .learning-source-label {
+  color:#a1deea;
+}
+.emotion-page .learning-article .learning-article-number {
+  color:#70dcf0;
+}
+.emotion-page .learning-article > div > p:not(.learning-prompt) {
+  color:#d8dce0;
+}
+.emotion-page .learning-article .learning-prompt {
+  background:#e4f2f6;
+  border-color:#12b4d7;
+  color:#223843;
+}
+.emotion-page .learning-article .learning-prompt strong {
+  color:#00738e;
+}
+.emotion-page .learning-article .learning-source-link {
+  color:#ffd309;
+}
+.emotion-page .learning-article:hover {
+  background:rgba(18,180,215,.07);
+}
+.emotion-page .emotion-article-featured {
+  background:linear-gradient(110deg,rgba(18,180,215,.09),rgba(18,180,215,.015));
+}
+.emotion-page .learning-section.learning-books {
+  background-color:#08161c;
+  background-image:linear-gradient(110deg,rgba(3,8,15,.92),rgba(12,15,27,.83)),var(--school-background);
+}
+.emotion-page .emotion-book-intro {
+  background:radial-gradient(circle at 100% 0%,rgba(18,180,215,.22),transparent 48%),#111a23;
+  border:1px solid #42606a;
+}
+.emotion-page .emotion-book-intro h3 em {color:#70dcf0}
+.emotion-page .learning-books-count strong {color:#ffd309}
+.emotion-page .learning-books-preamble {color:#70dcf0}
+.emotion-page .learning-books-jump a {
+  background:#fff;
+  color:#173b49;
+}
+.emotion-page .learning-books-jump a:hover {
+  background:#00738e;
+  color:#fff;
+}
+.emotion-page .learning-books-jump a:hover span {color:#fff}
+.emotion-page .reading-route-grid li {
+  border-top-color:#12b4d7;
+}
+.emotion-page .reading-route-grid li:nth-child(2) {border-top-color:#c70744}
+.emotion-page .reading-route-grid li:nth-child(3) {border-top-color:#634995}
+.emotion-page .reading-route-grid li:nth-child(4) {border-top-color:#83b61a}
+.emotion-page .reading-route-grid li>span,
+.emotion-page .reading-route-grid li>a {
+  color:#006d83;
+}
+.emotion-page .reading-route-grid li h4 {
+  color:#151515;
+}
+.emotion-page .learning-book-search-head > div > span {
+  color:#006c82;
+}
+.emotion-page .learning-book-search-head h3 {color:#171717}
+.emotion-page .learning-book-search-footer strong {color:#006c82}
+.emotion-page .learning-book-search-footer button {color:#006c82}
+.emotion-page .learning-book-controls input:focus,
+.emotion-page .learning-book-controls select:focus {
+  border-color:#00738e;
+  outline-color:#70dcf0;
+}
+.emotion-page .book-reference-cover.tone-cyan {
+  --book-accent:#006b87;
+}
+.emotion-page .book-reference-cover.tone-violet {--book-accent:#634995}
+.emotion-page .book-reference-cover.tone-green {--book-accent:#547e26}
+.emotion-page .book-reference-cover.tone-pink {--book-accent:#c70744}
+.emotion-page .book-reference-cover.tone-orange {--book-accent:#bf4a19}
+.emotion-page .book-reference-cover.tone-yellow {--book-accent:#ad7913}
+.emotion-page .book-reference-eyebrow {color:#006d83}
+.emotion-page .book-reference-taxonomy span:first-child {
+  background:#e4f5f9;
+  color:#005e73;
+}
+.emotion-page .book-reference-guide {
+  background:#e9f6f9;
+  border-color:#12b4d7;
+}
+.emotion-page .book-reference-guide strong,
+.emotion-page .book-reference-question strong {color:#006b80}
+.emotion-page .book-reference-actions .book-download {
+  background:#ffd309;
+  color:#151515;
+}
+.emotion-page .book-reference-actions .book-download:hover {background:#f89533}
+.emotion-page .book-reference-actions .book-source {color:#006981;border-color:#7dbdc8}
+.emotion-page .book-reference-access {color:#305e49}
+.emotion-page .learning-essays .learning-essay {
+  background:#fff;
+  border-top-color:#12b4d7;
+}
+.emotion-page .learning-essays .learning-essay:nth-child(2) {border-top-color:#c70744}
+.emotion-page .learning-essays .learning-essay:nth-child(3) {border-top-color:#83b61a}
+.emotion-page .learning-essays .learning-essay-num,
+.emotion-page .learning-essays .learning-essay-prompt strong,
+.emotion-page .learning-essays .learning-essay a {
+  color:#006e83;
+}
+.emotion-page .learning-biblio-note {
+  background:#e4f3f7;
+  border-color:#12b4d7;
+}
+.emotion-page .learning-biblio-note-icon {
+  background:#00738e;
+}
+.emotion-page .learning-biblio-note strong {color:#173842}
+.emotion-page .learning-biblio-note p {color:#4c585c}
+.emotion-page .emotion-videos .learning-video {
+  background:#fff;
+}
+.emotion-page .emotion-video-cover {
+  display:block;
+  outline-offset:4px;
+}
+.emotion-page .emotion-video-cover:focus-visible {
+  outline:3px solid #ffd309;
+}
+.emotion-page .emotion-video-cover .learning-video-icon {
+  min-height:200px;
+  height:235px;
+  position:relative;
+  overflow:hidden;
+  background:#111b23;
+}
+.emotion-page .emotion-video-cover .learning-video-icon img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(.83);
+}
+.emotion-page .emotion-video-cover:hover .learning-video-icon img {
+  filter:brightness(1);
+}
+.emotion-page .emotion-video-cover .learning-video-play span {
+  background:#ffd309;
+}
+.emotion-page .learning-video-body > span,
+.emotion-page .learning-video-body .learning-video-theme {
+  color:#006c82;
+}
+.emotion-page .learning-video-body h3 {color:#151515}
+.emotion-page .learning-video-body >p:not(.learning-prompt) {color:#51545b}
+.emotion-page .learning-video-body .learning-prompt {
+  color:#263542;
+  background:#e6f3f8;
+  border-color:#12b4d7;
+}
+.emotion-page .learning-video-body .learning-prompt strong {
+  color:#006c82;
+}
+.emotion-page .learning-video-body > a {color:#006e83}
+.emotion-page .emotion-questions {
+  border-top:1px solid #46616a;
+  margin:0;
+}
+.emotion-page .emotion-questions > div {
+  display:grid;
+  grid-template-columns:62px minmax(0,1fr);
+  gap:24px;
+  padding:21px 0;
+  border-bottom:1px solid #46616a;
+}
+.emotion-page .emotion-questions > div > span {
+  color:#70dcf0;
+  font:700 13px 'Roboto Mono',monospace;
+  padding-top:4px;
+}
+.emotion-page .emotion-questions p {
+  color:#fff;
+  margin:0;
+  font:600 clamp(17px,2.1vw,23px)/1.5 Montserrat,Arial,sans-serif;
+  letter-spacing:-.04em;
+}
+.emotion-page .emotion-practice {
+  display:block;
+  background:#111e24;
+  border-left:6px solid #12b4d7;
+  border-top:1px solid #45606c;
+  padding:clamp(29px,4vw,55px);
+}
+.emotion-page .emotion-practice .eyebrow {color:#70dcf0}
+.emotion-page .emotion-practice h3 {
+  font:400 clamp(43px,5vw,70px)/1.03 'Bebas Neue',Impact,sans-serif;
+  letter-spacing:0;
+  color:#fff;
+  margin:18px 0 20px;
+  max-width:900px;
+}
+.emotion-page .emotion-practice p {
+  max-width:850px;
+  color:#dbe7e8;
+  font:400 13px/1.95 Montserrat,Arial,sans-serif;
+}
+.emotion-page .emotion-practice .workbook-cta-link {
+  color:#ffd309;
+  border-color:#ffd309;
+  display:inline-flex;
+  margin-top:16px;
+}
+.emotion-page .emotion-workbook {
+  border:1px solid #97b7c3;
+  background:#fff;
+  color:#191919;
+}
+.emotion-page .emotion-workbook .reflection-workbook-head {
+  background:radial-gradient(circle at 94% 8%,#134657,transparent 53%),#111c25;
+}
+.emotion-page .emotion-workbook .reflection-workbook-head h2 em {
+  color:#70dcf0;
+}
+.emotion-page .emotion-workbook .reflection-workbook-seal > span {
+  color:#70dcf0;
+}
+.emotion-page .emotion-workbook .reflection-workbook-security {
+  background:#e5f4f8;
+  border-bottom-color:#a7cbd5;
+}
+.emotion-page .emotion-workbook .reflection-workbook-security strong {color:#154f60}
+.emotion-page .emotion-workbook .reflection-scenarios-grid article {border-top-color:#12b4d7}
+.emotion-page .emotion-workbook .reflection-scenarios-grid article:nth-child(2) {border-top-color:#c70744}
+.emotion-page .emotion-workbook .reflection-scenarios-grid article:nth-child(3) {border-top-color:#634995}
+.emotion-page .emotion-workbook .reflection-scenarios-grid .scenario-question {color:#205b6b}
+.emotion-page .emotion-workbook .reflection-step-id,
+.emotion-page .emotion-workbook .reflection-scenarios-label,
+.emotion-page .emotion-workbook .reflection-workbook-progress > div > span {
+  color:#006d83;
+}
+.emotion-page .emotion-workbook progress::-webkit-progress-value {background:#00738e}
+.emotion-page .emotion-workbook progress::-moz-progress-bar {background:#00738e}
+.emotion-page .emotion-workbook .reflection-workbook-field textarea:focus {
+  border-color:#00738e;
+  outline-color:#7fd2e3;
+}
+.emotion-page .emotion-workbook .reflection-workbook-actions {background:#eaf4f7}
+.emotion-page .emotion-workbook .reflection-workbook-buttons .reflection-print {
+  background:#006d83;
+  border-color:#006d83;
+}
+.emotion-page .emotion-workbook .reflection-workbook-status {color:#006e83}
+.emotion-page .emotion-selector {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  gap:22px;
+  padding:35px clamp(23px,4vw,55px) 6px;
+}
+.emotion-page .emotion-selector label {
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  max-width:760px;
+}
+.emotion-page .emotion-selector label > span {
+  font:700 10px/1.4 'Roboto Mono',monospace;
+  color:#006d83;
+  letter-spacing:.06em;
+}
+.emotion-page .emotion-selector label > strong {
+  color:#25202b;
+  font:750 clamp(16px,2vw,20px)/1.45 Montserrat,Arial,sans-serif;
+}
+.emotion-page .emotion-selector label > small {
+  font:400 11px/1.7 Montserrat,Arial,sans-serif;
+  color:#5c6267;
+}
+.emotion-page .emotion-selector select {
+  padding:12px 17px;
+  min-height:49px;
+  min-width:200px;
+  max-width:100%;
+  background:#fff;
+  color:#21242b;
+  border:1px solid #8c9ea4;
+  font:600 12px/1.5 Montserrat,Arial,sans-serif;
+}
+.emotion-page .emotion-end {
+  background-color:#0b151a;
+  background-image:linear-gradient(110deg,rgba(2,10,15,.94),rgba(11,18,24,.83)),var(--school-wave);
+}
+.emotion-page .emotion-end h2 {
+  font-size:clamp(58px,6vw,90px);
+}
+.emotion-page .emotion-end h2 em {color:#70dcf0}
+.emotion-page .emotion-end .eyebrow {color:#ffd309}
+.emotion-page .emotion-end .learning-end-actions {
+  display:flex;
+  gap:15px;
+  margin-top:35px;
+  flex-wrap:wrap;
+}
+.emotion-page .emotion-end .primary {
+  background:#ffd309;
+  color:#141414;
+}
+.emotion-page .emotion-end .outline {
+  color:#fff;
+  border-color:#71919b;
+}
+.emotion-page .emotion-end .outline:hover {border-color:#ffd309}
+@media(max-width:1150px) {
+  .emotion-page .emotion-lenses {grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:900px) {
+  .emotion-page .emotion-hero h1 {font-size:clamp(65px,7.2vw,92px)}
+  .emotion-page .emotion-hero-picture {min-height:360px}
+  .emotion-page .emotion-lenses {grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:700px) {
+  .emotion-page .emotion-hero .learning-wrap {display:block}
+  .emotion-page .emotion-hero-picture {
+    min-height:320px;
+    height:320px;
+    padding:12px 0 20px;
+  }
+  .emotion-page .emotion-hero-picture img {max-height:320px}
+  .emotion-page .emotion-hero h1 {font-size:clamp(64px,13.5vw,96px)}
+  .emotion-page .emotion-hero .learning-facts {display:flex}
+  .emotion-page .emotion-lenses {grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .emotion-page .emotion-lens {min-height:190px;padding:20px 16px}
+  .emotion-page .emotion-lens h3 {font-size:20px;margin-top:20px}
+  .emotion-page .emotion-lens p {font-size:11px}
+  .emotion-page .emotion-image-note figure {min-height:260px}
+  .emotion-page .learning-videos {grid-template-columns:1fr}
+  .emotion-page .emotion-questions>div {grid-template-columns:45px minmax(0,1fr);gap:12px}
+  .emotion-page .emotion-end .learning-end-actions {flex-direction:column;align-items:stretch}
+  .emotion-page .emotion-end .learning-end-actions a {justify-content:space-between}
+  .emotion-page .emotion-selector {align-items:stretch;padding-top:25px}
+  .emotion-page .emotion-selector select {width:100%}
+}
+@media(max-width:420px) {
+  .emotion-page .emotion-lenses {grid-template-columns:1fr}
+  .emotion-page .emotion-lens {min-height:auto}
+  .emotion-page .emotion-hero h1 {font-size:clamp(57px,13vw,74px)}
+  .emotion-page .emotion-hero-picture {height:285px;min-height:285px}
+  .emotion-page .emotion-hero-picture img {max-height:285px}
+  .emotion-page .learning-section .learning-section-header h2 {font-size:48px}
+}
+@media(prefers-reduced-motion:reduce) {
+  .emotion-page .emotion-video-cover img {transition:none}
+}
+@media print {
+  body:has(#caderno-emocoes) * {
+    visibility:hidden!important;
+  }
+  body:has(#caderno-emocoes) #caderno-emocoes,
+  body:has(#caderno-emocoes) #caderno-emocoes * {
+    visibility:visible!important;
+  }
+  body:has(#caderno-emocoes) #caderno-emocoes {
+    position:absolute!important;
+    inset:0 auto auto 0;
+    width:100%!important;
+    padding:0!important;
+    margin:0!important;
+    border:0!important;
+    box-shadow:none!important;
+    background:#fff!important;
+  }
+  body:has(#caderno-emocoes) .emotion-workbook .reflection-workbook-head,
+  body:has(#caderno-emocoes) .emotion-workbook .reflection-workbook-security,
+  body:has(#caderno-emocoes) .emotion-workbook .reflection-scenarios,
+  body:has(#caderno-emocoes) .emotion-workbook .emotion-selector,
+  body:has(#caderno-emocoes) .emotion-workbook .reflection-workbook-progress,
+  body:has(#caderno-emocoes) .emotion-workbook .reflection-workbook-fields,
+  body:has(#caderno-emocoes) .emotion-workbook .reflection-workbook-actions,
+  body:has(#caderno-emocoes) .emotion-workbook .reflection-workbook-status {
+    display:none!important;
+  }
+  body:has(#caderno-emocoes) .emotion-workbook .reflection-workbook-print {
+    display:block!important;
+    font:11pt/1.55 Arial,sans-serif!important;
+    color:#111!important;
+    padding:0!important;
+    margin:0!important;
+  }
+  body:has(#caderno-emocoes) .emotion-workbook .reflection-workbook-print >h2 {
+    font:700 22pt Arial,sans-serif!important;
+    color:#111!important;
+    margin:17px 0!important;
+  }
+  body:has(#caderno-emocoes) .emotion-workbook .reflection-workbook-print section {
+    break-inside:avoid;
+    page-break-inside:avoid;
+    border-bottom:1px solid #aaa;
+    padding:14px 0 18px;
+  }
+  body:has(#caderno-emocoes) .emotion-workbook .reflection-workbook-print section h3 {
+    font:700 12pt/1.4 Arial,sans-serif!important;
+    margin:0 0 7px!important;
+    color:#111!important;
+  }
+  body:has(#caderno-emocoes) .emotion-workbook .reflection-workbook-print section p {
+    color:#333!important;
+    font:10pt/1.5 Arial,sans-serif!important;
+    margin:0 0 8px!important;
+  }
+  body:has(#caderno-emocoes) .emotion-workbook .reflection-workbook-print section div {
+    white-space:pre-wrap;
+    overflow-wrap:anywhere;
+    font:11pt/1.55 Arial,sans-serif!important;
+    color:#111!important;
+    padding:9px 0;
+  }
+  body:has(#caderno-emocoes) .emotion-workbook .reflection-workbook-print footer {
+    background:#fff!important;
+    color:#555!important;
+    font:9pt Arial,sans-serif!important;
+  }
+}
