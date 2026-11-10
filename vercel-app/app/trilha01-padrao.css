@@ -618,3 +618,52 @@
 @media(prefers-reduced-motion:reduce){
   .biblioteca-home.referencia-trilha01 .atemporal-track {transition:none}
 }
+
+
+/* AJUSTE PONTUAL TRILHA 03 — HERO SEM MOLDURA */
+/* A imagem original nao deve parecer um card encaixado em um retangulo.
+   Retirar borda, fundo e altura artificial exclusivamente de Trilha 03. */
+.learning-page.habit-page.referencia-trilha01 .habit-hero .habit-hero-picture {
+  height:auto;
+  min-height:0;
+  align-self:center;
+  padding:0;
+  border:0;
+  border-radius:0;
+  outline:0;
+  box-shadow:none;
+  background:transparent;
+  overflow:visible;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.learning-page.habit-page.referencia-trilha01 .habit-hero .habit-hero-picture:before {
+  display:none;
+  content:none;
+}
+.learning-page.habit-page.referencia-trilha01 .habit-hero .habit-hero-picture img {
+  display:block;
+  width:100%;
+  height:auto;
+  max-width:100%;
+  max-height:none;
+  object-fit:contain;
+  object-position:center;
+  filter:none;
+  border:0;
+  border-radius:0;
+  outline:0;
+  box-shadow:none;
+}
+.learning-page.habit-page.referencia-trilha01 .habit-hero .habit-hero-picture .learning-hero-picture-label {
+  right:0;
+  bottom:0;
+}
+@media(max-width:760px){
+  .learning-page.habit-page.referencia-trilha01 .habit-hero .habit-hero-picture{
+    height:auto;
+    min-height:0;
+    margin:10px 0 18px;
+  }
+}
