@@ -86,6 +86,14 @@ export default function Trilha05Page(){
 
   <section className="learning-section learning-wrap" id="escola">
    <div className="learning-section-header"><div><span className="eyebrow dark">CONTEÚDOS OFICIAIS</span><h2>Repertório que nasce <em>na experiência.</em></h2></div><p>Artigos e páginas publicadas pela Escola Atemporal para aprofundar decisões, autonomia, coerência, mudanças e responsabilidade.</p></div>
+   <div className="school-editorial-links" aria-label="Leituras em destaque da Escola Atemporal">
+    {artigosTrilha05.filter(a=>a.href.includes("/blog/")).slice(0,2).map(a=><article className="school-editorial-feature" key={a.href}>
+     <span>ARTIGO OU REFERÊNCIA · ESCOLA ATEMPORAL</span>
+     <h3>{a.titulo}</h3>
+     <p>{a.resumo}</p>
+     <a href={a.href} target="_blank" rel="noopener noreferrer" aria-label={"Ler conteúdo original da Escola: "+a.titulo}>Ler no site da Escola ↗</a>
+    </article>)}
+   </div>
    <div className="learning-articles">{artigosTrilha05.map((a,i)=><article key={a.href} className="learning-article"><div className="learning-article-number">{String(i+1).padStart(2,"0")}</div><div><span className="learning-source-label">{a.tipo}</span><h3>{a.titulo}</h3><p>{a.resumo}</p><p className="learning-prompt"><strong>Para refletir:</strong> {a.pergunta}</p></div><a className="learning-source-link" href={a.href} target="_blank" rel="noopener noreferrer" aria-label={"Ler fonte: "+a.titulo}>Ler fonte <span aria-hidden="true">↗</span></a></article>)}</div>
   </section>
 
