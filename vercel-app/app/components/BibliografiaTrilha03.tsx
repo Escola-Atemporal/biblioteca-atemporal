@@ -25,7 +25,7 @@ function Livro({livro,numero}:{livro:LivroTrilha03,numero:number}) {
       <p className="book-reference-guide"><strong>Por onde começar:</strong> {livro.comoLer}</p>
       <p className="book-reference-question"><strong>Para refletir:</strong> {livro.pergunta}</p>
       <div className="book-reference-actions">
-        {livro.urlArquivo ? <a className="book-download" href={livro.urlArquivo} target="_blank" rel="noopener noreferrer" aria-label={(livro.formato === "PDF" ? "Abrir ou baixar PDF: " : "Abrir EPUB: ")+livro.titulo}>{livro.formato==="PDF"?"Abrir / baixar PDF":"Abrir EPUB"} <span aria-hidden="true">↗</span></a> : <span className="book-record-only">Arquivo disponível na página da fonte</span>}
+        {livro.urlArquivo ? <a className="book-download" href={livro.urlArquivo} target="_blank" rel="noopener noreferrer" aria-label={(livro.formato === "PDF" ? "Abrir / baixar PDF: " : "Abrir EPUB: ")+livro.titulo}>{livro.formato==="PDF"?"Abrir / baixar PDF":"Abrir EPUB"} <span aria-hidden="true">↗</span></a> : <span className="book-record-only">Arquivo disponível na página da fonte</span>}
         <a className="book-source" href={livro.urlFonte} target="_blank" rel="noopener noreferrer" aria-label={"Ver fonte e direitos: "+livro.titulo}>Fonte e direitos <span aria-hidden="true">↗</span></a>
       </div>
       <p className="book-reference-rights">{livro.licenca}</p>
