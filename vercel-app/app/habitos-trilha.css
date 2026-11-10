@@ -543,3 +543,29 @@
  body:has(#diario-habitos) .habit-workbook .reflection-workbook-print section div{color:#111!important;white-space:pre-wrap;overflow-wrap:anywhere;font:11pt/1.55 Arial,sans-serif!important}
  body:has(#diario-habitos) .habit-workbook .reflection-workbook-print footer{background:#fff!important;color:#555!important;font:9pt Arial,sans-serif!important}
 }
+
+
+/* Página inicial: disponibilizar a terceira trilha e destacar a nova jornada.
+   Nenhuma alteracao no conteudo das Trilhas 01 e 02. */
+.biblioteca-home .track-color-03.track-is-live {
+  background:#32111e;
+  border-top-color:#c70744;
+}
+.biblioteca-home .track-color-03.track-is-live .atemporal-track-top,
+.biblioteca-home .track-color-03.track-is-live .atemporal-track-kicker,
+.biblioteca-home .track-color-03.track-is-live .atemporal-track-index {
+  color:#ffbbd0;
+}
+.biblioteca-home .track-color-03.track-is-live h3 {color:#fff}
+.biblioteca-home .track-color-03.track-is-live .atemporal-track-content>p {color:#f1dce4}
+.biblioteca-home .track-color-03.track-is-live .atemporal-track-status,
+.biblioteca-home .track-color-03.track-is-live .atemporal-track-foot a {color:#ffd309}
+.biblioteca-home .atemporal-new-track.habit-launch {
+  border-left-color:#c70744;
+  background:linear-gradient(108deg,#351421 10%,#201018 70%,#321823 100%);
+}
+.biblioteca-home .atemporal-new-track.habit-launch .atemporal-new-track-label,
+.biblioteca-home .atemporal-new-track.habit-launch h3 em {color:#ffbbd0}
+.biblioteca-home .atemporal-new-track.habit-launch p {color:#f0dce4}
+.biblioteca-home .atemporal-new-track.habit-launch .primary {background:#ffd309;color:#161616}
+.biblioteca-home .atemporal-new-track.habit-launch .primary:hover {background:#f89533}
