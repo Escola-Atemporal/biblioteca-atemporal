@@ -5,6 +5,7 @@ import "./school-backgrounds.css";
 import "./design-finish.css";
 import "./emocoes-trilha.css";
 import "./habitos-trilha.css";
+import "./editorial-balance.css";
 
 export const metadata: Metadata = {
   title: "Biblioteca Atemporal | Escola Atemporal",
