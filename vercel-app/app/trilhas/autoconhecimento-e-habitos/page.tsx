@@ -85,13 +85,12 @@ export default function Trilha03Page(){
    <div className="habit-school-images">
     <figure className="habit-school-images-feature">
      <img src="https://escolaatemporal.com.br/wp-content/uploads/2026/10/Escolhas-dificeis-na-lideranca-decisoes-consequencias-e-transformacao.png" width="1200" height="780" loading="lazy" decoding="async" alt="Imagem editorial oficial do artigo As escolhas que nos tornam quem somos, da Escola Atemporal"/>
-     <figcaption><span>UMA IMAGEM DO ACERVO DA ESCOLA</span><a href="https://escolaatemporal.com.br/blog/escolhas-dificeis-lideranca-habitos/" target="_blank" rel="noopener noreferrer">Ver o artigo original ↗</a></figcaption>
+     <figcaption><span>IMAGEM OFICIAL · ESCOLA ATEMPORAL</span><a href="https://escolaatemporal.com.br/blog/escolhas-dificeis-lideranca-habitos/" target="_blank" rel="noopener noreferrer">Ver o artigo original ↗</a></figcaption>
     </figure>
     <div className="habit-school-images-copy">
      <span className="eyebrow">FONTE · ESCOLA ATEMPORAL</span>
      <h3>ESCOLHAS FAZEM MARCAS. <em>HÁBITOS SUSTENTAM CAMINHOS.</em></h3>
      <p>As escolhas exigentes podem revelar quem estamos nos tornando. Mas a mudança não se encerra no instante da decisão: ela se torna visível no que repetimos, ajustamos e praticamos nas relações.</p>
-     <p className="habit-image-source">Imagem publicada pela Escola no artigo <em>As escolhas que nos tornam quem somos</em>. Nenhuma foto foi gerada ou substituída para esta página.</p>
     </div>
    </div>
    <div className="learning-quote habit-quote"><span>UMA PERGUNTA PARA LEVAR ADIANTE</span><p>Que tipo de pessoa e de cultura meus hábitos ajudam a construir, mesmo quando ninguém está olhando?</p></div>
