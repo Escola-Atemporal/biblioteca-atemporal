@@ -1,0 +1,262 @@
+/* Curation of videos | all 6 Biblioteca Atemporal trails.
+ * Purpose: clear thematic hierarchy and room for richer reading,
+ * following the editorial vocabulary approved for Trilha 01.
+ * Original creator video embeds/thumbnails are not altered or fabricated.
+ * All links go to the authoritative channel / host. */
+.learning-page #videos{
+  scroll-margin-top:75px;
+}
+.learning-page #videos .video-estudo{
+  background:linear-gradient(120deg,#21192b,#151316);
+  border:1px solid #504659;
+  border-top:4px solid #ffd309;
+  color:#fff;
+  padding:clamp(22px,2.9vw,38px);
+  margin:clamp(21px,3vw,34px) 0;
+}
+.learning-page #videos .video-estudo-head{
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+  gap:18px 28px;
+  align-items:center;
+  border-bottom:1px solid rgba(255,255,255,.23);
+  padding-bottom:20px;
+  margin-bottom:20px;
+}
+.learning-page #videos .video-estudo-label{
+  display:block;
+  color:#ffd309;
+  font:700 10px/1.65 'Roboto Mono',monospace;
+  letter-spacing:.09em;
+}
+.learning-page #videos .video-estudo h3{
+  color:#fff;
+  font:700 clamp(22px,2.5vw,32px)/1.2 Montserrat,Arial,sans-serif;
+  letter-spacing:-.035em;
+  margin:8px 0 0;
+}
+.learning-page #videos .video-estudo-head p{
+  margin:0;
+  font:400 12px/1.82 Montserrat,Arial,sans-serif;
+  color:#e4dfe9;
+}
+.learning-page #videos .video-estudo-head p strong{color:#ffd309;font-weight:700}
+.learning-page #videos .video-estudo-steps{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(18px,2.5vw,28px);
+}
+.learning-page #videos .video-estudo-steps>div{
+  min-width:0;
+  padding-left:16px;
+  border-left:2px solid #726781;
+}
+.learning-page #videos .video-estudo-steps>div:first-child{border-color:#ffd309}
+.learning-page #videos .video-estudo-steps>div:nth-child(2){border-color:#12b4d7}
+.learning-page #videos .video-estudo-steps>div:nth-child(3){border-color:#c70744}
+.learning-page #videos .video-estudo-steps span{
+  color:#e2d5ed;
+  font:700 10px/1.5 'Roboto Mono',monospace;
+  letter-spacing:.045em;
+}
+.learning-page #videos .video-estudo-steps p{
+  color:#f2eff4;
+  font:400 12px/1.78 Montserrat,Arial,sans-serif;
+  margin:9px 0 0;
+}
+/* A consistent desktop catalogue with comfortable width and no forced repeats. */
+.learning-page #videos :is(.learning-videos,.paradox-video-grid,.legacy-video-grid){
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(15px,1.6vw,22px);
+}
+.learning-page #videos :is(.learning-video,.paradox-video-card,.legacy-video-card){
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  height:100%;
+  background:#fff;
+  border:1px solid #ddd6e0;
+  border-top:3px solid #ffd309;
+  color:#19171b;
+  border-radius:2px;
+  overflow:hidden;
+}
+.learning-page #videos :is(.curated-video-cover,.emotion-video-cover,.habit-video-cover,.colab-video-cover){
+  display:block;
+  text-decoration:none;
+  width:100%;
+  flex:none;
+}
+.learning-page #videos .learning-video-icon,
+.learning-page #videos .colab-video-cover .learning-video-icon{
+  position:relative;
+  width:100%;
+  min-height:0;
+  height:auto;
+  aspect-ratio:16/9;
+  overflow:hidden;
+  background:#19141f;
+}
+.learning-page #videos .learning-video-icon img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  filter:none;
+}
+.learning-page #videos .video-curadoria-placeholder{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+  background:linear-gradient(120deg,#251b31,#141414);
+  padding:clamp(18px,2.2vw,27px);
+}
+.learning-page #videos .video-curadoria-placeholder>span{
+  display:block;
+  color:#ffd309;
+  font:700 10px/1.55 'Roboto Mono',monospace;
+  letter-spacing:.055em;
+}
+.learning-page #videos .video-curadoria-placeholder>strong{
+  display:block;
+  color:#fff;
+  font:750 clamp(19px,2vw,27px)/1.23 Montserrat,Arial,sans-serif;
+  letter-spacing:-.035em;
+  text-wrap:balance;
+  overflow-wrap:anywhere;
+  max-width:350px;
+}
+.learning-page #videos .learning-video-play span{
+  background:#ffd309;
+  color:#171717;
+  width:48px;
+  height:48px;
+  font-size:20px;
+}
+.learning-page #videos .curated-colab-fallback{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:flex-start;
+  padding:clamp(17px,2vw,25px);
+  text-align:left;
+  gap:11px;
+  font-family:Montserrat,Arial,sans-serif;
+}
+.learning-page #videos .curated-colab-fallback small{
+  color:#ffd309;
+  font:700 10px/1.5 'Roboto Mono',monospace;
+}
+.learning-page #videos .curated-colab-fallback strong{
+  color:#fff;
+  font:750 clamp(19px,1.8vw,25px)/1.27 Montserrat,Arial,sans-serif;
+  overflow-wrap:anywhere;
+  letter-spacing:-.025em;
+}
+.learning-page #videos :is(.learning-video-body,.paradox-video-body,.legacy-video-content){
+  display:flex;
+  flex-direction:column;
+  flex:1;
+  min-width:0;
+  padding:clamp(20px,2.1vw,28px);
+  background:#fff;
+}
+.learning-page #videos :is(.learning-video-body,.paradox-video-body,.legacy-video-content)>span:first-child{
+  color:#634995;
+  font:700 10px/1.6 'Roboto Mono',monospace;
+}
+.learning-page #videos :is(.learning-video-body,.paradox-video-body,.legacy-video-content) h3{
+  color:#19171b;
+  font:750 clamp(17px,1.6vw,21px)/1.42 Montserrat,Arial,sans-serif;
+  letter-spacing:-.02em;
+  margin:13px 0 8px;
+}
+.learning-page #videos :is(.learning-video-body,.paradox-video-body,.legacy-video-content) p{
+  color:#504a53;
+  font:400 12px/1.8 Montserrat,Arial,sans-serif;
+}
+.learning-page #videos :is(.learning-video-theme,.paradox-video-lang,.legacy-video-lang){
+  color:#5c476d!important;
+  font-weight:700!important;
+}
+.learning-page #videos :is(.learning-prompt,.paradox-video-reflection,.legacy-video-question){
+  background:#f3eef7;
+  color:#33293d;
+  border-left:3px solid #ffd309;
+  padding:12px 14px;
+  margin-top:14px;
+}
+.learning-page #videos :is(.learning-video-body,.paradox-video-body,.legacy-video-content)>a:last-child{
+  display:inline-block;
+  align-self:flex-start;
+  margin-top:auto;
+  padding-top:19px;
+  color:#50376b;
+  font:700 12px/1.6 'Roboto Mono',monospace;
+  text-decoration:underline;
+  text-underline-offset:4px;
+}
+.learning-page #videos :is(.paradox-video-poster,.legacy-video-top){
+  aspect-ratio:16/9;
+  height:auto;
+  min-height:205px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  padding:clamp(19px,2.1vw,27px);
+  background:linear-gradient(117deg,#22192d,#161616);
+  text-decoration:none;
+}
+.learning-page #videos :is(.paradox-video-poster,.legacy-video-top):after{
+  display:none;
+  content:none;
+}
+.learning-page #videos :is(.paradox-video-poster,.legacy-video-top)>strong{
+  display:block;
+  color:#fff;
+  font:750 clamp(22px,2.05vw,30px)/1.19 Montserrat,Arial,sans-serif;
+  text-wrap:balance;
+  overflow-wrap:anywhere;
+  letter-spacing:-.05em;
+  max-width:100%;
+  margin:auto 0;
+}
+.learning-page #videos :is(.paradox-video-poster,.legacy-video-top)>span:first-child{
+  color:#ffd309;
+  font:700 10px/1.5 'Roboto Mono',monospace;
+}
+.learning-page #videos :is(.paradox-video-play,.legacy-video-play){
+  width:37px;
+  height:37px;
+  font-size:18px;
+  color:#141414;
+  background:#ffd309;
+  align-self:flex-end;
+  border-radius:2px;
+}
+.learning-page #videos :is(.paradox-video-poster,.legacy-video-top,.curated-video-cover,.habit-video-cover,.emotion-video-cover,.colab-video-cover):focus-visible{
+  outline:3px solid #ffd309;
+  outline-offset:3px;
+}
+.learning-page #videos :is(.paradox-video-poster,.legacy-video-top):hover>strong{
+  color:#ffd309;
+}
+@media(max-width:1060px){
+  .learning-page #videos :is(.learning-videos,.paradox-video-grid,.legacy-video-grid){grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media(max-width:710px){
+  .learning-page #videos :is(.learning-videos,.paradox-video-grid,.legacy-video-grid){grid-template-columns:1fr;}
+  .learning-page #videos .video-estudo-head{grid-template-columns:1fr;}
+  .learning-page #videos .video-estudo-steps{grid-template-columns:1fr;gap:16px;}
+  .learning-page #videos :is(.paradox-video-poster,.legacy-video-top){min-height:200px;}
+}
+@media(prefers-reduced-motion:reduce){
+  .learning-page #videos :is(.paradox-video-poster,.legacy-video-top,.curated-video-cover){transition:none;}
+}
