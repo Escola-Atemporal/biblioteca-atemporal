@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import BrandLogo from "../../components/BrandLogo";
 import CadernoConfianca from "../../components/CadernoConfianca";
+import RoteiroVideos from "../../components/RoteiroVideos";
 import BibliografiaTrilha04 from "../../components/BibliografiaTrilha04";
 import {artigosTrilha04, livrosTrilha04, videosTrilha04, movimentosTrilha04} from "../../../data/referencias-trilha-04";
 
@@ -68,8 +69,9 @@ export default function Trilha04Page(){
    <p className="learning-disclaimer">Links para fontes externas; não há cópias de livros de terceiros hospedadas na Biblioteca. Acesso aberto não significa uso irrestrito: consulte os termos de cada edição antes de compartilhar, adaptar ou redistribuir arquivos.</p>
   </div></section>
   <section id="videos" className="learning-section learning-muted"><div className="learning-wrap">
-   <div className="learning-section-header"><div><span className="eyebrow dark">REFERÊNCIAS AUDIOVISUAIS</span><h2>Escutar melhor. <em>Discordar melhor.</em></h2></div><p>Três conversas para observar participação, segurança para aprender e valor da discordância construtiva.</p></div>
-   <div className="learning-videos colab-videos">{videosTrilha04.map(v=><article className="learning-video" key={v.href}><a href={v.href} className="colab-video-cover" target="_blank" rel="noopener noreferrer" aria-label={"Assistir na fonte original: "+v.titulo}><div className="learning-video-icon">{v.imagem?<img src={v.imagem} alt="" width="480" height="360" loading="lazy" decoding="async"/>:<span className="colab-video-title">TED <small>ABRIR PALESTRA ↗</small></span>}<span className="colab-video-play" aria-hidden="true">▶</span></div></a><div className="learning-video-body"><span>{v.autoria}</span><h3>{v.titulo}</h3><p className="learning-video-theme">{v.idioma}</p><p>{v.resumo}</p><p className="learning-prompt"><strong>Para refletir:</strong> {v.pergunta}</p><a href={v.href} target="_blank" rel="noopener noreferrer">Assistir na fonte original ↗</a></div></article>)}</div>
+   <div className="learning-section-header"><div><span className="eyebrow dark">REFERÊNCIAS AUDIOVISUAIS</span><h2>Escutar melhor. <em>Discordar melhor.</em></h2></div><p>Seis vídeos que relacionam confiança, conversas, participação, segurança para aprender e colaboração entre diferentes pessoas.</p></div>
+   <RoteiroVideos trilha="04" total={videosTrilha04.length}/>
+   <div className="learning-videos colab-videos">{videosTrilha04.map(v=><article className="learning-video" key={v.href}><a href={v.href} className="colab-video-cover" target="_blank" rel="noopener noreferrer" aria-label={"Assistir na fonte original: "+v.titulo}><div className="learning-video-icon">{v.imagem?<img src={v.imagem} alt="" width="480" height="360" loading="lazy" decoding="async"/>:<span className="colab-video-title curated-colab-fallback"><small>TED · FONTE ORIGINAL</small><strong>{v.titulo}</strong></span>}<span className="colab-video-play" aria-hidden="true">▶</span></div></a><div className="learning-video-body"><span>{v.autoria}</span><h3>{v.titulo}</h3><p className="learning-video-theme">{v.idioma}</p><p>{v.resumo}</p><p className="learning-prompt"><strong>Para refletir:</strong> {v.pergunta}</p><a href={v.href} target="_blank" rel="noopener noreferrer">Assistir na fonte original ↗</a></div></article>)}</div>
    <p className="learning-disclaimer">Vídeos, imagens e legendas pertencem aos criadores e canais originais. Não há republicação dos conteúdos audiovisuais nesta página.</p>
   </div></section>
   <section id="pratica" className="learning-section learning-wrap"><div className="learning-section-header"><div><span className="eyebrow dark">PRÁTICA PARA O COTIDIANO</span><h2>Uma boa conversa <em>pode mudar o grupo.</em></h2></div><p>Escolha uma situação de trabalho de baixo risco e teste uma pergunta ou um acordo claro antes de propor uma solução.</p></div>
