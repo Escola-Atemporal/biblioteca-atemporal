@@ -1,0 +1,317 @@
+/*
+ * BIBLIOTECA ATEMPORAL — padrão editorial de composição.
+ * Atualizado a partir das observações nas Trilhas 01, 02, 03 e na página inicial.
+ * Objetivo: eliminar colunas com grandes espaços vazios, manter respiro
+ * proporcional, facilitar leitura e preservar a identidade visual da Escola.
+ *
+ * Não altera imagens ou conteúdos nem tem efeito no WordPress institucional.
+ * Importar após as demais folhas de estilo.
+ */
+
+.learning-page {
+  --editorial-accent: #bca4e8;
+  --editorial-rule: rgba(196,174,222,.35);
+}
+.learning-page.emotion-page {
+  --editorial-accent: #70dcf0;
+  --editorial-rule: rgba(112,220,240,.32);
+}
+.learning-page.habit-page {
+  --editorial-accent: #ffbbd0;
+  --editorial-rule: rgba(255,187,208,.31);
+}
+
+/* ABERTURA DAS TRILHAS — exatamente o bloco visto na captura:
+   42% de título + 58% de corpo, gap em pixels e não em 10% da largura.
+   Alinhamento central torna a distribuição de espaço intencional.
+ */
+.learning-page #investigacao {
+  padding-top: clamp(52px,6vw,82px);
+  padding-bottom: clamp(57px,6vw,83px);
+}
+.learning-page #investigacao .learning-two-col {
+  display: grid;
+  grid-template-columns: minmax(0, .42fr) minmax(0, .58fr);
+  align-items: center;
+  gap: clamp(28px,3.8vw,51px);
+  padding: clamp(27px,3.1vw,44px);
+  margin: 0;
+  min-width: 0;
+  border: 1px solid var(--editorial-rule);
+  border-left: 4px solid var(--editorial-accent);
+  background: linear-gradient(110deg,rgba(255,255,255,.038),rgba(255,255,255,.012));
+}
+.learning-page #investigacao .learning-two-col > div {
+  min-width: 0;
+}
+.learning-page #investigacao .learning-two-col > div:first-child {
+  align-self: center;
+}
+.learning-page #investigacao .learning-two-col > div:first-child::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: clamp(52px,5vw,72px);
+  background: var(--editorial-accent);
+  margin-top: 23px;
+}
+.learning-page #investigacao .learning-two-col .eyebrow.dark {
+  display: block;
+  width: fit-content;
+  color: var(--editorial-accent);
+  font: 700 10px/1.5 'Roboto Mono',monospace;
+  letter-spacing: .12em;
+}
+.learning-page #investigacao .learning-two-col h2 {
+  margin: 13px 0 0;
+  max-width: none;
+  font: 400 clamp(41px,4.05vw,59px)/1.08 'Bebas Neue',Impact,sans-serif;
+  letter-spacing: .006em;
+  text-wrap: balance;
+  overflow-wrap: normal;
+  word-break: normal;
+  color: #fff;
+}
+.learning-page #investigacao .learning-two-col h2 em {
+  color: var(--editorial-accent);
+  font-style: normal;
+}
+.learning-page #investigacao .reading-copy {
+  width: 100%;
+  max-width: 645px;
+  align-self: center;
+  min-width: 0;
+}
+.learning-page #investigacao .reading-copy > p {
+  color: #e5e0e7;
+  font: 400 clamp(13px,1.05vw,14.5px)/1.78 Montserrat,Arial,sans-serif;
+  margin: 0 0 15px;
+  max-width: none;
+  overflow-wrap: break-word;
+}
+.learning-page #investigacao .reading-copy > p:not(.source-note) strong {
+  color: #fff;
+  font-weight: 750;
+}
+.learning-page #investigacao .reading-copy > p:last-child {
+  margin-bottom: 0;
+}
+.learning-page #investigacao .reading-copy .source-note {
+  margin: 20px 0 0;
+  padding: 15px 0 0;
+  border-top: 1px solid var(--editorial-rule);
+  color: #c9c1ce;
+  font: 400 11px/1.76 Montserrat,Arial,sans-serif;
+}
+.learning-page #investigacao .reading-copy .source-note a {
+  color: #ffd309;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+.learning-page #investigacao .reading-copy .source-note a:focus-visible {
+  outline: 2px solid #ffd309;
+  outline-offset: 3px;
+}
+
+/* DEMAIS ABERTURAS: mesmo ritmo e alinhamento entre títulos e resumos. */
+.learning-page .learning-section-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+  align-items: center;
+  gap: clamp(24px,3.2vw,43px);
+  margin-bottom: clamp(25px,3vw,38px);
+  min-width: 0;
+}
+.learning-page .learning-section-header > div {
+  min-width: 0;
+  max-width: none;
+}
+.learning-page .learning-section-header > p {
+  min-width: 0;
+  max-width: 450px;
+  margin: 0;
+  font: 400 13px/1.78 Montserrat,Arial,sans-serif;
+  color: #ddd5e0;
+}
+.learning-page .learning-section-header h2 {
+  text-wrap: balance;
+  max-width: 840px;
+}
+
+/* HOME / PROJETO — tirar a etiqueta isolada de sua própria coluna e
+   organizar título e justificativa em uma composição editorial de verdade. */
+.biblioteca-home .atemporal-statement {
+  padding: clamp(58px,6vw,88px) 0;
+}
+.biblioteca-home .statement-grid {
+  display: grid;
+  grid-template-columns: minmax(0,.56fr) minmax(0,.44fr);
+  align-items: center;
+  gap: clamp(28px,4.2vw,62px);
+  min-width: 0;
+}
+.biblioteca-home .statement-grid > div {
+  min-width: 0;
+}
+.biblioteca-home .statement-grid .statement-heading {
+  padding-left: clamp(18px,2.6vw,32px);
+  border-left: 4px solid #bca4e8;
+}
+.biblioteca-home .statement-grid .statement-heading > .eyebrow.dark {
+  display: block;
+  color: #ffd309;
+  margin: 0 0 17px;
+  padding: 0;
+  font: 700 10px/1.6 'Roboto Mono',monospace;
+  letter-spacing: .11em;
+}
+.biblioteca-home .statement-grid h2 {
+  font: 400 clamp(45px,4.7vw,68px)/1.07 'Bebas Neue',Impact,sans-serif;
+  text-wrap: balance;
+  max-width: 780px;
+  color: #fff;
+  margin: 0;
+}
+.biblioteca-home .statement-grid h2 span {
+  color: #d5bafa;
+}
+.biblioteca-home .statement-grid .statement-copy {
+  border-top: 1px solid rgba(213,186,250,.42);
+  padding-top: 19px;
+}
+.biblioteca-home .statement-grid .statement-copy p {
+  margin: 0;
+  max-width: 540px;
+  color: #e1dbe4;
+  font: 400 clamp(14px,1.3vw,16px)/1.82 Montserrat,Arial,sans-serif;
+}
+
+/* BLOCO DE INTRODUÇÃO DAS SEÇÕES DO PROJETO:
+   título de um lado, explicação na coluna complementar sem o vão excessivo. */
+.biblioteca-home .atemporal-section-heading {
+  display: grid;
+  grid-template-columns: minmax(0,1.18fr) minmax(0,.82fr);
+  align-items: center;
+  gap: clamp(25px,3.5vw,48px);
+  margin-bottom: clamp(25px,3vw,40px);
+}
+.biblioteca-home .atemporal-section-heading > div {
+  min-width: 0;
+  max-width: none;
+}
+.biblioteca-home .atemporal-section-heading > p {
+  max-width: 460px;
+  margin: 0;
+  color: #d9d2db;
+  font: 400 13px/1.82 Montserrat,Arial,sans-serif;
+}
+.biblioteca-home .atemporal-section-heading h2 {
+  text-wrap: balance;
+}
+
+/* TABLET: um título de linha completa seguido do texto, sem lacunas. */
+@media (max-width: 1000px) {
+  .learning-page #investigacao .learning-two-col {
+    grid-template-columns: minmax(0, .43fr) minmax(0, .57fr);
+    gap: 25px;
+  }
+  .learning-page #investigacao .learning-two-col h2 {
+    font-size: clamp(38px,4.65vw,48px);
+  }
+  .biblioteca-home .statement-grid {
+    grid-template-columns: minmax(0,.55fr) minmax(0,.45fr);
+    gap: 26px;
+  }
+  .biblioteca-home .statement-grid h2 {
+    font-size: clamp(40px,5.2vw,53px);
+  }
+}
+@media (max-width: 800px) {
+  .learning-page #investigacao .learning-two-col,
+  .biblioteca-home .statement-grid,
+  .learning-page .learning-section-header,
+  .biblioteca-home .atemporal-section-heading {
+    grid-template-columns: minmax(0,1fr);
+    gap: 21px;
+    align-items: start;
+  }
+  .learning-page #investigacao .learning-two-col > div:first-child::after {
+    margin-top: 18px;
+  }
+  .learning-page #investigacao .learning-two-col h2 {
+    font-size: clamp(42px,7vw,56px);
+    max-width: 600px;
+  }
+  .learning-page #investigacao .reading-copy {
+    max-width: 680px;
+  }
+  .biblioteca-home .statement-grid .statement-copy {
+    margin: 0 0 0 clamp(22px,2.6vw,36px);
+  }
+  .learning-page .learning-section-header > p,
+  .biblioteca-home .atemporal-section-heading > p {
+    max-width: 660px;
+  }
+}
+@media (max-width: 520px) {
+  .learning-page #investigacao {
+    padding-top: 42px;
+    padding-bottom: 52px;
+  }
+  .learning-page #investigacao .learning-two-col {
+    padding: 22px 18px;
+    gap: 18px;
+    border-left-width: 3px;
+  }
+  .learning-page #investigacao .learning-two-col h2 {
+    font-size: clamp(40px,10.5vw,49px);
+    overflow-wrap: break-word;
+    text-wrap: pretty;
+  }
+  .learning-page #investigacao .reading-copy > p {
+    font-size: 13px;
+    line-height: 1.75;
+    margin-bottom: 13px;
+  }
+  .learning-page #investigacao .reading-copy .source-note {
+    font-size: 10.5px;
+  }
+  .biblioteca-home .atemporal-statement {
+    padding: 52px 0;
+  }
+  .biblioteca-home .statement-grid {
+    gap: 21px;
+  }
+  .biblioteca-home .statement-grid .statement-heading {
+    padding-left: 18px;
+  }
+  .biblioteca-home .statement-grid h2 {
+    font-size: clamp(43px,9vw,56px);
+  }
+  .biblioteca-home .statement-grid .statement-copy {
+    margin-left: 21px;
+    padding-top: 16px;
+  }
+  .biblioteca-home .statement-grid .statement-copy p {
+    font-size: 13px;
+  }
+  .learning-page .learning-section-header {
+    gap: 15px;
+    margin-bottom: 24px;
+  }
+  .biblioteca-home .atemporal-section-heading {
+    gap: 15px;
+    margin-bottom: 27px;
+  }
+}
+/* Evitar alterar o layout limpo ao imprimir o diário ou caderno. */
+@media print {
+  .learning-page #investigacao .learning-two-col,
+  .biblioteca-home .statement-grid {
+    border-color: #ddd;
+    box-shadow: none;
+    background: #fff;
+    color: #111;
+  }
+}
