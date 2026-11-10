@@ -28,7 +28,7 @@ const perguntas=[
 ];
 
 export default function Trilha03Page(){
- return <main className="learning-page habit-page" id="topo">
+ return <main className="learning-page habit-page circulo-inspired" id="topo">
   <a className="skip-to-content" href="#investigacao">Ir para a investigação</a>
   <header className="topbar"><BrandLogo/><nav aria-label="Navegação principal"><Link href="/">Todas as trilhas</Link><Link href="/entrar" className="nav-login">Área de acesso ↗</Link></nav></header>
   <section className="learning-hero habit-hero" aria-labelledby="titulo-trilha-03">
