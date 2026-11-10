@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import BrandLogo from "../../components/BrandLogo";
 import BibliografiaTrilha03 from "../../components/BibliografiaTrilha03";
 import CadernoHabitos from "../../components/CadernoHabitos";
+import RoteiroVideos from "../../components/RoteiroVideos";
 import {
   livrosTrilha03, artigosTrilha03, movimentosTrilha03,
   videosTrilha03, aprofundamentosTrilha03,
@@ -157,12 +158,13 @@ export default function Trilha03Page(){
 
   <section className="learning-section learning-muted" id="videos">
    <div className="learning-wrap">
-    <div className="learning-section-header"><div><span className="eyebrow dark">REFERÊNCIAS AUDIOVISUAIS</span><h2>Ideias que nos ajudam <em>a experimentar.</em></h2></div><p>Vídeos de canais e projetos educacionais identificados, publicados fora da Escola. As prévias são miniaturas originais vinculadas aos respectivos vídeos.</p></div>
+    <div className="learning-section-header"><div><span className="eyebrow dark">REFERÊNCIAS AUDIOVISUAIS</span><h2>Ideias que nos ajudam <em>a experimentar.</em></h2></div><p>Seis vídeos para investigar como os hábitos nascem, mudam e se relacionam com motivação e tempo. As imagens exibidas são apenas miniaturas oficiais quando disponíveis; os demais materiais têm capas tipográficas.</p></div>
+    <RoteiroVideos trilha="03" total={videosTrilha03.length}/>
     <div className="learning-videos habit-videos">{videosTrilha03.map(v=><article className="learning-video" key={v.href}>
-     <a className="habit-video-cover" href={v.href} aria-label={"Assistir no YouTube: "+v.titulo} target="_blank" rel="noopener noreferrer">
-      <div className="learning-video-icon"><img src={v.imagem} alt="" width="480" height="360" loading="lazy" decoding="async"/><span className="learning-video-play" aria-hidden="true"><span>▶</span></span></div>
+     <a className="habit-video-cover" href={v.href} aria-label={"Assistir na fonte original: "+v.titulo} target="_blank" rel="noopener noreferrer">
+      <div className="learning-video-icon">{v.imagem?<img src={v.imagem} alt="" width="480" height="360" loading="lazy" decoding="async"/>:<div className="video-curadoria-placeholder"><span>TED · HÁBITOS E APRENDIZAGEM</span><strong>{v.titulo}</strong></div>}<span className="learning-video-play" aria-hidden="true"><span>▶</span></span></div>
      </a>
-     <div className="learning-video-body"><span>{v.autoria}</span><h3>{v.titulo}</h3><p className="learning-video-theme">{v.idioma}</p><p>{v.resumo}</p><p className="learning-prompt"><strong>Para refletir:</strong> {v.pergunta}</p><a href={v.href} target="_blank" rel="noopener noreferrer">Assistir no canal original ↗</a></div>
+     <div className="learning-video-body"><span>{v.autoria}</span><h3>{v.titulo}</h3><p className="learning-video-theme">{v.idioma}</p><p>{v.resumo}</p><p className="learning-prompt"><strong>Para refletir:</strong> {v.pergunta}</p><a href={v.href} target="_blank" rel="noopener noreferrer">Assistir na fonte original ↗</a></div>
     </article>)}</div>
     <p className="learning-disclaimer">Os vídeos e suas miniaturas são de terceiros. A Biblioteca não republica gravações ou imagens como se fossem da Escola Atemporal; direitos, legendas e disponibilidade pertencem aos canais originais.</p>
    </div>
