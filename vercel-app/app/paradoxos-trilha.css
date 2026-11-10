@@ -213,3 +213,18 @@
  .paradox-page .paradox-end-links a{width:100%}
 }
 @media(prefers-reduced-motion:reduce){.paradox-page .paradox-journal-progress-track>span,.paradox-page .paradox-journal-card{transition:none}}
+
+/* DESTAQUE NA HOME — exclusivamente o card da nova Trilha 05. */
+.biblioteca-home .atemporal-new-track.paradox-launch{
+  background:linear-gradient(112deg,#2b261b 0%,#191819 54%,#181417 100%);
+  border-left:4px solid #ffd309;
+  border-top:1px solid #554a32;
+  border-right:1px solid #51493b;
+  border-bottom:1px solid #51493b;
+}
+.biblioteca-home .atemporal-new-track.paradox-launch .atemporal-new-track-label{color:#ffe17c}
+.biblioteca-home .atemporal-new-track.paradox-launch h3{color:#fff}
+.biblioteca-home .atemporal-new-track.paradox-launch h3 em{color:#ffd309}
+.biblioteca-home .atemporal-new-track.paradox-launch p{color:#e9e0df;max-width:730px}
+.biblioteca-home .atemporal-new-track.paradox-launch .primary{background:#ffd309;color:#161616;border:1px solid #ffd309}
+.biblioteca-home .atemporal-new-track.paradox-launch .primary:hover{background:#ffdf54;border-color:#ffdf54}
