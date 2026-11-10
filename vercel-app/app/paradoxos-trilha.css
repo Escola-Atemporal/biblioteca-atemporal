@@ -355,7 +355,23 @@
   background:#171717;
   border-color:#444;
 }
-.learning-page.paradox-page .paradox-school-feature-image {background:#fff}
+/* O diagrama oficial possui rótulos brancos e aro multicolorido: manter
+   o arquivo original SEM filtros e mostrar sobre fundo preto como concebido. */
+.learning-page.paradox-page .paradox-school-feature-image {
+  background:#141414;
+  isolation:isolate;
+}
+.learning-page.paradox-page .paradox-school-feature-image img {
+  filter:none;
+  object-fit:contain;
+  object-position:center;
+  padding:clamp(12px,2vw,28px);
+}
+.learning-page.paradox-page .paradox-school-feature-image a {
+  color:#ffd309;
+  background:#111;
+  border-top:1px solid #444;
+}
 .learning-page.paradox-page .paradox-school-feature-image a {background:#141414;color:#ffd309}
 .learning-page.paradox-page .paradox-school-feature-copy p {color:#e2e2e2}
 
