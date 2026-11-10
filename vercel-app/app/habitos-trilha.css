@@ -1,0 +1,545 @@
+/*
+ * Biblioteca Atemporal · Trilha 03 — Autoconhecimento e Hábitos.
+ * Identidade da Escola: fundo grafite e texturas oficiais, magenta e amarelo.
+ * Imagens de artigos identificadas em data/origens-visuais.json.
+ * Regras escopadas: não modificar Trilhas 01 e 02.
+ */
+.habit-page {
+  --habit-pink:#c70744;
+  --habit-pink-dark:#8d0734;
+  --habit-soft:#fff0f5;
+  --habit-accent:#ffb5cb;
+}
+.habit-page .habit-hero {
+  background-color:#100c12;
+  background-image:linear-gradient(105deg,rgba(7,5,8,.55),rgba(36,10,26,.43)),var(--school-bgl);
+  background-size:cover;
+  background-position:center;
+}
+.habit-page .habit-hero:before {
+  background:linear-gradient(92deg,rgba(7,4,7,.91),rgba(13,7,14,.84) 56%,rgba(33,7,18,.65));
+}
+.habit-page .habit-hero .learning-wrap {
+  grid-template-columns:minmax(0,1.14fr) minmax(0,.86fr);
+}
+.habit-page .habit-hero h1 {
+  font-size:clamp(66px,7.4vw,108px);
+  max-width:850px;
+  letter-spacing:-.005em;
+  overflow-wrap:anywhere;
+}
+.habit-page .habit-hero h1 em,
+.habit-page .learning-hero-copy h1 em {
+  color:#ffbbd0;
+}
+.habit-page .habit-hero .eyebrow {color:#ffd309}
+.habit-page .learning-hero-links a.primary {background:#ffd309;color:#151515}
+.habit-page .learning-hero-links a.primary:hover {background:#f89533}
+.habit-page .habit-hero-picture {
+  min-height:440px;
+  padding:20px 0;
+  overflow:hidden;
+  align-items:center;
+}
+.habit-page .habit-hero-picture:before {border-color:#e1719580}
+.habit-page .habit-hero-picture img {
+  width:100%;
+  max-width:100%;
+  height:auto;
+  max-height:560px;
+  object-fit:contain;
+  object-position:center;
+  filter:drop-shadow(0 18px 35px rgba(0,0,0,.40));
+}
+.habit-page .learning-hero-picture-label {
+  background:#c70744;
+  color:#fff;
+  font-weight:700;
+  right:0;
+}
+.habit-page .learning-facts {
+  border-top:1px solid #85495d;
+  gap:12px 27px;
+}
+.habit-page .learning-facts span {color:#f4e9ec}
+.habit-page .learning-nav {
+  background-color:#211019;
+  border-color:#5e2a3b;
+}
+.habit-page .learning-nav a {color:#f1e4eb}
+.habit-page .learning-nav a:hover,
+.habit-page .learning-nav a:focus-visible {color:#ffd309}
+.habit-page .learning-section .eyebrow.dark,
+.habit-page .learning-books .learning-book-group-number {color:#ffc0d3}
+.habit-page .learning-section h2 em,
+.habit-page .learning-section .learning-section-header h2 em,
+.habit-page .learning-section .learning-two-col h2 em {
+  color:#ffbbd0;
+  font-style:normal;
+}
+.habit-page .reading-copy strong {color:#fff}
+.habit-page .reading-copy .source-note a {color:#ffd309}
+.habit-page .habit-school-images {
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+  margin:60px 0;
+  border:1px solid #68404b;
+  background:radial-gradient(circle at 100% 0%,#3a1524,transparent 50%),#21141b;
+  overflow:hidden;
+}
+.habit-page .habit-school-images figure {
+  display:flex;
+  flex-direction:column;
+  margin:0;
+  padding:0;
+  min-width:0;
+  background:#1b1518;
+}
+.habit-page .habit-school-images figure img {
+  width:100%;
+  height:auto;
+  min-height:280px;
+  max-height:520px;
+  object-fit:contain;
+  background:#141414;
+}
+.habit-page .habit-school-images figure figcaption {
+  display:flex;
+  align-items:center;
+  gap:15px;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  background:#171116;
+  padding:13px 23px;
+}
+.habit-page .habit-school-images figure figcaption>span {
+  font:700 10px/1.5 'Roboto Mono',monospace;
+  color:#ffbbd0;
+  letter-spacing:.05em;
+}
+.habit-page .habit-school-images figure figcaption>a {
+  color:#ffd309;
+  font:700 11px/1.5 'Roboto Mono',monospace;
+  min-height:39px;
+  display:inline-flex;
+  align-items:center;
+}
+.habit-page .habit-school-images-copy {
+  padding:clamp(28px,4vw,55px);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.habit-page .habit-school-images-copy .eyebrow {color:#ffd309}
+.habit-page .habit-school-images-copy h3 {
+  font:400 clamp(44px,4.5vw,70px)/1.02 'Bebas Neue',Impact,sans-serif;
+  color:#fff;
+  margin:19px 0 24px;
+}
+.habit-page .habit-school-images-copy h3 em {color:#ffbbd0;font-style:normal}
+.habit-page .habit-school-images-copy p {
+  font:400 13px/1.9 Montserrat,Arial,sans-serif;
+  color:#e1d6dc;
+}
+.habit-page .habit-school-images-copy .habit-image-source {
+  font:400 11px/1.7 Montserrat,Arial,sans-serif;
+  color:#cbb5c1;
+  border-top:1px solid #68404b;
+  padding-top:18px;
+  margin-top:20px;
+}
+.habit-page .habit-quote {
+  background:#fbeaf0;
+  border-left-color:#c70744;
+}
+.habit-page .habit-quote span {color:#8d0734}
+.habit-page .habit-quote p {color:#301522}
+.habit-page .learning-section.learning-muted {
+  background-color:#181018;
+  background-image:linear-gradient(104deg,rgba(9,4,8,.93),rgba(30,10,20,.84)),var(--school-wave);
+}
+.habit-page .habit-steps article {
+  background:#fff;
+  border-top:5px solid #c70744;
+  min-height:345px;
+  display:flex;
+  flex-direction:column;
+}
+.habit-page .habit-steps article:nth-child(2){border-top-color:#634995}
+.habit-page .habit-steps article:nth-child(3){border-top-color:#12b4d7}
+.habit-page .habit-steps article:nth-child(4){border-top-color:#83b61a}
+.habit-page .habit-steps article>span {color:#9a0a3a}
+.habit-page .habit-steps article h3 {color:#1c1418;margin:24px 0 10px}
+.habit-page .habit-steps article p {
+  color:#4f4a50;
+  font:400 12px/1.8 Montserrat,Arial,sans-serif;
+  margin:4px 0 0;
+}
+.habit-page .habit-steps article .habit-stage-label {
+  color:#8d0734;
+  font:700 11px/1.7 Montserrat,Arial,sans-serif;
+}
+.habit-page .habit-steps article .habit-stage-question {
+  border-top:1px solid #e9d5dd;
+  padding-top:15px;
+  margin-top:auto;
+  color:#80243f;
+  font-weight:700;
+}
+.habit-page .habit-lenses {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+  margin:35px 0 0;
+}
+.habit-page .habit-lenses article {
+  background:#fff;
+  padding:clamp(22px,2.8vw,34px);
+  border-top:5px solid #c70744;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  min-height:335px;
+}
+.habit-page .habit-lenses article:nth-child(2){border-color:#634995}
+.habit-page .habit-lenses article:nth-child(3){border-color:#83b61a}
+.habit-page .habit-lenses article>span {
+  font:700 10px/1.45 'Roboto Mono',monospace;
+  color:#8d0734;
+  letter-spacing:.04em;
+}
+.habit-page .habit-lenses h3 {
+  font:750 clamp(20px,2.5vw,28px)/1.2 Montserrat,Arial,sans-serif;
+  color:#151515;
+  margin:23px 0 12px;
+  letter-spacing:-.04em;
+}
+.habit-page .habit-lenses p {
+  font:400 12px/1.8 Montserrat,Arial,sans-serif;
+  color:#56515a;
+  flex:1;
+}
+.habit-page .habit-lenses strong {
+  display:block;
+  font:700 12px/1.6 Montserrat,Arial,sans-serif;
+  color:#82304b;
+  border-top:1px solid #ecdce4;
+  padding-top:16px;
+  margin-top:15px;
+}
+.habit-page .habit-lenses-note {
+  font:400 12px/1.8 Montserrat,Arial,sans-serif;
+  color:#d3c6cc;
+  margin-top:20px;
+}
+.habit-page .habit-editorial-gallery {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:15px;
+  margin:29px 0 44px;
+}
+.habit-page .habit-editorial-gallery figure {
+  margin:0;
+  min-width:0;
+  background:#18171b;
+  border:1px solid #59404a;
+}
+.habit-page .habit-editorial-gallery figure img {
+  width:100%;
+  height:auto;
+  aspect-ratio:940/580;
+  max-height:390px;
+  object-fit:contain;
+  background:#171417;
+  display:block;
+}
+.habit-page .habit-editorial-gallery figcaption {
+  padding:17px clamp(16px,2vw,24px);
+  border-top:2px solid #c70744;
+}
+.habit-page .habit-editorial-gallery figure:nth-child(2) figcaption{border-top-color:#12b4d7}
+.habit-page .habit-editorial-gallery figcaption a {
+  color:#ffd309;
+  font:700 12px/1.6 'Roboto Mono',monospace;
+  display:inline-flex;
+  align-items:center;
+  min-height:39px;
+}
+.habit-page .learning-article {
+  border-bottom-color:#5f4652;
+}
+.habit-page .learning-article .learning-article-number,
+.habit-page .learning-article .learning-source-label {
+  color:#ffc4d5;
+}
+.habit-page .learning-article h3 {color:#fff}
+.habit-page .learning-article>div>p:not(.learning-prompt) {color:#dbd5da}
+.habit-page .learning-article .learning-prompt {
+  background:#f9e8ef;
+  border-left:3px solid #c70744;
+  color:#3a2530;
+}
+.habit-page .learning-article .learning-prompt strong {color:#8d0734}
+.habit-page .learning-article .learning-source-link {color:#ffd309}
+.habit-page .learning-article:hover {background:rgba(199,7,68,.07)}
+.habit-page .habit-article-featured {background:rgba(199,7,68,.04)}
+.habit-page .learning-section.learning-books {
+  background-color:#170e17;
+  background-image:linear-gradient(105deg,rgba(10,4,8,.94),rgba(25,10,18,.87)),var(--school-background);
+}
+.habit-page .habit-books-intro {
+  background:radial-gradient(circle at 100% 0%,rgba(199,7,68,.22),transparent 48%),#20121b;
+  border:1px solid #734058;
+}
+.habit-page .habit-books-intro h3 em {color:#ffbbd0}
+.habit-page .learning-books-count strong {color:#ffd309}
+.habit-page .learning-books-preamble {color:#ffbbd0}
+.habit-page .learning-books-jump a {
+  background:#fff;
+  color:#6e193b;
+}
+.habit-page .learning-books-jump a:hover {background:#8d0734;color:#fff}
+.habit-page .learning-books-jump a:hover span {color:#fff}
+.habit-page .reading-route-grid li {border-top-color:#c70744}
+.habit-page .reading-route-grid li:nth-child(2){border-top-color:#634995}
+.habit-page .reading-route-grid li:nth-child(3){border-top-color:#12b4d7}
+.habit-page .reading-route-grid li:nth-child(4){border-top-color:#83b61a}
+.habit-page .reading-route-grid li>span,
+.habit-page .reading-route-grid li>a {color:#8d0734}
+.habit-page .reading-route-grid li h4 {color:#181318}
+.habit-page .reading-route-grid li p {color:#57515a}
+.habit-page .learning-book-search-head>div>span {color:#8d0734}
+.habit-page .learning-book-search-head h3 {color:#171717}
+.habit-page .learning-book-search-head>p {color:#5e555d}
+.habit-page .learning-book-search-footer strong,
+.habit-page .learning-book-search-footer button {color:#8d0734}
+.habit-page .book-reference-cover.tone-pink {--book-accent:#8e0734}
+.habit-page .book-reference-cover.tone-violet {--book-accent:#634995}
+.habit-page .book-reference-cover.tone-cyan {--book-accent:#00768c}
+.habit-page .book-reference-cover.tone-green {--book-accent:#4b7324}
+.habit-page .book-reference-cover.tone-orange {--book-accent:#ad451b}
+.habit-page .book-reference-cover.tone-yellow {--book-accent:#75500d}
+.habit-page .book-reference-eyebrow {color:#8d0734}
+.habit-page .book-reference-taxonomy span:first-child {background:#f8e7ee;color:#81233f}
+.habit-page .book-reference-guide {background:#fcf0f4;border-color:#c70744}
+.habit-page .book-reference-guide strong,
+.habit-page .book-reference-question strong {color:#8d0734}
+.habit-page .book-reference-author span {color:#565056}
+.habit-page .book-reference-rights {color:#5c555d}
+.habit-page .book-reference-actions .book-download {background:#ffd309;color:#171717}
+.habit-page .book-reference-actions .book-download:hover{background:#f89533}
+.habit-page .book-reference-actions .book-source {color:#8d0734;border-color:#b8869b}
+.habit-page .learning-book-controls input::placeholder{color:#59525b}
+.habit-page .learning-biblio-note {background:#f8e8f0;border-color:#c70744}
+.habit-page .learning-biblio-note-icon {background:#8d0734}
+.habit-page .learning-biblio-note strong {color:#6b1a37}
+.habit-page .learning-biblio-note p {color:#49404a}
+.habit-page .learning-essays .learning-essay {border-top-color:#c70744}
+.habit-page .learning-essays .learning-essay:nth-child(2){border-top-color:#634995}
+.habit-page .learning-essays .learning-essay:nth-child(3){border-top-color:#83b61a}
+.habit-page .learning-essays .learning-essay-num,
+.habit-page .learning-essays .learning-essay-prompt strong,
+.habit-page .learning-essays .learning-essay a {color:#8d0734}
+.habit-page .habit-videos .learning-video {background:#fff;color:#171717}
+.habit-page .habit-video-cover {display:block}
+.habit-page .habit-video-cover .learning-video-icon {
+  height:240px;
+  min-height:200px;
+  overflow:hidden;
+  position:relative;
+  background:#121318;
+}
+.habit-page .habit-video-cover .learning-video-icon img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(.84);
+}
+.habit-page .habit-video-cover:hover img {filter:brightness(1)}
+.habit-page .habit-video-cover .learning-video-play span {background:#ffd309}
+.habit-page .learning-video-body>span,
+.habit-page .learning-video-body .learning-video-theme {color:#8d0734}
+.habit-page .learning-video-body h3 {color:#171717}
+.habit-page .learning-video-body>p:not(.learning-prompt) {color:#56505a}
+.habit-page .learning-video-body .learning-prompt {background:#faebf0;color:#3c2330;border-color:#c70744}
+.habit-page .learning-video-body .learning-prompt strong {color:#8d0734}
+.habit-page .learning-video-body>a {color:#8d0734}
+.habit-page .habit-final-questions {
+  margin:26px 0 35px;
+  border-top:1px solid #6d4555;
+}
+.habit-page .habit-final-questions>div {
+  display:grid;
+  grid-template-columns:56px minmax(0,1fr);
+  gap:22px;
+  padding:21px 0;
+  border-bottom:1px solid #6d4555;
+}
+.habit-page .habit-final-questions>div>span {color:#ffb5cb;font:700 13px 'Roboto Mono',monospace}
+.habit-page .habit-final-questions p {
+  margin:0;
+  color:#fff;
+  font:600 clamp(17px,2.2vw,23px)/1.48 Montserrat,Arial,sans-serif;
+  letter-spacing:-.025em;
+}
+.habit-page .habit-practice {
+  display:block;
+  background:#28141f;
+  border-left:6px solid #c70744;
+  border-top:1px solid #6c4358;
+  padding:clamp(29px,4vw,55px);
+}
+.habit-page .habit-practice .eyebrow {color:#ffbbd0}
+.habit-page .habit-practice h3 {
+  color:#fff;
+  font:400 clamp(43px,5vw,72px)/1.03 'Bebas Neue',Impact,sans-serif;
+  letter-spacing:0;
+  margin:18px 0 23px;
+  max-width:900px;
+}
+.habit-page .habit-practice p {
+  color:#e5d6dd;
+  font:400 13px/1.95 Montserrat,Arial,sans-serif;
+  max-width:900px;
+}
+.habit-page .habit-practice .workbook-cta-link {color:#ffd309;border-color:#ffd309}
+.habit-page .habit-workbook {background:#fff;color:#171717;border-color:#bd9aa9}
+.habit-page .habit-workbook .reflection-workbook-head {
+  background:radial-gradient(circle at 95% 6%,rgba(199,7,68,.42),transparent 48%),#24121d;
+}
+.habit-page .habit-workbook .reflection-workbook-head h2 em,
+.habit-page .habit-workbook .reflection-workbook-seal>span {color:#ffbbd0}
+.habit-page .habit-workbook .reflection-workbook-security {
+  background:#fce9f0;
+  border-bottom-color:#e7bacc;
+}
+.habit-page .habit-workbook .reflection-workbook-security strong,
+.habit-page .habit-workbook .reflection-step-id,
+.habit-page .habit-workbook .reflection-scenarios-label,
+.habit-page .habit-workbook .reflection-workbook-progress>div>span {color:#8d0734}
+.habit-page .habit-workbook .reflection-workbook-security p {color:#57464f}
+.habit-page .habit-workbook .reflection-scenarios-grid article {border-top-color:#c70744}
+.habit-page .habit-workbook .reflection-scenarios-grid article:nth-child(2) {border-top-color:#634995}
+.habit-page .habit-workbook .reflection-scenarios-grid article:nth-child(3) {border-top-color:#12b4d7}
+.habit-page .habit-workbook .reflection-scenarios-grid .scenario-question {color:#7d2040}
+.habit-page .habit-workbook progress::-webkit-progress-value {background:#8d0734}
+.habit-page .habit-workbook progress::-moz-progress-bar {background:#8d0734}
+.habit-page .habit-workbook .reflection-workbook-progress>p {color:#5a525a}
+.habit-page .habit-workbook .reflection-workbook-field textarea::placeholder {color:#5d5560;opacity:1}
+.habit-page .habit-workbook .reflection-workbook-field textarea:focus {border-color:#8d0734;outline-color:#c70744}
+.habit-page .habit-workbook .reflection-workbook-actions {background:#fceaf0}
+.habit-page .habit-workbook .reflection-workbook-buttons .reflection-print {background:#8d0734;border-color:#8d0734}
+.habit-page .habit-workbook .reflection-workbook-status {color:#8d0734}
+.habit-page .habit-journal {
+  margin:0 clamp(23px,4vw,55px) 38px;
+  padding:30px;
+  background:#fbf0f4;
+  border-top:4px solid #c70744;
+}
+.habit-page .habit-journal-intro .eyebrow.dark {color:#8d0734}
+.habit-page .habit-journal-intro h3 {
+  color:#211720;
+  font:400 clamp(33px,4vw,53px)/1.05 'Bebas Neue',Impact,sans-serif;
+  margin:13px 0 12px;
+}
+.habit-page .habit-journal-intro p {
+  color:#54464f;
+  font:400 12px/1.85 Montserrat,Arial,sans-serif;
+  max-width:830px;
+}
+.habit-page .habit-journal-grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:15px;
+  margin:28px 0 0;
+}
+.habit-page .habit-journal-grid label {
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.habit-page .habit-journal-grid label>span {
+  font:700 11px/1.5 'Roboto Mono',monospace;
+  color:#81203f;
+}
+.habit-page .habit-journal-grid textarea {
+  width:100%;
+  min-height:100px;
+  resize:vertical;
+  border:1px solid #aa9ba4;
+  padding:14px;
+  background:#fff;
+  color:#241a22;
+  font:400 12px/1.7 Montserrat,Arial,sans-serif;
+}
+.habit-page .habit-journal-grid textarea::placeholder {color:#645760}
+.habit-page .habit-journal-grid textarea:focus-visible {outline:3px solid #c70744;outline-offset:2px}
+.habit-page .habit-end {
+  background-color:#140c12;
+  background-image:linear-gradient(105deg,rgba(7,5,7,.93),rgba(31,10,22,.86)),var(--school-wave);
+}
+.habit-page .habit-end h2 {font-size:clamp(58px,6vw,91px)}
+.habit-page .habit-end h2 em {color:#ffbbd0}
+.habit-page .habit-end .eyebrow {color:#ffd309}
+.habit-page .habit-end .learning-end-actions {display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+.habit-page .habit-end .primary {background:#ffd309;color:#171717}
+.habit-page .habit-end .outline {color:#fff;border-color:#9c7889}
+.habit-page .habit-nav-hint {display:none}
+.habit-page a:focus-visible,
+.habit-page button:focus-visible,
+.habit-page input:focus-visible,
+.habit-page select:focus-visible,
+.habit-page textarea:focus-visible {outline:3px solid #ffd309;outline-offset:3px}
+@media(max-width:1100px){
+ .habit-page .habit-hero h1{font-size:clamp(58px,6.4vw,85px)}
+ .habit-page .habit-steps article{min-height:390px}
+}
+@media(max-width:900px){
+ .habit-page .habit-school-images{grid-template-columns:1fr}
+ .habit-page .habit-school-images figure img{max-height:440px}
+ .habit-page .habit-lenses{grid-template-columns:1fr}
+ .habit-page .habit-lenses article{min-height:auto}
+ .habit-page .habit-steps article{min-height:340px}
+}
+@media(max-width:700px){
+ .habit-page .habit-hero .learning-wrap{display:block}
+ .habit-page .habit-hero h1{font-size:clamp(58px,11vw,83px)}
+ .habit-page .habit-hero-picture{height:350px;min-height:350px;padding:18px 0}
+ .habit-page .habit-hero-picture img{max-height:350px}
+ .habit-page .habit-nav-hint{display:block;color:#ffbbd0;text-align:right;padding:0 22px 9px;font:700 10px/1.3 'Roboto Mono',monospace}
+ .habit-page .learning-nav .learning-wrap{scroll-snap-type:x proximity;scrollbar-width:thin}
+ .habit-page .learning-nav .learning-wrap a{scroll-snap-align:start;min-height:45px}
+ .habit-page .habit-editorial-gallery{grid-template-columns:1fr}
+ .habit-page .habit-steps article{min-height:0}
+ .habit-page .habit-final-questions>div{grid-template-columns:40px minmax(0,1fr);gap:15px}
+ .habit-page .habit-journal-grid{grid-template-columns:1fr}
+ .habit-page .habit-journal{padding:21px;margin:0 20px 30px}
+ .habit-page .habit-end .learning-end-actions{flex-direction:column;align-items:stretch}
+}
+@media(max-width:420px){
+ .habit-page .habit-hero h1{font-size:clamp(46px,11vw,58px)}
+ .habit-page .habit-hero-picture{height:290px;min-height:290px}
+ .habit-page .habit-hero-picture img{max-height:290px}
+ .habit-page .learning-section .learning-section-header h2{font-size:46px}
+ .habit-page .habit-school-images-copy h3{font-size:43px}
+}
+@media print {
+ body:has(#diario-habitos) * {visibility:hidden!important}
+ body:has(#diario-habitos) #diario-habitos,body:has(#diario-habitos) #diario-habitos *{visibility:visible!important}
+ body:has(#diario-habitos) #diario-habitos{position:absolute!important;top:0;left:0;width:100%!important;margin:0!important;padding:0!important;border:0!important;box-shadow:none!important;background:#fff!important}
+ body:has(#diario-habitos) .habit-workbook .reflection-workbook-head,
+ body:has(#diario-habitos) .habit-workbook .reflection-workbook-security,
+ body:has(#diario-habitos) .habit-workbook .reflection-scenarios,
+ body:has(#diario-habitos) .habit-workbook .reflection-workbook-progress,
+ body:has(#diario-habitos) .habit-workbook .reflection-workbook-fields,
+ body:has(#diario-habitos) .habit-workbook .habit-journal,
+ body:has(#diario-habitos) .habit-workbook .reflection-workbook-actions,
+ body:has(#diario-habitos) .habit-workbook .reflection-workbook-status {display:none!important}
+ body:has(#diario-habitos) .habit-workbook .reflection-workbook-print{display:block!important;font:11pt/1.55 Arial,sans-serif!important;color:#111!important}
+ body:has(#diario-habitos) .habit-workbook .reflection-workbook-print>h2{color:#111!important;font:700 22pt Arial,sans-serif!important;margin:18px 0!important}
+ body:has(#diario-habitos) .habit-workbook .reflection-workbook-print section{break-inside:avoid;page-break-inside:avoid;border-bottom:1px solid #aaa;padding:13px 0 16px}
+ body:has(#diario-habitos) .habit-workbook .reflection-workbook-print section h3{color:#111!important;font:700 12pt Arial,sans-serif!important;margin:0 0 8px}
+ body:has(#diario-habitos) .habit-workbook .reflection-workbook-print section p{color:#333!important;font:10pt/1.5 Arial,sans-serif!important}
+ body:has(#diario-habitos) .habit-workbook .reflection-workbook-print section div{color:#111!important;white-space:pre-wrap;overflow-wrap:anywhere;font:11pt/1.55 Arial,sans-serif!important}
+ body:has(#diario-habitos) .habit-workbook .reflection-workbook-print footer{background:#fff!important;color:#555!important;font:9pt Arial,sans-serif!important}
+}
