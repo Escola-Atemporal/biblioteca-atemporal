@@ -777,3 +777,16 @@
     line-height:1.85;
   }
 }
+
+
+/* Caderno de Presenca: contraste corrigido nos textos auxiliares.
+   Texto original #817b86 sobre #fbfafc = 3.95:1; novo #5c5662 > 6.8:1.
+   Indicador de progresso original #7c757d sobre branco = 4.47:1;
+   novo #625b66 sobre branco > 6.5:1. */
+.emotion-page .emotion-workbook .reflection-workbook-field textarea::placeholder {
+  color:#5c5662;
+  opacity:1;
+}
+.emotion-page .emotion-workbook .reflection-workbook-progress > p {
+  color:#625b66;
+}
