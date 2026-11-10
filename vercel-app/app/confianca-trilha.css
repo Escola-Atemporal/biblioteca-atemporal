@@ -78,3 +78,170 @@
 @media(max-width:1000px){.colab-page .colab-hero .learning-wrap{grid-template-columns:minmax(0,1fr) minmax(0,.78fr)}.colab-page .colab-hero h1{font-size:clamp(53px,7vw,74px)}.colab-page .colab-videos{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:800px){.colab-page .colab-hero .learning-wrap{grid-template-columns:1fr}.colab-page .colab-hero-picture{height:320px;min-height:320px;width:100%}.colab-page .colab-hero h1{font-size:clamp(55px,10vw,75px)}.colab-page .colab-lenses,.colab-page .colab-reading-route{grid-template-columns:1fr}.colab-page .colab-book{grid-template-columns:35px minmax(0,1fr)}.colab-page .colab-book>a{grid-column:2;justify-self:start}.colab-page .colab-videos{grid-template-columns:1fr}.colab-page .colab-workbook-fields{grid-template-columns:1fr}}
 @media(max-width:520px){.colab-page .colab-hero h1{font-size:clamp(50px,13vw,64px)}.colab-page .colab-workbook-top{display:block}.colab-page .colab-workbook-counter{display:block;margin-bottom:15px}.colab-page .colab-hero-picture{height:260px;min-height:260px}.colab-page .colab-hero .learning-hero-links{margin-bottom:12px}}
+
+/* AJUSTE EDITORIAL 04 — fechamento e bibliografia.
+ * Prevalece sobre os estilos compartilhados sem afetar outras trilhas.
+ * A biblioteca usa fundos oficiais escuros: nao misturar tipografia branca
+ * com paineis amarelo-claros ou listas claras sem cartoes proprios.
+ */
+.learning-page.colab-page .learning-end.colab-end{
+  color:#fff;
+  background-color:#111;
+  background-image:
+    linear-gradient(104deg,rgba(8,8,8,.97) 0%,rgba(13,11,13,.93) 55%,rgba(24,18,29,.91) 100%),
+    var(--school-wave);
+  background-position:center,center;
+  background-size:cover,cover;
+  background-repeat:no-repeat;
+  padding:clamp(68px,7vw,108px) 0 27px;
+  border-top:1px solid rgba(255,211,9,.42);
+}
+.colab-page .colab-end-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
+  align-items:center;
+  column-gap:clamp(30px,5.2vw,86px);
+  min-width:0;
+}
+.colab-page .colab-end-grid > div{min-width:0}
+.learning-page.colab-page .colab-end .eyebrow{
+  color:#ffd309;
+  font:700 11px/1.65 'Roboto Mono',monospace;
+  letter-spacing:.14em;
+}
+.colab-page .colab-end .eyebrow span{color:#a69bac;padding:0 8px}
+.learning-page.colab-page .colab-end h2{
+  color:#fff;
+  font:400 clamp(62px,7.4vw,111px)/.99 'Bebas Neue',Impact,sans-serif;
+  letter-spacing:.002em;
+  text-wrap:balance;
+  max-width:790px;
+  margin:22px 0 0;
+}
+.learning-page.colab-page .colab-end h2 em{
+  display:block;
+  color:#ffd309;
+  font-style:normal;
+}
+.colab-page .colab-end-rule{
+  display:block;
+  width:clamp(70px,8vw,112px);
+  height:3px;
+  background:#ffd309;
+  margin-top:27px;
+}
+.colab-page .colab-end-content{
+  border-left:1px solid rgba(255,211,9,.48);
+  padding-left:clamp(24px,3.4vw,46px);
+}
+.learning-page.colab-page .colab-end-content > p{
+  color:#e7e2e9;
+  font:400 clamp(14px,1.18vw,16px)/1.92 Montserrat,Arial,sans-serif;
+  margin:0;
+  max-width:460px;
+}
+.learning-page.colab-page .colab-end-content > p.colab-end-question{
+  color:#ffd309;
+  font:600 clamp(17px,1.8vw,22px)/1.55 Montserrat,Arial,sans-serif;
+  margin:26px 0 30px;
+  max-width:410px;
+}
+.colab-page .colab-end-actions{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:stretch;
+  gap:11px;
+}
+.learning-page.colab-page .colab-end-actions a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  min-height:50px;
+  padding:14px 18px;
+  margin:0;
+  border-radius:2px;
+  font:700 11px/1.45 'Roboto Mono',monospace;
+  text-decoration:none;
+  max-width:100%;
+}
+.learning-page.colab-page .colab-end-actions .primary.light{
+  background:#ffd309;
+  color:#111;
+  border:1px solid #ffd309;
+}
+.learning-page.colab-page .colab-end-actions .primary.light:hover{background:#f7c200}
+.learning-page.colab-page .colab-end-actions .outline{
+  background:transparent;
+  color:#fff;
+  border:1px solid rgba(255,255,255,.55);
+}
+.learning-page.colab-page .colab-end-actions .outline:hover{
+  border-color:#ffd309;
+  color:#ffd309;
+}
+.colab-page .colab-end-foot{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-top:clamp(64px,7vw,95px);
+  padding-top:18px;
+  border-top:1px solid rgba(255,255,255,.22);
+}
+.colab-page .colab-end-foot span{
+  color:#bdb5c0;
+  font:600 10px/1.7 'Roboto Mono',monospace;
+  letter-spacing:.065em;
+}
+.colab-page .colab-end-foot span span{color:#ffd309;padding:0 4px}
+
+/* Manter os livros legiveis nas fichas claras sobre o fundo escuro
+ * compartilhado pelo restante da biblioteca. */
+.learning-page.colab-page .learning-section.learning-books.colab-books{
+  background-color:#111;
+  background-image:
+    linear-gradient(105deg,rgba(5,5,5,.93),rgba(19,15,24,.89)),
+    var(--school-background);
+  background-position:center,center;
+  background-size:cover,cover;
+}
+.learning-page.colab-page .colab-books .learning-section-header h2{color:#fff}
+.learning-page.colab-page .colab-books .learning-section-header h2 em{color:#ffd309}
+.learning-page.colab-page .colab-books .learning-section-header > p{color:#e0dbe3}
+.learning-page.colab-page .colab-books .colab-books-intro h3{color:#fff}
+.learning-page.colab-page .colab-books .colab-books-intro p{color:#e5dfea}
+.learning-page.colab-page .colab-books .colab-book{
+  background:#fff;
+  color:#161616;
+  border:1px solid #dcd7de;
+  margin:0 0 12px;
+  padding:clamp(22px,2.5vw,31px);
+}
+.learning-page.colab-page .colab-books .colab-book h3{color:#191519}
+.learning-page.colab-page .colab-books .colab-book p{color:#56505b}
+.learning-page.colab-page .colab-books .colab-book small{color:#59545d}
+.learning-page.colab-page .colab-books .colab-book .learning-prompt{
+  color:#322a3a;
+  background:#f1edf5;
+  border-left:3px solid #ffd309;
+  padding:11px 14px;
+}
+.learning-page.colab-page .colab-books .colab-book .learning-prompt strong{color:#453255}
+.learning-page.colab-page .colab-books .learning-disclaimer{color:#d1cad5}
+@media(max-width:940px){
+  .colab-page .colab-end-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:34px}
+  .learning-page.colab-page .colab-end h2{font-size:clamp(56px,7vw,82px)}
+}
+@media(max-width:760px){
+  .colab-page .colab-end-grid{grid-template-columns:minmax(0,1fr);row-gap:32px}
+  .colab-page .colab-end-content{border-left:0;border-top:1px solid rgba(255,211,9,.45);padding:26px 0 0}
+  .learning-page.colab-page .colab-end h2{font-size:clamp(59px,11vw,87px)}
+  .colab-page .colab-end-foot{margin-top:54px}
+}
+@media(max-width:520px){
+  .learning-page.colab-page .colab-end h2{font-size:clamp(56px,14vw,72px)}
+  .learning-page.colab-page .colab-end-actions a{width:100%}
+  .colab-page .colab-end-foot{gap:4px}
+}
