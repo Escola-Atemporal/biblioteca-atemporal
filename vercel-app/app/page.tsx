@@ -85,9 +85,11 @@ export default function HomePage() {
 
       <section className="atemporal-statement" aria-label="Proposta da Biblioteca">
         <div className="atemporal-container statement-grid">
-          <span className="eyebrow dark">POR QUE EXISTE</span>
-          <div>
-            <h2>NÃO É APENAS SOBRE <span>APRENDER.</span><br/>É SOBRE O QUE FAZEMOS COM ISSO.</h2>
+          <div className="statement-heading">
+            <span className="eyebrow dark">POR QUE EXISTE</span>
+            <h2>NÃO É APENAS SOBRE <span>APRENDER.</span> É SOBRE O QUE FAZEMOS COM ISSO.</h2>
+          </div>
+          <div className="statement-copy">
             <p>Na Escola Atemporal, o conhecimento não termina na leitura. Ele encontra significado nas conversas, nas decisões e nos hábitos que transformam a maneira como vivemos e colaboramos.</p>
           </div>
         </div>
