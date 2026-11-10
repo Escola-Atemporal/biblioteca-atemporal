@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import BrandLogo from "../../components/BrandLogo";
 import BibliografiaTrilha02 from "../../components/BibliografiaTrilha02";
 import CadernoEmocoes from "../../components/CadernoEmocoes";
+import RoteiroVideos from "../../components/RoteiroVideos";
 import {
   livrosTrilha02,
   artigosTrilha02,
@@ -276,13 +277,14 @@ export default function Trilha02Page() {
         <div className="learning-wrap">
           <div className="learning-section-header">
             <div><span className="eyebrow dark">REPERTÓRIO AUDIOVISUAL</span><h2>Outras lentes para <em>sentir e refletir.</em></h2></div>
-            <p>Duas palestras TED e dois vídeos referenciados nos artigos da Escola. Os links levam às publicações originais no YouTube.</p>
+            <p>Sete perspectivas sobre emoção, vulnerabilidade, empatia e presença — incluindo vídeos citados pela Escola. Cada material abre na fonte original e vem acompanhado de uma pergunta reflexiva.</p>
           </div>
+          <RoteiroVideos trilha="02" total={videosTrilha02.length}/>
           <div className="learning-videos emotion-videos">
             {videosTrilha02.map((video) => (
               <article className="learning-video" key={video.href}>
-                <a className="emotion-video-cover" href={video.href} target="_blank" rel="noopener noreferrer" aria-label={"Assistir no YouTube: " + video.titulo}>
-                  <div className="learning-video-icon"><img src={video.imagem} alt="" loading="lazy" width="480" height="360" /><span className="learning-video-play" aria-hidden="true"><span>▶</span></span></div>
+                <a className="emotion-video-cover" href={video.href} target="_blank" rel="noopener noreferrer" aria-label={"Assistir na fonte original: " + video.titulo}>
+                  <div className="learning-video-icon">{video.imagem?<img src={video.imagem} alt="" loading="lazy" width="480" height="360" />:<div className="video-curadoria-placeholder"><span>TED · REPERTÓRIO EMOCIONAL</span><strong>{video.titulo}</strong></div>}<span className="learning-video-play" aria-hidden="true"><span>▶</span></span></div>
                 </a>
                 <div className="learning-video-body">
                   <span>{video.criador}</span>
