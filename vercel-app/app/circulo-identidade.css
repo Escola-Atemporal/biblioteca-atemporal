@@ -1,0 +1,362 @@
+/* Biblioteca Atemporal — direcao de arte inspirada na pagina oficial do
+   Circulo Atemporal: https://escolaatemporal.com.br/circulo-atemporal/
+   Mantem a logo Escola como marca principal, usa a MARCA OFICIAL do Circulo
+   apenas como referencia grafica, sem redesenhar o seu simbolo.
+   Escopo publico: home e seis trilhas .circulo-inspired.
+   Nao altera WordPress, painel, area de acesso ou conteudo das trilhas. */
+.biblioteca-home.circulo-inspired,
+.learning-page.circulo-inspired {
+  --cir-bg:#141518;
+  --cir-panel:#1c1e22;
+  --cir-panel-2:#24262a;
+  --cir-paper:#f8f8f7;
+  --cir-ink:#17181b;
+  --cir-muted:#e1e1df;
+  --cir-yellow:#ffd309;
+  color:#f7f7f6;
+  background-color:var(--cir-bg);
+  font-family:Montserrat,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+.biblioteca-home.circulo-inspired .topbar,
+.learning-page.circulo-inspired .topbar{
+  background:#141518;
+  border-bottom:1px solid #393b3e;
+}
+.biblioteca-home.circulo-inspired .topbar nav a,
+.learning-page.circulo-inspired .topbar nav a{
+  font-family:Montserrat,Arial,sans-serif;
+}
+.biblioteca-home.circulo-inspired .topbar .nav-login,
+.learning-page.circulo-inspired .topbar .nav-login{
+  color:#fff;
+  border:1px solid #85858a;
+  border-radius:999px;
+  padding:12px 19px;
+  background:transparent;
+}
+.biblioteca-home.circulo-inspired .topbar .nav-login:hover,
+.learning-page.circulo-inspired .topbar .nav-login:hover{
+  border-color:#ffd309;
+  color:#141414;
+  background:#ffd309;
+}
+.biblioteca-home.circulo-inspired .atemporal-masthead{
+  background-color:#141518;
+  background-image:linear-gradient(94deg,rgba(10,11,14,.96),rgba(25,27,31,.90)),var(--school-bgl);
+  background-position:center;
+  background-size:cover;
+}
+.biblioteca-home.circulo-inspired .atemporal-masthead:before{
+  background:linear-gradient(100deg,rgba(14,15,18,.16),transparent);
+}
+.biblioteca-home.circulo-inspired .atemporal-masthead-main{
+  grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
+  min-height:650px;
+}
+.biblioteca-home.circulo-inspired .atemporal-masthead-content{
+  padding-top:clamp(72px,8vw,120px);
+  padding-bottom:clamp(60px,8vw,95px);
+}
+.biblioteca-home.circulo-inspired .atemporal-masthead h1{
+  color:#fff;
+  font:700 clamp(52px,6.25vw,91px)/1.06 Montserrat,Arial,sans-serif;
+  letter-spacing:-.073em;
+  margin:33px 0 25px;
+  text-wrap:balance;
+  max-width:760px;
+}
+.biblioteca-home.circulo-inspired .atemporal-masthead h1 span{color:#ffd309}
+.biblioteca-home.circulo-inspired .atemporal-masthead-question{
+  color:#fff;
+  font:650 clamp(18px,1.7vw,24px)/1.5 Montserrat,Arial,sans-serif;
+  letter-spacing:-.025em;
+}
+.biblioteca-home.circulo-inspired .atemporal-masthead-description{
+  color:#dddde0;
+  font:400 clamp(14px,1.18vw,17px)/1.88 Montserrat,Arial,sans-serif;
+  max-width:620px;
+}
+.biblioteca-home.circulo-inspired .atemporal-hero-actions .primary,
+.biblioteca-home.circulo-inspired .atemporal-hero-actions .outline{
+  border-radius:999px;
+  font:700 12px/1.5 Montserrat,Arial,sans-serif;
+  padding:15px 21px;
+}
+.biblioteca-home.circulo-inspired .atemporal-hero-actions .primary{background:#ffd309;color:#141414}
+.biblioteca-home.circulo-inspired .atemporal-hero-actions .outline{border-color:#a1a0a3;color:#fff}
+
+/* Exibe o ARQUIVO ORIGINAL do Circulo, nunca um anel CSS arbitrario. */
+.biblioteca-home.circulo-inspired .atemporal-masthead-visual.circulo-visual-reference{
+  min-width:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:radial-gradient(circle at center,rgba(78,79,88,.2),transparent 70%);
+}
+.biblioteca-home.circulo-inspired .atemporal-masthead-visual.circulo-visual-reference:before,
+.biblioteca-home.circulo-inspired .masthead-art-ring,
+.biblioteca-home.circulo-inspired .masthead-art-ring:after{
+  display:none!important;
+  content:none!important;
+}
+.biblioteca-home.circulo-inspired .circulo-original-mark{
+  width:min(100%,510px);
+  margin:0;
+  padding:clamp(25px,3.5vw,55px) clamp(18px,2vw,30px) 25px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:17px;
+}
+.biblioteca-home.circulo-inspired .circulo-original-mark img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:445px;
+  object-fit:contain;
+  object-position:center;
+  filter:none;
+}
+.biblioteca-home.circulo-inspired .circulo-original-mark figcaption{
+  color:#d8d9da;
+  font:650 10px/1.55 Montserrat,Arial,sans-serif;
+  letter-spacing:.13em;
+  text-align:center;
+  border-top:1px solid #56585c;
+  padding-top:15px;
+}
+.biblioteca-home.circulo-inspired .atemporal-masthead-bottom{
+  color:#dedee0;
+  border-top:1px solid #46474a;
+}
+.biblioteca-home.circulo-inspired .spectrum-strip{
+  height:3px;
+}
+.biblioteca-home.circulo-inspired .spectrum-strip i{
+  background:#303236!important;
+}
+.biblioteca-home.circulo-inspired .spectrum-strip i:first-child{background:#ffd309!important}
+
+/* Home em linguagem editorial do Circulo: mais ar, superficies neutras. */
+.biblioteca-home.circulo-inspired .atemporal-statement,
+.biblioteca-home.circulo-inspired .atemporal-sources{
+  background:#fff;
+  color:#191a1c;
+}
+.biblioteca-home.circulo-inspired .atemporal-journeys{
+  background:#f5f5f4;
+  color:#191a1c;
+}
+.biblioteca-home.circulo-inspired :is(.atemporal-statement h2,.atemporal-section-heading h2,.atemporal-cta h2){
+  font:700 clamp(35px,4.2vw,64px)/1.14 Montserrat,Arial,sans-serif;
+  letter-spacing:-.065em;
+  text-wrap:balance;
+}
+.biblioteca-home.circulo-inspired :is(.atemporal-statement h2,.atemporal-section-heading h2,.atemporal-cta h2) span{
+  color:#3d3e42;
+}
+.biblioteca-home.circulo-inspired .atemporal-track,
+.biblioteca-home.circulo-inspired .atemporal-track.track-is-live{
+  background:#fff;
+  color:#17181a;
+  border:1px solid #dededd;
+  border-top:3px solid var(--accent);
+  border-radius:12px;
+  box-shadow:0 5px 25px rgba(0,0,0,.035);
+  min-height:350px;
+}
+.biblioteca-home.circulo-inspired .atemporal-track-top,
+.biblioteca-home.circulo-inspired .track-is-live .atemporal-track-top{color:#525254}
+.biblioteca-home.circulo-inspired .atemporal-track-status,
+.biblioteca-home.circulo-inspired .track-is-live .atemporal-track-status{color:#545456}
+.biblioteca-home.circulo-inspired .atemporal-track h3{
+  color:#1c1c1e;
+  font:700 clamp(21px,2vw,27px)/1.3 Montserrat,Arial,sans-serif;
+  letter-spacing:-.045em;
+}
+.biblioteca-home.circulo-inspired .atemporal-track-content>p,
+.biblioteca-home.circulo-inspired .track-is-live .atemporal-track-content>p{color:#4f5053}
+.biblioteca-home.circulo-inspired .atemporal-track-kicker,
+.biblioteca-home.circulo-inspired .track-is-live .atemporal-track-kicker{color:#5e6061}
+.biblioteca-home.circulo-inspired .atemporal-track-index,
+.biblioteca-home.circulo-inspired .track-is-live .atemporal-track-index{
+  color:var(--accent);
+  opacity:.15;
+}
+.biblioteca-home.circulo-inspired .atemporal-track-foot,
+.biblioteca-home.circulo-inspired .track-is-live .atemporal-track-foot{border-color:#dadada}
+.biblioteca-home.circulo-inspired .atemporal-track-foot a,
+.biblioteca-home.circulo-inspired .track-is-live .atemporal-track-foot a{color:#1b1b1b}
+.biblioteca-home.circulo-inspired .atemporal-source-card{
+  border:1px solid #dedede;
+  border-radius:12px;
+  overflow:hidden;
+  background:#fff;
+}
+.biblioteca-home.circulo-inspired .source-card-figure img{filter:none}
+.biblioteca-home.circulo-inspired .source-card-copy h3{font-size:clamp(20px,1.9vw,27px)}
+.biblioteca-home.circulo-inspired .atemporal-feature-content,
+.biblioteca-home.circulo-inspired .atemporal-manifesto{
+  background:#17191d;
+}
+.biblioteca-home.circulo-inspired .atemporal-feature h2,
+.biblioteca-home.circulo-inspired .atemporal-manifesto h2{
+  font:700 clamp(42px,4.8vw,71px)/1.1 Montserrat,Arial,sans-serif;
+  letter-spacing:-.06em;
+}
+.biblioteca-home.circulo-inspired .atemporal-feature-content p{color:#e1e1e1}
+.biblioteca-home.circulo-inspired .atemporal-cta{background:#f3f3f2;color:#181818}
+.biblioteca-home.circulo-inspired .atemporal-cta .primary{background:#ffd309;color:#171717;border-radius:999px}
+
+/* As seis trilhas compartilham titulos, navegacao e superficies. */
+.learning-page.circulo-inspired .learning-hero h1{
+  color:#fff;
+  font:700 clamp(48px,5.7vw,84px)/1.07 Montserrat,Arial,sans-serif;
+  letter-spacing:-.068em;
+  text-wrap:balance;
+}
+.learning-page.circulo-inspired .learning-hero h1 em{color:#ffd309;font-style:normal}
+.learning-page.circulo-inspired .learning-hero .learning-lead{
+  color:#fff;font:650 clamp(18px,1.8vw,23px)/1.5 Montserrat,Arial,sans-serif;
+}
+.learning-page.circulo-inspired .learning-hero .learning-intro{
+  color:#e1e1df;font:400 15px/1.85 Montserrat,Arial,sans-serif;
+}
+.learning-page.circulo-inspired .learning-hero .eyebrow{color:#ffd309}
+.learning-page.circulo-inspired .learning-hero-picture:before{
+  display:none!important;content:none!important;
+}
+.learning-page.circulo-inspired .learning-hero-picture,
+.learning-page.circulo-inspired .legacy-hero-figure{
+  border:1px solid #494b4f;
+  border-radius:12px;
+  overflow:hidden;
+}
+.learning-page.circulo-inspired .learning-hero-picture img{filter:none}
+.learning-page.circulo-inspired .learning-nav{
+  background:#181a1e;
+  border-top:1px solid #404247;
+  border-bottom:1px solid #404247;
+}
+.learning-page.circulo-inspired .learning-nav .learning-wrap{
+  display:flex;overflow-x:auto;scrollbar-width:thin;flex-wrap:nowrap;
+  gap:clamp(16px,2.3vw,31px);
+}
+.learning-page.circulo-inspired .learning-nav a{
+  color:#f0f0ee;
+  font:650 12px/1.5 Montserrat,Arial,sans-serif;
+  white-space:nowrap;
+  text-decoration:none;
+}
+.learning-page.circulo-inspired .learning-nav a:hover{color:#ffd309}
+.learning-page.circulo-inspired .learning-section .learning-section-header h2,
+.learning-page.circulo-inspired .learning-two-col h2{
+  font:700 clamp(37px,3.85vw,59px)/1.12 Montserrat,Arial,sans-serif;
+  letter-spacing:-.057em;
+  color:#fff;
+  text-wrap:balance;
+}
+.learning-page.circulo-inspired .learning-section .learning-section-header h2 em,
+.learning-page.circulo-inspired .learning-two-col h2 em{color:#ffd309}
+.learning-page.circulo-inspired .learning-section-header>p,
+.learning-page.circulo-inspired .reading-copy p{
+  color:#dedede;
+  font:400 15px/1.88 Montserrat,Arial,sans-serif;
+}
+.learning-page.circulo-inspired .learning-quote{
+  background:#fff;
+  border:1px solid #e1e1e1;
+  border-left:4px solid #ffd309;
+  border-radius:12px;
+  color:#1c1c1e;
+}
+.learning-page.circulo-inspired .learning-quote p{
+  color:#1c1c1e;
+  font:600 clamp(21px,2vw,29px)/1.6 Montserrat,Arial,sans-serif;
+}
+.learning-page.circulo-inspired .learning-quote span{color:#666}
+.learning-page.circulo-inspired :is(.learning-steps article,.paradox-tension-card,.legacy-dimension-grid article,.colab-lenses article){
+  background:#fff;
+  color:#19191b;
+  border:1px solid #dedede;
+  border-top:3px solid #ffd309;
+  border-radius:11px;
+}
+.learning-page.circulo-inspired :is(.learning-steps article,.paradox-tension-card,.legacy-dimension-grid article,.colab-lenses article) h3{
+  color:#18181a;
+  font:700 clamp(20px,1.9vw,26px)/1.27 Montserrat,Arial,sans-serif;
+}
+.learning-page.circulo-inspired :is(.learning-steps article,.paradox-tension-card,.legacy-dimension-grid article,.colab-lenses article)>p{
+  color:#505053;
+  font:400 13px/1.79 Montserrat,Arial,sans-serif;
+}
+.learning-page.circulo-inspired :is(.paradox-video-poster,.legacy-video-top):after{
+  display:none!important;content:none!important;
+}
+.learning-page.circulo-inspired .book-reference-cover:before,
+.learning-page.circulo-inspired .biblioteca-padronizada .book-reference-cover:before{
+  display:none!important;content:none!important;
+}
+.learning-page.circulo-inspired .biblioteca-padronizada .book-reference-cover.tone-yellow,
+.learning-page.circulo-inspired .biblioteca-padronizada .book-reference-cover.tone-deep,
+.learning-page.circulo-inspired .biblioteca-padronizada .book-reference-cover.tone-charcoal,
+.learning-page.circulo-inspired .biblioteca-padronizada .book-reference-cover.tone-graphite{
+  background:linear-gradient(145deg,#26282d,#151619);
+}
+.learning-page.circulo-inspired .biblioteca-padronizada .book-reference-cover strong{
+  font:700 clamp(22px,2.2vw,31px)/1.2 Montserrat,Arial,sans-serif;
+  color:#fff;
+}
+.learning-page.circulo-inspired .biblioteca-padronizada .book-cover-index{color:#ffd309;opacity:.36}
+.learning-page.circulo-inspired .biblioteca-padronizada .book-reference-info h4{
+  font:700 clamp(19px,1.85vw,25px)/1.33 Montserrat,Arial,sans-serif;
+  color:#1b1b1d;
+}
+.learning-page.circulo-inspired .biblioteca-padronizada .book-reference-actions .book-download{
+  border-radius:999px;
+  background:#ffd309;
+  color:#141414;
+  border-color:#ffd309;
+}
+.learning-page.circulo-inspired .learning-end{
+  background:linear-gradient(110deg,#131417,#23252b);
+  border-top:1px solid #45474a;
+  color:#fff;
+}
+.learning-page.circulo-inspired .learning-end h2{
+  color:#fff;
+  font:700 clamp(40px,4.9vw,72px)/1.09 Montserrat,Arial,sans-serif;
+  letter-spacing:-.065em;
+}
+.learning-page.circulo-inspired .learning-end h2 em{color:#ffd309}
+.learning-page.circulo-inspired .learning-end p{
+  color:#e0e0e1;font:400 15px/1.87 Montserrat,Arial,sans-serif;
+}
+.learning-page.circulo-inspired .learning-end :is(.primary,.outline){
+  border-radius:999px;
+}
+@media(max-width:900px){
+  .biblioteca-home.circulo-inspired .atemporal-masthead-main{
+    grid-template-columns:minmax(0,1fr) minmax(0,.9fr);
+  }
+  .biblioteca-home.circulo-inspired .atemporal-masthead h1{font-size:clamp(48px,6.5vw,74px)}
+  .learning-page.circulo-inspired .learning-hero h1{font-size:clamp(43px,6.3vw,68px)}
+}
+@media(max-width:700px){
+  .biblioteca-home.circulo-inspired .atemporal-masthead-main{display:block;min-height:auto}
+  .biblioteca-home.circulo-inspired .atemporal-masthead-content{padding:65px 24px 34px}
+  .biblioteca-home.circulo-inspired .atemporal-masthead h1{font-size:clamp(43px,10.6vw,64px)}
+  .biblioteca-home.circulo-inspired .atemporal-masthead-visual{min-height:270px;height:300px}
+  .biblioteca-home.circulo-inspired .circulo-original-mark{max-width:360px;padding:12px 18px 25px}
+  .biblioteca-home.circulo-inspired .circulo-original-mark img{max-height:225px}
+  .biblioteca-home.circulo-inspired .atemporal-track h3{font-size:23px}
+  .learning-page.circulo-inspired .learning-hero h1{font-size:clamp(39px,10vw,55px)}
+  .learning-page.circulo-inspired .learning-section .learning-section-header h2,
+  .learning-page.circulo-inspired .learning-two-col h2{font-size:clamp(33px,7vw,46px)}
+}
+@media(prefers-reduced-motion:reduce){
+  .biblioteca-home.circulo-inspired .atemporal-track{transition:none}
+}
