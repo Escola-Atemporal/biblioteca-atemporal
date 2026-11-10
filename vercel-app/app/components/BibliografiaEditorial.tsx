@@ -1,5 +1,3 @@
-import type { ReactNode } from "react";
-
 /** A mesma linguagem editorial dos PDFs das trilhas 02/03.
  * Links de editoras e repositórios NÃO são presumidos links diretos para PDFs.
  * Todas as obras permanecem na sua fonte pública. */
@@ -9,23 +7,23 @@ type Obra = {
 };
 type Guia = {
  capa:string; tema:string; comoLer:string; idioma:"Português"|"Inglês";
- ano:string; formato:string; classe:string; acessoDireto:boolean;
+ ano:string; formato:string; classe:string;
 };
 const dados05:Record<string,Guia> = {
- "lideranca-estrategica":{capa:"LIDERAR NA COMPLEXIDADE",tema:"Liderança estratégica",comoLer:"Investigue como a liderança muda quando pessoas, contextos e decisões se influenciam.",idioma:"Inglês",ano:"2022",formato:"PDF / EPUB",classe:"tone-graphite",acessoDireto:false},
- "lideranca-etica":{capa:"ÉTICA NAS ESCOLHAS",tema:"Ética e liderança",comoLer:"Comece pelos dilemas éticos e observe o que muda quando justiça, cuidado e responsabilidade entram na conversa.",idioma:"Inglês",ano:"2011",formato:"PDF / EPUB",classe:"tone-yellow",acessoDireto:false},
- "gestao-controle":{capa:"AUTONOMIA E DIREÇÃO",tema:"Gestão e autonomia",comoLer:"Leia o capítulo e contraste planejamento e controle com a liberdade necessária para decidir.",idioma:"Inglês",ano:"2019",formato:"TEXTO ONLINE",classe:"tone-charcoal",acessoDireto:false},
- "lideranca-processo":{capa:"LIDERANÇA EM AÇÃO",tema:"Pessoas e liderança",comoLer:"Observe as formas de influência nas equipes e relacione-as à sua prática cotidiana.",idioma:"Inglês",ano:"2019",formato:"TEXTO ONLINE",classe:"tone-deep",acessoDireto:false},
- "dialeticas":{capa:"PENSAR PARADOXOS",tema:"Paradoxos organizacionais",comoLer:"Identifique as contradições que permanecem vivas mesmo depois de uma decisão.",idioma:"Inglês",ano:"2017",formato:"REPOSITÓRIO",classe:"tone-graphite",acessoDireto:false},
- "paradoxos-destrutivos":{capa:"TENSÕES E LIMITES",tema:"Liderança responsável",comoLer:"Leia com atenção crítica: há tensões que não devem ser impostas como exigências impossíveis.",idioma:"Inglês",ano:"2024",formato:"REPOSITÓRIO / PDF",classe:"tone-yellow",acessoDireto:false},
+ "lideranca-estrategica":{capa:"LIDERAR EM TENSÃO",tema:"Liderança estratégica",comoLer:"Investigue como a liderança muda quando pessoas, contextos e decisões se influenciam.",idioma:"Inglês",ano:"2022",formato:"PDF / EPUB",classe:"tone-graphite"},
+ "lideranca-etica":{capa:"ESCOLHAS ÉTICAS",tema:"Ética e liderança",comoLer:"Comece pelos dilemas éticos e observe o que muda quando justiça, cuidado e responsabilidade entram na conversa.",idioma:"Inglês",ano:"2011",formato:"PDF / EPUB",classe:"tone-yellow"},
+ "gestao-controle":{capa:"AUTONOMIA E FOCO",tema:"Gestão e autonomia",comoLer:"Leia o capítulo e contraste planejamento e controle com a liberdade necessária para decidir.",idioma:"Inglês",ano:"2019",formato:"TEXTO ONLINE",classe:"tone-charcoal"},
+ "lideranca-processo":{capa:"O ATO DE LIDERAR",tema:"Pessoas e liderança",comoLer:"Observe as formas de influência nas equipes e relacione-as à sua prática cotidiana.",idioma:"Inglês",ano:"2019",formato:"TEXTO ONLINE",classe:"tone-deep"},
+ "dialeticas":{capa:"PENSAR PARADOXOS",tema:"Paradoxos organizacionais",comoLer:"Identifique as contradições que permanecem vivas mesmo depois de uma decisão.",idioma:"Inglês",ano:"2017",formato:"REPOSITÓRIO",classe:"tone-graphite"},
+ "paradoxos-destrutivos":{capa:"LIMITES DE LIDERAR",tema:"Liderança responsável",comoLer:"Leia com atenção crítica: há tensões que não devem ser impostas como exigências impossíveis.",idioma:"Inglês",ano:"2024",formato:"REPOSITÓRIO / PDF",classe:"tone-yellow"},
 };
 const dados06:Record<string,Guia> = {
- "guia-responsabilidade":{capa:"RESPONSABILIDADE E IMPACTO",tema:"Sustentabilidade",comoLer:"Comece pelas perguntas sobre stakeholders e sobre a responsabilidade além dos indicadores de curto prazo.",idioma:"Inglês",ano:"2022",formato:"PDF / EPUB",classe:"tone-graphite",acessoDireto:false},
- "organizing":{capa:"ORGANIZAR PARA O FUTURO",tema:"Modelos sustentáveis",comoLer:"Observe como modelos de negócio podem considerar diferentes formas de criação de valor.",idioma:"Inglês",ano:"2021",formato:"PDF / EPUB",classe:"tone-yellow",acessoDireto:false},
- "etica":{capa:"DECISÕES COM ÉTICA",tema:"Ética empresarial",comoLer:"Investigue a relação entre ética, pessoas afetadas pelas decisões e resultados organizacionais.",idioma:"Inglês",ano:"2018",formato:"TEXTO / PDF",classe:"tone-charcoal",acessoDireto:false},
- "management":{capa:"GESTÃO QUE PERMANECE",tema:"Gestão e cultura",comoLer:"Explore planejamento, liderança e aprendizagem como práticas que atravessam diferentes ciclos.",idioma:"Inglês",ano:"2019",formato:"TEXTO / PDF",classe:"tone-deep",acessoDireto:false},
- "planejar-aprender":{capa:"PLANEJAR E APRENDER",tema:"Melhoria contínua",comoLer:"Relacione o ciclo de planejamento à avaliação e revisão dos compromissos que assumimos.",idioma:"Inglês",ano:"2019",formato:"TEXTO ONLINE",classe:"tone-graphite",acessoDireto:false},
- "priorizar":{capa:"PESSOAS E DECISÕES",tema:"Stakeholders",comoLer:"Identifique quem é afetado por uma escolha e quem precisa participar da conversa.",idioma:"Inglês",ano:"2018",formato:"TEXTO ONLINE",classe:"tone-yellow",acessoDireto:false},
+ "guia-responsabilidade":{capa:"CUIDAR DO IMPACTO",tema:"Sustentabilidade",comoLer:"Comece pelas perguntas sobre stakeholders e sobre a responsabilidade além dos indicadores de curto prazo.",idioma:"Inglês",ano:"2022",formato:"PDF / EPUB",classe:"tone-graphite"},
+ "organizing":{capa:"NOVOS MODELOS",tema:"Modelos sustentáveis",comoLer:"Observe como modelos de negócio podem considerar diferentes formas de criação de valor.",idioma:"Inglês",ano:"2021",formato:"PDF / EPUB",classe:"tone-yellow"},
+ "etica":{capa:"ÉTICA E RESULTADO",tema:"Ética empresarial",comoLer:"Investigue a relação entre ética, pessoas afetadas pelas decisões e resultados organizacionais.",idioma:"Inglês",ano:"2018",formato:"TEXTO / PDF",classe:"tone-charcoal"},
+ "management":{capa:"GESTÃO E CULTURA",tema:"Gestão e cultura",comoLer:"Explore planejamento, liderança e aprendizagem como práticas que atravessam diferentes ciclos.",idioma:"Inglês",ano:"2019",formato:"TEXTO / PDF",classe:"tone-deep"},
+ "planejar-aprender":{capa:"PLANEJAR E REVER",tema:"Melhoria contínua",comoLer:"Relacione o ciclo de planejamento à avaliação e revisão dos compromissos que assumimos.",idioma:"Inglês",ano:"2019",formato:"TEXTO ONLINE",classe:"tone-graphite"},
+ "priorizar":{capa:"DECISÕES E PESSOAS",tema:"Stakeholders",comoLer:"Identifique quem é afetado por uma escolha e quem precisa participar da conversa.",idioma:"Inglês",ano:"2018",formato:"TEXTO ONLINE",classe:"tone-yellow"},
 };
 
 function Cartao({obra,numero,trilha,info}:{obra:Obra;numero:number;trilha:"05"|"06";info:Guia}) {
