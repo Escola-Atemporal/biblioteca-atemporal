@@ -228,3 +228,300 @@
 .biblioteca-home .atemporal-new-track.paradox-launch p{color:#e9e0df;max-width:730px}
 .biblioteca-home .atemporal-new-track.paradox-launch .primary{background:#ffd309;color:#161616;border:1px solid #ffd309}
 .biblioteca-home .atemporal-new-track.paradox-launch .primary:hover{background:#ffdf54;border-color:#ffdf54}
+
+
+/* IDENTIDADE INSTITUCIONAL ORIGINAL — CORREÇÃO DE HARMONIA
+ * Referência: Escola Atemporal, site oficial.
+ * Trilha 05: preto #141414, branco #fff, amarelo institucional #ffd309.
+ * Superfícies auxiliares apenas em cinza neutro, sem bege/dourado ou roxo.
+ * Escopo deliberadamente restrito à página da Trilha 05 e ao seu
+ * destaque específico na home. Nenhuma regra global é alterada.
+ */
+.learning-page.paradox-page {
+  --paradox-black:#141414;
+  --paradox-paper:#ffffff;
+  --paradox-yellow:#ffd309;
+  --paradox-neutral:#f5f5f5;
+  --paradox-ink:#171717;
+  --paradox-muted:#565656;
+  --paradox-line:#dedede;
+  color:#f7f7f7;
+  background-color:var(--paradox-black);
+}
+.learning-page.paradox-page .learning-hero.paradox-hero {
+  background-color:#141414;
+  background-image:linear-gradient(100deg,rgba(7,7,7,.9),rgba(20,20,20,.68)),url('https://escolaatemporal.com.br/wp-content/uploads/2023/03/bgl.png');
+  background-position:center,center;
+  background-size:cover,cover;
+}
+.learning-page.paradox-page .paradox-hero h1 em,
+.learning-page.paradox-page .learning-section .learning-section-header h2 em,
+.learning-page.paradox-page #investigacao h2 em,
+.learning-page.paradox-page .paradox-books .learning-section-header h2 em,
+.learning-page.paradox-page .paradox-school-feature-copy h2 em,
+.learning-page.paradox-page .paradox-end h2 em {
+  color:var(--paradox-yellow);
+}
+.learning-page.paradox-page .learning-section .learning-section-header h2,
+.learning-page.paradox-page #investigacao h2 {
+  color:#fff;
+}
+.learning-page.paradox-page .learning-section .learning-section-header > p,
+.learning-page.paradox-page .reading-copy p {
+  color:#dedede;
+}
+.learning-page.paradox-page .reading-copy .source-note {
+  color:#c8c8c8;
+  border-color:#515151;
+}
+.learning-page.paradox-page .reading-copy .source-note a {
+  color:var(--paradox-yellow);
+  text-decoration-color:var(--paradox-yellow);
+}
+.learning-page.paradox-page .learning-nav.paradox-nav {
+  background:#141414;
+  border-bottom:1px solid #454545;
+}
+.learning-page.paradox-page .paradox-nav a {color:#e8e8e8}
+.learning-page.paradox-page .paradox-nav a:hover,
+.learning-page.paradox-page .paradox-nav a:focus-visible {color:var(--paradox-yellow)}
+.learning-page.paradox-page .learning-quote.paradox-quote {
+  background:#fff;
+  border-left:4px solid var(--paradox-yellow);
+}
+.learning-page.paradox-page .learning-quote.paradox-quote span {color:#454545}
+.learning-page.paradox-page .learning-quote.paradox-quote p {color:#191919}
+
+/* Etapas: componentes brancos com apenas uma cor de ênfase. */
+.learning-page.paradox-page .paradox-steps article,
+.learning-page.paradox-page .paradox-steps article:nth-child(n) {
+  background:#fff;
+  border:1px solid #e1e1e1;
+  border-top:4px solid var(--paradox-yellow);
+  color:#171717;
+}
+.learning-page.paradox-page .paradox-steps article > span,
+.learning-page.paradox-page .paradox-steps .paradox-step-question {
+  color:#333;
+}
+.learning-page.paradox-page .paradox-steps h3 {color:#161616}
+.learning-page.paradox-page .paradox-steps p {color:#525252}
+.learning-page.paradox-page .paradox-steps .paradox-step-question {
+  border-color:#d8d8d8;
+}
+
+/* Tensões: retirar o roxo e o bege; priorizar contraste em cards. */
+.learning-page.paradox-page .paradox-tension-card,
+.learning-page.paradox-page .paradox-tension-card:last-child {
+  background:#fff;
+  color:#171717;
+  border:1px solid #e0e0e0;
+  border-top:4px solid var(--paradox-yellow);
+}
+.learning-page.paradox-page .paradox-tension-top,
+.learning-page.paradox-page .paradox-tension-top span {color:#555}
+.learning-page.paradox-page .paradox-tension-card h3 {color:#161616}
+.learning-page.paradox-page .paradox-tension-card h3 em {color:#161616}
+.learning-page.paradox-page .paradox-tension-card h3 span {color:#151515}
+.learning-page.paradox-page .paradox-tension-context {color:#424242}
+.learning-page.paradox-page .paradox-tension-risks,
+.learning-page.paradox-page .paradox-tension-card:last-child .paradox-tension-risks {
+  background:var(--paradox-neutral);
+  border-left:3px solid var(--paradox-yellow);
+}
+.learning-page.paradox-page .paradox-tension-risks p {color:#4a4a4a}
+.learning-page.paradox-page .paradox-tension-risks strong {color:#181818}
+.learning-page.paradox-page .paradox-tension-question {
+  border-color:#dedede;
+  color:#1b1b1b;
+}
+.learning-page.paradox-page .paradox-tension-question span {color:#4a4a4a}
+.learning-page.paradox-page .paradox-section-note {color:#d6d6d6}
+
+/* Painel institucional, sem filtros cromáticos adicionais nas imagens. */
+.learning-page.paradox-page .paradox-hero-picture {
+  background:#1c1c1c;
+  border:1px solid #575757;
+}
+.learning-page.paradox-page .paradox-hero-picture img {
+  filter:none;
+}
+.learning-page.paradox-page .paradox-photo-source {
+  background:rgba(20,20,20,.93);
+  border-left:3px solid var(--paradox-yellow);
+  color:#fff;
+}
+.learning-page.paradox-page .paradox-school-feature {
+  background:#171717;
+  border-color:#444;
+}
+.learning-page.paradox-page .paradox-school-feature-image {background:#fff}
+.learning-page.paradox-page .paradox-school-feature-image a {background:#141414;color:#ffd309}
+.learning-page.paradox-page .paradox-school-feature-copy p {color:#e2e2e2}
+
+/* Obras: preto/bran­co/amarelo nos títulos, etiquetas, destaques e ações. */
+.learning-page.paradox-page .learning-section.learning-books.paradox-books {
+  background-color:#141414;
+  background-image:linear-gradient(106deg,rgba(6,6,6,.94),rgba(18,18,18,.91)),var(--school-background);
+}
+.learning-page.paradox-page .paradox-books-intro {
+  background:linear-gradient(110deg,#171717,#282828);
+  border:1px solid #464646;
+}
+.learning-page.paradox-page .paradox-books-intro h3 {color:#fff}
+.learning-page.paradox-page .paradox-books-intro h3 em,
+.learning-page.paradox-page .paradox-books-count strong {color:var(--paradox-yellow)}
+.learning-page.paradox-page .paradox-books-count {border-color:#6d6d6d}
+.learning-page.paradox-page .paradox-books-intro p,
+.learning-page.paradox-page .paradox-books-count span {color:#e6e6e6}
+.learning-page.paradox-page .paradox-book-card {
+  background:#fff;
+  border:1px solid #ddd;
+  border-top:4px solid var(--paradox-yellow);
+  color:#161616;
+}
+.learning-page.paradox-page .paradox-book-card-top,
+.learning-page.paradox-page .paradox-book-author {color:#444}
+.learning-page.paradox-page .paradox-book-card h3 {color:#191919}
+.learning-page.paradox-page .paradox-book-card p,
+.learning-page.paradox-page .paradox-book-card .paradox-book-license {color:#515151}
+.learning-page.paradox-page .paradox-book-card .paradox-book-prompt {
+  background:#f5f5f5;
+  color:#222;
+  border-left:3px solid var(--paradox-yellow);
+}
+.learning-page.paradox-page .paradox-book-card .paradox-book-prompt strong {color:#161616}
+.learning-page.paradox-page .paradox-book-card a {color:#151515;text-underline-offset:5px}
+.learning-page.paradox-page .paradox-book-card a:hover {color:#5b4b00}
+
+/* Vídeos: capas tipográficas neutras, sem roxo, castanho ou dourado. */
+.learning-page.paradox-page .paradox-video-poster {
+  background:linear-gradient(125deg,#111,#292929);
+}
+.learning-page.paradox-page .paradox-video-poster > span:first-child,
+.learning-page.paradox-page .paradox-video-poster strong em {color:var(--paradox-yellow)}
+.learning-page.paradox-page .paradox-video-poster:after {border-color:rgba(255,211,9,.24)}
+.learning-page.paradox-page .paradox-video-card {background:#fff;border-color:#ddd}
+.learning-page.paradox-page .paradox-video-body > span,
+.learning-page.paradox-page .paradox-video-body .paradox-video-lang {color:#4b4b4b}
+.learning-page.paradox-page .paradox-video-body h3 {color:#1b1b1b}
+.learning-page.paradox-page .paradox-video-body p {color:#515151}
+.learning-page.paradox-page .paradox-video-body .paradox-video-reflection {
+  background:#f5f5f5;
+  color:#222;
+  border-left:3px solid var(--paradox-yellow);
+}
+.learning-page.paradox-page .paradox-video-body > a {color:#151515}
+.learning-page.paradox-page .paradox-video-body > a:hover {color:#665000}
+
+/* Mapa de Tensões: branco e cinza neutro, tinta preta, amarelo pontual. */
+.learning-page.paradox-page .paradox-journal {
+  background:#f5f5f5;
+  color:#171717;
+  border:1px solid #dadada;
+  border-top:4px solid var(--paradox-yellow);
+}
+.learning-page.paradox-page .paradox-journal-heading .eyebrow {color:#414141}
+.learning-page.paradox-page .paradox-journal-heading h2 {color:#161616}
+.learning-page.paradox-page .paradox-journal-heading h2 em {color:#161616}
+.learning-page.paradox-page .paradox-journal-heading > p {color:#444}
+.learning-page.paradox-page .paradox-journal-progress {
+  border:1px solid #dadada;
+  border-left:3px solid var(--paradox-yellow);
+  background:#fff;
+}
+.learning-page.paradox-page .paradox-journal-progress strong {color:#171717}
+.learning-page.paradox-page .paradox-journal-progress small {color:#515151}
+.learning-page.paradox-page .paradox-journal-progress-track > span {background:var(--paradox-yellow)}
+.learning-page.paradox-page .paradox-journal-privacy {
+  background:#fff;
+  border:1px solid #ddd;
+  border-left:3px solid var(--paradox-yellow);
+}
+.learning-page.paradox-page .paradox-journal-privacy > span {
+  background:#ffd309;
+  color:#171717;
+}
+.learning-page.paradox-page .paradox-journal-privacy p {color:#444}
+.learning-page.paradox-page .paradox-journal-picker {
+  background:#fff;
+  border:1px solid #dedede;
+}
+.learning-page.paradox-page .paradox-journal-kicker {color:#444}
+.learning-page.paradox-page .paradox-journal-picker label {color:#171717}
+.learning-page.paradox-page .paradox-journal-picker p {color:#555}
+.learning-page.paradox-page .paradox-journal-picker select {
+  border:1px solid #aaa;
+  background:#fff;
+  color:#171717;
+}
+.learning-page.paradox-page .paradox-journal-card {
+  background:#fff;
+  border:1px solid #dedede;
+  border-top:3px solid #d6d6d6;
+  color:#171717;
+}
+.learning-page.paradox-page .paradox-journal-card:focus-within,
+.learning-page.paradox-page .paradox-journal-card.has-answer {border-top-color:var(--paradox-yellow)}
+.learning-page.paradox-page .paradox-journal-card-top span {color:#555}
+.learning-page.paradox-page .paradox-journal-card label {color:#181818}
+.learning-page.paradox-page .paradox-journal-card p {color:#515151}
+.learning-page.paradox-page .paradox-journal-card textarea {
+  background:#fff;
+  border:1px solid #aaa;
+  color:#171717;
+}
+.learning-page.paradox-page .paradox-journal-card textarea::placeholder {color:#666}
+.learning-page.paradox-page .paradox-journal-card textarea:focus-visible,
+.learning-page.paradox-page .paradox-journal-picker select:focus-visible {
+  outline:3px solid #ffd309;
+  outline-offset:2px;
+  border-color:#292929;
+}
+.learning-page.paradox-page .paradox-journal-buttons button:first-child {
+  background:#171717;
+  border-color:#171717;
+  color:#fff;
+}
+.learning-page.paradox-page .paradox-journal-buttons button:first-child:hover {
+  background:#333;
+  border-color:#333;
+}
+.learning-page.paradox-page .paradox-journal-buttons button:last-child {
+  background:#fff;
+  border-color:#777;
+  color:#171717;
+}
+.learning-page.paradox-page .paradox-journal-buttons button:last-child:hover {
+  background:#ededed;
+}
+.learning-page.paradox-page .paradox-journal-footer [role=status] {color:#222}
+
+/* Encerramento segue o modelo original escuro da Escola. */
+.learning-page.paradox-page .learning-end.paradox-end {
+  color:#fff;
+  background-color:#141414;
+  background-image:linear-gradient(105deg,rgba(7,7,7,.95),rgba(21,21,21,.9)),var(--school-wave);
+}
+.learning-page.paradox-page .paradox-end h2 {color:#fff}
+.learning-page.paradox-page .paradox-end h2 em {color:var(--paradox-yellow)}
+.learning-page.paradox-page .paradox-end p {color:#e1e1e1}
+.learning-page.paradox-page .paradox-end .paradox-end-question {color:var(--paradox-yellow)}
+.learning-page.paradox-page .paradox-end-links .primary.light {
+  background:var(--paradox-yellow);
+  border-color:var(--paradox-yellow);
+  color:#161616;
+}
+.learning-page.paradox-page .paradox-end-links .outline {color:#fff;border-color:#777}
+
+/* Home mantém o mesmo sistema e não adiciona tonalidades auxiliares. */
+.biblioteca-home .atemporal-new-track.paradox-launch {
+  background:linear-gradient(110deg,#161616,#292929);
+  border-left-color:#ffd309;
+  border-top-color:#525252;
+  border-right-color:#525252;
+  border-bottom-color:#525252;
+}
+.biblioteca-home .atemporal-new-track.paradox-launch .atemporal-new-track-label,
+.biblioteca-home .atemporal-new-track.paradox-launch h3 em {color:#ffd309}
+.biblioteca-home .atemporal-new-track.paradox-launch p {color:#dedede}
