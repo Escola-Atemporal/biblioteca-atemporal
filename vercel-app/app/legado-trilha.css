@@ -1,0 +1,242 @@
+/* TRILHA 06 — RESULTADOS E LEGADO
+ * Escopo EXCLUSIVO: .learning-page.legacy-page (e seu destaque .legacy-launch na home).
+ * Sistema cromático: preto #141414, branco #fff, amarelo #ffd309;
+ * diagrama oficial preservado sem recoloração. */
+.learning-page.legacy-page{--legacy-black:#141414;--legacy-ink:#161616;--legacy-yellow:#ffd309;--legacy-line:#dfdfdf;color:#f8f8f8;background:#141414}
+.learning-page.legacy-page .learning-hero.legacy-hero{background-color:#101010;background-image:linear-gradient(100deg,rgba(7,7,7,.89),rgba(20,20,20,.68)),url('https://escolaatemporal.com.br/wp-content/uploads/2023/03/bgl.png');background-size:cover,cover;background-position:center,center}
+.learning-page.legacy-page .legacy-hero .learning-wrap{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(26px,3.5vw,50px);align-items:center}
+.legacy-page .legacy-hero .learning-hero-copy{min-width:0;padding-bottom:8px}
+.legacy-page .legacy-hero .learning-crumb{margin-bottom:clamp(30px,4vw,62px)}
+.learning-page.legacy-page .legacy-hero h1{font:400 clamp(66px,7.6vw,111px)/.96 'Bebas Neue',Impact,sans-serif;letter-spacing:.005em;margin:25px 0 23px;text-wrap:balance;max-width:720px;color:#fff}
+.learning-page.legacy-page .legacy-hero h1 em{color:#ffd309;font-style:normal}
+.learning-page.legacy-page .legacy-hero .learning-lead{color:#fff;font:700 clamp(18px,1.8vw,24px)/1.5 Montserrat,Arial,sans-serif}
+.learning-page.legacy-page .legacy-hero .learning-intro{font:400 14px/1.88 Montserrat,Arial,sans-serif;color:#dfdfdf;max-width:670px}
+.legacy-page .legacy-hero .learning-hero-links{margin:28px 0 20px}
+.legacy-page .legacy-hero-figure{position:relative;min-width:0;min-height:410px;height:clamp(420px,38vw,540px);margin:0;overflow:hidden;background:#252525;border:1px solid #555}
+.legacy-page .legacy-hero-figure img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.legacy-page .legacy-hero-figure figcaption{position:absolute;bottom:14px;left:14px;right:14px}
+.legacy-page .legacy-hero-figure figcaption a{display:inline-block;color:#fff;background:rgba(20,20,20,.94);border-left:3px solid #ffd309;padding:12px 15px;font:700 10px/1.55 'Roboto Mono',monospace}
+.legacy-page .legacy-hero-figure figcaption a:hover{color:#ffd309}
+.learning-page.legacy-page .legacy-hero .learning-facts{grid-column:1/-1;margin-top:5px;border-color:#626262;color:#dedede}
+.learning-page.legacy-page .legacy-nav{background:#141414;border-bottom:1px solid #404040}
+.learning-page.legacy-page .legacy-nav .learning-wrap{gap:clamp(21px,2.7vw,35px)}
+.learning-page.legacy-page .legacy-nav a{color:#eee}
+.learning-page.legacy-page .legacy-nav a:hover,.learning-page.legacy-page .legacy-nav a:focus-visible{color:#ffd309}
+.learning-page.legacy-page .learning-section .learning-section-header h2,.learning-page.legacy-page .legacy-intro h2{color:#fff}
+.learning-page.legacy-page .learning-section .learning-section-header h2 em,.learning-page.legacy-page .legacy-intro h2 em{color:#ffd309}
+.learning-page.legacy-page .learning-section .learning-section-header > p,.learning-page.legacy-page .legacy-intro .reading-copy p{color:#ddd}
+.learning-page.legacy-page .legacy-intro .reading-copy strong{color:#fff}
+.learning-page.legacy-page .legacy-intro .source-note{border-color:#505050;color:#ccc}
+.learning-page.legacy-page .legacy-intro .source-note a{color:#ffd309;text-decoration-color:#ffd309}
+.learning-page.legacy-page .legacy-quote{background:#fff;border-left:4px solid #ffd309}
+.learning-page.legacy-page .legacy-quote span{color:#555}
+.learning-page.legacy-page .legacy-quote p{color:#171717}
+
+/* Quatro dimensões e os quatro movimentos: cartões brancos legíveis. */
+.learning-page.legacy-page .learning-section.learning-muted.legacy-dimensions,.learning-page.legacy-page .learning-section.learning-muted.legacy-movements,.learning-page.legacy-page .learning-section.learning-muted.legacy-videos{background-color:#111;background-image:linear-gradient(108deg,rgba(5,5,5,.91),rgba(20,20,20,.92)),var(--school-wave);background-position:center,center;background-size:cover,cover}
+.legacy-page .legacy-dimension-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
+.legacy-page .legacy-dimension-grid article{display:flex;flex-direction:column;min-width:0;min-height:283px;background:#fff;color:#181818;padding:clamp(21px,2vw,28px);border:1px solid #ddd;border-top:4px solid #ffd309}
+.legacy-page .legacy-dimension-meta{color:#555;font:700 10px/1.55 'Roboto Mono',monospace;letter-spacing:.04em}
+.learning-page.legacy-page .legacy-dimension-grid h3{color:#171717;font:400 clamp(34px,3vw,43px)/1.1 'Bebas Neue',Impact,sans-serif;margin:23px 0 11px}
+.legacy-page .legacy-dimension-grid p{color:#525252;font:400 12px/1.78 Montserrat,Arial,sans-serif;margin:0 0 18px}
+.legacy-page .legacy-dimension-grid strong{display:block;color:#252525;font:700 12px/1.65 Montserrat,Arial,sans-serif;border-top:1px solid #dedede;padding-top:15px;margin-top:auto}
+.legacy-page .legacy-dimension-caption{display:grid;grid-template-columns:160px minmax(0,1fr);gap:16px 24px;align-items:center;background:#202020;border-left:3px solid #ffd309;padding:20px 28px;margin-top:22px}
+.legacy-page .legacy-dimension-caption span{font:700 11px/1.5 'Roboto Mono',monospace;color:#ffd309}
+.legacy-page .legacy-dimension-caption p{color:#eee;font:400 13px/1.8 Montserrat,Arial,sans-serif;margin:0}
+.learning-page.legacy-page .legacy-steps article,.learning-page.legacy-page .legacy-steps article:nth-child(n){background:#fff;border:1px solid #ddd;border-top:4px solid #ffd309;color:#191919;min-height:302px;padding:clamp(22px,2.25vw,30px)}
+.learning-page.legacy-page .legacy-steps article > span{font:700 10px/1.6 'Roboto Mono',monospace;color:#4a4a4a}
+.learning-page.legacy-page .legacy-steps h3{font:700 19px/1.4 Montserrat,Arial,sans-serif;color:#151515;margin:23px 0 12px}
+.learning-page.legacy-page .legacy-steps p{font:400 12px/1.79 Montserrat,Arial,sans-serif;color:#4d4d4d}
+.learning-page.legacy-page .legacy-steps .legacy-step-question{color:#242424;font-weight:700;margin-top:18px;padding-top:14px;border-top:1px solid #ddd}
+
+/* Ciclo Virtuoso: fundo preto, imagem original colorida e SEM filtros. 
+ * As legendas brancas são parte do próprio PNG institucional. */
+.learning-page.legacy-page .legacy-cycle{background-color:#0b0b0b;background-image:linear-gradient(100deg,rgba(7,7,7,.94),rgba(19,19,19,.91)),var(--school-background);background-position:center,center;background-size:cover,cover;padding:clamp(68px,7vw,100px) 0;border-top:1px solid #414141;border-bottom:1px solid #444;scroll-margin-top:50px}
+.legacy-page .legacy-cycle-head{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(0,.62fr);align-items:end;gap:clamp(20px,4vw,50px);margin-bottom:38px}
+.legacy-page .legacy-cycle-head .eyebrow{color:#ffd309}
+.legacy-page .legacy-cycle-head h2{color:#fff;font:400 clamp(47px,5vw,75px)/1.04 'Bebas Neue',Impact,sans-serif;margin:17px 0 0;text-wrap:balance}
+.legacy-page .legacy-cycle-head h2 em{color:#ffd309;font-style:normal}
+.legacy-page .legacy-cycle-head > p{font:400 13px/1.84 Montserrat,Arial,sans-serif;color:#ddd;max-width:400px}
+.legacy-page .legacy-cycle-grid{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);background:#171717;border:1px solid #454545;align-items:stretch}
+.legacy-page .legacy-cycle-grid figure{background:#111;min-width:0;min-height:420px;margin:0;padding:clamp(16px,2.5vw,32px);display:flex;flex-direction:column;align-items:center;justify-content:center;border-right:1px solid #434343}
+.legacy-page .legacy-cycle-grid img{width:100%;height:auto;max-height:600px;object-fit:contain;filter:none;display:block}
+.legacy-page .legacy-cycle-grid figcaption{color:#ddd;font:700 10px/1.5 'Roboto Mono',monospace;margin-top:12px;text-align:center}
+.legacy-page .legacy-cycle-copy{padding:clamp(32px,4vw,64px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;min-width:0}
+.legacy-page .legacy-cycle-copy>span{font:700 10px/1.65 'Roboto Mono',monospace;color:#ffd309;letter-spacing:.07em}
+.legacy-page .legacy-cycle-copy h3{font:400 clamp(42px,4.5vw,67px)/1.03 'Bebas Neue',Impact,sans-serif;color:#fff;margin:21px 0}
+.legacy-page .legacy-cycle-copy h3 em{color:#ffd309;font-style:normal}
+.legacy-page .legacy-cycle-copy p{color:#e6e6e6;font:400 13px/1.9 Montserrat,Arial,sans-serif;margin:0 0 17px}
+.legacy-page .legacy-cycle-copy a{display:inline-block;color:#ffd309;border-bottom:1px solid #ffd309;font:700 11px/1.5 'Roboto Mono',monospace;margin-top:16px;padding-bottom:7px}
+
+/* Fontes da Escola aparecem sobre fundo escuro, com pergunta em painel claro. */
+.learning-page.legacy-page .learning-articles,.learning-page.legacy-page .learning-article{border-color:#555}
+.learning-page.legacy-page .learning-article h3{color:#fff}
+.learning-page.legacy-page .learning-article p:not(.learning-prompt){color:#dadada}
+.learning-page.legacy-page .learning-article .learning-source-label{color:#e1e1e1}
+.learning-page.legacy-page .learning-article .learning-article-number{color:#ffd309}
+.learning-page.legacy-page .learning-article .learning-prompt{background:#fff;border-left:3px solid #ffd309;color:#242424}
+.learning-page.legacy-page .learning-article .learning-prompt strong{color:#171717}
+.learning-page.legacy-page .learning-article .learning-source-link{color:#ffd309}
+.learning-page.legacy-page .learning-article:hover{background:rgba(255,255,255,.04)}
+
+/* Bibliografia: cartões brancos, textos negros, sem roxo ou bege. */
+.learning-page.legacy-page .learning-section.learning-books.legacy-books{background-color:#111;background-image:linear-gradient(105deg,rgba(5,5,5,.96),rgba(20,20,20,.93)),var(--school-background);background-size:cover,cover;background-position:center,center}
+.learning-page.legacy-page .legacy-books .learning-section-header h2{color:#fff}
+.learning-page.legacy-page .legacy-books .learning-section-header h2 em{color:#ffd309}
+.learning-page.legacy-page .legacy-books .learning-section-header>p{color:#ddd}
+.legacy-page .legacy-books-lead{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:35px;align-items:center;background:#191919;border:1px solid #444;padding:clamp(30px,4vw,52px);margin-bottom:23px}
+.legacy-page .legacy-books-lead .eyebrow{color:#ffd309}
+.legacy-page .legacy-books-lead h3{color:#fff;font:400 clamp(41px,4.5vw,63px)/1.05 'Bebas Neue',Impact,sans-serif;max-width:850px;margin:18px 0}
+.legacy-page .legacy-books-lead h3 em{color:#ffd309;font-style:normal}
+.legacy-page .legacy-books-lead p{color:#dedede;font:400 13px/1.8 Montserrat,Arial,sans-serif;max-width:700px;margin:0}
+.legacy-page .legacy-books-total{display:flex;flex-direction:column;align-items:center;border-left:1px solid #666;padding-left:30px;min-width:135px}
+.legacy-page .legacy-books-total strong{font:400 83px/1 'Bebas Neue',Impact,sans-serif;color:#ffd309}
+.legacy-page .legacy-books-total small{font:700 10px/1.5 'Roboto Mono',monospace;color:#fff;text-align:center}
+.legacy-page .legacy-book-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.learning-page.legacy-page .legacy-book{display:flex;flex-direction:column;min-width:0;scroll-margin-top:80px;background:#fff;border:1px solid #ddd;border-top:4px solid #ffd309;color:#191919;padding:clamp(24px,3vw,36px)}
+.legacy-page .legacy-book-meta{display:flex;justify-content:space-between;gap:13px;flex-wrap:wrap;color:#555;font:700 10px/1.5 'Roboto Mono',monospace}
+.learning-page.legacy-page .legacy-book h3{color:#151515;font:700 clamp(18px,2vw,23px)/1.4 Montserrat,Arial,sans-serif;margin:20px 0 10px}
+.learning-page.legacy-page .legacy-book p{color:#545454;font:400 12px/1.78 Montserrat,Arial,sans-serif;margin:8px 0}
+.learning-page.legacy-page .legacy-book .legacy-book-author{font-weight:700;color:#383838}
+.learning-page.legacy-page .legacy-book .legacy-book-question{background:#f5f5f5;color:#262626;border-left:3px solid #ffd309;padding:12px 15px}
+.learning-page.legacy-page .legacy-book .legacy-book-question strong{color:#151515}
+.learning-page.legacy-page .legacy-book .legacy-book-rights{font-size:11px;color:#555}
+.legacy-page .legacy-book a{color:#151515;font:700 12px/1.5 'Roboto Mono',monospace;text-decoration:underline;text-underline-offset:5px;margin-top:auto;padding-top:22px}
+.legacy-page .legacy-book a:hover{color:#6c5600}
+.learning-page.legacy-page .legacy-books .learning-disclaimer{color:#d4d4d4}
+
+/* Capas editoriais simples para links TED, sem fotos ou vídeos inventados. */
+.legacy-page .legacy-video-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.legacy-page .legacy-video-card{display:flex;flex-direction:column;min-width:0;background:#fff;color:#171717;border:1px solid #ddd}
+.legacy-page .legacy-video-top{position:relative;display:flex;flex-direction:column;justify-content:space-between;min-height:218px;aspect-ratio:16/10;background:linear-gradient(125deg,#111,#292929);padding:clamp(20px,2vw,28px);color:#fff;overflow:hidden}
+.legacy-page .legacy-video-top:after{content:'';pointer-events:none;width:235px;height:235px;border:2px solid rgba(255,211,9,.25);border-radius:50%;position:absolute;right:-50px;bottom:-80px}
+.legacy-page .legacy-video-top>span:first-child{font:700 10px/1.5 'Roboto Mono',monospace;color:#ffd309;letter-spacing:.05em}
+.legacy-page .legacy-video-top strong{font:400 clamp(32px,3vw,45px)/1.07 'Bebas Neue',Impact,sans-serif;max-width:310px;z-index:1}
+.legacy-page .legacy-video-top strong em{color:#ffd309;font-style:normal}
+.legacy-page .legacy-video-play{display:grid;place-items:center;width:42px;height:42px;background:#ffd309;color:#171717;font-size:21px;align-self:flex-end;z-index:2}
+.legacy-page .legacy-video-content{display:flex;flex-direction:column;flex:1;min-width:0;padding:clamp(22px,2vw,29px)}
+.legacy-page .legacy-video-content>span{font:700 10px/1.6 'Roboto Mono',monospace;color:#4e4e4e}
+.learning-page.legacy-page .legacy-video-content h3{color:#171717;font:700 clamp(17px,1.7vw,21px)/1.45 Montserrat,Arial,sans-serif;margin:12px 0}
+.legacy-page .legacy-video-content p{color:#505050;font:400 12px/1.76 Montserrat,Arial,sans-serif;margin:8px 0}
+.legacy-page .legacy-video-content .legacy-video-lang{font-weight:700;color:#444}
+.legacy-page .legacy-video-content .legacy-video-question{padding:12px 14px;background:#f5f5f5;border-left:3px solid #ffd309;color:#242424}
+.legacy-page .legacy-video-content a{margin-top:auto;padding-top:20px;color:#171717;text-decoration:underline;text-underline-offset:4px;font:700 12px/1.5 'Roboto Mono',monospace}
+
+/* Prática e perguntas brancas no fundo negro. */
+.learning-page.legacy-page .legacy-practice .learning-section-header h2{color:#fff}
+.learning-page.legacy-page .legacy-practice .learning-section-header h2 em{color:#ffd309}
+.learning-page.legacy-page .legacy-practice .learning-questions li{border-color:#535353}
+.learning-page.legacy-page .legacy-practice .learning-questions p{color:#fff}
+.learning-page.legacy-page .legacy-practice .learning-questions li>span{color:#ffd309}
+.learning-page.legacy-page .learning-practice.legacy-practice-banner{display:block;background:#191919;border:1px solid #444;border-left:4px solid #ffd309;padding:clamp(27px,4vw,50px)}
+.legacy-page .legacy-practice-banner .eyebrow{color:#ffd309}
+.learning-page.legacy-page .legacy-practice-banner h3{color:#fff;font:400 clamp(38px,4.5vw,60px)/1.08 'Bebas Neue',Impact,sans-serif;max-width:940px;margin:16px 0}
+.learning-page.legacy-page .legacy-practice-banner p{color:#e0e0e0;font:400 13px/1.86 Montserrat,Arial,sans-serif;max-width:820px}
+.legacy-page .legacy-practice-banner a{display:inline-block;color:#ffd309;font:700 11px/1.5 'Roboto Mono',monospace;text-decoration:underline;text-underline-offset:5px;margin-top:14px}
+
+/* Caderno: superfícies claramente legíveis e responsivas. */
+.learning-page.legacy-page .legacy-journal{scroll-margin-top:75px;margin-top:clamp(46px,5vw,76px);padding:clamp(23px,3.5vw,44px);background:#f5f5f5;color:#161616;border:1px solid #dadada;border-top:4px solid #ffd309}
+.legacy-page .legacy-journal-heading{display:grid;grid-template-columns:minmax(0,1fr) 136px;align-items:start;gap:24px;margin-bottom:23px}
+.legacy-page .legacy-journal-heading>div:first-child{min-width:0}
+.legacy-page .legacy-journal-heading .eyebrow{color:#494949;font:700 10px/1.55 'Roboto Mono',monospace;letter-spacing:.06em}
+.learning-page.legacy-page .legacy-journal-heading h2{color:#171717;font:400 clamp(42px,4.6vw,63px)/1.06 'Bebas Neue',Impact,sans-serif;margin:15px 0 11px}
+.learning-page.legacy-page .legacy-journal-heading h2 em{color:#171717;font-style:normal}
+.legacy-page .legacy-journal-heading p{font:400 13px/1.82 Montserrat,Arial,sans-serif;color:#4b4b4b;margin:0;max-width:720px}
+.legacy-page .legacy-journal-progress{background:#fff;border:1px solid #dadada;border-left:3px solid #ffd309;padding:16px}
+.legacy-page .legacy-journal-progress>span{color:#181818;font:400 31px/1.1 'Bebas Neue',Impact,sans-serif}
+.legacy-page .legacy-journal-progress strong{font-size:44px;font-weight:400}
+.legacy-page .legacy-journal-progress small{display:block;color:#575757;font:700 10px/1.4 'Roboto Mono',monospace;margin:9px 0 12px}
+.legacy-page .legacy-journal-track{height:5px;background:#e6e6e6}
+.legacy-page .legacy-journal-track>span{height:100%;display:block;background:#ffd309;transition:width .2s ease}
+.legacy-page .legacy-journal-privacy{display:flex;align-items:flex-start;gap:15px;background:#fff;border:1px solid #ddd;border-left:3px solid #ffd309;padding:16px 19px;margin:0 0 23px}
+.legacy-page .legacy-journal-privacy>span{display:grid;place-items:center;flex:none;width:25px;height:25px;background:#ffd309;color:#171717;border-radius:50%;font:bold 14px 'Roboto Mono',monospace}
+.legacy-page .legacy-journal-privacy p{color:#494949;font:400 12px/1.78 Montserrat,Arial,sans-serif;margin:0}
+.legacy-page .legacy-journal-privacy strong{color:#161616}
+.legacy-page .legacy-journal-focus{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,.8fr);align-items:center;gap:23px;background:#fff;border:1px solid #ddd;padding:21px;margin-bottom:16px}
+.legacy-page .legacy-journal-focus>div>span{font:700 10px/1.6 'Roboto Mono',monospace;color:#515151}
+.legacy-page .legacy-journal-focus label{display:block;font:700 15px/1.5 Montserrat,Arial,sans-serif;color:#171717;margin-top:8px}
+.legacy-page .legacy-journal-focus p{font:400 11px/1.7 Montserrat,Arial,sans-serif;color:#5c5c5c;margin:6px 0 0}
+.legacy-page .legacy-journal-focus select{width:100%;padding:15px 13px;border:1px solid #aaa;background:#fff;color:#171717;font:500 12px/1.5 Montserrat,Arial,sans-serif}
+.legacy-page .legacy-journal-focus select:focus-visible{outline:3px solid #ffd309;outline-offset:2px}
+.legacy-page .legacy-journal-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.legacy-page .legacy-journal-card{display:flex;flex-direction:column;min-width:0;background:#fff;border:1px solid #ddd;border-top:3px solid #d5d5d5;padding:clamp(22px,2.5vw,29px)}
+.legacy-page .legacy-journal-card:focus-within,.legacy-page .legacy-journal-card.answered{border-top-color:#ffd309}
+.legacy-page .legacy-journal-meta{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+.legacy-page .legacy-journal-meta span{font:700 10px/1.55 'Roboto Mono',monospace;color:#4b4b4b}
+.legacy-page .legacy-journal-meta span:last-child{font-size:9px;color:#656565}
+.legacy-page .legacy-journal-card label{display:block;color:#161616;font:700 clamp(15px,1.3vw,18px)/1.55 Montserrat,Arial,sans-serif;margin:0 0 11px}
+.legacy-page .legacy-journal-card p{color:#555;font:400 12px/1.76 Montserrat,Arial,sans-serif;margin:0 0 18px}
+.legacy-page .legacy-journal-card textarea{width:100%;min-height:118px;margin-top:auto;padding:15px 16px;background:#fff;border:1px solid #aaa;color:#171717;border-radius:2px;resize:vertical;font:400 12px/1.76 Montserrat,Arial,sans-serif}
+.legacy-page .legacy-journal-card textarea::placeholder{color:#666;opacity:1}
+.legacy-page .legacy-journal-card textarea:focus-visible{border-color:#222;outline:3px solid #ffd309;outline-offset:2px}
+.legacy-page .legacy-journal-actions{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:15px 22px;margin-top:26px;padding-top:22px;border-top:1px solid #d9d9d9}
+.legacy-page .legacy-journal-actions strong{color:#171717;font:700 13px/1.5 Montserrat,Arial,sans-serif}
+.legacy-page .legacy-journal-actions p{color:#555;font:400 11px/1.8 Montserrat,Arial,sans-serif}
+.legacy-page .legacy-journal-buttons{display:flex;gap:10px;flex-wrap:wrap}
+.legacy-page .legacy-journal-buttons button{cursor:pointer;background:#171717;color:#fff;border:1px solid #171717;padding:13px 16px;min-height:46px;font:700 11px/1.5 'Roboto Mono',monospace}
+.legacy-page .legacy-journal-buttons button:last-child{background:#fff;color:#171717;border:1px solid #777}
+.legacy-page .legacy-journal-buttons button:hover{background:#333;color:#fff}
+.legacy-page .legacy-journal-buttons button:last-child:hover{background:#e9e9e9;color:#171717}
+.legacy-page .legacy-journal-buttons button:focus-visible{outline:3px solid #ffd309;outline-offset:3px}
+.legacy-page .legacy-journal-actions [role=status]{grid-column:1/-1;color:#313131;font:600 12px/1.6 Montserrat,Arial,sans-serif}
+.legacy-page .legacy-journal-actions [role=status]:empty{display:none}
+
+/* Encerramento dark como o original; não herdar cores claras em fundo claro. */
+.learning-page.legacy-page .learning-end.legacy-end{background-color:#111;background-image:linear-gradient(107deg,rgba(5,5,5,.96),rgba(19,19,19,.92)),var(--school-wave);background-position:center,center;background-size:cover,cover;border-top:1px solid #ffd30970;color:#fff;padding:clamp(68px,7vw,104px) 0 27px}
+.legacy-page .legacy-end-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(35px,5vw,75px);align-items:center}
+.legacy-page .legacy-end-grid>div{min-width:0}
+.learning-page.legacy-page .legacy-end .eyebrow{color:#ffd309;font:700 11px/1.65 'Roboto Mono',monospace}
+.learning-page.legacy-page .legacy-end h2{color:#fff;font:400 clamp(67px,7.3vw,104px)/.99 'Bebas Neue',Impact,sans-serif;letter-spacing:.002em;margin:20px 0;text-wrap:balance}
+.learning-page.legacy-page .legacy-end h2 em{color:#ffd309;display:block;font-style:normal}
+.legacy-page .legacy-end-line{display:block;height:3px;width:100px;background:#ffd309;margin-top:29px}
+.learning-page.legacy-page .legacy-end-copy>p{color:#e2e2e2;font:400 14px/1.93 Montserrat,Arial,sans-serif;max-width:520px;margin:0 0 21px}
+.learning-page.legacy-page .legacy-end-copy .legacy-end-question{color:#ffd309;font:700 clamp(17px,1.7vw,22px)/1.55 Montserrat,Arial,sans-serif}
+.legacy-page .legacy-end-buttons{display:flex;flex-wrap:wrap;gap:11px;margin-top:27px}
+.learning-page.legacy-page .legacy-end-buttons a{margin:0;padding:14px 18px;display:inline-flex;align-items:center;justify-content:space-between;gap:17px;min-height:48px;font:700 11px/1.5 'Roboto Mono',monospace}
+.learning-page.legacy-page .legacy-end-buttons .primary.light{color:#171717;background:#ffd309;border:1px solid #ffd309}
+.learning-page.legacy-page .legacy-end-buttons .outline{color:#fff;border:1px solid #777;background:transparent}
+.learning-page.legacy-page .legacy-end-buttons .outline:hover{border-color:#ffd309;color:#ffd309}
+.legacy-page .legacy-end-footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:clamp(55px,6vw,89px);padding-top:18px;border-top:1px solid #555;color:#ccc;font:700 10px/1.6 'Roboto Mono',monospace}
+.learning-page.legacy-page footer{background:#080808;border-top:1px solid #404040}
+
+/* Destaque exclusivo da sexta trilha na home. */
+.biblioteca-home .atemporal-new-track.legacy-launch{background:linear-gradient(110deg,#111,#2a2a2a);border-left:4px solid #ffd309;border-top:1px solid #444;border-right:1px solid #444;border-bottom:1px solid #444}
+.biblioteca-home .atemporal-new-track.legacy-launch .atemporal-new-track-label,.biblioteca-home .atemporal-new-track.legacy-launch h3 em{color:#ffd309}
+.biblioteca-home .atemporal-new-track.legacy-launch h3{color:#fff}
+.biblioteca-home .atemporal-new-track.legacy-launch p{color:#dedede}
+.biblioteca-home .atemporal-new-track.legacy-launch .primary{background:#ffd309;color:#161616;border:1px solid #ffd309}
+.biblioteca-home .atemporal-new-track.legacy-launch .primary:hover{background:#ffe16c}
+
+@media(max-width:1050px){
+ .learning-page.legacy-page .legacy-hero .learning-wrap{grid-template-columns:minmax(0,1fr) minmax(0,.83fr);gap:30px}
+ .learning-page.legacy-page .legacy-hero h1{font-size:clamp(58px,7vw,82px)}
+ .legacy-page .legacy-dimension-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .legacy-page .legacy-video-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:820px){
+ .learning-page.legacy-page .legacy-hero .learning-wrap{grid-template-columns:1fr;gap:22px}
+ .learning-page.legacy-page .legacy-hero h1{font-size:clamp(58px,10vw,84px)}
+ .legacy-page .legacy-hero-figure{height:340px;min-height:340px}
+ .legacy-page .legacy-cycle-head{grid-template-columns:1fr}
+ .legacy-page .legacy-cycle-grid{grid-template-columns:1fr}
+ .legacy-page .legacy-cycle-grid figure{border-right:0;border-bottom:1px solid #444;min-height:340px}
+ .legacy-page .legacy-end-grid{grid-template-columns:1fr}
+ .legacy-page .legacy-journal-actions{grid-template-columns:1fr}
+ .legacy-page .legacy-journal-buttons{justify-content:flex-start}
+}
+@media(max-width:650px){
+ .learning-page.legacy-page .legacy-hero h1{font-size:clamp(53px,12vw,68px)}
+ .legacy-page .legacy-hero-figure{height:265px;min-height:265px}
+ .legacy-page .legacy-dimension-grid,.legacy-page .legacy-book-grid,.legacy-page .legacy-video-grid,.legacy-page .legacy-journal-fields,.legacy-page .legacy-journal-focus{grid-template-columns:1fr}
+ .legacy-page .legacy-dimension-caption{grid-template-columns:1fr}
+ .legacy-page .legacy-books-lead{grid-template-columns:1fr}
+ .legacy-page .legacy-books-total{border-left:0;border-top:1px solid #777;padding:15px 0 0;align-items:flex-start}
+ .legacy-page .legacy-journal-heading{grid-template-columns:1fr}
+ .legacy-page .legacy-journal-progress{max-width:180px}
+ .legacy-page .legacy-journal-buttons{display:grid;grid-template-columns:1fr}
+ .legacy-page .legacy-journal-buttons button{width:100%}
+ .learning-page.legacy-page .legacy-end h2{font-size:clamp(56px,12vw,75px)}
+ .legacy-page .legacy-end-buttons{flex-direction:column}
+ .legacy-page .legacy-end-buttons a{width:100%}
+}
+@media(prefers-reduced-motion:reduce){.legacy-page .legacy-journal-track>span{transition:none}}
