@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import BrandLogo from "../../components/BrandLogo";
 import CadernoConfianca from "../../components/CadernoConfianca";
+import BibliografiaTrilha04 from "../../components/BibliografiaTrilha04";
 import {artigosTrilha04, livrosTrilha04, videosTrilha04, movimentosTrilha04} from "../../../data/referencias-trilha-04";
 
 export const metadata:Metadata={
@@ -32,7 +33,7 @@ export default function Trilha04Page(){
     <h1 id="titulo-trilha-04">Confiança <em>e Colaboração.</em></h1>
     <p className="learning-lead">O que nos permite construir com outras pessoas?</p>
     <p className="learning-intro">A sabedoria é coletiva quando diferentes pessoas podem participar de verdade. Uma jornada para praticar a escuta, reconhecer a diversidade de perspectivas e transformar encontros em compromissos compartilhados.</p>
-    <div className="learning-hero-links"><a className="primary" href="#investigacao">Começar a investigação <span aria-hidden="true">↗</span></a><a className="outline" href="#livros">Explorar livros e e-books ↓</a></div>
+    <div className="learning-hero-links"><a className="primary" href="#investigacao">Começar a investigação <span aria-hidden="true">↗</span></a><a className="outline" href="#livros-referencias">Explorar livros e PDFs ↓</a></div>
    </div>
    <div className="learning-hero-picture colab-hero-picture">
     <img src="https://escolaatemporal.com.br/wp-content/uploads/2026/08/DSC9619-1024x681.jpg" width="1024" height="681" alt="Fotografia institucional publicada pela Escola Atemporal na página Emoções em Jogo" loading="eager" fetchPriority="high" decoding="async"/>
@@ -63,8 +64,7 @@ export default function Trilha04Page(){
   <section id="livros" className="learning-section learning-books colab-books"><div className="learning-wrap">
    <div className="learning-section-header"><div><span className="eyebrow dark">BIBLIOGRAFIA · TRILHA 04</span><h2>Leituras para <em>construir juntos.</em></h2></div><p>Uma curadoria de obras e guias de acesso aberto. Os downloads, quando disponíveis, são oferecidos nas páginas originais dos editores ou autores.</p></div>
    <div className="learning-books-intro colab-books-intro"><div><span className="learning-books-preamble">LER · CONVERSAR · EXPERIMENTAR</span><h3>Confiança não se decreta. <em>Se cultiva.</em></h3><p>Experimente começar pela comunicação em pequenos grupos, seguir para escuta e concluir com práticas de equipes.</p></div><div className="learning-books-count"><strong>{livrosTrilha04.length}</strong><span>OBRAS<br/>E GUIAS</span></div></div>
-   <div className="colab-reading-route"><article><span>01 / ESCUTAR</span><h3>Comunicação em prática</h3><p>Explore princípios de escuta, entendimento e conversas difíceis.</p><a href="#small-group">Ver referência ↘</a></article><article><span>02 / CONSTRUIR</span><h3>Pequenos grupos</h3><p>Observe papéis, participação e tomada de decisão.</p><a href="#communication-practice">Ver referência ↘</a></article><article><span>03 / SUSTENTAR</span><h3>Equipes e cultura</h3><p>Conecte a conversa aos compromissos e aos resultados.</p><a href="#behavior">Ver referência ↘</a></article></div>
-   <div className="colab-book-list">{livrosTrilha04.map((l,i)=><article id={l.id} className="colab-book" key={l.id}><span className="colab-book-num">{String(i+1).padStart(2,"0")}</span><div className="colab-book-copy"><span className="learning-source-label">{l.formato}</span><h3>{l.titulo}</h3><p className="colab-book-author">{l.autor}</p><p>{l.tema}</p><p className="learning-prompt"><strong>Investigue:</strong> {l.pergunta}</p><small>{l.licenca}</small></div><a href={l.href} target="_blank" rel="noopener noreferrer">Abrir fonte original ↗</a></article>)}</div>
+   <BibliografiaTrilha04/>
    <p className="learning-disclaimer">Links para fontes externas; não há cópias de livros de terceiros hospedadas na Biblioteca. Acesso aberto não significa uso irrestrito: consulte os termos de cada edição antes de compartilhar, adaptar ou redistribuir arquivos.</p>
   </div></section>
   <section id="videos" className="learning-section learning-muted"><div className="learning-wrap">
