@@ -36,7 +36,7 @@ const perguntasFinais = [
 
 export default function Trilha02Page() {
   return (
-    <main className="learning-page emotion-page" id="topo">
+    <main className="learning-page emotion-page circulo-inspired" id="topo">
       <a className="skip-to-content" href="#investigacao">Ir para a investigação</a>
       <header className="topbar">
         <BrandLogo />
