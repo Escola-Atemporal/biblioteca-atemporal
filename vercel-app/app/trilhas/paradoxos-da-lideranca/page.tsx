@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import BrandLogo from "../../components/BrandLogo";
 import CadernoParadoxos from "../../components/CadernoParadoxos";
+import RoteiroVideos from "../../components/RoteiroVideos";
 import BibliografiaEditorial from "../../components/BibliografiaEditorial";
 import {artigosTrilha05, tensoesTrilha05, movimentosTrilha05, obrasTrilha05, videosTrilha05} from "../../../data/referencias-trilha-05";
 
@@ -17,6 +18,8 @@ const perguntas=[
  "Que acordo permitiria combinar direção e liberdade na prática?",
  "Que indicador humano e organizacional nos ajudará a revisitar essa escolha?",
 ];
+
+const capasVideo05 = ["LIDERAR NA INCERTEZA","DECIDIR SOB PRESSÃO","MUDAR COM CONFIANÇA","FIRMEZA COM CUIDADO","CRIATIVIDADE COLETIVA","CORAGEM NA CRISE"] as const;
 
 export default function Trilha05Page(){
  return <main className="learning-page paradox-page referencia-trilha01" id="topo">
@@ -105,10 +108,11 @@ export default function Trilha05Page(){
   </div></section>
 
   <section className="learning-section learning-muted paradox-videos" id="videos"><div className="learning-wrap">
-   <div className="learning-section-header"><div><span className="eyebrow dark">REFERÊNCIAS AUDIOVISUAIS</span><h2>Decidir com coragem. <em>Pensar com cuidado.</em></h2></div><p>Três palestras disponíveis no TED que dialogam com liderança, incerteza e escolhas difíceis. Os links abrem as páginas dos criadores.</p></div>
+   <div className="learning-section-header"><div><span className="eyebrow dark">REFERÊNCIAS AUDIOVISUAIS</span><h2>Decidir com coragem. <em>Pensar com cuidado.</em></h2></div><p>Seis palestras verificadas na fonte TED para investigar dilemas entre direção e abertura, firmeza e cuidado, mudança e pertencimento. Cada uma propõe um gesto para a vida real.</p></div>
+   <RoteiroVideos trilha="05" total={videosTrilha05.length}/>
    <div className="paradox-video-grid">{videosTrilha05.map((v,i)=><article key={v.href} className="paradox-video-card">
     <a href={v.href} target="_blank" rel="noopener noreferrer" className="paradox-video-poster" aria-label={"Abrir palestra: "+v.titulo}>
-     <span>REFERÊNCIA AUDIOVISUAL {String(i+1).padStart(2,"0")}</span><strong>IDEIAS PARA <em>CONVIVER COM O INCERTO.</em></strong><span className="paradox-video-play" aria-hidden="true">↗</span>
+     <span>REFERÊNCIA AUDIOVISUAL {String(i+1).padStart(2,"0")}</span><strong>{capasVideo05[i] ?? v.titulo}</strong><span className="paradox-video-play" aria-hidden="true">↗</span>
     </a><div className="paradox-video-body"><span>{v.autoria}</span><h3>{v.titulo}</h3><p className="paradox-video-lang">{v.idioma}</p><p>{v.resumo}</p><p className="paradox-video-reflection"><strong>Para refletir:</strong> {v.pergunta}</p><a href={v.href} target="_blank" rel="noopener noreferrer">Assistir na fonte original ↗</a></div>
    </article>)}</div>
    <p className="learning-disclaimer">As palestras não são produções da Escola Atemporal. Áudio, vídeo, legendas e direitos permanecem com os respectivos titulares.</p>
