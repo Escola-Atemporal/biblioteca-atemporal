@@ -86,7 +86,15 @@ export default function ResultadosLegado(){
 
    <section className="learning-section learning-wrap" id="escola">
      <div className="learning-section-header"><div><span className="eyebrow dark">A ESCOLA ATEMPORAL</span><h2>Um repertório para <em>o que permanece.</em></h2></div><p>Seis fontes institucionais que conectam escolhas, resultados, relações, cultura e compromisso com o futuro.</p></div>
-     <div className="learning-articles">{fontesEscola06.map((a,i)=><article className="learning-article" key={a.href}>
+     <div className="school-editorial-links" aria-label="Leituras em destaque da Escola Atemporal">
+    {fontesEscola06.filter(a=>a.href.includes("/blog/")||a.href.includes("/nossa-metodologia/")).slice(0,2).map(a=><article className="school-editorial-feature" key={a.href}>
+     <span>ARTIGO OU REFERÊNCIA · ESCOLA ATEMPORAL</span>
+     <h3>{a.titulo}</h3>
+     <p>{a.resumo}</p>
+     <a href={a.href} target="_blank" rel="noopener noreferrer" aria-label={"Ler conteúdo original da Escola: "+a.titulo}>Ler no site da Escola ↗</a>
+    </article>)}
+   </div>
+   <div className="learning-articles">{fontesEscola06.map((a,i)=><article className="learning-article" key={a.href}>
        <div className="learning-article-number">{String(i+1).padStart(2,"0")}</div><div><span className="learning-source-label">{a.tipo}</span><h3>{a.titulo}</h3><p>{a.resumo}</p><p className="learning-prompt"><strong>Para refletir:</strong> {a.pergunta}</p></div>
        <a className="learning-source-link" href={a.href} target="_blank" rel="noopener noreferrer">Ler fonte ↗</a>
      </article>)}</div>
