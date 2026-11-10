@@ -2,6 +2,7 @@ import Link from "next/link";
 import type {Metadata} from "next";
 import BrandLogo from "../../components/BrandLogo";
 import CadernoLegado from "../../components/CadernoLegado";
+import RoteiroVideos from "../../components/RoteiroVideos";
 import BibliografiaEditorial from "../../components/BibliografiaEditorial";
 import {fontesEscola06,movimentos06,dimensoes06,livros06,videos06} from "../../../data/referencias-trilha-06";
 
@@ -17,6 +18,8 @@ const questoes=[
  "Quem precisa ter voz na avaliação do resultado e na definição do próximo passo?",
  "Que compromisso podemos sustentar mesmo quando a liderança mudar?",
 ];
+
+const capasVideo06 = ["METAS QUE IMPORTAM","RELAÇÕES QUE PERMANECEM","IMPACTO SOCIAL","NEGÓCIOS SUSTENTÁVEIS","PROSPERIDADE COLETIVA","SENTIDO NO TRABALHO"] as const;
 
 export default function ResultadosLegado(){
  return <main className="learning-page legacy-page referencia-trilha01" id="topo">
@@ -108,9 +111,10 @@ export default function ResultadosLegado(){
    </div></section>
 
    <section className="learning-section learning-muted legacy-videos" id="videos"><div className="learning-wrap">
-     <div className="learning-section-header"><div><span className="eyebrow dark">REFERÊNCIAS AUDIOVISUAIS</span><h2>O sucesso que medimos. <em>A vida que construímos.</em></h2></div><p>Três palestras selecionadas no TED. Todas abrem na fonte oficial; áudio, vídeo e legendas permanecem com seus criadores.</p></div>
+     <div className="learning-section-header"><div><span className="eyebrow dark">REFERÊNCIAS AUDIOVISUAIS</span><h2>O sucesso que medimos. <em>A vida que construímos.</em></h2></div><p>Seis palestras sobre metas, relações, responsabilidade socioambiental e sentido do trabalho. Os vídeos abrem no TED e convidam a reconhecer impactos que os números sozinhos não mostram.</p></div>
+   <RoteiroVideos trilha="06" total={videos06.length}/>
      <div className="legacy-video-grid">{videos06.map((v,i)=><article className="legacy-video-card" key={v.href}>
-       <a className="legacy-video-top" href={v.href} target="_blank" rel="noopener noreferrer" aria-label={"Assistir à palestra "+v.titulo}><span>TED · REFERÊNCIA {String(i+1).padStart(2,"0")}</span><strong>RESULTADO <em>TAMBÉM É IMPACTO.</em></strong><span aria-hidden="true" className="legacy-video-play">↗</span></a>
+       <a className="legacy-video-top" href={v.href} target="_blank" rel="noopener noreferrer" aria-label={"Assistir à palestra "+v.titulo}><span>TED · REFERÊNCIA {String(i+1).padStart(2,"0")}</span><strong>{capasVideo06[i] ?? v.titulo}</strong><span aria-hidden="true" className="legacy-video-play">↗</span></a>
        <div className="legacy-video-content"><span>{v.autor}</span><h3>{v.titulo}</h3><p className="legacy-video-lang">{v.idioma}</p><p>{v.resumo}</p><p className="legacy-video-question"><strong>Para refletir:</strong> {v.pergunta}</p><a href={v.href} target="_blank" rel="noopener noreferrer">Assistir no TED ↗</a></div>
      </article>)}</div>
    </div></section>
