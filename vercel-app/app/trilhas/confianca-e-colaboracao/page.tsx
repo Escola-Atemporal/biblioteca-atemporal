@@ -77,7 +77,26 @@ export default function Trilha04Page(){
    <div className="learning-practice colab-practice"><div><span className="eyebrow">EXPERIMENTO REFLEXIVO</span><h3>UMA PERGUNTA ANTES DE UMA RESPOSTA.</h3><p>Em uma próxima conversa, experimente perguntar o que ainda não foi considerado, retomar o que você ouviu e confirmar se compreendeu. Depois, combine um gesto observável e uma forma simples de acompanhar o acordo. Não force exposições pessoais; participação também exige consentimento.</p><a href="#caderno-confianca" className="colab-practice-link">Abrir o caderno reflexivo ↘</a></div></div>
    <CadernoConfianca/>
   </section>
-  <section className="learning-end colab-end"><div className="learning-wrap"><span className="eyebrow">A JORNADA CONTINUA</span><h2>A SABEDORIA <em>É COLETIVA.</em></h2><p>Quando escutamos com curiosidade e assumimos compromissos compartilhados, criamos condições para que boas ideias não precisem nascer de uma só pessoa.</p><div className="colab-end-actions"><Link className="primary light" href="/">Voltar às seis trilhas ↗</Link><Link className="outline" href="/trilhas/autoconhecimento-e-habitos">Revisitar a Trilha 03 →</Link></div></div></section>
+  <section className="learning-end colab-end" aria-labelledby="colab-end-title">
+   <div className="learning-wrap">
+    <div className="colab-end-grid">
+     <div className="colab-end-heading">
+      <span className="eyebrow">A JORNADA CONTINUA <span aria-hidden="true">/</span> 04 — 06</span>
+      <h2 id="colab-end-title">A SABEDORIA <em>É COLETIVA.</em></h2>
+      <span className="colab-end-rule" aria-hidden="true" />
+     </div>
+     <div className="colab-end-content">
+      <p>Quando escutamos com curiosidade e assumimos compromissos compartilhados, criamos condições para que boas ideias não precisem nascer de uma só pessoa.</p>
+      <p className="colab-end-question">O que podemos construir juntos a partir daqui?</p>
+      <div className="colab-end-actions">
+       <Link className="primary light" href="/">Explorar as seis trilhas <span aria-hidden="true">↗</span></Link>
+       <Link className="outline" href="/trilhas/autoconhecimento-e-habitos">Revisitar a Trilha 03 <span aria-hidden="true">→</span></Link>
+      </div>
+     </div>
+    </div>
+    <div className="colab-end-foot"><span>ESCOLA ATEMPORAL <span aria-hidden="true">/</span> BIBLIOTECA VIVA</span><span>CONFIANÇA · ESCUTA · COLABORAÇÃO</span></div>
+   </div>
+  </section>
   <footer><span>© Escola Atemporal · Biblioteca Atemporal</span><a className="learning-top-link" href="#topo">↑ Voltar ao início</a><span>Trilha 04 · Curadoria com fontes identificadas</span></footer>
  </main>;
 }
