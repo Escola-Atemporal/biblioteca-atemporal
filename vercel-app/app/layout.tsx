@@ -10,6 +10,7 @@ import "./confianca-trilha.css";
 import "./paradoxos-trilha.css";
 import "./legado-trilha.css";
 import "./bibliografia-harmonia.css";
+import "./circulo-identidade.css";
 
 export const metadata: Metadata = {
   title: "Biblioteca Atemporal | Escola Atemporal",
