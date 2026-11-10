@@ -1,0 +1,620 @@
+/* Biblioteca Atemporal | SISTEMA VISUAL REFERENCIA TRILHA 01
+   Fonte de verdade: /trilhas/principios-e-discernimento
+   A Trilha 01 NAO e alterada por este arquivo.
+   Outros 5 percursos + inicio + area de entrada usam a mesma linguagem.
+   Fundo institucional bgl/onda, tipografia Montserrat, preto,
+   branco, amarelo #ffd309 e acentos editoriais violetas/azuis/rosas.
+   Sem fotografias sintéticas e sem alterar as imagens originais.
+*/
+:root {
+  --acervo-black: #141414;
+  --acervo-panel: #1b1b1d;
+  --acervo-white: #fff;
+  --acervo-yellow: #ffd309;
+  --acervo-lavender: #d7c0f7;
+  --acervo-violet: #634995;
+  --acervo-blue: #12b4d7;
+  --acervo-pink: #c70744;
+  --acervo-green: #83b61a;
+  --acervo-soft: #e2dde4;
+}
+
+/* CAPA — mesma proporcao, fundos oficiais e linguagem da Trilha 01. */
+.biblioteca-home.referencia-trilha01 {
+  color:#f7f6f8;
+  background:var(--acervo-black);
+}
+.biblioteca-home.referencia-trilha01 .topbar {
+  background:#101010;
+  border-bottom:1px solid #3a353d;
+}
+.biblioteca-home.referencia-trilha01 .atemporal-masthead {
+  background-color:#101010;
+  background-image:var(--school-bgl);
+  background-size:cover;
+  background-position:center;
+}
+.biblioteca-home.referencia-trilha01 .atemporal-masthead:before {
+  background:linear-gradient(95deg,rgba(0,0,0,.90),rgba(0,0,0,.75));
+}
+.biblioteca-home.referencia-trilha01 .atemporal-masthead-main {
+  grid-template-columns:minmax(0,1.09fr) minmax(280px,.91fr);
+  min-height:630px;
+}
+.biblioteca-home.referencia-trilha01 .atemporal-masthead-content {
+  padding-top:clamp(76px,8vw,112px);
+}
+.biblioteca-home.referencia-trilha01 .atemporal-masthead h1 {
+  color:#fff;
+  font:700 clamp(52px,6.5vw,92px)/1.07 Montserrat,Arial,sans-serif;
+  letter-spacing:-.065em;
+  margin:32px 0 27px;
+  text-wrap:balance;
+}
+.biblioteca-home.referencia-trilha01 .atemporal-masthead h1 span {color:#ffd309}
+.biblioteca-home.referencia-trilha01 .atemporal-masthead-question {
+  color:#fff;
+  font:700 clamp(19px,2vw,26px)/1.42 Montserrat,Arial,sans-serif;
+  letter-spacing:-.03em;
+}
+.biblioteca-home.referencia-trilha01 .atemporal-masthead-description {
+  color:#e0dae4;
+  font:400 15px/1.88 Montserrat,Arial,sans-serif;
+}
+.biblioteca-home.referencia-trilha01 .atemporal-hero-actions :is(.primary,.outline) {
+  font:700 12px/1.5 Montserrat,Arial,sans-serif;
+  border-radius:3px;
+}
+.biblioteca-home.referencia-trilha01 .atemporal-hero-actions .primary {
+  background:#ffd309;
+  color:#141414;
+}
+.biblioteca-home.referencia-trilha01 .atemporal-hero-actions .outline {
+  border:1px solid #a198ad;
+  color:#fff;
+}
+.biblioteca-home.referencia-trilha01 .reference-hero-visual {
+  display:grid;
+  place-items:center;
+  padding:40px 30px;
+  background:linear-gradient(135deg,rgba(99,73,149,.14),transparent 65%);
+}
+.biblioteca-home.referencia-trilha01 .reference-hero-visual:before {
+  display:none;
+  content:none;
+}
+.biblioteca-home.referencia-trilha01 .reference-hero-panel {
+  width:min(100%,480px);
+  min-height:455px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:21px;
+  padding:clamp(25px,3.4vw,43px);
+  background:rgba(12,12,12,.78);
+  border:1px solid rgba(215,192,247,.37);
+  border-top:4px solid #ffd309;
+  position:relative;
+  z-index:1;
+}
+.biblioteca-home.referencia-trilha01 .reference-hero-eyebrow,
+.biblioteca-home.referencia-trilha01 .reference-hero-foot {
+  font:700 10px/1.75 'Roboto Mono',monospace;
+  letter-spacing:.07em;
+  color:#e3d5f4;
+}
+.biblioteca-home.referencia-trilha01 .reference-hero-number {
+  display:block;
+  font:400 clamp(100px,13vw,180px)/.72 'Bebas Neue',Impact,sans-serif;
+  letter-spacing:.01em;
+  color:#ffd309;
+  margin:18px 0 0;
+}
+.biblioteca-home.referencia-trilha01 .reference-hero-divider {
+  width:100%;
+  height:1px;
+  background:#77707d;
+}
+.biblioteca-home.referencia-trilha01 .reference-hero-panel p {
+  margin:0;
+  color:#fff;
+  font:700 clamp(19px,2vw,27px)/1.3 Montserrat,Arial,sans-serif;
+  letter-spacing:-.035em;
+}
+.biblioteca-home.referencia-trilha01 .reference-hero-panel p span {
+  color:#dfd5e9;
+  font-size:.76em;
+  letter-spacing:0;
+  font-weight:500;
+}
+.biblioteca-home.referencia-trilha01 .spectrum-strip i {background:#292929}
+.biblioteca-home.referencia-trilha01 .spectrum-strip i:first-child{background:#ffd309}
+
+/* As secoes da Home reproduzem o contraste dark/light editorial da Trilha 01. */
+.biblioteca-home.referencia-trilha01 :is(.atemporal-statement,.atemporal-sources,.atemporal-journeys,.atemporal-cta) {
+  color:#fff;
+}
+.biblioteca-home.referencia-trilha01 :is(.atemporal-statement,.atemporal-sources,.atemporal-journeys,.atemporal-cta) .eyebrow.dark {
+  color:#ffd309;
+}
+.biblioteca-home.referencia-trilha01 :is(.atemporal-statement,.atemporal-journeys,.atemporal-sources,.atemporal-cta) h2 {
+  color:#fff;
+  font:700 clamp(38px,4.7vw,67px)/1.13 Montserrat,Arial,sans-serif;
+  letter-spacing:-.055em;
+  text-wrap:balance;
+}
+.biblioteca-home.referencia-trilha01 :is(.atemporal-statement,.atemporal-journeys,.atemporal-sources,.atemporal-cta) h2 span {
+  color:#d7c0f7;
+}
+.biblioteca-home.referencia-trilha01 :is(.atemporal-statement,.atemporal-journeys,.atemporal-sources,.atemporal-cta) p {
+  color:#e0dce3;
+}
+.biblioteca-home.referencia-trilha01 .atemporal-track.track-is-live {
+  background:#fff;
+  color:#171717;
+  border:1px solid #ded8e2;
+  border-top:6px solid var(--accent);
+  border-radius:2px;
+  min-height:370px;
+}
+.biblioteca-home.referencia-trilha01 .atemporal-track.track-is-live :is(.atemporal-track-top,.atemporal-track-status,.atemporal-track-kicker) {
+  color:#5b5360;
+}
+.biblioteca-home.referencia-trilha01 .atemporal-track.track-is-live h3 {
+  color:#191719;
+  font:700 clamp(21px,2vw,27px)/1.24 Montserrat,Arial,sans-serif;
+  letter-spacing:-.04em;
+}
+.biblioteca-home.referencia-trilha01 .atemporal-track.track-is-live .atemporal-track-index {
+  opacity:.12;
+}
+.biblioteca-home.referencia-trilha01 .atemporal-track.track-is-live .atemporal-track-content>p {
+  color:#545057;
+}
+.biblioteca-home.referencia-trilha01 .atemporal-track.track-is-live .atemporal-track-foot {
+  border-top:1px solid #ddd;
+}
+.biblioteca-home.referencia-trilha01 .atemporal-track.track-is-live .atemporal-track-foot a {
+  color:#221d27;
+}
+.biblioteca-home.referencia-trilha01 .atemporal-new-track.legacy-launch {
+  background:linear-gradient(106deg,#17131e,#24202b);
+  border-left:4px solid #ffd309;
+}
+.biblioteca-home.referencia-trilha01 .atemporal-new-track.legacy-launch h3 em {color:#ffd309}
+.biblioteca-home.referencia-trilha01 .atemporal-new-track.legacy-launch p {color:#e0dce3}
+.biblioteca-home.referencia-trilha01 .atemporal-new-track.legacy-launch .primary {
+  background:#ffd309;color:#171717;border-color:#ffd309;
+}
+.biblioteca-home.referencia-trilha01 .atemporal-source-card {
+  background:#fff;
+  color:#171717;
+  border:1px solid #ddd7e2;
+  border-radius:2px;
+}
+.biblioteca-home.referencia-trilha01 .atemporal-source-card .source-card-copy :is(h3,p) {color:#242124}
+.biblioteca-home.referencia-trilha01 .atemporal-source-card .source-card-copy .eyebrow.dark {color:#634995}
+.biblioteca-home.referencia-trilha01 .atemporal-source-card .source-card-copy a {color:#3e3055}
+.biblioteca-home.referencia-trilha01 .atemporal-source-card:has(img[src*="ciclo-virtuoso"]) .source-card-figure {
+  background:#141414;
+}
+.biblioteca-home.referencia-trilha01 .atemporal-source-card img[src*="ciclo-virtuoso"] {
+  object-fit:contain;
+  padding:17px;
+  filter:none;
+}
+.biblioteca-home.referencia-trilha01 .atemporal-feature-content,
+.biblioteca-home.referencia-trilha01 .atemporal-manifesto {background:#17131d}
+.biblioteca-home.referencia-trilha01 .atemporal-feature-content :is(h2,p) {color:#fff}
+.biblioteca-home.referencia-trilha01 .atemporal-feature-content h2 span,
+.biblioteca-home.referencia-trilha01 .atemporal-manifesto h2 span {color:#ffd309}
+.biblioteca-home.referencia-trilha01 .atemporal-manifesto h2 {
+  font:700 clamp(38px,4vw,60px)/1.15 Montserrat,Arial,sans-serif;
+  letter-spacing:-.05em;
+}
+.biblioteca-home.referencia-trilha01 .atemporal-cta .primary {background:#ffd309;color:#171717}
+.biblioteca-home.referencia-trilha01 .atemporal-cta h2 span {color:#d7c0f7}
+
+/* TRILHAS 02 A 06 — replicar leitura e composicao da Trilha 01. */
+.learning-page.referencia-trilha01 {
+  background:#141414;
+  color:#f5f2f6;
+}
+.learning-page.referencia-trilha01 .learning-hero,
+.learning-page.referencia-trilha01 .learning-hero:is(.emotion-hero,.habit-hero,.colab-hero,.paradox-hero,.legacy-hero) {
+  background-color:#080808;
+  background-image:var(--school-bgl);
+  background-size:cover;
+  background-position:center;
+  color:#fff;
+}
+.learning-page.referencia-trilha01 .learning-hero:before {
+  background:linear-gradient(95deg,rgba(0,0,0,.87),rgba(0,0,0,.74) 60%,rgba(0,0,0,.56));
+}
+.learning-page.referencia-trilha01 .learning-hero .learning-wrap {
+  display:grid;
+  grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
+  column-gap:clamp(25px,3vw,45px);
+  align-items:center;
+}
+.learning-page.referencia-trilha01 .learning-hero .learning-hero-copy {
+  min-width:0;
+}
+.learning-page.referencia-trilha01 .learning-hero h1 {
+  color:#fff;
+  font:700 clamp(48px,5.7vw,84px)/1.07 Montserrat,Arial,sans-serif;
+  letter-spacing:-.068em;
+  text-wrap:balance;
+}
+.learning-page.referencia-trilha01 .learning-hero h1 em {
+  color:#ffd309;
+  font-style:normal;
+}
+.learning-page.referencia-trilha01 .learning-hero .learning-lead {
+  color:#fff;
+  font:650 clamp(18px,1.8vw,23px)/1.5 Montserrat,Arial,sans-serif;
+}
+.learning-page.referencia-trilha01 .learning-hero .learning-intro {
+  color:#ded9e1;
+  font:400 15px/1.85 Montserrat,Arial,sans-serif;
+}
+.learning-page.referencia-trilha01 .learning-hero .eyebrow {color:#ffd309}
+.learning-page.referencia-trilha01 .learning-hero :is(.learning-hero-picture,.legacy-hero-figure) {
+  border:1px solid #5c4b67;
+  border-radius:2px;
+  min-width:0;
+  overflow:hidden;
+}
+.learning-page.referencia-trilha01 .learning-hero :is(.learning-hero-picture,.legacy-hero-figure) img {
+  filter:none;
+  object-fit:contain;
+  object-position:center;
+  width:100%;
+}
+.learning-page.referencia-trilha01 .learning-hero .learning-hero-picture:before {
+  display:none;
+}
+.learning-page.referencia-trilha01 .learning-hero .learning-facts {
+  grid-column:1/-1;
+  border-color:#544b5c;
+  color:#eee8ef;
+}
+.learning-page.referencia-trilha01 .learning-hero :is(.primary,.outline) {
+  border-radius:3px;
+  font:700 12px/1.5 Montserrat,Arial,sans-serif;
+}
+.learning-page.referencia-trilha01 .learning-hero .primary {background:#ffd309;color:#171717}
+.learning-page.referencia-trilha01 .learning-hero .outline {
+  color:#fff;
+  border:1px solid #b6aebc;
+}
+.learning-page.referencia-trilha01 .learning-nav {
+  background:#171717;
+  border-top:1px solid #3e3743;
+  border-bottom:1px solid #3e3743;
+}
+.learning-page.referencia-trilha01 .learning-nav .learning-wrap {
+  display:flex;
+  overflow-x:auto;
+  white-space:nowrap;
+  flex-wrap:nowrap;
+  gap:clamp(18px,2.7vw,33px);
+  scrollbar-width:thin;
+}
+.learning-page.referencia-trilha01 .learning-nav a {
+  color:#e4dde8;
+  font:700 12px/1.5 Montserrat,Arial,sans-serif;
+  padding:20px 0;
+}
+.learning-page.referencia-trilha01 .learning-nav a:hover,
+.learning-page.referencia-trilha01 .learning-nav a:focus-visible {color:#ffd309}
+.learning-page.referencia-trilha01 .learning-section.learning-wrap {background:transparent}
+.learning-page.referencia-trilha01 .learning-section.learning-muted {
+  background-color:#141414;
+  background-image:linear-gradient(110deg,rgba(0,0,0,.9),rgba(19,14,24,.88)),var(--school-wave);
+  background-size:cover,cover;
+  background-position:center,center;
+}
+.learning-page.referencia-trilha01 .learning-section.learning-books,
+.learning-page.referencia-trilha01 .learning-section.learning-books:is(.colab-books,.paradox-books,.legacy-books) {
+  background-color:#101010;
+  background-image:linear-gradient(105deg,rgba(0,0,0,.91),rgba(14,12,19,.91)),var(--school-background);
+  background-size:cover,cover;
+  background-position:center,center;
+}
+.learning-page.referencia-trilha01 .learning-section .learning-section-header h2,
+.learning-page.referencia-trilha01 .learning-section .learning-two-col h2,
+.learning-page.referencia-trilha01 #investigacao h2 {
+  color:#fff;
+  font:700 clamp(37px,3.85vw,59px)/1.12 Montserrat,Arial,sans-serif;
+  letter-spacing:-.057em;
+  text-wrap:balance;
+}
+.learning-page.referencia-trilha01 .learning-section .learning-section-header h2 em,
+.learning-page.referencia-trilha01 .learning-section .learning-two-col h2 em,
+.learning-page.referencia-trilha01 #investigacao h2 em {
+  color:#ffd309;
+  font-style:normal;
+}
+.learning-page.referencia-trilha01 .learning-section .learning-section-header > p,
+.learning-page.referencia-trilha01 .reading-copy p {
+  color:#ddd7e1;
+  font:400 15px/1.88 Montserrat,Arial,sans-serif;
+}
+.learning-page.referencia-trilha01 .reading-copy strong {color:#fff}
+.learning-page.referencia-trilha01 .learning-section .eyebrow.dark {color:#ffd309}
+.learning-page.referencia-trilha01 .reading-copy .source-note {
+  color:#ccc4d0;
+  border-color:#564a5c;
+  font-size:12px;
+}
+.learning-page.referencia-trilha01 .reading-copy .source-note a {color:#ffd309}
+.learning-page.referencia-trilha01 .learning-quote {
+  background:#efeaf5;
+  border-left:4px solid #ffd309;
+  color:#231d27;
+  border-radius:2px;
+}
+.learning-page.referencia-trilha01 .learning-quote span {color:#634995}
+.learning-page.referencia-trilha01 .learning-quote p {color:#1c1920}
+
+/* Movimento: o mesmo card claro e a mesma sequencia cromatica da Trilha 01. */
+.learning-page.referencia-trilha01 .learning-steps article,
+.learning-page.referencia-trilha01 .learning-steps article:nth-child(n) {
+  background:#fff;
+  color:#171717;
+  border:1px solid #ded8e0;
+  border-top:4px solid #634995;
+  border-radius:2px;
+  min-width:0;
+}
+.learning-page.referencia-trilha01 .learning-steps article:nth-child(2) {border-top-color:#12b4d7}
+.learning-page.referencia-trilha01 .learning-steps article:nth-child(3) {border-top-color:#c70744}
+.learning-page.referencia-trilha01 .learning-steps article:nth-child(4) {border-top-color:#83b61a}
+.learning-page.referencia-trilha01 .learning-steps article h3 {
+  color:#201c22;
+  font:700 clamp(19px,1.7vw,24px)/1.35 Montserrat,Arial,sans-serif;
+}
+.learning-page.referencia-trilha01 .learning-steps article p {
+  color:#53505a;
+  font:400 13px/1.77 Montserrat,Arial,sans-serif;
+}
+.learning-page.referencia-trilha01 .learning-steps article :is(.colab-step-question,.paradox-step-question,.legacy-step-question) {
+  border-top:1px solid #ddd6e1;
+  color:#32283b;
+  font-weight:700;
+}
+
+/* Artigos: lista editorial clara sobre o fundo institucional escuro. */
+.learning-page.referencia-trilha01 .learning-articles,
+.learning-page.referencia-trilha01 .learning-article {border-color:#574b60}
+.learning-page.referencia-trilha01 .learning-article h3 {color:#fff}
+.learning-page.referencia-trilha01 .learning-article :is(.learning-source-label,.learning-article-number) {color:#d7c0f7}
+.learning-page.referencia-trilha01 .learning-article p:not(.learning-prompt) {color:#d5ccd9}
+.learning-page.referencia-trilha01 .learning-article .learning-prompt {
+  background:#efeaf5;
+  color:#342b40;
+  border-left:3px solid #ffd309;
+}
+.learning-page.referencia-trilha01 .learning-article .learning-prompt strong {color:#634995}
+.learning-page.referencia-trilha01 .learning-article .learning-source-link {
+  color:#ffd309;
+  border-bottom:1px solid #ffd309;
+}
+.learning-page.referencia-trilha01 .school-editorial-feature {
+  background:#221a2b;
+  border:1px solid #584c65;
+  border-left:4px solid #ffd309;
+  color:#fff;
+  border-radius:2px;
+}
+.learning-page.referencia-trilha01 .school-editorial-feature h3 {color:#fff}
+.learning-page.referencia-trilha01 .school-editorial-feature p {color:#ddd6e2}
+
+/* Bibliografia: fundo oscuro + fichas claras, barras de leitura individuais. */
+.learning-page.referencia-trilha01 :is(.biblioteca-padronizada .book-reference-card,.colab-book,.paradox-book-card,.legacy-book) {
+  background:#fff;
+  color:#171717;
+  border:1px solid #ded9e2;
+  border-top:4px solid #ffd309;
+  border-radius:2px;
+}
+.learning-page.referencia-trilha01 .biblioteca-padronizada .book-reference-cover.tone-graphite {
+  background:linear-gradient(160deg,#352345,#1b1521);
+}
+.learning-page.referencia-trilha01 .biblioteca-padronizada .book-reference-cover.tone-yellow {
+  background:linear-gradient(160deg,#17445a,#17151f);
+}
+.learning-page.referencia-trilha01 .biblioteca-padronizada .book-reference-cover.tone-charcoal {
+  background:linear-gradient(160deg,#551b39,#1b1420);
+}
+.learning-page.referencia-trilha01 .biblioteca-padronizada .book-reference-cover.tone-deep {
+  background:linear-gradient(160deg,#28482e,#17151f);
+}
+.learning-page.referencia-trilha01 .biblioteca-padronizada .book-reference-cover strong {color:#fff}
+.learning-page.referencia-trilha01 .biblioteca-padronizada .book-cover-index {color:#fff;opacity:.22}
+.learning-page.referencia-trilha01 .biblioteca-padronizada .book-reference-info h4 {color:#171717}
+.learning-page.referencia-trilha01 .biblioteca-padronizada .book-reference-guide {
+  background:#f4eef8;
+  border-left:3px solid #c70744;
+  color:#33273b;
+}
+.learning-page.referencia-trilha01 .biblioteca-padronizada .book-reference-actions .book-download {
+  background:#ffd309;
+  color:#171717;
+  border-radius:2px;
+}
+.learning-page.referencia-trilha01 .biblioteca-padronizada .book-reference-actions .book-source {color:#4b385c}
+.learning-page.referencia-trilha01 .colab-books-intro,
+.learning-page.referencia-trilha01 .paradox-books-intro,
+.learning-page.referencia-trilha01 .legacy-books-lead {
+  background:linear-gradient(115deg,#17121e,#30243f);
+  border:1px solid #5c496b;
+}
+.learning-page.referencia-trilha01 .learning-disclaimer {color:#ccc4d0}
+
+/* Videos: repetir a estrutura cards brancos da Trilha 01. */
+.learning-page.referencia-trilha01 :is(.learning-video,.paradox-video-card,.legacy-video-card) {
+  background:#fff;
+  color:#171717;
+  border:1px solid #ded8e1;
+  border-radius:2px;
+}
+.learning-page.referencia-trilha01 :is(.learning-video-body,.paradox-video-body,.legacy-video-content) h3 {color:#171717}
+.learning-page.referencia-trilha01 :is(.learning-video-body,.paradox-video-body,.legacy-video-content) p {color:#55505b}
+.learning-page.referencia-trilha01 :is(.paradox-video-poster,.legacy-video-top) {
+  background:linear-gradient(125deg,#21182a,#141414);
+}
+.learning-page.referencia-trilha01 :is(.paradox-video-poster,.legacy-video-top) strong em {color:#ffd309}
+.learning-page.referencia-trilha01 :is(.paradox-video-poster,.legacy-video-top):after {display:none}
+.learning-page.referencia-trilha01 :is(.paradox-video-body,.legacy-video-content) a {color:#50346d}
+
+/* Secoes de encerramento no mesmo sistema do fechamento da Trilha 01. */
+.learning-page.referencia-trilha01 .learning-end,
+.learning-page.referencia-trilha01 .learning-end:is(.colab-end,.paradox-end,.legacy-end) {
+  background-color:#141414;
+  background-image:linear-gradient(110deg,rgba(0,0,0,.93),rgba(21,16,27,.9)),var(--school-wave);
+  background-size:cover,cover;
+  color:#fff;
+}
+.learning-page.referencia-trilha01 .learning-end h2 {
+  color:#fff;
+  font:700 clamp(43px,4.8vw,72px)/1.12 Montserrat,Arial,sans-serif;
+  letter-spacing:-.055em;
+}
+.learning-page.referencia-trilha01 .learning-end h2 em {color:#ffd309}
+.learning-page.referencia-trilha01 .learning-end p {
+  color:#e2dce5;
+  font:400 15px/1.85 Montserrat,Arial,sans-serif;
+}
+.learning-page.referencia-trilha01 .learning-end .eyebrow {color:#ffd309}
+.learning-page.referencia-trilha01 .learning-end .primary.light {
+  background:#ffd309;
+  color:#171717;
+  border-color:#ffd309;
+  border-radius:3px;
+}
+.learning-page.referencia-trilha01 .learning-end .outline {
+  background:transparent;
+  color:#fff;
+  border:1px solid #b5aebc;
+  border-radius:3px;
+}
+.learning-page.referencia-trilha01 footer {background:#080808;border-color:#4a3d4e}
+
+/* Paineis pessoais (escrita) mantem a folha clara e textos escuros. */
+.learning-page.referencia-trilha01 :is(.colab-workbook,.paradox-journal,.legacy-journal) {
+  color:#1c1a1e;
+  background:#f7f5f9;
+  border-top:4px solid #ffd309;
+}
+.learning-page.referencia-trilha01 :is(.colab-workbook,.paradox-journal,.legacy-journal) :is(textarea,input,select) {
+  color:#1c1a1e;
+  background:#fff;
+  border-color:#bbb5bf;
+}
+.learning-page.referencia-trilha01 :is(.colab-workbook,.paradox-journal,.legacy-journal) :is(textarea,input,select):focus-visible {
+  outline:3px solid #634995;
+  outline-offset:2px;
+}
+
+/* Entrada e painel seguem o mesmo esquema sem alterar autenticao. */
+.login-shell {
+  background:#141414 var(--school-wave) center/cover no-repeat;
+}
+.login-panel {
+  background:#fff;
+  color:#1d1b20;
+  border-top:5px solid #ffd309;
+}
+.login-panel h1 {color:#191719}
+.login-panel h1 em {color:#634995}
+.login-panel>p,.login-panel small {color:#57505c}
+.login-panel .eyebrow.dark {color:#634995}
+.login-panel .notice {
+  background:#f2edf7;
+  color:#30273a;
+  border-left:3px solid #ffd309;
+}
+.login-panel .primary {background:#ffd309;color:#171717}
+.login-panel .back,.login-panel .text-button {color:#4c365f}
+.dashboard {
+  color:#f5f3f6;
+}
+.dashboard h1{color:#fff}
+.dashboard h1 em{color:#d7c0f7}
+.dashboard>p{color:#ded7e1}
+.dashboard-card{background:#fff;color:#171717;border:1px solid #ded8e2;border-top:4px solid #ffd309}
+.dashboard-card h2{color:#1b1b1b}
+.dashboard-card p{color:#53505a}
+.dashboard-card a,.dashboard-card strong{color:#50346d}
+
+/* Mobile: evitar colunas comprimidas, sobreposicoes e texto pequeno. */
+@media(max-width:950px){
+  .biblioteca-home.referencia-trilha01 .atemporal-masthead-main {
+    grid-template-columns:minmax(0,1fr) minmax(0,.8fr);
+    min-height:580px;
+  }
+  .biblioteca-home.referencia-trilha01 .atemporal-masthead h1{
+    font-size:clamp(47px,6vw,72px);
+  }
+  .learning-page.referencia-trilha01 .learning-hero h1{
+    font-size:clamp(44px,6vw,65px);
+  }
+}
+@media(max-width:760px){
+  .biblioteca-home.referencia-trilha01 .atemporal-masthead-main {
+    display:block;
+    min-height:auto;
+  }
+  .biblioteca-home.referencia-trilha01 .atemporal-masthead-content{
+    padding:72px 24px 30px;
+  }
+  .biblioteca-home.referencia-trilha01 .atemporal-masthead h1{
+    font-size:clamp(43px,10vw,62px);
+  }
+  .biblioteca-home.referencia-trilha01 .reference-hero-visual{
+    padding:18px 24px 45px;
+  }
+  .biblioteca-home.referencia-trilha01 .reference-hero-panel{
+    min-height:285px;
+    max-width:520px;
+  }
+  .biblioteca-home.referencia-trilha01 .reference-hero-number{
+    font-size:110px;
+  }
+  .learning-page.referencia-trilha01 .learning-hero .learning-wrap {
+    grid-template-columns:1fr;
+    row-gap:22px;
+  }
+  .learning-page.referencia-trilha01 .learning-hero h1{
+    font-size:clamp(42px,9vw,61px);
+  }
+  .learning-page.referencia-trilha01 .learning-hero :is(.learning-hero-picture,.legacy-hero-figure){
+    height:290px;
+    min-height:290px;
+  }
+  .learning-page.referencia-trilha01 .learning-steps article h3{
+    font-size:20px;
+  }
+}
+@media(max-width:540px){
+  .learning-page.referencia-trilha01 .learning-hero h1 {
+    font-size:clamp(40px,10vw,53px);
+  }
+  .learning-page.referencia-trilha01 .learning-section .learning-section-header h2,
+  .learning-page.referencia-trilha01 #investigacao h2{
+    font-size:clamp(32px,8vw,44px);
+  }
+  .learning-page.referencia-trilha01 .learning-hero .learning-hero-links {
+    flex-direction:column;
+    align-items:stretch;
+  }
+  .learning-page.referencia-trilha01 .learning-hero .learning-hero-links a{
+    width:100%;
+    justify-content:center;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .biblioteca-home.referencia-trilha01 .atemporal-track {transition:none}
+}
