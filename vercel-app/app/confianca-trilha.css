@@ -1,0 +1,80 @@
+/* Trilha 04: escuta, pertencimento e colaboração. Apenas seletores .colab-. */
+.learning-page.colab-page{--editorial-accent:#ffd309;--editorial-rule:rgba(255,211,9,.3)}
+.colab-page .colab-hero{background:#141414 url('https://escolaatemporal.com.br/wp-content/uploads/2023/03/bgl.png') center/cover no-repeat}
+.colab-page .colab-hero .learning-wrap{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(24px,3vw,42px);align-items:center}
+.colab-page .colab-hero .learning-hero-copy{min-width:0}
+.colab-page .colab-hero .learning-crumb{margin-bottom:clamp(28px,4vw,55px)}
+.colab-page .colab-hero h1{font-size:clamp(57px,6.8vw,95px);max-width:720px;overflow-wrap:normal}
+.colab-page .colab-hero h1 em{color:#ffd309}
+.colab-page .colab-hero .learning-hero-links{margin-bottom:26px}
+.colab-page .colab-hero-picture{height:clamp(330px,42vw,530px);min-height:330px;border:1px solid rgba(255,211,9,.3);background:#202020;align-self:center}
+.colab-page .colab-hero-picture:before{display:none}
+.colab-page .colab-hero-picture img{object-fit:cover;object-position:center}
+.colab-page .colab-hero-picture-label{right:0;bottom:0;font:700 11px/1.5 'Roboto Mono',monospace}
+.colab-page .colab-hero .learning-facts{grid-column:1/-1;margin-top:10px}
+.colab-page .learning-quote{border-left-color:#ffd309}
+.colab-page .colab-steps article{border-top:3px solid #ffd309}
+.colab-page .colab-steps h3{margin-top:18px}
+.colab-page .colab-step-question{padding-top:13px;border-top:1px solid #e7e2d6;font-weight:700;color:#292329}
+.colab-page .colab-lenses{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.colab-page .colab-lenses article{padding:clamp(22px,3vw,36px);background:#181818;color:#fff;min-width:0}
+.colab-page .colab-lenses article>span{font:700 10px 'Roboto Mono',monospace;color:#ffd309}
+.colab-page .colab-lenses h3{font:400 clamp(33px,4vw,47px) 'Bebas Neue',Impact,sans-serif;margin:24px 0 13px;color:#fff}
+.colab-page .colab-lenses p{color:#d5d1d8;font:400 13px/1.85 Montserrat,Arial,sans-serif}
+.colab-page .colab-lenses strong{display:block;border-top:1px solid #ffffff30;margin-top:25px;padding-top:15px;font:700 13px/1.7 Montserrat,Arial,sans-serif;color:#ffe68c}
+.colab-page .colab-books{background:#f7f5f2}
+.colab-page .colab-books-intro{background:linear-gradient(115deg,#181818,#322d21);color:white}
+.colab-page .colab-books-intro em{color:#ffd309;font-style:normal}
+.colab-page .colab-reading-route{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:25px 0 35px}
+.colab-page .colab-reading-route article{padding:23px;background:#fff;border:1px solid #dedad0;min-width:0}
+.colab-page .colab-reading-route article>span{font:700 11px 'Roboto Mono',monospace;color:#7c6640}
+.colab-page .colab-reading-route h3{font:400 27px/1.15 'Bebas Neue',Impact,sans-serif;margin:18px 0 8px;color:#171717}
+.colab-page .colab-reading-route p,.colab-page .colab-reading-route a{font:400 12px/1.8 Montserrat,Arial,sans-serif}
+.colab-page .colab-reading-route a{font-weight:700;color:#5f498b}
+.colab-page .colab-book-list{border-top:1px solid #d8d3c9}
+.colab-page .colab-book{display:grid;grid-template-columns:45px minmax(0,1fr) auto;align-items:center;gap:clamp(14px,2.4vw,30px);padding:26px 5px;border-bottom:1px solid #d8d3c9;scroll-margin-top:90px}
+.colab-page .colab-book-num{font:700 13px 'Roboto Mono',monospace;color:#92764d;align-self:start}
+.colab-page .colab-book h3{margin:8px 0;font:600 clamp(19px,2.2vw,25px)/1.3 Montserrat,Arial,sans-serif}
+.colab-page .colab-book p{margin:8px 0;font:400 13px/1.75 Montserrat,Arial,sans-serif;color:#5d5a57}
+.colab-page .colab-book-author{font-weight:600!important}
+.colab-page .colab-book small{display:block;color:#625e59;font-size:11px;line-height:1.6}
+.colab-page .colab-book>a{font:700 12px/1.5 Montserrat,Arial,sans-serif;color:#58437d;text-decoration:underline;text-underline-offset:4px;white-space:nowrap}
+.colab-page .colab-videos{grid-template-columns:repeat(3,minmax(0,1fr))}
+.colab-page .colab-video-cover{display:block}
+.colab-page .colab-video-cover .learning-video-icon{position:relative;min-height:175px;aspect-ratio:16/9;overflow:hidden;background:#202020}
+.colab-page .colab-video-cover img{width:100%;height:100%;object-fit:cover}
+.colab-page .colab-video-play{position:absolute;inset:auto auto 15px 15px;background:#ffd309;color:#161616;display:grid;place-items:center;width:43px;height:43px;border-radius:50%;font-size:15px}
+.colab-page .colab-video-title{font:400 48px 'Bebas Neue',Impact,sans-serif;color:#fff;text-align:center}
+.colab-page .colab-video-title small{display:block;font:700 10px 'Roboto Mono',monospace;color:#ffd309}
+.colab-page .colab-videos .learning-video-body{padding:22px}
+.colab-page .colab-videos .learning-video-body h3{font-size:20px}
+.colab-page .colab-videos .learning-video-body p{font-size:12px}
+.colab-page .colab-practice{display:block;background:#181818}
+.colab-page .colab-practice .eyebrow{color:#ffd309}
+.colab-page .colab-practice h3{color:#fff}
+.colab-page .colab-practice-link{display:inline-block;color:#ffd309;margin-top:14px;font-weight:700}
+.colab-page .colab-workbook{margin-top:clamp(40px,5vw,74px);padding:clamp(22px,4vw,45px);background:#f6f3e9;border:1px solid #ded7bd}
+.colab-page .colab-workbook-top{display:flex;justify-content:space-between;align-items:start;gap:25px}
+.colab-page .colab-workbook-top h2{max-width:790px;color:#181818}
+.colab-page .colab-workbook-top>div>p{font:400 14px/1.85 Montserrat,Arial,sans-serif;max-width:680px}
+.colab-page .colab-workbook-counter{font:400 46px 'Bebas Neue',Impact,sans-serif;color:#1d1d1d;white-space:nowrap}
+.colab-page .colab-workbook-counter small{display:block;font:700 9px 'Roboto Mono',monospace;color:#70664c}
+.colab-page .colab-workbook-privacy{padding:18px 22px;border-left:3px solid #d5af43;background:#fff;color:#4f4a40;font:400 12px/1.8 Montserrat,Arial,sans-serif}
+.colab-page .colab-workbook-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:25px 0}
+.colab-page .colab-workbook-field{padding:22px;background:#fff;border:1px solid #e7e0d3;min-width:0}
+.colab-page .colab-workbook-field>span{font:700 10px 'Roboto Mono',monospace;color:#806729}
+.colab-page .colab-workbook-field label{display:block;margin:14px 0;font:700 15px/1.5 Montserrat,Arial,sans-serif}
+.colab-page .colab-workbook-field p{font:400 12px/1.65 Montserrat,Arial,sans-serif;color:#666;margin:0 0 12px}
+.colab-page .colab-workbook-field textarea{display:block;width:100%;resize:vertical;border:1px solid #cdc7bc;background:#fff;padding:13px;color:#181818;font:400 13px/1.6 Montserrat,Arial,sans-serif}
+.colab-page .colab-workbook-field textarea:focus-visible{outline:3px solid #ffd309;outline-offset:2px}
+.colab-page .colab-workbook-actions{display:flex;align-items:center;flex-wrap:wrap;gap:14px}
+.colab-page .colab-workbook-actions button{border:0;background:#151515;color:#fff;padding:13px 19px;cursor:pointer;font-weight:700}
+.colab-page .colab-workbook-actions .colab-workbook-clear{color:#252525;background:transparent;border:1px solid #bbb4a8}
+.colab-page .colab-workbook-actions [role=status]{font-size:12px;color:#544b35}
+.colab-page .colab-end{background:#f8edc3}
+.colab-page .colab-end h2 em{color:#a1792b}
+.colab-page .colab-end-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.colab-page .colab-end-actions .outline{padding:15px 18px;color:#181818;border:1px solid #999}
+@media(max-width:1000px){.colab-page .colab-hero .learning-wrap{grid-template-columns:minmax(0,1fr) minmax(0,.78fr)}.colab-page .colab-hero h1{font-size:clamp(53px,7vw,74px)}.colab-page .colab-videos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:800px){.colab-page .colab-hero .learning-wrap{grid-template-columns:1fr}.colab-page .colab-hero-picture{height:320px;min-height:320px;width:100%}.colab-page .colab-hero h1{font-size:clamp(55px,10vw,75px)}.colab-page .colab-lenses,.colab-page .colab-reading-route{grid-template-columns:1fr}.colab-page .colab-book{grid-template-columns:35px minmax(0,1fr)}.colab-page .colab-book>a{grid-column:2;justify-self:start}.colab-page .colab-videos{grid-template-columns:1fr}.colab-page .colab-workbook-fields{grid-template-columns:1fr}}
+@media(max-width:520px){.colab-page .colab-hero h1{font-size:clamp(50px,13vw,64px)}.colab-page .colab-workbook-top{display:block}.colab-page .colab-workbook-counter{display:block;margin-bottom:15px}.colab-page .colab-hero-picture{height:260px;min-height:260px}.colab-page .colab-hero .learning-hero-links{margin-bottom:12px}}
