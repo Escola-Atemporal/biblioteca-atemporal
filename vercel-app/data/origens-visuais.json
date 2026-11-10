@@ -1,0 +1,142 @@
+{
+  "revisadoEm": "2026-11-10",
+  "regra": "Todas as fotografias, ilustrações e texturas editoriais da Biblioteca devem ter origem identificável no acervo público oficial escolaatemporal.com.br. Não usar IA para gerar fotos, fotos inventadas, bancos genéricos, avatares fictícios ou arquivos visuais sem fonte registrada. As prévias de vídeos podem ser miniaturas reais do canal original, desde que o vídeo correspondente esteja citado. Atualizar este catálogo após verificar a fonte antes de acrescentar qualquer imagem.",
+  "fontesVerificadas": [
+    "https://escolaatemporal.com.br/",
+    "https://escolaatemporal.com.br/hub-de-desenvolvimento-humano/principios-norteadores/",
+    "https://escolaatemporal.com.br/hub-de-desenvolvimento-humano/emocoes-em-jogo-lp/",
+    "https://escolaatemporal.com.br/hub-de-desenvolvimento-humano/nossa-metodologia/",
+    "https://escolaatemporal.com.br/blog/consciencia-emocional-lideranca-gatilhos-decisoes/",
+    "https://escolaatemporal.com.br/blog/principios-lideranca-preco-coerencia/"
+  ],
+  "imagens": [
+    {
+      "url": "https://escolaatemporal.com.br/wp-content/uploads/2026/08/hor-e1787682735563.png",
+      "tipo": "logo",
+      "fonte": "https://escolaatemporal.com.br/",
+      "observacao": "Logo horizontal oficial da Escola Atemporal."
+    },
+    {
+      "url": "https://escolaatemporal.com.br/wp-content/uploads/2026/08/hor-e1787682735563-300x101.png",
+      "tipo": "logo responsiva",
+      "fonte": "https://escolaatemporal.com.br/",
+      "observacao": "Variante responsiva do mesmo arquivo original da logo."
+    },
+    {
+      "url": "https://escolaatemporal.com.br/wp-content/uploads/2026/08/hor-e1787682735563-768x258.png",
+      "tipo": "logo responsiva",
+      "fonte": "https://escolaatemporal.com.br/",
+      "observacao": "Variante responsiva do mesmo arquivo original da logo."
+    },
+    {
+      "url": "https://escolaatemporal.com.br/wp-content/uploads/2025/03/cropped-Screenshot_12-2-32x32.png",
+      "tipo": "ícone",
+      "fonte": "https://escolaatemporal.com.br/",
+      "observacao": "Favicon institucional."
+    },
+    {
+      "url": "https://escolaatemporal.com.br/wp-content/uploads/2025/03/cropped-Screenshot_12-2-192x192.png",
+      "tipo": "ícone",
+      "fonte": "https://escolaatemporal.com.br/",
+      "observacao": "Favicon institucional."
+    },
+    {
+      "url": "https://escolaatemporal.com.br/wp-content/uploads/2025/03/cropped-Screenshot_12-2-180x180.png",
+      "tipo": "ícone",
+      "fonte": "https://escolaatemporal.com.br/",
+      "observacao": "Ícone institucional para dispositivos Apple."
+    },
+    {
+      "url": "https://escolaatemporal.com.br/wp-content/uploads/2026/04/Conceitual-Homem-Atemporal-2.png",
+      "tipo": "arte institucional",
+      "fonte": "https://escolaatemporal.com.br/hub-de-desenvolvimento-humano/principios-norteadores/",
+      "observacao": "Arte conceitual da página Princípios Norteadores."
+    },
+    {
+      "url": "https://escolaatemporal.com.br/wp-content/uploads/2026/08/2150040143.jpg",
+      "tipo": "fotografia publicada pela Escola",
+      "fonte": "https://escolaatemporal.com.br/hub-de-desenvolvimento-humano/principios-norteadores/",
+      "observacao": "Imagem exibida na página Princípios Norteadores."
+    },
+    {
+      "url": "https://escolaatemporal.com.br/wp-content/uploads/2026/08/2150526023.jpg",
+      "tipo": "fotografia publicada pela Escola",
+      "fonte": "https://escolaatemporal.com.br/hub-de-desenvolvimento-humano/principios-norteadores/",
+      "observacao": "Imagem exibida na página Princípios Norteadores."
+    },
+    {
+      "url": "https://escolaatemporal.com.br/wp-content/uploads/2026/09/ciclo-virtuoso.png",
+      "tipo": "diagrama",
+      "fonte": "https://escolaatemporal.com.br/",
+      "observacao": "Diagrama institucional do ciclo virtuoso."
+    },
+    {
+      "url": "https://escolaatemporal.com.br/wp-content/uploads/2026/10/Principios-na-lideranca-etica-confianca-e-coerencia-nas-decisoes.png",
+      "tipo": "capa editorial institucional",
+      "fonte": "https://escolaatemporal.com.br/blog/principios-lideranca-preco-coerencia/",
+      "observacao": "Arte da publicação O preço da coerência."
+    },
+    {
+      "url": "https://escolaatemporal.com.br/wp-content/uploads/2026/07/hero.png",
+      "tipo": "arte institucional",
+      "fonte": "https://escolaatemporal.com.br/hub-de-desenvolvimento-humano/emocoes-em-jogo-lp/",
+      "observacao": "Imagem principal da página Emoções em Jogo."
+    },
+    {
+      "url": "https://escolaatemporal.com.br/wp-content/uploads/2026/07/hero-300x258.png",
+      "tipo": "arte responsiva",
+      "fonte": "https://escolaatemporal.com.br/hub-de-desenvolvimento-humano/emocoes-em-jogo-lp/",
+      "observacao": "Variante responsiva da mesma imagem principal."
+    },
+    {
+      "url": "https://escolaatemporal.com.br/wp-content/uploads/2026/07/hero-768x661.png",
+      "tipo": "arte responsiva",
+      "fonte": "https://escolaatemporal.com.br/hub-de-desenvolvimento-humano/emocoes-em-jogo-lp/",
+      "observacao": "Variante responsiva da mesma imagem principal."
+    },
+    {
+      "url": "https://escolaatemporal.com.br/wp-content/uploads/2026/07/emocao-e-informacao.png",
+      "tipo": "arte institucional",
+      "fonte": "https://escolaatemporal.com.br/hub-de-desenvolvimento-humano/emocoes-em-jogo-lp/",
+      "observacao": "Arte da página Emoções em Jogo."
+    },
+    {
+      "url": "https://escolaatemporal.com.br/wp-content/uploads/2026/08/DSC9619-1024x681.jpg",
+      "tipo": "fotografia institucional",
+      "fonte": "https://escolaatemporal.com.br/hub-de-desenvolvimento-humano/emocoes-em-jogo-lp/",
+      "observacao": "Imagem fotográfica publicada na página Emoções em Jogo."
+    },
+    {
+      "url": "https://escolaatemporal.com.br/wp-content/uploads/2026/08/DSC9502-1024x681.jpg",
+      "tipo": "fotografia institucional",
+      "fonte": "https://escolaatemporal.com.br/hub-de-desenvolvimento-humano/emocoes-em-jogo-lp/",
+      "observacao": "Imagem fotográfica publicada na página Emoções em Jogo."
+    },
+    {
+      "url": "https://escolaatemporal.com.br/wp-content/uploads/2026/11/Consciencia-emocional-na-lideranca.png",
+      "tipo": "capa editorial institucional",
+      "fonte": "https://escolaatemporal.com.br/blog/consciencia-emocional-lideranca-gatilhos-decisoes/",
+      "observacao": "Arte da publicação sobre consciência emocional."
+    },
+    {
+      "url": "https://escolaatemporal.com.br/wp-content/uploads/2023/03/bgl.png",
+      "tipo": "textura de identidade visual",
+      "fonte": "https://escolaatemporal.com.br/",
+      "observacao": "Textura hospedada na biblioteca de mídia da Escola, utilizada nos fundos editoriais da Biblioteca."
+    },
+    {
+      "url": "https://escolaatemporal.com.br/wp-content/uploads/2026/08/onda.png",
+      "tipo": "textura de identidade visual",
+      "fonte": "https://escolaatemporal.com.br/",
+      "observacao": "Textura hospedada na biblioteca de mídia da Escola, utilizada nos fundos editoriais da Biblioteca."
+    },
+    {
+      "url": "https://escolaatemporal.com.br/wp-content/uploads/2026/08/bg-escola-2.png",
+      "tipo": "fundo institucional",
+      "fonte": "https://escolaatemporal.com.br/hub-de-desenvolvimento-humano/nossa-metodologia/",
+      "observacao": "Fundo hospedado na biblioteca de mídia da Escola, utilizado no tema da Biblioteca."
+    }
+  ],
+  "excecaoMiniaturas": "Apenas miniaturas originais de vídeos efetivamente vinculados na curadoria: https://img.youtube.com/vi/{id}/hqdefault.jpg. Não tratar como fotografia institucional nem como imagem criada pela Escola.",
+  "cuidados": "Fotos e materiais mantêm os direitos de seus titulares. Referenciar o arquivo oficial não concede licença para redistribuição, alteração ou uso publicitário fora do contexto autorizado."
+}
