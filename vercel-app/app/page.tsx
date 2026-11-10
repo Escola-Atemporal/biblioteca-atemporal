@@ -46,7 +46,7 @@ const schoolArticles = [
 
 export default function HomePage() {
   return (
-    <main className="biblioteca-home">
+    <main className="biblioteca-home circulo-inspired">
       <a className="skip-to-content" href="#trilhas">Ir para as trilhas</a>
       <header className="topbar">
         <BrandLogo />
@@ -62,7 +62,7 @@ export default function HomePage() {
         <div className="atemporal-masthead-main">
           <div className="atemporal-masthead-content">
             <div className="atemporal-overline"><span className="square-dot" aria-hidden="true" /> ESCOLA ATEMPORAL <span className="overline-divider">/</span> ACERVO EXPERIENCIALISTA</div>
-            <h1 id="home-title">O QUE <span>PERMANECE</span> NOS TRANSFORMA.</h1>
+            <h1 id="home-title">O que <span>permanece</span> nos transforma.</h1>
             <p className="atemporal-masthead-question">O que nos orienta quando tudo muda?</p>
             <p className="atemporal-masthead-description">Conhecimento que ganha sentido na experiência. Um espaço vivo para encontrar ideias, ampliar perspectivas e colocar princípios em movimento.</p>
             <div className="atemporal-hero-actions">
@@ -87,7 +87,7 @@ export default function HomePage() {
         <div className="atemporal-container statement-grid">
           <div className="statement-heading">
             <span className="eyebrow dark">POR QUE EXISTE</span>
-            <h2>NÃO É APENAS SOBRE <span>APRENDER.</span> É SOBRE O QUE FAZEMOS COM ISSO.</h2>
+            <h2>Não é apenas sobre <span>aprender.</span> É sobre o que fazemos com isso.</h2>
           </div>
           <div className="statement-copy">
             <p>Na Escola Atemporal, o conhecimento não termina na leitura. Ele encontra significado nas conversas, nas decisões e nos hábitos que transformam a maneira como vivemos e colaboramos.</p>
@@ -98,7 +98,7 @@ export default function HomePage() {
       <section className="atemporal-journeys" id="trilhas">
         <div className="atemporal-container">
           <div className="atemporal-section-heading">
-            <div><span className="eyebrow dark">PERCURSOS DE INVESTIGAÇÃO · 01 — 06</span><h2>SEIS TRILHAS.<br/><span>MÚLTIPLAS PERSPECTIVAS.</span></h2></div>
+            <div><span className="eyebrow dark">PERCURSOS DE INVESTIGAÇÃO · 01 — 06</span><h2>Seis trilhas.<br/><span>Múltiplas perspectivas.</span></h2></div>
             <p>Temas que se conectam e se desdobram em textos, vídeos, referências e perguntas para a vida real. As seis trilhas já estão disponíveis para exploração.</p>
           </div>
           <div className="atemporal-tracks">
@@ -138,7 +138,7 @@ export default function HomePage() {
         </div>
         <div className="atemporal-feature-content">
           <span className="eyebrow">EXPERIÊNCIA EM DESTAQUE</span>
-          <h2>O ESSENCIAL <span>PERMANECE.</span></h2>
+          <h2>O essencial <span>permanece.</span></h2>
           <p className="feature-lead">Princípios e Discernimento</p>
           <p>Em tempos de pressão e mudanças, o desafio não é apenas chegar ao resultado. É reconhecer quais valores precisam atravessar nossas decisões.</p>
           <div className="atemporal-feature-data"><span>08 LEITURAS DA ESCOLA</span><span>17 LIVROS E MATERIAIS</span><span>03 VÍDEOS</span><span>01 CADERNO INTERATIVO</span></div>
@@ -149,7 +149,7 @@ export default function HomePage() {
       <section className="atemporal-sources" id="fontes">
         <div className="atemporal-container">
           <div className="atemporal-section-heading">
-            <div><span className="eyebrow dark">CONTEÚDOS DA NOSSA ESCOLA</span><h2>IDEIAS QUE <span>CONTINUAM.</span></h2></div>
+            <div><span className="eyebrow dark">CONTEÚDOS DA NOSSA ESCOLA</span><h2>Ideias que <span>continuam.</span></h2></div>
             <p>A Biblioteca se constrói a partir de reflexões e materiais já publicados pela Escola Atemporal, sempre apontando para as fontes originais.</p>
           </div>
           <div className="atemporal-source-grid">
@@ -167,7 +167,7 @@ export default function HomePage() {
       <section className="atemporal-manifesto">
         <div className="atemporal-container">
           <span className="eyebrow">A FILOSOFIA QUE NOS MOVE</span>
-          <h2>PROFUNDIDADE <span>COM SIMPLICIDADE.</span></h2>
+          <h2>Profundidade <span>com simplicidade.</span></h2>
           <div className="atemporal-values">
             <div><span>01</span><h3>O ESSENCIAL PERMANECE</h3><p>Reconhecer o que não pode se perder, mesmo quando o contexto exige mudança.</p></div>
             <div><span>02</span><h3>A SABEDORIA É COLETIVA</h3><p>Ampliar o repertório pela escuta e pelo encontro entre perspectivas.</p></div>
@@ -179,7 +179,7 @@ export default function HomePage() {
 
       <section className="atemporal-cta">
         <div className="atemporal-container atemporal-cta-inner">
-          <div><span className="eyebrow dark">UM ESPAÇO PARA CONTINUAR</span><h2>SEU PERCURSO <span>CONTINUA AQUI.</span></h2><p>A Biblioteca pública já pode ser explorada. A área reservada dos experiencialistas será disponibilizada após a conclusão do controle de acesso.</p></div>
+          <div><span className="eyebrow dark">UM ESPAÇO PARA CONTINUAR</span><h2>Seu percurso <span>continua aqui.</span></h2><p>A Biblioteca pública já pode ser explorada. A área reservada dos experiencialistas será disponibilizada após a conclusão do controle de acesso.</p></div>
           <Link href="/entrar" className="primary">Conhecer a área de acesso <span aria-hidden="true">↗</span></Link>
         </div>
       </section>
