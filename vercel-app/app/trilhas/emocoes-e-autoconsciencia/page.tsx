@@ -115,6 +115,33 @@ export default function Trilha02Page() {
             <a href="https://escolaatemporal.com.br/hub-de-desenvolvimento-humano/emocoes-em-jogo-lp/" target="_blank" rel="noopener noreferrer">Conhecer Emoções em Jogo na Escola ↗</a>
           </div>
         </div>
+        <div className="emotion-official-photos" aria-labelledby="fotos-escola-titulo">
+          <div className="emotion-official-photos-intro">
+            <div>
+              <span className="eyebrow dark">IMAGENS DO ACERVO INSTITUCIONAL</span>
+              <h3 id="fotos-escola-titulo">A ESCOLA ATEMPORAL <em>EM IMAGENS.</em></h3>
+            </div>
+            <p>Estes registros fotográficos aparecem na página oficial <strong>Emoções em Jogo</strong>, da Escola Atemporal. Aqui preservamos os arquivos originais publicados pela instituição, sem gerar ou substituir fotografias.</p>
+          </div>
+          <div className="emotion-official-photos-grid">
+            <figure>
+              <img
+                src="https://escolaatemporal.com.br/wp-content/uploads/2026/08/DSC9619-1024x681.jpg"
+                alt="Registro fotográfico institucional publicado pela Escola Atemporal na página Emoções em Jogo"
+                width="1024" height="681" loading="lazy" decoding="async"
+              />
+              <figcaption>Fotografia do acervo da Escola Atemporal · Fonte: <a href="https://escolaatemporal.com.br/hub-de-desenvolvimento-humano/emocoes-em-jogo-lp/" target="_blank" rel="noopener noreferrer">Emoções em Jogo ↗</a></figcaption>
+            </figure>
+            <figure>
+              <img
+                src="https://escolaatemporal.com.br/wp-content/uploads/2026/08/DSC9502-1024x681.jpg"
+                alt="Segundo registro fotográfico institucional publicado pela Escola Atemporal na página Emoções em Jogo"
+                width="1024" height="681" loading="lazy" decoding="async"
+              />
+              <figcaption>Fotografia do acervo da Escola Atemporal · Fonte: <a href="https://escolaatemporal.com.br/hub-de-desenvolvimento-humano/emocoes-em-jogo-lp/" target="_blank" rel="noopener noreferrer">Emoções em Jogo ↗</a></figcaption>
+            </figure>
+          </div>
+        </div>
         <div className="learning-quote">
           <span>PERGUNTA QUE ATRAVESSA A TRILHA</span>
           <p>Se minha primeira interpretação não for a única possível, o que posso escolher fazer diferente?</p>
