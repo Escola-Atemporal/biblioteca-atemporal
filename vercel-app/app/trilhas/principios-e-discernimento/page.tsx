@@ -97,6 +97,10 @@ const videos = [
     href: "https://www.youtube.com/watch?v=2vfuWjQ8Ztk",
     image: "https://img.youtube.com/vi/2vfuWjQ8Ztk/hqdefault.jpg",
   },
+  {"title":"How to make hard choices","creator":"Ruth Chang · TEDSalon NY2014","topic":"Discernimento e decisões difíceis · inglês","observation":"A filósofa investiga decisões em que duas alternativas apresentam valores diferentes, sem uma resposta numérica capaz de resolver a escolha.","question":"Quando as alternativas parecem equivalentes, que compromisso ajuda a decidir quem queremos ser?","href":"https://www.ted.com/talks/ruth_chang_how_to_make_hard_choices","image":null},
+  {"title":"The art of choosing","creator":"Sheena Iyengar · TEDGlobal 2010","topic":"Autonomia, contexto e escolhas · inglês","observation":"A pesquisadora mostra como cultura, expectativas e contexto influenciam a experiência de escolher, inclusive quando acreditamos agir de maneira inteiramente livre.","question":"Que pressuposto cultural pode estar limitando as alternativas que consideramos?","href":"https://www.ted.com/talks/sheena_iyengar_the_art_of_choosing","image":null},
+  {"title":"Why we make bad decisions","creator":"Daniel Gilbert · TEDGlobal 2005","topic":"Vieses e julgamento · inglês","observation":"A palestra explora limites de previsão e avaliação em decisões cotidianas; ajuda a confrontar a confiança excessiva no próprio julgamento.","question":"Que informação ou ponto de vista poderia corrigir uma avaliação apressada?","href":"https://www.ted.com/talks/dan_gilbert_why_we_make_bad_decisions","image":null},
+
 ];
 
 const etapas = [
