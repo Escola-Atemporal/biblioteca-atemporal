@@ -82,7 +82,8 @@
 .habit-page .habit-school-images {
   display:grid;
   grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
-  margin:60px 0;
+  align-items:center;
+  margin:clamp(32px,4.6vw,56px) 0;
   border:1px solid #68404b;
   background:radial-gradient(circle at 100% 0%,#3a1524,transparent 50%),#21141b;
   overflow:hidden;
@@ -90,16 +91,19 @@
 .habit-page .habit-school-images figure {
   display:flex;
   flex-direction:column;
+  align-self:center;
+  height:auto;
   margin:0;
   padding:0;
   min-width:0;
   background:#1b1518;
 }
 .habit-page .habit-school-images figure img {
+  display:block;
   width:100%;
   height:auto;
-  min-height:280px;
-  max-height:520px;
+  min-height:0;
+  max-height:none;
   object-fit:contain;
   background:#141414;
 }
@@ -125,21 +129,22 @@
   align-items:center;
 }
 .habit-page .habit-school-images-copy {
-  padding:clamp(28px,4vw,55px);
+  padding:clamp(24px,2.9vw,39px);
   display:flex;
   flex-direction:column;
   justify-content:center;
 }
 .habit-page .habit-school-images-copy .eyebrow {color:#ffd309}
 .habit-page .habit-school-images-copy h3 {
-  font:400 clamp(44px,4.5vw,70px)/1.02 'Bebas Neue',Impact,sans-serif;
+  font:400 clamp(42px,4vw,59px)/1.03 'Bebas Neue',Impact,sans-serif;
   color:#fff;
-  margin:19px 0 24px;
+  margin:14px 0 17px;
 }
 .habit-page .habit-school-images-copy h3 em {color:#ffbbd0;font-style:normal}
 .habit-page .habit-school-images-copy p {
-  font:400 13px/1.9 Montserrat,Arial,sans-serif;
+  font:400 13px/1.78 Montserrat,Arial,sans-serif;
   color:#e1d6dc;
+  margin:0;
 }
 .habit-page .habit-school-images-copy .habit-image-source {
   font:400 11px/1.7 Montserrat,Arial,sans-serif;
@@ -494,8 +499,12 @@
  .habit-page .habit-hero h1{font-size:clamp(58px,6.4vw,85px)}
  .habit-page .habit-steps article{min-height:390px}
 }
+@media(max-width:1050px){
+ .habit-page .habit-school-images{grid-template-columns:1fr;align-items:start}
+ .habit-page .habit-school-images figure{width:100%}
+ .habit-page .habit-school-images figure img{max-height:490px}
+}
 @media(max-width:900px){
- .habit-page .habit-school-images{grid-template-columns:1fr}
  .habit-page .habit-school-images figure img{max-height:440px}
  .habit-page .habit-lenses{grid-template-columns:1fr}
  .habit-page .habit-lenses article{min-height:auto}
