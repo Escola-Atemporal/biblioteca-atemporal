@@ -702,3 +702,78 @@
     justify-content:space-between;
   }
 }
+
+
+/* Refinamento Trilha 02: legibilidade e navegacao em dispositivos moveis.
+   O card amarelo original contrastava apenas 3.80:1 com texto branco; esta
+   variante escurecida mantem a identidade cromatica e supera 7:1. */
+.emotion-page .book-reference-cover.tone-yellow {
+  --book-accent:#75500d;
+}
+.emotion-page .book-reference-author span {
+  color:#5d5d5d;
+}
+.emotion-page .book-reference-rights {
+  color:#59535d;
+}
+.emotion-page .book-reference-taxonomy span:last-child {
+  color:#454545;
+}
+.emotion-page .learning-book-controls input::placeholder {
+  color:#55505b;
+  opacity:1;
+}
+.emotion-page .learning-book-controls select:focus-visible,
+.emotion-page .learning-book-controls input:focus-visible,
+.emotion-page .emotion-selector select:focus-visible {
+  outline:3px solid #0a7490;
+  outline-offset:3px;
+}
+.emotion-page .emotion-nav-hint {
+  display:none;
+}
+.emotion-page .learning-article a.learning-source-link:focus-visible,
+.emotion-page .emotion-video-cover:focus-visible,
+.emotion-page .learning-hero-links a:focus-visible {
+  outline:3px solid #ffd309;
+  outline-offset:4px;
+}
+.emotion-page .emotion-hero-picture img {
+  object-position:center;
+}
+@media(max-width:700px){
+  .emotion-page .emotion-nav-hint {
+    display:block;
+    padding:0 22px 9px;
+    font:700 10px/1.35 'Roboto Mono',monospace;
+    letter-spacing:.025em;
+    text-align:right;
+    color:#9de7f5;
+  }
+  .emotion-page .learning-nav .learning-wrap {
+    scroll-snap-type:x proximity;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:thin;
+  }
+  .emotion-page .learning-nav .learning-wrap a {
+    scroll-snap-align:start;
+    min-height:45px;
+  }
+  .emotion-page .learning-hero-picture-label {
+    right:5px;
+    bottom:5px;
+    font-size:10px;
+  }
+}
+@media(max-width:420px){
+  .emotion-page .emotion-hero h1 {
+    font-size:clamp(46px,11.3vw,57px);
+    overflow-wrap:normal;
+    word-break:normal;
+    hyphens:manual;
+  }
+  .emotion-page .emotion-lenses-caption {
+    font-size:12px;
+    line-height:1.85;
+  }
+}
