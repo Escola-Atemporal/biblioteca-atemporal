@@ -33,8 +33,8 @@ export default function Trilha05Page(){
      <div className="learning-hero-links"><a className="primary" href="#investigacao">Iniciar percurso <span aria-hidden="true">↗</span></a><a className="outline" href="#leituras">Livros e referências <span aria-hidden="true">↓</span></a></div>
     </div>
     <div className="learning-hero-picture paradox-hero-picture">
-     <img src="https://escolaatemporal.com.br/wp-content/uploads/2026/08/2150526023.jpg" width="1000" height="800" loading="eager" decoding="async" fetchPriority="high" alt="Fotografia publicada pela Escola Atemporal na página Princípios Norteadores" />
-     <a href="https://escolaatemporal.com.br/hub-de-desenvolvimento-humano/principios-norteadores/" target="_blank" rel="noopener noreferrer" className="paradox-photo-source">FONTE VISUAL · ESCOLA ATEMPORAL ↗</a>
+     <img src="https://escolaatemporal.com.br/wp-content/uploads/2026/10/Principios-na-lideranca-etica-confianca-e-coerencia-nas-decisoes.png" width="1200" height="800" loading="eager" decoding="async" fetchPriority="high" alt="Arte editorial oficial da Escola Atemporal para o artigo sobre princípios, ética e coerência nas decisões" />
+     <a href="https://escolaatemporal.com.br/blog/principios-lideranca-preco-coerencia/" target="_blank" rel="noopener noreferrer" className="paradox-photo-source">ARTE ORIGINAL · ESCOLA ATEMPORAL ↗</a>
     </div>
     <div className="learning-facts"><span>{artigosTrilha05.length} fontes da Escola</span><span>{obrasTrilha05.length} leituras abertas</span><span>{videosTrilha05.length} palestras</span><span>05 tensões</span><span>01 caderno reflexivo</span></div>
    </div>
