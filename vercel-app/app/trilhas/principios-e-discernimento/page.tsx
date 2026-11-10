@@ -1,5 +1,6 @@
 import { livrosTrilha01, referenciasComplementaresTrilha01 } from "../../../data/referencias-trilha-01";
 import BibliografiaTrilha01 from "../../components/BibliografiaTrilha01";
+import RoteiroVideos from "../../components/RoteiroVideos";
 import CadernoDiscernimento from "../../components/CadernoDiscernimento";
 import BrandLogo from "../../components/BrandLogo";
 import Link from "next/link";
@@ -238,9 +239,10 @@ export default function Trilha01Page() {
 
       <section id="videos" className="learning-section learning-muted">
         <div className="learning-wrap">
-          <div className="learning-section-header"><div><span className="eyebrow dark">REPERTÓRIOS EM DIÁLOGO</span><h2>Vídeos para <em>ampliar a lente.</em></h2></div><p>Um episódio do Podcast Liderança Atemporal e duas referências externas. Os links levam aos vídeos originais de seus canais; nenhum vídeo é republicado aqui.</p></div>
-          <div className="learning-videos">{videos.map(v=><article className="learning-video" key={v.href}><div className="learning-video-icon"><img src={v.image} alt="" loading="lazy" /><span className="learning-video-play" aria-hidden="true"><span>▶</span></span></div><div className="learning-video-body"><span>{v.creator}</span><h3>{v.title}</h3><p className="learning-video-theme">{v.topic}</p><p>{v.observation}</p><p className="learning-prompt"><strong>Pergunta-guia:</strong> {v.question}</p><a href={v.href} target="_blank" rel="noopener noreferrer">Assistir no YouTube ↗</a></div></article>)}</div>
-          <p className="learning-disclaimer">O episódio com Bruno Stuchi foi divulgado oficialmente pela Escola Atemporal com link para o YouTube. Outros cortes do podcast mencionados nos artigos da Escola não foram incorporados sem um endereço público autorizado e identificado. Nenhum vídeo é baixado ou republicado nesta Biblioteca.</p>
+          <div className="learning-section-header"><div><span className="eyebrow dark">REPERTÓRIOS EM DIÁLOGO</span><h2>Vídeos para <em>ampliar a lente.</em></h2></div><p>Um episódio da Escola e cinco palestras externas para examinar escolhas, critérios e julgamento. Abra a fonte original e registre uma pergunta que deseja levar à prática.</p></div>
+          <RoteiroVideos trilha="01" total={videos.length}/>
+          <div className="learning-videos">{videos.map(v=><article className="learning-video" key={v.href}><a href={v.href} className="curated-video-cover" target="_blank" rel="noopener noreferrer" aria-label={"Assistir na fonte original: "+v.title}><div className="learning-video-icon">{v.image?<img src={v.image} alt="" loading="lazy" width="480" height="360"/>:<div className="video-curadoria-placeholder"><span>TED · REFERÊNCIA AUDIOVISUAL</span><strong>{v.title}</strong></div>}<span className="learning-video-play" aria-hidden="true"><span>▶</span></span></div></a><div className="learning-video-body"><span>{v.creator}</span><h3>{v.title}</h3><p className="learning-video-theme">{v.topic}</p><p>{v.observation}</p><p className="learning-prompt"><strong>Pergunta-guia:</strong> {v.question}</p><a href={v.href} target="_blank" rel="noopener noreferrer">Assistir na fonte original ↗</a></div></article>)}</div>
+          <p className="learning-disclaimer">Os vídeos permanecem nos canais e páginas dos respectivos criadores. O episódio com Bruno Stuchi foi divulgado pela Escola Atemporal; as demais palestras são referências externas. A Biblioteca não hospeda ou republica as gravações.</p>
         </div>
       </section>
 
