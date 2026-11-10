@@ -22,7 +22,7 @@ const lentes=[
   {numero:"03",titulo:"Colaboração",pergunta:"O que só conseguimos construir juntos?",texto:"Colaboração não é apenas dividir tarefas: é construir sentido, combinar responsabilidades, lidar com diferenças e aprender no percurso."},
 ];
 export default function Trilha04Page(){
- return <main className="learning-page colab-page circulo-inspired" id="topo">
+ return <main className="learning-page colab-page referencia-trilha01" id="topo">
   <a className="skip-to-content" href="#investigacao">Ir para a investigação</a>
   <header className="topbar"><BrandLogo/><nav aria-label="Navegação principal"><Link href="/">Todas as trilhas</Link><Link href="/entrar" className="nav-login">Área de acesso ↗</Link></nav></header>
   <section className="learning-hero colab-hero" aria-labelledby="titulo-trilha-04"><div className="learning-wrap">
