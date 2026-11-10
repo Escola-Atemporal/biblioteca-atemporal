@@ -116,7 +116,7 @@ const perguntas = [
 
 export default function Trilha01Page() {
   return (
-    <main className="learning-page" id="topo">
+    <main className="learning-page circulo-inspired" id="topo">
       <a className="skip-to-content" href="#investigacao">Ir para o conteúdo da trilha</a>
       <header className="topbar">
         <BrandLogo />
