@@ -54,7 +54,7 @@
 .colab-page .colab-practice h3{color:#fff}
 .colab-page .colab-practice-link{display:inline-block;color:#ffd309;margin-top:14px;font-weight:700}
 .colab-page .colab-workbook{margin-top:clamp(40px,5vw,74px);padding:clamp(22px,4vw,45px);background:#f6f3e9;border:1px solid #ded7bd}
-.colab-page .colab-workbook-top{display:flex;justify-content:space-between;align-items:start;gap:25px}
+.colab-page .colab-workbook-top{display:flex;justify-content:space-between;align-items:flex-start;gap:25px}
 .colab-page .colab-workbook-top h2{max-width:790px;color:#181818}
 .colab-page .colab-workbook-top>div>p{font:400 14px/1.85 Montserrat,Arial,sans-serif;max-width:680px}
 .colab-page .colab-workbook-counter{font:400 46px 'Bebas Neue',Impact,sans-serif;color:#1d1d1d;white-space:nowrap}
@@ -244,4 +244,272 @@
   .learning-page.colab-page .colab-end h2{font-size:clamp(56px,14vw,72px)}
   .learning-page.colab-page .colab-end-actions a{width:100%}
   .colab-page .colab-end-foot{gap:4px}
+}
+
+/* CADERNO TRILHA 04 — leitura, contraste e ritmo editorial.
+ * Estilos isolados para evitar efeitos nas trilhas 01, 02 e 03. */
+.learning-page.colab-page .colab-workbook{
+  color:#181619;
+  background:#f7f5f0;
+  border:1px solid #dcd6c9;
+  border-top:4px solid #ffd309;
+  padding:clamp(24px,3.8vw,48px);
+  margin-top:clamp(42px,5vw,72px);
+  scroll-margin-top:90px;
+}
+.learning-page.colab-page .colab-workbook-top{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 134px;
+  align-items:start;
+  gap:clamp(20px,3vw,44px);
+  margin-bottom:25px;
+}
+.learning-page.colab-page .colab-workbook-intro{min-width:0}
+.learning-page.colab-page .colab-workbook-intro > .eyebrow{
+  font:700 11px/1.5 'Roboto Mono',monospace;
+  color:#7a5510;
+  letter-spacing:.12em;
+  margin:0 0 16px;
+}
+.learning-page.colab-page .colab-workbook-intro h2{
+  max-width:940px;
+  margin:0 0 13px;
+  color:#171717;
+  font:400 clamp(39px,4.1vw,57px)/1.09 'Bebas Neue',Impact,sans-serif;
+  letter-spacing:0;
+  text-wrap:balance;
+}
+.learning-page.colab-page .colab-workbook-intro h2 em{
+  font-style:normal;
+  color:#60438f;
+}
+.learning-page.colab-page .colab-workbook-intro > p{
+  margin:0;
+  max-width:690px;
+  color:#4d4850;
+  font:400 14px/1.78 Montserrat,Arial,sans-serif;
+}
+.learning-page.colab-page .colab-workbook-progress{
+  background:#fff;
+  border:1px solid #ddd7d0;
+  border-left:3px solid #ffd309;
+  padding:17px 16px 14px;
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  align-self:start;
+  min-width:0;
+}
+.learning-page.colab-page .colab-workbook-counter{
+  display:flex;
+  align-items:baseline;
+  gap:3px;
+  color:#171717;
+  font:400 35px/1 'Bebas Neue',Impact,sans-serif;
+  margin:0;
+}
+.learning-page.colab-page .colab-workbook-counter strong{
+  font-weight:400;
+  font-size:44px;
+}
+.learning-page.colab-page .colab-workbook-counter span{color:#6b6469;font-size:30px}
+.learning-page.colab-page .colab-workbook-progress-label{
+  color:#60565e;
+  font:700 10px/1.4 'Roboto Mono',monospace;
+  letter-spacing:.055em;
+  margin:6px 0 13px;
+}
+.learning-page.colab-page .colab-workbook-progress-track{
+  height:5px;
+  width:100%;
+  background:#e9e5e0;
+  overflow:hidden;
+}
+.learning-page.colab-page .colab-workbook-progress-track > span{
+  display:block;
+  height:100%;
+  background:#60438f;
+  transition:width .2s ease;
+}
+.learning-page.colab-page .colab-workbook-privacy{
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+  padding:17px 19px;
+  margin:0 0 24px;
+  border:1px solid #e2dccc;
+  border-left:3px solid #b68f2e;
+  background:#fff;
+  color:#474149;
+}
+.learning-page.colab-page .colab-workbook-privacy-symbol{
+  display:grid;
+  place-items:center;
+  width:25px;
+  height:25px;
+  min-width:25px;
+  background:#f8efd2;
+  color:#6c5018;
+  border-radius:50%;
+  font:700 14px/1 'Roboto Mono',monospace;
+}
+.learning-page.colab-page .colab-workbook-privacy p{
+  margin:0;
+  color:#49454a;
+  font:400 12px/1.78 Montserrat,Arial,sans-serif;
+}
+.learning-page.colab-page .colab-workbook-privacy strong{color:#1d1a1e;font-weight:750}
+.learning-page.colab-page .colab-workbook-fields{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:15px;
+  margin:0;
+}
+.learning-page.colab-page .colab-workbook-field{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  padding:clamp(20px,2.15vw,29px);
+  background:#fff;
+  border:1px solid #dad5ce;
+  border-top:3px solid #d9d0e6;
+  transition:border-color .15s ease,box-shadow .15s ease;
+}
+.learning-page.colab-page .colab-workbook-field:focus-within{
+  border-color:#b8a1d2;
+  border-top-color:#60438f;
+  box-shadow:0 0 0 2px rgba(96,67,143,.11);
+}
+.learning-page.colab-page .colab-workbook-field-done{border-top-color:#8773a6}
+.learning-page.colab-page .colab-workbook-field-meta{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:16px;
+}
+.learning-page.colab-page .colab-workbook-field-meta span{
+  color:#735621;
+  font:700 10px/1.5 'Roboto Mono',monospace;
+  letter-spacing:.06em;
+}
+.learning-page.colab-page .colab-workbook-field-meta span:last-child{
+  color:#756d76;
+  letter-spacing:.03em;
+  font-size:9px;
+}
+.learning-page.colab-page .colab-workbook-field-done .colab-workbook-field-meta span:last-child{color:#4e357f}
+.learning-page.colab-page .colab-workbook-field label{
+  display:block;
+  margin:0 0 11px;
+  color:#211c23;
+  font:700 clamp(15px,1.28vw,18px)/1.5 Montserrat,Arial,sans-serif;
+  letter-spacing:-.01em;
+}
+.learning-page.colab-page .colab-workbook-field > p{
+  margin:0 0 18px;
+  color:#5e5760;
+  font:400 12px/1.75 Montserrat,Arial,sans-serif;
+}
+.learning-page.colab-page .colab-workbook-field textarea{
+  display:block;
+  box-sizing:border-box;
+  width:100%;
+  min-height:118px;
+  margin-top:auto;
+  padding:15px 16px;
+  border:1px solid #c9c2be;
+  background:#fcfbf9;
+  color:#1f1d20;
+  border-radius:2px;
+  resize:vertical;
+  font:400 13px/1.7 Montserrat,Arial,sans-serif;
+}
+.learning-page.colab-page .colab-workbook-field textarea::placeholder{color:#706a6d;opacity:1}
+.learning-page.colab-page .colab-workbook-field textarea:hover{border-color:#877393}
+.learning-page.colab-page .colab-workbook-field textarea:focus-visible{
+  outline:3px solid rgba(96,67,143,.35);
+  outline-offset:2px;
+  background:#fff;
+  border-color:#60438f;
+}
+.learning-page.colab-page .colab-workbook-field:last-child{
+  grid-column:1/-1;
+}
+.learning-page.colab-page .colab-workbook-field:last-child textarea{min-height:115px}
+.learning-page.colab-page .colab-workbook-actions{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  align-items:center;
+  gap:14px 24px;
+  border-top:1px solid #dcd5c9;
+  margin-top:27px;
+  padding-top:23px;
+}
+.learning-page.colab-page .colab-workbook-actions-copy{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+  min-width:0;
+}
+.learning-page.colab-page .colab-workbook-actions-copy strong{
+  color:#221e23;
+  font:700 13px/1.45 Montserrat,Arial,sans-serif;
+}
+.learning-page.colab-page .colab-workbook-actions-copy > span{
+  color:#68616a;
+  font:400 11px/1.7 Montserrat,Arial,sans-serif;
+}
+.learning-page.colab-page .colab-workbook-buttons{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  flex-wrap:wrap;
+  gap:11px;
+}
+.learning-page.colab-page .colab-workbook-buttons button{
+  min-height:46px;
+  padding:12px 17px;
+  border:1px solid #171717;
+  background:#171717;
+  color:#fff;
+  cursor:pointer;
+  font:700 11px/1.5 'Roboto Mono',monospace;
+}
+.learning-page.colab-page .colab-workbook-buttons button:hover{background:#60438f;border-color:#60438f}
+.learning-page.colab-page .colab-workbook-buttons button.colab-workbook-clear{
+  background:transparent;
+  color:#302b32;
+  border:1px solid #b2a8ac;
+}
+.learning-page.colab-page .colab-workbook-buttons button.colab-workbook-clear:hover{
+  background:#eee7ed;
+  border-color:#60438f;
+}
+.learning-page.colab-page .colab-workbook-buttons button:focus-visible{
+  outline:3px solid #60438f;outline-offset:3px;
+}
+.learning-page.colab-page .colab-workbook-message{
+  grid-column:1/-1;
+  color:#48404c;
+  font:600 12px/1.6 Montserrat,Arial,sans-serif;
+}
+.learning-page.colab-page .colab-workbook-message:empty{display:none}
+@media(max-width:800px){
+  .learning-page.colab-page .colab-workbook-top{grid-template-columns:minmax(0,1fr) 112px;gap:16px}
+  .learning-page.colab-page .colab-workbook-actions{grid-template-columns:1fr}
+  .learning-page.colab-page .colab-workbook-buttons{justify-content:flex-start}
+}
+@media(max-width:620px){
+  .learning-page.colab-page .colab-workbook-top{grid-template-columns:1fr;gap:18px}
+  .learning-page.colab-page .colab-workbook-progress{width:min(180px,100%)}
+  .learning-page.colab-page .colab-workbook-fields{grid-template-columns:1fr}
+  .learning-page.colab-page .colab-workbook-field:last-child{grid-column:auto}
+  .learning-page.colab-page .colab-workbook-buttons{display:grid;grid-template-columns:1fr}
+  .learning-page.colab-page .colab-workbook-buttons button{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+  .learning-page.colab-page .colab-workbook-progress-track > span,
+  .learning-page.colab-page .colab-workbook-field{transition:none}
 }
