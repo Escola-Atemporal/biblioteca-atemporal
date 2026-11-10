@@ -51,7 +51,7 @@ export default function Trilha02Page() {
           <div className="learning-hero-copy">
             <div className="learning-crumb"><Link href="/">Biblioteca</Link><span>/</span> Trilha 02</div>
             <span className="eyebrow">JORNADA DE INVESTIGAÇÃO · 02 / 06</span>
-            <h1 id="titulo-trilha-02">Emoções e <em>Autoconsciência.</em></h1>
+            <h1 id="titulo-trilha-02">Emoções e <em>Auto<wbr />consciência.</em></h1>
             <p className="learning-lead">O que acontece em você antes de decidir?</p>
             <p className="learning-intro">Uma pausa pode mudar uma conversa. Esta trilha convida a observar emoções, reconhecer gatilhos e ampliar o espaço entre a reação automática e as escolhas que construímos com outras pessoas.</p>
             <div className="learning-hero-links">
@@ -60,7 +60,13 @@ export default function Trilha02Page() {
             </div>
           </div>
           <div className="learning-hero-picture emotion-hero-picture">
-            <img src="https://escolaatemporal.com.br/wp-content/uploads/2026/07/hero.png" alt="Arte conceitual publicada pela Escola Atemporal na experiência Emoções em Jogo" width="850" height="800" fetchPriority="high" loading="eager" decoding="async" />
+            <img
+              src="https://escolaatemporal.com.br/wp-content/uploads/2026/07/hero.png"
+              srcSet="https://escolaatemporal.com.br/wp-content/uploads/2026/07/hero-300x258.png 300w, https://escolaatemporal.com.br/wp-content/uploads/2026/07/hero-768x661.png 768w, https://escolaatemporal.com.br/wp-content/uploads/2026/07/hero.png 922w"
+              sizes="(max-width: 700px) 90vw, (max-width: 1200px) 44vw, 520px"
+              alt="Arte conceitual publicada pela Escola Atemporal na experiência Emoções em Jogo"
+              width="922" height="793" fetchPriority="high" loading="eager" decoding="async"
+            />
             <span className="learning-hero-picture-label">ANTES DE AGIR, PERCEBA.</span>
           </div>
           <div className="learning-facts">
@@ -84,6 +90,7 @@ export default function Trilha02Page() {
           <a href="#pratica">Prática</a>
           <a href="#caderno-emocoes">Caderno</a>
         </div>
+        <span className="emotion-nav-hint" aria-hidden="true">Deslize para explorar as seções →</span>
       </nav>
 
       <section className="learning-section learning-wrap" id="investigacao">
