@@ -32,8 +32,8 @@ function Livro({ livro, ordem }: { livro: LeituraTrilha02; ordem: number }) {
         <p className="book-reference-question"><strong>Para refletir:</strong> {livro.pergunta}</p>
         <p className="book-reference-access">{livro.acesso}</p>
         <div className="book-reference-actions">
-          {livro.urlDownload && <a className="book-download" href={livro.urlDownload} target="_blank" rel="noopener noreferrer">Abrir / baixar PDF <span aria-hidden="true">↗</span></a>}
-          <a className="book-source" href={livro.urlFonte} target="_blank" rel="noopener noreferrer">Fonte e condições de uso <span aria-hidden="true">↗</span></a>
+          {livro.urlDownload && <a className="book-download" href={livro.urlDownload} target="_blank" rel="noopener noreferrer" aria-label={"Abrir / baixar PDF: " + livro.titulo}>Abrir / baixar PDF <span aria-hidden="true">↗</span></a>}
+          <a className="book-source" href={livro.urlFonte} target="_blank" rel="noopener noreferrer" aria-label={"Fonte e condições de uso: " + livro.titulo}>Fonte e condições de uso <span aria-hidden="true">↗</span></a>
         </div>
         <p className="book-reference-rights">{livro.direitos}</p>
       </div>
