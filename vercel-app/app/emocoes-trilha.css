@@ -790,3 +790,106 @@
 .emotion-page .emotion-workbook .reflection-workbook-progress > p {
   color:#625b66;
 }
+
+
+/* Registros visuais oficiais da Escola: fotografias reais verificadas na
+   pagina https://escolaatemporal.com.br/hub-de-desenvolvimento-humano/emocoes-em-jogo-lp/
+   Sem fotografias de bancos de imagens ou imagens geradas para a Biblioteca. */
+.emotion-page .emotion-official-photos {
+  margin:clamp(36px,5vw,72px) 0;
+  background:#101c22;
+  border:1px solid #38515a;
+  padding:clamp(21px,3.5vw,43px);
+}
+.emotion-page .emotion-official-photos-intro {
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:30px;
+  margin-bottom:26px;
+}
+.emotion-page .emotion-official-photos-intro > div {
+  max-width:600px;
+}
+.emotion-page .emotion-official-photos-intro h3 {
+  margin:13px 0 0;
+  font:400 clamp(34px,4vw,55px)/1.05 'Bebas Neue',Impact,sans-serif;
+  color:#fff;
+  letter-spacing:0;
+}
+.emotion-page .emotion-official-photos-intro h3 em {
+  font-style:normal;
+  color:#70dcf0;
+}
+.emotion-page .emotion-official-photos-intro > p {
+  max-width:430px;
+  font:400 12px/1.8 Montserrat,Arial,sans-serif;
+  color:#d8e4e6;
+  margin:0;
+}
+.emotion-page .emotion-official-photos-intro > p strong {
+  color:#fff;
+}
+.emotion-page .emotion-official-photos-grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+}
+.emotion-page .emotion-official-photos-grid figure {
+  min-width:0;
+  margin:0;
+  padding:0;
+  background:#192930;
+  border-bottom:3px solid #12b4d7;
+}
+.emotion-page .emotion-official-photos-grid figure:last-child {
+  border-bottom-color:#c70744;
+}
+.emotion-page .emotion-official-photos-grid img {
+  display:block;
+  width:100%;
+  height:auto;
+  max-width:100%;
+  aspect-ratio:1024/681;
+  object-fit:contain;
+  background:#0a131a;
+}
+.emotion-page .emotion-official-photos-grid figcaption {
+  padding:14px clamp(14px,2vw,24px) 17px;
+  font:500 11px/1.7 Montserrat,Arial,sans-serif;
+  color:#e5eef0;
+}
+.emotion-page .emotion-official-photos-grid figcaption a {
+  display:inline-flex;
+  align-items:center;
+  min-height:38px;
+  color:#ffd309;
+  text-decoration:underline;
+  text-underline-offset:4px;
+  font-weight:700;
+}
+.emotion-page .emotion-official-photos-grid figcaption a:focus-visible {
+  outline:3px solid #ffd309;
+  outline-offset:3px;
+}
+@media(max-width:820px) {
+  .emotion-page .emotion-official-photos-intro {
+    display:block;
+  }
+  .emotion-page .emotion-official-photos-intro > p {
+    max-width:650px;
+    margin:17px 0 0;
+  }
+}
+@media(max-width:620px) {
+  .emotion-page .emotion-official-photos {
+    padding:18px;
+  }
+  .emotion-page .emotion-official-photos-grid {
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+  .emotion-page .emotion-official-photos-intro h3 {
+    font-size:39px;
+  }
+}
