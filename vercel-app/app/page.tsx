@@ -46,7 +46,7 @@ const schoolArticles = [
 
 export default function HomePage() {
   return (
-    <main className="biblioteca-home circulo-inspired">
+    <main className="biblioteca-home referencia-trilha01">
       <a className="skip-to-content" href="#trilhas">Ir para as trilhas</a>
       <header className="topbar">
         <BrandLogo />
@@ -70,15 +70,14 @@ export default function HomePage() {
               <Link href="/trilhas/principios-e-discernimento" className="outline">Começar pela Trilha 01 <span aria-hidden="true">→</span></Link>
             </div>
           </div>
-          <div className="atemporal-masthead-visual circulo-visual-reference">
-            <figure className="circulo-original-mark">
-              <img
-                src="https://escolaatemporal.com.br/wp-content/uploads/2026/10/Logo-Circulo-Atemporal-Transparente.png"
-                alt="Marca gráfica original do Círculo Atemporal, uma referência visual do ecossistema da Escola"
-                width="800" height="800" fetchPriority="high" loading="eager" decoding="async"
-              />
-              <figcaption>IDENTIDADE ORIGINAL DO CÍRCULO ATEMPORAL</figcaption>
-            </figure>
+          <div className="atemporal-masthead-visual reference-hero-visual" aria-label="Biblioteca Atemporal: seis jornadas de investigação">
+            <div className="reference-hero-panel">
+              <span className="reference-hero-eyebrow">BIBLIOTECA ATEMPORAL / 01 — 06</span>
+              <strong className="reference-hero-number" aria-hidden="true">06</strong>
+              <div className="reference-hero-divider" aria-hidden="true" />
+              <p>SEIS JORNADAS.<br/><span>UM CONHECIMENTO QUE SE TRANSFORMA EM EXPERIÊNCIA.</span></p>
+              <span className="reference-hero-foot">PRINCÍPIOS · EMOÇÕES · HÁBITOS · RELAÇÕES · LIDERANÇA · LEGADO</span>
+            </div>
           </div>
         </div>
         <div className="atemporal-masthead-bottom">
