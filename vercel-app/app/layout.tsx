@@ -9,6 +9,7 @@ import "./editorial-balance.css";
 import "./confianca-trilha.css";
 import "./paradoxos-trilha.css";
 import "./legado-trilha.css";
+import "./bibliografia-harmonia.css";
 
 export const metadata: Metadata = {
   title: "Biblioteca Atemporal | Escola Atemporal",
