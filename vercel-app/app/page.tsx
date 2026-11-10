@@ -30,9 +30,9 @@ const schoolArticles = [
     type: "NOSSA FILOSOFIA",
     title: "Princípios Norteadores",
     desc: "O essencial permanece: discernimento, presença, responsabilidade e bem comum.",
-    image: "https://escolaatemporal.com.br/wp-content/uploads/2026/04/Conceitual-Homem-Atemporal-2.png",
+    image: "https://escolaatemporal.com.br/wp-content/uploads/2026/08/2150526023.jpg",
     href: "https://escolaatemporal.com.br/hub-de-desenvolvimento-humano/principios-norteadores/",
-    alt: "Imagem conceitual utilizada pela Escola Atemporal em Princípios Norteadores",
+    alt: "Fotografia publicada pela Escola Atemporal na página Princípios Norteadores",
   },
   {
     type: "NOSSA METODOLOGIA",
@@ -70,10 +70,15 @@ export default function HomePage() {
               <Link href="/trilhas/principios-e-discernimento" className="outline">Começar pela Trilha 01 <span aria-hidden="true">→</span></Link>
             </div>
           </div>
-          <div className="atemporal-masthead-visual" aria-hidden="true">
-            <div className="masthead-art-ring" />
-            <img src="https://escolaatemporal.com.br/wp-content/uploads/2026/04/Conceitual-Homem-Atemporal-2.png" alt="" width="840" height="860" fetchPriority="high" loading="eager" decoding="async" />
-            <div className="masthead-art-label">A PROFUNDIDADE<br/>COMEÇA EM NÓS.</div>
+          <div className="atemporal-masthead-visual circulo-visual-reference">
+            <figure className="circulo-original-mark">
+              <img
+                src="https://escolaatemporal.com.br/wp-content/uploads/2026/10/Logo-Circulo-Atemporal-Transparente.png"
+                alt="Marca gráfica original do Círculo Atemporal, uma referência visual do ecossistema da Escola"
+                width="800" height="800" fetchPriority="high" loading="eager" decoding="async"
+              />
+              <figcaption>IDENTIDADE ORIGINAL DO CÍRCULO ATEMPORAL</figcaption>
+            </figure>
           </div>
         </div>
         <div className="atemporal-masthead-bottom">
