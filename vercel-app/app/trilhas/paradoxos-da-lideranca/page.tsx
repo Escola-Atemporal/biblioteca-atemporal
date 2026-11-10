@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import BrandLogo from "../../components/BrandLogo";
 import CadernoParadoxos from "../../components/CadernoParadoxos";
+import BibliografiaEditorial from "../../components/BibliografiaEditorial";
 import {artigosTrilha05, tensoesTrilha05, movimentosTrilha05, obrasTrilha05, videosTrilha05} from "../../../data/referencias-trilha-05";
 
 export const metadata:Metadata = {
@@ -91,9 +92,7 @@ export default function Trilha05Page(){
   <section className="learning-section learning-books paradox-books" id="leituras"><div className="learning-wrap">
    <div className="learning-section-header"><div><span className="eyebrow dark">BIBLIOGRAFIA · TRILHA 05</span><h2>Estudar para <em>discernir melhor.</em></h2></div><p>Livros e capítulos abertos, com autoria, contexto e acesso aos editores e repositórios originais.</p></div>
    <div className="paradox-books-intro"><div><span className="eyebrow">LER · CONTRASTAR · PRATICAR</span><h3>NENHUMA LENTE SOZINHA <em>CONTA A HISTÓRIA INTEIRA.</em></h3><p>Parta de dilemas reais, contraste perspectivas e transforme leitura em perguntas. Não há sequência obrigatória.</p></div><div className="paradox-books-count"><strong>{obrasTrilha05.length}</strong><span>OBRAS E CAPÍTULOS</span></div></div>
-   <div className="paradox-book-grid">{obrasTrilha05.map((l,i)=><article key={l.id} id={l.id} className="paradox-book-card">
-    <div className="paradox-book-card-top"><span>{String(i+1).padStart(2,"0")}</span><span>{l.tipo}</span></div><h3>{l.titulo}</h3><p className="paradox-book-author">{l.autor}</p><p>{l.resumo}</p><p className="paradox-book-prompt"><strong>Investigue:</strong> {l.pergunta}</p><p className="paradox-book-license">{l.acesso}</p><a href={l.href} target="_blank" rel="noopener noreferrer">Abrir na fonte original ↗</a>
-   </article>)}</div>
+   <BibliografiaEditorial trilha="05" obras={obrasTrilha05.map(x=>({id:x.id,tipo:x.tipo,titulo:x.titulo,autor:x.autor,resumo:x.resumo,pergunta:x.pergunta,acesso:x.acesso,href:x.href}))}/>
    <p className="learning-disclaimer">A Biblioteca indica páginas públicas e fontes editoriais; não republica livros ou PDFs de terceiros. Acesso gratuito não significa permissão irrestrita de distribuição. Consulte a licença de cada edição antes de copiar, alterar ou compartilhar arquivos.</p>
   </div></section>
 
