@@ -333,6 +333,10 @@ export const videosTrilha02 = [
     href: "https://www.youtube.com/watch?v=2s-VVbkhx9U",
     imagem: "https://img.youtube.com/vi/2s-VVbkhx9U/hqdefault.jpg",
   },
+  {"titulo":"Why we all need to practice emotional first aid","criador":"Guy Winch · TEDxLinnaeusUniversity","idioma":"Inglês · legendas conforme plataforma TED","resumo":"Um convite a tratar experiências emocionais difíceis com a mesma atenção dada aos cuidados físicos, sem transformar a palestra em orientação clínica individual.","pergunta":"Que atitude de cuidado seria possível depois de um dia emocionalmente desgastante?","href":"https://www.ted.com/talks/guy_winch_why_we_all_need_to_practice_emotional_first_aid","imagem":null},
+  {"titulo":"The power of vulnerability","criador":"Brené Brown · TEDxHouston","idioma":"Inglês · legendas conforme plataforma TED","resumo":"Uma reflexão sobre vulnerabilidade, empatia, pertencimento e conexão humana, útil para conversar sobre a diferença entre presença e exposição forçada.","pergunta":"Como criar relações nas quais seja possível pedir ajuda sem perder o respeito?","href":"https://www.ted.com/talks/brene_brown_the_power_of_vulnerability","imagem":null},
+  {"titulo":"All it takes is 10 mindful minutes","criador":"Andy Puddicombe · TEDSalon London","idioma":"Inglês · legendas conforme plataforma TED","resumo":"Uma introdução acessível à atenção plena, com foco em reconhecer o ritmo interno e construir pequenas pausas na rotina.","pergunta":"Em que momento do dia uma pausa breve poderia ajudá-lo a perceber antes de reagir?","href":"https://www.ted.com/talks/andy_puddicombe_all_it_takes_is_10_mindful_minutes","imagem":null},
+
 ];
 
 export const etapasTrilha02 = [
