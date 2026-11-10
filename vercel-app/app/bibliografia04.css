@@ -20,7 +20,7 @@
   display:flex;
   flex-wrap:wrap;
   justify-content:space-between;
-  align-items:end;
+  align-items:flex-end;
   gap:18px 25px;
 }
 .learning-page.colab-page.referencia-trilha01 #livros .learning-book-search-head>div{
@@ -50,7 +50,7 @@
   display:grid;
   grid-template-columns:minmax(0,1.4fr) minmax(135px,.6fr) minmax(150px,.7fr);
   gap:13px;
-  align-items:end;
+  align-items:flex-end;
   margin-top:25px;
 }
 .learning-page.colab-page.referencia-trilha01 #livros .learning-book-controls>label{
@@ -104,7 +104,7 @@
 }
 .learning-page.colab-page.referencia-trilha01 #livros .learning-book-group{margin-top:0}
 .learning-page.colab-page.referencia-trilha01 #livros .learning-book-group-head{
-  display:flex;justify-content:space-between;align-items:end;
+  display:flex;justify-content:space-between;align-items:flex-end;
   flex-wrap:wrap;
   gap:18px;
   border-bottom:1px solid #615668;
