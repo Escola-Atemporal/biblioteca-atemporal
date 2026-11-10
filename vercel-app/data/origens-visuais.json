@@ -7,7 +7,11 @@
     "https://escolaatemporal.com.br/hub-de-desenvolvimento-humano/emocoes-em-jogo-lp/",
     "https://escolaatemporal.com.br/hub-de-desenvolvimento-humano/nossa-metodologia/",
     "https://escolaatemporal.com.br/blog/consciencia-emocional-lideranca-gatilhos-decisoes/",
-    "https://escolaatemporal.com.br/blog/principios-lideranca-preco-coerencia/"
+    "https://escolaatemporal.com.br/blog/principios-lideranca-preco-coerencia/",
+    "https://escolaatemporal.com.br/blog/autoconhecimento/",
+    "https://escolaatemporal.com.br/blog/escolhas-dificeis-lideranca-habitos/",
+    "https://escolaatemporal.com.br/blog/formula-de-sucesso/",
+    "https://escolaatemporal.com.br/blog/produtividade-com-presenca/"
   ],
   "imagens": [
     {
@@ -135,6 +139,30 @@
       "tipo": "fundo institucional",
       "fonte": "https://escolaatemporal.com.br/hub-de-desenvolvimento-humano/nossa-metodologia/",
       "observacao": "Fundo hospedado na biblioteca de mídia da Escola, utilizado no tema da Biblioteca."
+    },
+    {
+      "url": "https://escolaatemporal.com.br/wp-content/uploads/2025/11/capa_23.png",
+      "tipo": "capa editorial institucional",
+      "fonte": "https://escolaatemporal.com.br/blog/autoconhecimento/",
+      "observacao": "Imagem de capa oficial de O Poder de Voltar para Si, da Escola Atemporal."
+    },
+    {
+      "url": "https://escolaatemporal.com.br/wp-content/uploads/2026/10/Escolhas-dificeis-na-lideranca-decisoes-consequencias-e-transformacao.png",
+      "tipo": "capa editorial institucional",
+      "fonte": "https://escolaatemporal.com.br/blog/escolhas-dificeis-lideranca-habitos/",
+      "observacao": "Arte original publicada no artigo As escolhas que nos tornam quem somos."
+    },
+    {
+      "url": "https://escolaatemporal.com.br/wp-content/uploads/2025/11/formula-do-sucesso.jpeg",
+      "tipo": "capa editorial institucional",
+      "fonte": "https://escolaatemporal.com.br/blog/formula-de-sucesso/",
+      "observacao": "Arquivo publicado no artigo Será que a sua fórmula de sucesso ainda te serve?"
+    },
+    {
+      "url": "https://escolaatemporal.com.br/wp-content/uploads/2025/06/produtividade.png",
+      "tipo": "capa editorial institucional",
+      "fonte": "https://escolaatemporal.com.br/blog/produtividade-com-presenca/",
+      "observacao": "Imagem publicada no artigo sobre produtividade com presença."
     }
   ],
   "excecaoMiniaturas": "Apenas miniaturas originais de vídeos efetivamente vinculados na curadoria: https://img.youtube.com/vi/{id}/hqdefault.jpg. Não tratar como fotografia institucional nem como imagem criada pela Escola.",
