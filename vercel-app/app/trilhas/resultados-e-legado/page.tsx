@@ -19,7 +19,7 @@ const questoes=[
 ];
 
 export default function ResultadosLegado(){
- return <main className="learning-page legacy-page" id="topo">
+ return <main className="learning-page legacy-page circulo-inspired" id="topo">
    <a href="#investigacao" className="skip-to-content">Ir para o conteúdo</a>
    <header className="topbar"><BrandLogo/><nav aria-label="Navegação principal"><Link href="/">Todas as trilhas</Link><Link href="/entrar" className="nav-login">Área de acesso ↗</Link></nav></header>
    <section className="learning-hero legacy-hero" aria-labelledby="legacy-title"><div className="learning-wrap">
