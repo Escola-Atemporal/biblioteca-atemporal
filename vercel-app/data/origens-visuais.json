@@ -11,7 +11,8 @@
     "https://escolaatemporal.com.br/blog/autoconhecimento/",
     "https://escolaatemporal.com.br/blog/escolhas-dificeis-lideranca-habitos/",
     "https://escolaatemporal.com.br/blog/formula-de-sucesso/",
-    "https://escolaatemporal.com.br/blog/produtividade-com-presenca/"
+    "https://escolaatemporal.com.br/blog/produtividade-com-presenca/",
+    "https://escolaatemporal.com.br/circulo-atemporal/"
   ],
   "imagens": [
     {
@@ -163,6 +164,12 @@
       "tipo": "capa editorial institucional",
       "fonte": "https://escolaatemporal.com.br/blog/produtividade-com-presenca/",
       "observacao": "Imagem publicada no artigo sobre produtividade com presença."
+    },
+    {
+      "url": "https://escolaatemporal.com.br/wp-content/uploads/2026/10/Logo-Circulo-Atemporal-Transparente.png",
+      "tipo": "marca institucional oficial",
+      "fonte": "https://escolaatemporal.com.br/circulo-atemporal/",
+      "observacao": "Marca do Círculo Atemporal exibida na página institucional; reutilizada sem edição como referência visual no cabeçalho da Biblioteca. Não substitui a marca principal Escola Atemporal."
     }
   ],
   "excecaoMiniaturas": "Apenas miniaturas originais de vídeos efetivamente vinculados na curadoria: https://img.youtube.com/vi/{id}/hqdefault.jpg. Não tratar como fotografia institucional nem como imagem criada pela Escola.",
