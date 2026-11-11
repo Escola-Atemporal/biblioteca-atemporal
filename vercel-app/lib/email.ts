@@ -8,7 +8,12 @@ import { dbQuery, databaseConfigured } from "./database";
  * E-mail transacional com Resend. Nenhuma API key vai para cliente/GitHub.
  * A fila guarda apenas HTML/texto cifrados (AES-256-GCM), inclusive links únicos.
  */
-export const emailConfigured = Boolean(process.env.RESEND_API_KEY && process.env.RESEND_FROM_EMAIL && process.env.AUTH_SECRET);
+/** Credentials present does not imply DNS verification or delivery success. */
+export const emailProviderConfigured = Boolean(
+  process.env.RESEND_API_KEY && process.env.RESEND_FROM_EMAIL && process.env.AUTH_SECRET,
+);
+/** Only activate public onboarding after a real inbox test and explicit approval. */
+export const emailConfigured = emailProviderConfigured && process.env.BIBLIOTECA_EMAIL_ENABLED === "true";
 
 export type EmailKind =
   | "request_received" | "request_admin" | "invitation"
@@ -98,7 +103,7 @@ export async function enqueueEmail(client: PoolClient, mail: EmailInput): Promis
 /** Uma tentativa imediata por requisição; falhas persistem na fila. */
 export async function deliverEmail(id: string): Promise<MailStatus> {
   if (!databaseConfigured) return "failed";
-  if (!emailConfigured) return "pending";
+  if (!emailProviderConfigured) return "pending";
   const rows = await dbQuery<MailRow>(
     `UPDATE biblioteca_email_outbox SET status='sending',
        attempts=attempts+1,next_attempt_at=now()+interval '2 minutes'
