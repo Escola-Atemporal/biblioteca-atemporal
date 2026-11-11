@@ -1,0 +1,23 @@
+.reflection-page .reflection-privacy-note{font-size:12px;color:#ddd;border-top:1px solid #666;padding-top:16px;margin-top:24px}
+.reflection-main{max-width:1050px}.reflection-editor{padding:34px;border:1px solid #dedbe3;border-top:4px solid #634995;background:#fff;display:grid;grid-template-columns:minmax(190px,0.85fr) minmax(270px,1.5fr);gap:36px}
+.reflection-editor h2,.reflection-list-section h2{font-family:Montserrat,Arial,sans-serif;font-size:clamp(23px,3vw,32px);line-height:1.2;color:#161616;margin:12px 0}
+.reflection-editor p{color:#656565;font-size:14px;line-height:1.8}.reflection-form{display:flex;flex-direction:column;gap:17px}
+.reflection-form label{display:flex;flex-direction:column;gap:7px;font:600 13px Roboto,Arial,sans-serif;color:#353535}
+.reflection-form input,.reflection-form select,.reflection-form textarea{background:#fff;color:#222;border:1px solid #ceced3;border-radius:3px;padding:12px 13px;font:14px/1.6 Roboto,Arial,sans-serif;width:100%;max-width:100%;box-sizing:border-box}
+.reflection-form textarea{resize:vertical}
+.reflection-form :is(input,select,textarea,button):focus-visible{outline:3px solid #ffd309;outline-offset:2px}
+.reflection-form button{align-self:start;border:none;border-radius:3px;padding:13px 20px;background:#634995;color:white;font:600 12px 'Roboto Mono',monospace;cursor:pointer}
+.reflection-form button:hover{background:#4b3573}.reflection-list-section{margin-top:62px}.reflection-list{display:grid;gap:17px;margin-top:25px}
+.reflection-entry{padding:27px 30px;border:1px solid #dfdce3;background:#fff}
+.reflection-entry-meta{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font:600 11px 'Roboto Mono',monospace;color:#634995}
+.reflection-entry-meta time{color:#7c7c7c;font-weight:400}
+.reflection-entry h3{font:600 21px/1.4 Montserrat,Arial,sans-serif;color:#161616;margin:17px 0 12px}
+.reflection-entry-content{font:14px/1.85 Roboto,Arial,sans-serif;color:#4d4d4d;white-space:pre-wrap;overflow-wrap:anywhere}
+.reflection-edit{margin-top:24px;border-top:1px solid #e8e5ed;padding-top:16px}
+.reflection-edit summary{font:600 12px 'Roboto Mono',monospace;color:#634995;cursor:pointer}
+.reflection-edit .reflection-form{margin-top:18px}
+.reflection-delete-toggle{border:0;background:none;padding:10px 0;color:#884955;font:12px 'Roboto Mono',monospace;text-decoration:underline;cursor:pointer}
+.reflection-delete-confirm{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font:12px Roboto,Arial,sans-serif;color:#5b3542}
+.reflection-delete-confirm button{border:1px solid #895767;padding:8px 10px;border-radius:3px;background:white;color:#5b3542;cursor:pointer}
+.reflection-delete-confirm button[type=submit]{background:#793b4a;color:white}
+@media(max-width:760px){.reflection-editor{display:block;padding:24px}.reflection-editor .reflection-form{margin-top:25px}.reflection-entry{padding:23px}}
