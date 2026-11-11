@@ -96,8 +96,12 @@ export async function createAccessInvite(_previous: InviteResult, formData: Form
     return{ok:true,inviteUrl:null,message:status==="sent"
       ?"Convite gerado. O e-mail foi aceito para envio. A pessoa poderá criar a senha pelo botão recebido."
       :"Convite registrado, mas o e-mail ainda não foi enviado. Verifique a fila de E-mails transacionais."};
-  }catch{
-    return{ok:false,message:"Não foi possível registrar o convite. Tente novamente.",inviteUrl:null};
+  }catch(error:unknown){
+    // Log only the PostgreSQL error category, never emails, names, token or SQL parameters.
+    const dbCode = typeof error === "object" && error !== null && "code" in error
+      && typeof error.code === "string" ? error.code : "unknown";
+    console.error("[biblioteca.invite.create] failed; db_code=",dbCode);
+    return{ok:false,message:"Não foi possível registrar o convite. Verifique se a conta já existe ou tente novamente. Se persistir, informe à administração.",inviteUrl:null};
   }
 }
 
