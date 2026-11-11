@@ -121,3 +121,10 @@ footer{background:#161616;color:#c9c9c9}
 .learning-progress-form button:focus-visible,.learning-progress-form select:focus-visible{outline:3px solid #ffd309;outline-offset:2px}
 .learning-progress-warning{border-left:3px solid #634995;padding:14px 18px;background:#f4f0fa;color:#352849}
 @media(max-width:700px){.learning-progress-overview{flex-direction:column;align-items:flex-start}.learning-progress-summary{width:100%}}
+
+
+/* Discrete connection between trail questions and private notebook. */
+.learning-reflection-save{display:inline-flex;align-items:center;gap:7px;margin-top:11px;color:#634995;font:600 11px/1.6 'Roboto Mono',monospace;text-decoration:underline;text-underline-offset:3px}
+.learning-reflection-save:hover{color:#4b3573}
+.learning-reflection-save:focus-visible{outline:3px solid #ffd309;outline-offset:3px}
+.learning-questions li>div{flex:1;min-width:0}
