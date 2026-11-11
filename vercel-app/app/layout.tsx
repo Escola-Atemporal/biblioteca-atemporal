@@ -16,6 +16,7 @@ import "./bibliografia04.css";
 import "./videos-curadoria.css";
 import "./colecao-autoral.css";
 import "./acesso-seguro.css";
+import "./gestao-acessos.css";
 
 export const metadata: Metadata = {
   title: "Biblioteca Atemporal | Escola Atemporal",
