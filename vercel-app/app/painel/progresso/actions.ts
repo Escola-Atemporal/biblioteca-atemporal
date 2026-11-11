@@ -1,5 +1,6 @@
 "use server";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import { auth } from "../../../auth";
 import { roleForEmailAsync } from "../../../lib/access";
 import { can } from "../../../lib/permissions";
@@ -23,4 +24,5 @@ export async function saveLearningProgress(form:FormData){
       completed_at=CASE WHEN EXCLUDED.status='concluida' THEN COALESCE(biblioteca_learning_progress.completed_at,now()) ELSE NULL END`,
     [email,slug,status,section]);
   revalidatePath("/painel");
+  redirect("/painel?progresso=salvo#minhas-trilhas");
 }
