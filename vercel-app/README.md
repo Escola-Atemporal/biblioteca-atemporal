@@ -80,3 +80,43 @@ Validações recomendadas:
 4. `/painel` inacessível sem autenticação.
 5. Minutas não visíveis para visitante ou perfil `experiencialista`.
 6. Logout encerra a sessão, e URLs do Drive respeitam suas permissões próprias.
+
+
+## Gestão de usuários e convites (Novembro/2026)
+
+Os usuários adicionais agora podem ser registrados no Neon, projeto `biblioteca-atemporal` (`aged-pine-47973990`). A conta administrativa de bootstrap permanece definida no Render para preservar a entrada inicial durante a migração.
+
+1. Entre na Biblioteca com a conta administradora.
+2. Abra `/painel/usuarios` (ou o card **Convites e permissões**).
+3. Informe nome, e-mail e perfil. A administração recebe um link de convite de uso único, válido por **48 horas**.
+4. Envie o link diretamente à pessoa. O sistema **não envia e-mails automaticamente**.
+5. A pessoa abre `/convite/[token]`, define uma senha de 12 ou mais caracteres e usa `/entrar`.
+6. O administrador pode consultar usuários, alterar perfis, desativar ou reativar acessos e emitir um novo convite para redefinição de senha.
+
+### Modelagem e segurança
+
+- `biblioteca_access_accounts` — usuários, papéis, status ativo e senha em hash scrypt.
+- `biblioteca_access_invites` — token mantido apenas como SHA-256, validade e consumo único.
+- `biblioteca_access_audit` — histórico de convites, ativação, revogação e troca de papéis.
+- `DATABASE_URL` — conexão privada ao Neon configurada no Render, **nunca no GitHub**.
+- A autenticação antiga por senha (conta de bootstrap) e a opção Google continuam disponíveis.
+- Na autorização, um registro inativo no banco prevalece sobre a lista legada do Render; falhas de conexão não permitem contornar uma revogação.
+- Consultas são parametrizadas, e as escritas de convites/ativação usam transações.
+- O login público não permite autoinscrição. Não se altera o acesso dos documentos no Drive.
+- O administrador não pode desativar ou mudar o próprio perfil na lista de contas.
+- A limitação atual de tentativas por e-mail reside na instância da aplicação; antes de expansão horizontal, migrar para limitador distribuído por usuário e endereço de origem.
+- Os convites carregam uma credencial temporária no link; compartilhar apenas por canal privado e não publicar links em grupos.
+
+### Testes da implantação
+
+Além do build e da verificação de imagens, validar com um convite de teste autorizado:
+
+1. `/painel/usuarios` redireciona visitantes não autenticados e perfis não administrativos.
+2. O convite é único, expira em 48 horas e o mesmo link não funciona após aceito.
+3. A pessoa escolhe a própria senha, consegue entrar e não vê e-books editoriais caso seja experiencialista.
+4. Uma conta desativada deixa de acessar `/painel` e os links de revisão.
+5. A conta administrativa original continua funcionando.
+
+### Próximos cuidados operacionais
+
+A recuperação de acesso é feita emitindo um novo convite pela administração. Para distribuir acesso em larga escala, integrar serviço de e-mail transacional e trilha formal de revisão editorial. Antes de remover `BIBLIOTECA_PASSWORD_USERS`, transferir também a conta administradora para o banco, testar seu novo login e somente depois revogar o login de bootstrap.
