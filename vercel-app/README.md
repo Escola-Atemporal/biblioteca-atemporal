@@ -185,3 +185,19 @@ A Biblioteca possui integração de e-mail transacional via API do **Resend**, c
 - O status **Aceito** no painel significa que o provedor aceitou o pedido de envio, não comprova leitura ou entrega final.
 - Até as variáveis do remetente estarem presentes, a interface pública suspende novos pedidos e o painel bloqueia convites/aprovações. O login existente e as seis trilhas continuam funcionando.
 - Novos usuários continuam sujeitos à aprovação administrativa. E-books em minuta permanecem acessíveis apenas aos perfis editoriais previamente autorizados.
+
+
+### Liberação controlada do remetente (obrigatória)
+
+A presença de `RESEND_API_KEY` e `RESEND_FROM_EMAIL` **não libera automaticamente** solicitações e convites. Assim, um erro de DNS não cria contas que não possam receber o convite.
+
+1. Crie ou conecte uma conta Resend e verifique DNS no domínio de envio. Recomenda-se usar um **subdomínio transacional** separado, como `acesso.escolaatemporal.com.br`, para não alterar o fluxo de e-mails da caixa institucional.
+2. Configure `RESEND_API_KEY` e `RESEND_FROM_EMAIL` no Render. Opcional: `RESEND_REPLY_TO` com uma caixa existente da Escola.
+3. Entre em `/painel/emails` e use **Enviar teste para meu e-mail**. O teste é liberado quando as credenciais existem, mesmo com cadastros públicos ainda suspensos.
+4. Confirme que a mensagem chegou à caixa de entrada, com endereço e assunto corretos; consulte possíveis mensagens rejeitadas no provedor.
+5. **Somente depois da validação**, configure `BIBLIOTECA_EMAIL_ENABLED=true` no ambiente do serviço no Render e implante a alteração.
+6. Confira que a solicitação pública, o convite após aprovação e o fluxo de redefinição enviam mensagens a uma conta de teste autorizada.
+
+Em qualquer instalação sem `BIBLIOTECA_EMAIL_ENABLED=true`, todos os envios de entrada de novos usuários ficam bloqueados, mesmo que exista um remetente configurado. O login já existente não depende deste recurso e permanece operacional.
+
+A ativação dessa variável confirma apenas a autorização operacional da Escola; a aceitação pela API e a entrega em caixa real devem continuar sendo acompanhadas. Não trate `status='sent'` como confirmação de entrega final.
