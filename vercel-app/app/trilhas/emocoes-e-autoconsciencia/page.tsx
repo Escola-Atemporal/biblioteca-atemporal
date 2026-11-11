@@ -13,6 +13,9 @@ import {
   referenciasAprofundamentoTrilha02,
 } from "../../../data/referencias-trilha-02";
 
+// Draft links depend on authenticated roles; do not statically cache this page.
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Trilha 02 — Emoções e Autoconsciência | Biblioteca Atemporal",
   description: "Observe, nomeie, compreenda e escolha: 8 conteúdos da Escola Atemporal, 10 livros e guias de acesso aberto, 4 vídeos e um Caderno de Presença pessoal.",
