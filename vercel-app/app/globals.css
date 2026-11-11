@@ -101,3 +101,23 @@ footer{background:#161616;color:#c9c9c9}
 .learning-practice p,.reading-copy p,.learning-article p,.learning-video-body>p{color:#555}
 .learning-practice p{color:#ddd}
 @media(max-width:760px){.brand-logo{max-width:130px;height:38px}.topbar .brand span{font-size:9px}}
+
+
+/* Progresso pessoal das trilhas — identidade Escola Atemporal. */
+.learning-progress-overview{display:flex;justify-content:space-between;align-items:center;gap:28px;padding:24px 0 26px;margin-top:12px;border-top:1px solid #ddd}
+.learning-progress-overview h3{font-family:Montserrat,Arial,sans-serif;font-size:clamp(22px,3vw,30px);line-height:1.25;margin:9px 0;color:#161616}
+.learning-progress-overview p{font-size:13px;line-height:1.8;color:#646464;max-width:630px;margin:0}
+.learning-progress-summary{display:flex;gap:25px;flex-shrink:0}
+.learning-progress-summary span{font:12px 'Roboto Mono',monospace;color:#555}
+.learning-progress-summary strong{display:block;font:500 33px Montserrat,Arial,sans-serif;color:#634995}
+.learning-progress-track{display:flex;flex-direction:column;gap:8px}
+.learning-progress-track h3{margin:12px 0 2px}
+.learning-progress-status{font:700 11px 'Roboto Mono',monospace;color:#634995;margin:0 0 4px}
+.learning-progress-form{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px;padding-top:17px;border-top:1px solid #e7e3eb}
+.learning-progress-form label{display:flex;flex-direction:column;gap:6px;color:#535353;font:500 11px Roboto,Arial,sans-serif}
+.learning-progress-form select{width:100%;min-width:0;padding:10px 7px;border:1px solid #dcd8e4;border-radius:3px;background:#fff;color:#262626;font:12px Roboto,Arial,sans-serif}
+.learning-progress-form button{grid-column:1/-1;min-height:38px;cursor:pointer;border:1px solid #634995;background:#634995;color:white;border-radius:3px;font:600 12px 'Roboto Mono',monospace}
+.learning-progress-form button:hover{background:#4c3673}
+.learning-progress-form button:focus-visible,.learning-progress-form select:focus-visible{outline:3px solid #ffd309;outline-offset:2px}
+.learning-progress-warning{border-left:3px solid #634995;padding:14px 18px;background:#f4f0fa;color:#352849}
+@media(max-width:700px){.learning-progress-overview{flex-direction:column;align-items:flex-start}.learning-progress-summary{width:100%}}
