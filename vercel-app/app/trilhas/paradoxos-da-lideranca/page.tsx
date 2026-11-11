@@ -1,3 +1,4 @@
+import ColecaoAutoral from "../../components/ColecaoAutoral";
 import Link from "next/link";
 import type { Metadata } from "next";
 import BrandLogo from "../../components/BrandLogo";
@@ -102,7 +103,8 @@ export default function Trilha05Page(){
 
   <section className="learning-section learning-books paradox-books" id="leituras"><div className="learning-wrap">
    <div className="learning-section-header"><div><span className="eyebrow dark">BIBLIOGRAFIA · TRILHA 05</span><h2>Estudar para <em>discernir melhor.</em></h2></div><p>Livros e capítulos abertos, com autoria, contexto e acesso aos editores e repositórios originais.</p></div>
-   <div className="paradox-books-intro"><div><span className="eyebrow">LER · CONTRASTAR · PRATICAR</span><h3>NENHUMA LENTE SOZINHA <em>CONTA A HISTÓRIA INTEIRA.</em></h3><p>Parta de dilemas reais, contraste perspectivas e transforme leitura em perguntas. Não há sequência obrigatória.</p></div><div className="paradox-books-count"><strong>{obrasTrilha05.length}</strong><span>OBRAS E CAPÍTULOS</span></div></div>
+   <ColecaoAutoral trilha="05" />
+          <div className="paradox-books-intro"><div><span className="eyebrow">LER · CONTRASTAR · PRATICAR</span><h3>NENHUMA LENTE SOZINHA <em>CONTA A HISTÓRIA INTEIRA.</em></h3><p>Parta de dilemas reais, contraste perspectivas e transforme leitura em perguntas. Não há sequência obrigatória.</p></div><div className="paradox-books-count"><strong>{obrasTrilha05.length}</strong><span>OBRAS E CAPÍTULOS</span></div></div>
    <BibliografiaEditorial trilha="05" obras={obrasTrilha05.map(x=>({id:x.id,tipo:x.tipo,titulo:x.titulo,autor:x.autor,resumo:x.resumo,pergunta:x.pergunta,acesso:x.acesso,href:x.href}))}/>
    <p className="learning-disclaimer">A Biblioteca indica páginas públicas e fontes editoriais; não republica livros ou PDFs de terceiros. Acesso gratuito não significa permissão irrestrita de distribuição. Consulte a licença de cada edição antes de copiar, alterar ou compartilhar arquivos.</p>
   </div></section>
