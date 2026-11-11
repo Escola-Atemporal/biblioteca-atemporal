@@ -1,3 +1,4 @@
+import ColecaoAutoral from "../../components/ColecaoAutoral";
 import { livrosTrilha01, referenciasComplementaresTrilha01 } from "../../../data/referencias-trilha-01";
 import BibliografiaTrilha01 from "../../components/BibliografiaTrilha01";
 import RoteiroVideos from "../../components/RoteiroVideos";
@@ -182,6 +183,7 @@ export default function Trilha01Page() {
             </div>
             <p>Clássicos, livros didáticos, guias institucionais e materiais formativos para aprofundar ética, discernimento e liderança responsável.</p>
           </div>
+          <ColecaoAutoral trilha="01" />
           <div className="learning-books-intro">
             <div><span className="learning-books-preamble">LEITURAS QUE AMPLIAM O REPERTÓRIO</span>
               <h3>Não basta ter uma resposta. <em>É preciso formar critérios.</em></h3>
