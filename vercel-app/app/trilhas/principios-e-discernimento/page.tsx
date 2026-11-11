@@ -7,6 +7,9 @@ import BrandLogo from "../../components/BrandLogo";
 import Link from "next/link";
 import type { Metadata } from "next";
 
+// Draft links depend on authenticated roles; do not statically cache this page.
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Trilha 01 — Princípios e Discernimento | Biblioteca Atemporal",
   description: "Princípios, coerência e decisões responsáveis com 8 leituras da Escola, 17 livros e materiais, vídeos e um caderno pessoal de reflexão.",
