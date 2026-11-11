@@ -15,7 +15,7 @@ export const metadata = {
 export default async function Login({
   searchParams,
 }: {
-  searchParams: Promise<{ erro?: string }>;
+  searchParams: Promise<{ erro?: string; convite?: string }>;
 }) {
   const params = await searchParams;
   const session = authConfigured ? await auth() : null;
@@ -76,6 +76,8 @@ export default async function Login({
                 ? "Sua identidade foi confirmada. Acesse o painel ou encerre a sessão."
                 : "Entre com seu e-mail e senha autorizados pela Escola Atemporal."}
             </p>
+
+            {params?.convite === "ativado" && <p className="login-atm-notice" role="status">Seu acesso foi ativado. Entre com o e-mail e a senha que você acabou de definir.</p>}
 
             {session?.user?.email && role ? (
               <div className="login-atm-connected">
