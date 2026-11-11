@@ -1,5 +1,5 @@
-import { can } from "../../../lib/permissions";
 "use server";
+import { can } from "../../../lib/permissions";
 
 import { createHash, randomBytes, randomUUID } from "node:crypto";
 import { auth } from "../../../auth";
