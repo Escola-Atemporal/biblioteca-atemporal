@@ -24,5 +24,5 @@ export async function saveLearningProgress(form:FormData){
       completed_at=CASE WHEN EXCLUDED.status='concluida' THEN COALESCE(biblioteca_learning_progress.completed_at,now()) ELSE NULL END`,
     [email,slug,status,section]);
   revalidatePath("/painel");
-  redirect("/painel?progresso=salvo#minhas-trilhas");
+  redirect("/painel?progresso=salvo");
 }
