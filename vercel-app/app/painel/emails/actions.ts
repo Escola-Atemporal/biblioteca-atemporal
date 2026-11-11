@@ -4,7 +4,7 @@ import {auth} from "../../../auth";
 import {randomUUID} from "node:crypto";
 import {roleForEmailAsync} from "../../../lib/access";
 import {dbQuery,databaseConfigured,transaction} from "../../../lib/database";
-import {createEmail,deliverEmail,emailConfigured,emailOrigin,enqueueEmail,sendEmailBatch} from "../../../lib/email";
+import {createEmail,deliverEmail,emailProviderConfigured,emailOrigin,enqueueEmail,sendEmailBatch} from "../../../lib/email";
 import {revalidatePath} from "next/cache";
 
 export type RetryState={ok:boolean;message:string};
@@ -13,7 +13,7 @@ export async function retryEmailOutbox(_previous:RetryState):Promise<RetryState>
   if(!session?.user?.email || await roleForEmailAsync(session.user.email)!=="administrador"){
     throw new Error("Acesso administrativo requerido");
   }
-  if(!databaseConfigured || !emailConfigured)
+  if(!databaseConfigured || !emailProviderConfigured)
     return{ok:false,message:"Configure o remetente transacional antes de reenviar mensagens."};
   try{
     const ready=await dbQuery<{id:string}>(
@@ -43,7 +43,7 @@ export async function sendTestEmail(_previous:RetryState):Promise<RetryState>{
  const session=await auth();
  const email=session?.user?.email?.toLowerCase().trim();
  if(!email||await roleForEmailAsync(email)!=="administrador")throw new Error("Administrador não autorizado");
- if(!databaseConfigured||!emailConfigured)return{ok:false,message:"Configure o serviço de e-mail primeiro."};
+ if(!databaseConfigured||!emailProviderConfigured)return{ok:false,message:"Configure o serviço de e-mail primeiro."};
  try{
   const id=await transaction(async(client)=>enqueueEmail(client,createEmail(
    "request_admin",email,"Teste de envio | Biblioteca Atemporal",
