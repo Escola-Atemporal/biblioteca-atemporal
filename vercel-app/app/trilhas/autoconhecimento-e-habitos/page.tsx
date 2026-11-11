@@ -1,3 +1,4 @@
+import ReflectionQuestionLink from "../../components/ReflectionQuestionLink";
 import ColecaoAutoral from "../../components/ColecaoAutoral";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -177,7 +178,7 @@ export default function Trilha03Page(){
 
   <section className="learning-section learning-wrap" id="pratica">
    <div className="learning-section-header"><div><span className="eyebrow dark">UMA PRÁTICA PARA O DIA A DIA</span><h2>Pequenas escolhas, <em>grandes possibilidades.</em></h2></div><p>Não é preciso mudar tudo para começar a observar. Um pequeno experimento pode revelar mais do que uma promessa grandiosa.</p></div>
-   <div className="habit-final-questions">{perguntas.map((p,i)=><div key={p}><span>{String(i+1).padStart(2,"0")}</span><p>{p}</p></div>)}</div>
+   <div className="habit-final-questions">{perguntas.map((p,i)=><div key={p}><span>{String(i+1).padStart(2,"0")}</span><p>{p}</p><ReflectionQuestionLink trail="autoconhecimento-e-habitos" question={p}/></div>)}</div>
    <div className="learning-practice habit-practice">
     <span className="eyebrow">UM EXPERIMENTO POSSÍVEL · SEM PONTUAÇÃO</span>
     <h3>PERCEBER O QUE SE REPETE. TESTAR O QUE IMPORTA.</h3>
