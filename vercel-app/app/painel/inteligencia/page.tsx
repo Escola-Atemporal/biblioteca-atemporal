@@ -16,7 +16,7 @@ type Counts = {
  total:number; active:number; awaiting_password:number; disabled:number;
  experiencialistas:number; curadores:number; administradores:number;
 };
-type InviteCounts = {pending:number;accepted:number;expired:number};
+type InviteCounts = {pending:number;closed:number;expired:number};
 type RequestCounts = {pending:number};
 type PresenceCounts = {online:number;recent:number};
 type AuditRow={action:string;total:number};
@@ -44,7 +44,7 @@ export default async function IntelligencePage(){
       count(*) FILTER(WHERE role='administrador')::int AS administradores
       FROM biblioteca_access_accounts`),
    dbQuery<InviteCounts>(`SELECT count(*) FILTER(WHERE used_at IS NULL AND expires_at>now())::int AS pending,
-      count(*) FILTER(WHERE used_at IS NOT NULL)::int AS accepted,
+      count(*) FILTER(WHERE used_at IS NOT NULL)::int AS closed,
       count(*) FILTER(WHERE used_at IS NULL AND expires_at<=now())::int AS expired
       FROM biblioteca_access_invites`),
    dbQuery<RequestCounts>(`SELECT count(*) FILTER(WHERE status='pending')::int AS pending FROM biblioteca_membership_requests`),
