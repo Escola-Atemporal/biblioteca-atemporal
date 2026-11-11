@@ -1,0 +1,66 @@
+name: Auditoria de acesso - Biblioteca Atemporal
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 08:31 America/Sao_Paulo, dentro do horario normal da Biblioteca.
+    - cron: "31 11 * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: biblioteca-security-smoke
+  cancel-in-progress: true
+
+jobs:
+  access-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Validar rotas sem sessao, sem credenciais
+        shell: bash
+        run: |
+          set -euo pipefail
+          base="https://biblioteca-atemporal-web.onrender.com"
+          failures=0
+          check_private() {
+            local path="$1" status location
+            local headers
+            headers="$(mktemp)"
+            status="$(curl --silent --show-error --retry 2 --retry-delay 10 --connect-timeout 25 --max-time 115 \
+              -H 'Cache-Control: no-cache' -D "$headers" -o /dev/null -w '%{http_code}' "$base$path")" || status="000"
+            location="$(grep -i '^location:' "$headers" | tail -1 | tr -d '\r' | cut -d' ' -f2- || true)"
+            rm -f "$headers"
+            if [[ "$status" == "401" || "$status" == "403" ]]; then
+              echo "OK private: $path -> $status"
+            elif [[ "$status" =~ ^30[1278]$ && "$location" == *"/entrar"* ]]; then
+              echo "OK private: $path -> $status login"
+            elif [[ "$status" =~ ^30[1278]$ && "$location" == *"/painel"* ]]; then
+              echo "OK private: $path -> $status painel"
+            else
+              echo "::error::Private route exposed or unavailable: $path (HTTP $status)"
+              failures=$((failures+1))
+            fi
+          }
+          for path in \
+            "/trilhas/principios-e-discernimento" \
+            "/trilhas/emocoes-e-autoconsciencia" \
+            "/trilhas/autoconhecimento-e-habitos" \
+            "/trilhas/confianca-e-colaboracao" \
+            "/trilhas/paradoxos-da-lideranca" \
+            "/trilhas/resultados-e-legado" \
+            "/arquivos" \
+            "/painel" \
+            "/painel/usuarios" \
+            "/painel/inteligencia" \
+            "/painel/emails" \
+            "/api/private/status" \
+            "/api/private/presence/online"; do
+            check_private "$path"
+          done
+          if (( failures > 0 )); then
+            echo "::error::$failures checks failed"
+            exit 1
+          fi
+          echo "Todas as rotas privadas testadas exigiram autorizacao."
