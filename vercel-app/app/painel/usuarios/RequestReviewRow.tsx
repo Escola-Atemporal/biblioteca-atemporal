@@ -50,8 +50,6 @@ export default function RequestReviewRow({ request }: { request: MembershipReque
         <div className={`request-atm-review-result ${complete ? "is-success" : "is-error"}`} role="status">
           <p>{approval.message || rejection.message}</p>
         </div>
-          )}
-        </div>
       )}
     </article>
   );
