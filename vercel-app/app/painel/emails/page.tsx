@@ -4,7 +4,7 @@ import {redirect} from "next/navigation";
 import {auth,signOut} from "../../../auth";
 import {roleForEmailAsync} from "../../../lib/access";
 import {dbQuery,databaseConfigured} from "../../../lib/database";
-import {emailConfigured} from "../../../lib/email";
+import {emailConfigured,emailProviderConfigured} from "../../../lib/email";
 import RetryEmails from "./RetryEmails";
 
 export const dynamic="force-dynamic";
@@ -64,11 +64,13 @@ export default async function EmailAdminPage(){
    <div className="admin-atm-container admin-atm-main">
     <section className="email-atm-config" aria-labelledby="email-ready">
      <span className="admin-atm-eyebrow">SITUAÇÃO DO REMETENTE</span>
-     <h2 id="email-ready">{emailConfigured?"Configuração presente no servidor":"Configuração ainda necessária"}</h2>
+     <h2 id="email-ready">{emailConfigured?"Envio de acesso liberado":emailProviderConfigured?"Remetente configurado · em validação":"Configuração do remetente pendente"}</h2>
      <p>{emailConfigured
-       ?"A chave e o endereço remetente estão configurados. O envio efetivo depende da aceitação do serviço e da verificação DNS do domínio."
-       :"Para ativar o envio automático, configure RESEND_API_KEY e RESEND_FROM_EMAIL na seção Environment do serviço no Render. O domínio do remetente precisa estar verificado no provedor. Até lá, convites e solicitações não são liberados."}</p>
-     {emailConfigured?<RetryEmails/>:null}
+       ?"O envio de mensagens de acesso está habilitado. Acompanhe a aceitação das mensagens e confirme entregas em caixas reais."
+       :emailProviderConfigured
+        ?"A chave e o remetente estão presentes. Antes de abrir as solicitações, envie um teste para seu e-mail, confirme o recebimento e então configure BIBLIOTECA_EMAIL_ENABLED=true no Render. A configuração das credenciais, sozinha, não abre os cadastros."
+        :"Primeiro verifique um domínio ou subdomínio da Escola no Resend e configure RESEND_API_KEY e RESEND_FROM_EMAIL no Render. Depois será possível enviar um teste pelo botão abaixo. Até a confirmação, convites e solicitações permanecem bloqueados."}</p>
+     {emailProviderConfigured?<RetryEmails/>:null}
     </section>
     <section className="admin-atm-people" aria-labelledby="outbox-title">
      <div className="admin-atm-section-head">
