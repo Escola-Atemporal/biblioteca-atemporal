@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { auth, authConfigured, signOut } from "../../../auth";
 import { roleForEmailAsync } from "../../../lib/access";
 import { dbQuery, databaseConfigured } from "../../../lib/database";
+import { emailConfigured } from "../../../lib/email";
 import InviteControls from "./InviteControls";
 import { setAccountActive, changeAccountRole } from "./actions";
 import RequestReviewRow, { type MembershipRequest } from "./RequestReviewRow";
@@ -86,6 +87,15 @@ export default async function UsersPanel() {
           </div>
         ) : (
           <>
+            <div className="email-atm-notice">
+              <div>
+                <strong>{emailConfigured ? "Comunicação por e-mail configurada" : "Envio automático aguardando configuração"}</strong>
+                <p>{emailConfigured
+                  ? "Convites, decisões e confirmações serão enviados pelo provedor de e-mail."
+                  : "A gestão continua disponível, mas aprovações e convites aguardam a configuração do domínio remetente."}</p>
+              </div>
+              <Link href="/painel/emails">Acompanhar e-mails ↗</Link>
+            </div>
             <section className="request-atm-review-section" id="solicitacoes" aria-labelledby="request-atm-review-title">
               <div className="admin-atm-section-head">
                 <div>
@@ -99,7 +109,7 @@ export default async function UsersPanel() {
               </div>
               {requests.length ? (
                 <div className="request-atm-review-list">
-                  {requests.map((request) => <RequestReviewRow key={request.id} request={request}/>)}
+                  {requests.map((request) => <RequestReviewRow key={request.id} request={request} emailReady={emailConfigured}/>)}
                 </div>
               ) : (
                 <div className="admin-atm-empty">Não há solicitações aguardando análise. O formulário público pode ser acessado em <Link href="/solicitar-acesso">Solicitar participação ↗</Link>.</div>
@@ -107,7 +117,7 @@ export default async function UsersPanel() {
               <p className="admin-atm-privacy">Somente administradores podem aprovar ou recusar solicitações. Os convites devem ser compartilhados individualmente e não concedem acesso aos PDFs em revisão.</p>
             </section>
 
-            <InviteControls />
+            <InviteControls emailReady={emailConfigured}/>
             <section className="admin-atm-people" aria-labelledby="admin-atm-people-title">
               <div className="admin-atm-section-head">
                 <div>
