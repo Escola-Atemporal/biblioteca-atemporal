@@ -15,7 +15,7 @@ export const metadata = {
 export default async function Login({
   searchParams,
 }: {
-  searchParams: Promise<{ erro?: string; convite?: string }>;
+  searchParams: Promise<{ erro?: string; convite?: string; senha?: string }>;
 }) {
   const params = await searchParams;
   const session = authConfigured ? await auth() : null;
@@ -78,6 +78,7 @@ export default async function Login({
             </p>
 
             {params?.convite === "ativado" && <p className="login-atm-notice" role="status">Seu acesso foi ativado. Entre com o e-mail e a senha que você acabou de definir.</p>}
+            {params?.senha === "alterada" && <p className="login-atm-notice" role="status">Sua senha foi atualizada. Entre com a nova senha.</p>}
 
             {session?.user?.email && role ? (
               <div className="login-atm-connected">
@@ -120,6 +121,7 @@ export default async function Login({
                       </p>
                     )}
                     <button type="submit" className="login-atm-submit">Entrar no meu painel <span aria-hidden="true">↗</span></button>
+                    <Link href="/esqueci-senha" className="login-atm-back">Esqueci minha senha</Link>
                   </form>
                 )}
                 {googleReady && (
