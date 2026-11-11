@@ -105,8 +105,11 @@ export async function enqueueEmail(client: PoolClient, mail: EmailInput): Promis
 }
 
 /** Uma tentativa imediata por requisição; falhas persistem na fila. */
-export async function deliverEmail(id: string): Promise<MailStatus> {
+export async function deliverEmail(id: string, allowIsolatedTest = false): Promise<MailStatus> {
   if (!databaseConfigured) return "failed";
+  // No queued member or security notifications may leave while public launch is blocked.
+  // Only a separately authorized admin test can bypass this gate.
+  if (!emailConfigured && !allowIsolatedTest) return "pending";
   if (!emailProviderConfigured) return "pending";
   const rows = await dbQuery<MailRow>(
     `UPDATE biblioteca_email_outbox SET status='sending',
@@ -196,6 +199,6 @@ export async function deliverEmail(id: string): Promise<MailStatus> {
   }
 }
 
-export async function sendEmailBatch(ids: (string|null)[]): Promise<MailStatus[]> {
-  return Promise.all(ids.filter((id):id is string=>Boolean(id)).map(id=>deliverEmail(id)));
+export async function sendEmailBatch(ids: (string|null)[], allowIsolatedTest = false): Promise<MailStatus[]> {
+  return Promise.all(ids.filter((id):id is string=>Boolean(id)).map(id=>deliverEmail(id, allowIsolatedTest)));
 }
