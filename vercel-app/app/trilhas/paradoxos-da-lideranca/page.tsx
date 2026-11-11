@@ -1,3 +1,4 @@
+import ReflectionQuestionLink from "../../components/ReflectionQuestionLink";
 import ColecaoAutoral from "../../components/ColecaoAutoral";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -125,7 +126,7 @@ export default function Trilha05Page(){
 
   <section className="learning-section learning-wrap" id="pratica">
    <div className="learning-section-header"><div><span className="eyebrow dark">PRÁTICA PARA LIDERANÇAS E EXPERIENCIALISTAS</span><h2>Antes de decidir, <em>amplie a pergunta.</em></h2></div><p>Use as questões para abrir conversas em contextos de baixo risco, sem revelar informações pessoais ou confidenciais.</p></div>
-   <ol className="learning-questions">{perguntas.map((p,i)=><li key={p}><span>{String(i+1).padStart(2,"0")}</span><p>{p}</p></li>)}</ol>
+   <ol className="learning-questions">{perguntas.map((p,i)=><li key={p}><span>{String(i+1).padStart(2,"0")}</span><div><p>{p}</p><ReflectionQuestionLink trail="paradoxos-da-lideranca" question={p}/></div></li>)}</ol>
    <div className="learning-practice paradox-practice"><span className="eyebrow">UM EXPERIMENTO POSSÍVEL</span><h3>SUBSTITUA O “OU” AUTOMÁTICO POR UMA PERGUNTA MAIS AMPLA.</h3><p>Escolha uma tensão recorrente. Registre o que cada lado protege, defina os limites que precisam ser respeitados e construa um acordo pequeno e revisável. O objetivo não é conciliar tudo a qualquer custo, mas ampliar o discernimento sem abrir mão da responsabilidade.</p><a href="#mapa-de-tensoes">Abrir o Mapa de Tensões ↘</a></div>
    <CadernoParadoxos/>
   </section>
