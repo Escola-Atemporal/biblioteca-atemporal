@@ -126,3 +126,272 @@
   .admin-atm-dashboard-callout{display:block}
   .admin-atm-dashboard-callout>a{margin-top:20px;white-space:normal;text-align:center}
 }
+
+
+/* SOLICITAÇÃO DE ACESSO — mantém o padrão editorial do login da Escola. */
+.request-atm-page .request-atm-layout {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  min-height:calc(100vh - 84px);
+}
+.request-atm-context {
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:38px;
+  color:#fff;
+  padding:clamp(35px,5.2vw,83px);
+  background-color:#151219;
+  background-image:linear-gradient(115deg,rgba(16,13,19,.91),rgba(25,17,32,.84)),var(--school-bgl);
+  background-size:cover;
+  background-position:center;
+  border-right:1px solid #493d50;
+}
+.request-atm-index {
+  display:block;
+  font:700 clamp(45px,5vw,70px)/1 Montserrat,Arial,sans-serif;
+  color:#ffd309;
+  letter-spacing:-.08em;
+  margin-bottom:20px;
+}
+.request-atm-context h1 {
+  font:750 clamp(36px,4.4vw,65px)/1.11 Montserrat,Arial,sans-serif;
+  color:#fff;
+  letter-spacing:-.06em;
+  text-wrap:balance;
+  margin:0 0 24px;
+}
+.request-atm-context h1 em {font-style:normal;color:#ffd309}
+.request-atm-context p {
+  max-width:590px;
+  color:#e1dae5;
+  font:400 15px/1.9 Montserrat,Arial,sans-serif;
+}
+.request-atm-context-foot {
+  display:block;
+  padding-top:17px;
+  border-top:1px solid #564d5e;
+  color:#e1d7e5;
+  font:600 11px/1.7 'Roboto Mono',monospace;
+}
+.request-atm-form-panel {
+  color:#211c25;
+  background:#faf9fb;
+  padding:clamp(32px,5vw,75px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.request-atm-form-inner{width:min(100%,560px)}
+.request-atm-form-inner h2{
+  font:750 clamp(34px,3.5vw,46px)/1.16 Montserrat,Arial,sans-serif;
+  letter-spacing:-.055em;
+  margin:14px 0 14px;
+  color:#201a24;
+}
+.request-atm-form-inner>p{
+  color:#5b5262;
+  font:400 13px/1.85 Montserrat,Arial,sans-serif;
+  margin:0 0 30px;
+}
+.request-atm-form {display:flex;flex-direction:column;position:relative}
+.request-atm-form>label:not(.request-atm-consent){
+  font:700 12px/1.6 Montserrat,Arial,sans-serif;
+  color:#2e2833;
+  margin:0 0 8px;
+}
+.request-atm-form>label span{font-weight:400;color:#756b7c}
+.request-atm-form>input,
+.request-atm-form>textarea{
+  width:100%;min-height:50px;
+  box-sizing:border-box;
+  color:#19151d;
+  background:#fff;
+  border:1px solid #bfb6c6;
+  border-radius:2px;
+  padding:13px 15px;
+  font:500 13px/1.65 Montserrat,Arial,sans-serif;
+  margin:0 0 20px;
+  resize:vertical;
+}
+.request-atm-form>input:focus-visible,
+.request-atm-form>textarea:focus-visible,
+.request-atm-form>button:focus-visible {
+  outline:3px solid #634995;
+  outline-offset:2px;
+}
+.request-atm-honeypot{
+  position:absolute!important;
+  left:-9999px!important;
+  width:1px!important;
+  height:1px!important;
+  overflow:hidden!important;
+}
+.request-atm-consent {
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  margin:7px 0 23px;
+  color:#544a5c;
+  cursor:pointer;
+}
+.request-atm-consent>input{
+  width:17px;height:17px;
+  flex:none;
+  accent-color:#634995;
+  margin-top:2px;
+}
+.request-atm-consent>span {
+  font:400 11px/1.75 Montserrat,Arial,sans-serif;
+  color:#524a59;
+}
+.request-atm-submit{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;min-height:53px;
+  background:#ffd309;
+  color:#191919;
+  border:0;border-radius:2px;
+  padding:15px 20px;
+  font:750 13px/1.5 Montserrat,Arial,sans-serif;
+  cursor:pointer;
+}
+.request-atm-submit:hover{background:#ffe36f}
+.request-atm-submit:disabled{opacity:.75;cursor:default}
+.request-atm-response{
+  color:#802b3b;
+  font:600 12px/1.65 Montserrat,Arial,sans-serif;
+  border-left:3px solid #a6284d;
+  background:#fff0f1;
+  padding:14px 16px;
+  margin:0 0 19px;
+}
+.request-atm-response.is-ok{
+  color:#33223e;
+  background:#f2ecf6;
+  border-left-color:#634995;
+}
+.request-atm-footnote{
+  color:#706777;
+  font:400 11px/1.75 Montserrat,Arial,sans-serif;
+  margin:13px 0 0;
+}
+/* FILA DE SOLICITAÇÕES — visual compacto e responsivo, sem cartões decorativos. */
+.request-atm-review-section {margin:0 0 43px}
+.request-atm-review-intro {max-width:385px}
+.request-atm-review-intro>a {
+  color:#50325f;
+  font:700 12px/1.65 Montserrat,Arial,sans-serif;
+  text-underline-offset:3px;
+  text-decoration:underline;
+}
+.request-atm-review-list {display:grid;gap:13px}
+.request-atm-review-item {
+  background:#fff;
+  border:1px solid #dfd9e5;
+  border-left:3px solid #ffd309;
+  padding:clamp(20px,2.5vw,30px);
+}
+.request-atm-review-top {
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  align-items:flex-start;
+}
+.request-atm-review-label{
+  color:#644b75;
+  font:700 9px/1.5 'Roboto Mono',monospace;
+  letter-spacing:.085em;
+}
+.request-atm-review-top h3 {
+  color:#241f28;
+  font:750 clamp(17px,1.8vw,23px)/1.28 Montserrat,Arial,sans-serif;
+  letter-spacing:-.025em;
+  margin:6px 0;
+}
+.request-atm-review-email,
+.request-atm-review-context,
+.request-atm-review-top time{
+  color:#5c5362;
+  font:400 12px/1.75 Montserrat,Arial,sans-serif;
+  overflow-wrap:anywhere;
+}
+.request-atm-review-email {margin:0}
+.request-atm-review-top time {font-size:11px;white-space:nowrap}
+.request-atm-review-context{
+  margin:17px 0 20px;
+  padding:11px 0 0;
+  border-top:1px solid #eee9f0;
+  max-width:840px;
+  white-space:pre-wrap;
+}
+.request-atm-review-actions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:19px;
+}
+.request-atm-review-actions form{margin:0}
+.request-atm-approve,
+.request-atm-reject {
+  padding:12px 16px;
+  min-height:43px;
+  font:700 12px/1.5 Montserrat,Arial,sans-serif;
+  border-radius:2px;
+  cursor:pointer;
+}
+.request-atm-approve{background:#ffd309;border:1px solid #ffd309;color:#181818}
+.request-atm-reject{background:transparent;border:1px solid #a79aaa;color:#392b42}
+.request-atm-review-actions button:disabled{cursor:default;opacity:.6}
+.request-atm-review-result{
+  margin-top:17px;
+  background:#fff0f2;
+  padding:15px 18px;
+  border-left:3px solid #b32248;
+}
+.request-atm-review-result.is-success{background:#f4edf7;border-left-color:#634995}
+.request-atm-review-result p {
+  font:600 12px/1.7 Montserrat,Arial,sans-serif;
+  color:#332a3a;
+}
+.request-atm-review-invite{margin-top:13px}
+.request-atm-review-invite label{
+  display:block;margin-bottom:7px;
+  font:700 11px/1.5 Montserrat,Arial,sans-serif;
+  color:#3d3148;
+}
+.request-atm-review-invite input{
+  width:100%;max-width:760px;
+  padding:12px 13px;
+  border:1px solid #bfb3c8;
+  background:#fff;
+  color:#201827;
+  font:500 11px/1.5 'Roboto Mono',monospace;
+}
+.request-atm-review-invite button{
+  margin-top:9px;
+  border:0;
+  background:#2b1d34;
+  color:#fff;
+  padding:10px 14px;
+  font:700 11px/1.5 Montserrat,Arial,sans-serif;
+  cursor:pointer;
+}
+.request-atm-review-invite small {
+  display:block;
+  margin-top:10px;
+  color:#665c6e;
+  font:400 10px/1.7 Montserrat,Arial,sans-serif;
+}
+@media(max-width:900px){
+  .request-atm-page .request-atm-layout{grid-template-columns:1fr}
+  .request-atm-context{min-height:330px;padding:38px 25px}
+  .request-atm-context h1{font-size:clamp(35px,7vw,50px)}
+  .request-atm-form-panel{padding:51px 25px}
+}
+@media(max-width:550px){
+  .request-atm-review-top{flex-direction:column;gap:5px}
+  .request-atm-review-actions{flex-direction:column}
+  .request-atm-review-actions form,
+  .request-atm-review-actions button{width:100%}
+  .request-atm-form-inner h2{font-size:36px}
+}
