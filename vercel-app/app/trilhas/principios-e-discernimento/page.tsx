@@ -1,3 +1,4 @@
+import ReflectionQuestionLink from "../../components/ReflectionQuestionLink";
 import ColecaoAutoral from "../../components/ColecaoAutoral";
 import { livrosTrilha01, referenciasComplementaresTrilha01 } from "../../../data/referencias-trilha-01";
 import BibliografiaTrilha01 from "../../components/BibliografiaTrilha01";
@@ -253,7 +254,7 @@ export default function Trilha01Page() {
 
       <section id="pratica" className="learning-section learning-wrap">
         <div className="learning-section-header"><div><span className="eyebrow dark">LEVE PARA A VIDA REAL</span><h2>Uma decisão, <em>cinco perguntas.</em></h2></div><p>Convite original da curadoria. Use individualmente, em uma conversa de liderança ou como abertura de uma roda de aprendizagem.</p></div>
-        <ol className="learning-questions">{perguntas.map((q,i)=><li key={q}><span>{String(i+1).padStart(2,"0")}</span><p>{q}</p></li>)}</ol>
+        <ol className="learning-questions">{perguntas.map((q,i)=><li key={q}><span>{String(i+1).padStart(2,"0")}</span><div><p>{q}</p><ReflectionQuestionLink trail="principios-e-discernimento" question={q}/></div></li>)}</ol>
         <div className="learning-practice"><div><span className="eyebrow">EXERCÍCIO · 15–20 MINUTOS</span><h3>O mapa de uma escolha real</h3><p>Escolha uma decisão que esteja próxima. Registre: <strong>o resultado desejado</strong>, <strong>as pessoas afetadas</strong>, <strong>o princípio em tensão</strong> e <strong>uma ação observável</strong> que demonstre coerência. Antes de decidir, converse com alguém capaz de oferecer outra perspectiva. Depois, revise o que aconteceu.</p><a className="workbook-cta-link" href="#caderno">Preencher o Caderno de Discernimento ↓</a></div><div className="learning-practice-mark" aria-hidden="true">↗</div></div>
         <CadernoDiscernimento />
       </section>
