@@ -1,3 +1,4 @@
+import { can } from "../../lib/permissions";
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import PresenceHeartbeat from "../components/PresenceHeartbeat";
@@ -19,7 +20,7 @@ export default async function ProtectedTracksLayout({
   const session = await auth();
   if (!session?.user?.email) redirect("/entrar");
   const role = await roleForEmailAsync(session.user.email);
-  if (!role) redirect("/entrar");
+  if (!can(role, "tracks:read")) redirect("/entrar");
 
   return <><PresenceHeartbeat section="Trilhas de aprendizagem"/>{children}</>;
 }
