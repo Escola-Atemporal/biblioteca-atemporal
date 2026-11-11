@@ -3,7 +3,7 @@ import Link from "next/link";
 import { AuthError } from "next-auth";
 import { redirect } from "next/navigation";
 import { auth, authConfigured, googleReady, passwordReady, signIn, signOut } from "../../auth";
-import { roleForEmail } from "../../lib/access";
+import { roleForEmailAsync } from "../../lib/access";
 
 export const dynamic = "force-dynamic";
 export const metadata = {
@@ -19,7 +19,7 @@ export default async function Login({
 }) {
   const params = await searchParams;
   const session = authConfigured ? await auth() : null;
-  const role = roleForEmail(session?.user?.email);
+  const role = await roleForEmailAsync(session?.user?.email);
   const invalidCredentials = params?.erro === "credenciais";
 
   async function entrarComSenha(formData: FormData) {
