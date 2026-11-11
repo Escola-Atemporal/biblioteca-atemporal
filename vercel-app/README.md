@@ -120,3 +120,27 @@ Além do build e da verificação de imagens, validar com um convite de teste au
 ### Próximos cuidados operacionais
 
 A recuperação de acesso é feita emitindo um novo convite pela administração. Para distribuir acesso em larga escala, integrar serviço de e-mail transacional e trilha formal de revisão editorial. Antes de remover `BIBLIOTECA_PASSWORD_USERS`, transferir também a conta administradora para o banco, testar seu novo login e somente depois revogar o login de bootstrap.
+
+
+## Solicitação pública e aprovação de membros
+
+A etapa de aprovação foi adicionada sem abrir cadastro automático.
+
+- **/solicitar-acesso**: a pessoa preenche nome, e-mail, contexto opcional e consentimento específico para uso dos dados na análise da solicitação.
+- O pedido entra como `pending` em `biblioteca_membership_requests`. Solicitações repetidas para o mesmo e-mail não revelam se já existe conta; nova solicitação após recusa só é aceita passados 30 dias.
+- A administração entra em **/painel/usuarios#solicitacoes** para avaliar cada pedido.
+- **Aprovar** cria conta `experiencialista` inativa e um convite de uso único, válido por 48 horas. O administrador copia e compartilha o link privadamente, pois não há envio automático de e-mail.
+- **Recusar** marca a solicitação como `rejected` e não cria acesso.
+- O usuário aprovado define a senha em `/convite/[token]`. Só então passa a poder iniciar sessão.
+- A conta `experiencialista` não recebe acesso aos nove e-books ainda classificados como minutas internas; continuam restritos à curadoria e administração.
+- Pedidos não aprovados não alteram outros registros de usuário, permissões ou bibliografias.
+
+### Proteções e limites
+
+Há validação de comprimento, formulário antifraude simples (campo invisível), teto global de solicitações novas por 24 horas e consulta parametrizada. O sistema não possui captcha nem controle distribuído contra abuso por IP; antes de divulgação em massa será necessário adicionar uma proteção externa e definir política de retenção de pedidos pessoais segundo a LGPD.
+
+Aprovação administrativa tem verificação de sessão no servidor e escrita transacional no Neon. Os convites são armazenados somente como hash SHA-256 e não podem ser recuperados depois de fechada a mensagem de aprovação. Não tente alterar contas existentes por essa rota — o painel fornece ferramentas específicas para usuários registrados.
+
+### Verificação recomendada antes da divulgação ampla
+
+Faça um pedido de teste com um e-mail controlado pela equipe, confira sua aparição na fila, aprove, copie o convite, ative a senha e teste o perfil. Em seguida, verifique que outro visitante não consegue acessar `/painel/usuarios` e que um experiencialista não visualiza os links editoriais restritos.
