@@ -4,6 +4,7 @@ import { auth, authConfigured } from "../../auth";
 import { roleForEmailAsync } from "../../lib/access";
 import { getDriveCatalog } from "../../lib/drive-catalog";
 import BrandLogo from "../components/BrandLogo";
+import PresenceHeartbeat from "../components/PresenceHeartbeat";
 import ArquivosCatalogo from "./ArquivosCatalogo";
 import "./arquivos.css";
 
@@ -24,6 +25,7 @@ export default async function ArquivosPage() {
 
   return (
     <main className="dashboard-atm arquivos-atm">
+      <PresenceHeartbeat section="Arquivos" />
       <header className="topbar login-atm-topbar">
         <BrandLogo />
         <nav aria-label="Navegação dos arquivos">
