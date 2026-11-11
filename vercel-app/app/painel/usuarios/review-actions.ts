@@ -1,3 +1,4 @@
+import { can } from "../../../lib/permissions";
 "use server";
 
 import { createHash, randomBytes } from "node:crypto";
@@ -13,7 +14,7 @@ const UUID=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 async function requireAdmin(): Promise<string> {
   const session=await auth();
   const actor=session?.user?.email?.trim().toLowerCase();
-  if (!actor || await roleForEmailAsync(actor)!=="administrador")
+  if (!actor || !can(await roleForEmailAsync(actor), "users:manage"))
     throw new Error("Ação exclusiva para administradores.");
   if (!databaseConfigured) throw new Error("Banco da Biblioteca indisponível.");
   return actor;
