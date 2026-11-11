@@ -5,7 +5,7 @@ import { createAccessInvite, type InviteResult } from "./actions";
 
 const initial: InviteResult = { ok: false, message: "", inviteUrl: null };
 
-export default function InviteControls() {
+export default function InviteControls({emailReady}:{emailReady:boolean}) {
   const [state, action, pending] = useActionState(createAccessInvite, initial);
   return (
     <div className="admin-atm-invite">
@@ -14,6 +14,7 @@ export default function InviteControls() {
         <h2>Convidar uma pessoa.</h2>
         <p>Cadastre o nome, o e-mail e o perfil. Após a criação, o sistema envia automaticamente um convite individual para a pessoa definir sua senha.</p>
       </div>
+      {!emailReady && <p className="login-atm-notice">Os convites serão habilitados quando o serviço de e-mail estiver configurado no Render.</p>}
       <form action={action} className="admin-atm-form">
         <div className="admin-atm-fields">
           <label>
@@ -33,7 +34,7 @@ export default function InviteControls() {
             </select>
           </label>
         </div>
-        <button className="admin-atm-primary" type="submit" disabled={pending}>
+        <button className="admin-atm-primary" type="submit" disabled={pending || !emailReady}>
           {pending ? "Enviando..." : "Criar e enviar convite por e-mail"} <span aria-hidden="true">↗</span>
         </button>
       </form>
