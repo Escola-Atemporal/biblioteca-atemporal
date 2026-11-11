@@ -1,6 +1,6 @@
 "use server";
 
-import { createHash, randomBytes } from "node:crypto";
+import { createHash, randomBytes, randomUUID } from "node:crypto";
 import { auth } from "../../../auth";
 import { roleForEmailAsync, type Role } from "../../../lib/access";
 import { databaseConfigured, dbQuery, transaction } from "../../../lib/database";
@@ -87,45 +87,71 @@ export async function createAccessInvite(_previous: InviteResult, formData: Form
   }
 }
 
-export async function setAccountActive(formData: FormData): Promise<void> {
-  const actor = await requireAdmin();
-  const email = String(formData.get("email") ?? "").trim().toLowerCase();
-  const action = String(formData.get("action") ?? "");
-  if (!EMAIL.test(email) || email === actor || !["activate","deactivate"].includes(action)) return;
-  const active = action === "activate";
-  const accounts = await dbQuery<{ email: string }>(
-    "UPDATE biblioteca_access_accounts SET active=$1,updated_at=now() WHERE email=$2 AND ($1::boolean=false OR password_hash IS NOT NULL) RETURNING email",
-    [active,email],
-  );
-  if (accounts.length) {
-    if (!active) {
-      await dbQuery(
-        "UPDATE biblioteca_access_invites SET used_at=now() WHERE email=$1 AND used_at IS NULL",
-        [email],
-      );
-    }
-    await dbQuery(
-      `INSERT INTO biblioteca_access_audit(actor_email,target_email,action)
-       VALUES($1,$2,$3)`,
-      [actor,email,active?"account_activated":"account_deactivated"],
+export async function setAccountActive(formData:FormData):Promise<void>{
+  const actor=await requireAdmin();
+  const email=String(formData.get("email")??"").trim().toLowerCase();
+  const action=String(formData.get("action")??"");
+  if(!EMAIL.test(email)||email===actor||!["activate","deactivate"].includes(action))return;
+  const active=action==="activate";
+  let mailId:string|null=null;
+  await transaction(async(client)=>{
+    const updated=await client.query<{email:string;display_name:string}>(
+      `UPDATE biblioteca_access_accounts
+       SET active=$1,updated_at=now()
+       WHERE email=$2 AND ($1::boolean=false OR password_hash IS NOT NULL)
+       RETURNING email,display_name`,
+      [active,email],
     );
-  }
+    const person=updated.rows[0];if(!person)return;
+    if(!active){
+      await client.query("UPDATE biblioteca_access_invites SET used_at=now() WHERE email=$1 AND used_at IS NULL",[email]);
+      await client.query("UPDATE biblioteca_password_resets SET used_at=now() WHERE email=$1 AND used_at IS NULL",[email]);
+    }
+    await client.query(
+      `INSERT INTO biblioteca_access_audit(actor_email,target_email,action)
+       VALUES($1,$2,$3)`,[actor,email,active?"account_activated":"account_deactivated"],
+    );
+    mailId=await enqueueEmail(client,createEmail(
+      "access_status",email,active?"Seu acesso foi reativado | Biblioteca Atemporal":"Seu acesso foi suspenso | Biblioteca Atemporal",
+      {eyebrow:"Situação do seu acesso",
+       greeting:`Olá, ${person.display_name}.`,
+       paragraphs:active
+        ?["A administração da Escola Atemporal reativou sua conta na Biblioteca.","Você já pode entrar usando seu e-mail e sua senha. Se tiver dificuldade, solicite uma recuperação por e-mail."]
+        :["A administração da Escola Atemporal desativou seu acesso à Biblioteca.","Você não conseguirá utilizar sua conta até nova autorização. Se precisar de esclarecimentos, entre em contato diretamente com a equipe."],
+       action:active?{label:"Entrar na Biblioteca",url:`${emailOrigin()}/entrar`}:undefined},
+      `access:status:${randomUUID()}`,
+    ));
+  });
+  await sendEmailBatch([mailId]).catch(()=>[]);
   revalidatePath("/painel/usuarios");
 }
 
-export async function changeAccountRole(formData: FormData): Promise<void> {
-  const actor = await requireAdmin();
-  const email = String(formData.get("email") ?? "").trim().toLowerCase();
-  const role = String(formData.get("role") ?? "") as Role;
-  if (!EMAIL.test(email) || email === actor || !ROLES.includes(role)) return;
-  const accounts = await dbQuery<{ email: string }>(
-    "UPDATE biblioteca_access_accounts SET role=$1,updated_at=now() WHERE email=$2 RETURNING email",
-    [role,email],
-  );
-  if (accounts.length) await dbQuery(
-    `INSERT INTO biblioteca_access_audit(actor_email,target_email,action,details)
-     VALUES($1,$2,'role_changed',jsonb_build_object('role',$3))`,
-    [actor,email,role],
-  );
+export async function changeAccountRole(formData:FormData):Promise<void>{
+  const actor=await requireAdmin();
+  const email=String(formData.get("email")??"").trim().toLowerCase();
+  const role=String(formData.get("role")??"") as Role;
+  if(!EMAIL.test(email)||email===actor||!ROLES.includes(role))return;
+  let mailId:string|null=null;
+  await transaction(async(client)=>{
+    const updated=await client.query<{display_name:string;active:boolean}>(
+      `UPDATE biblioteca_access_accounts SET role=$1,updated_at=now()
+       WHERE email=$2 AND role<>$1 RETURNING display_name,active`,[role,email],
+    );
+    const person=updated.rows[0];if(!person)return;
+    await client.query(
+      `INSERT INTO biblioteca_access_audit(actor_email,target_email,action,details)
+       VALUES($1,$2,'role_changed',jsonb_build_object('role',$3))`,[actor,email,role],
+    );
+    if(person.active){
+      mailId=await enqueueEmail(client,createEmail(
+        "role_changed",email,"Seu perfil foi atualizado | Biblioteca Atemporal",
+        {eyebrow:"Atualização de permissões",greeting:`Olá, ${person.display_name}.`,
+         paragraphs:[`Seu perfil de acesso foi alterado para ${role}.`,"As permissões são aplicadas automaticamente. Se não reconhece a alteração, fale com a administração da Escola."],
+         action:{label:"Acessar a Biblioteca",url:`${emailOrigin()}/painel`}},
+        `access:role:${randomUUID()}`,
+      ));
+    }
+  });
+  await sendEmailBatch([mailId]).catch(()=>[]);
   revalidatePath("/painel/usuarios");
 }
