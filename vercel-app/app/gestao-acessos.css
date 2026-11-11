@@ -395,3 +395,27 @@
   .request-atm-review-actions button{width:100%}
   .request-atm-form-inner h2{font-size:36px}
 }
+
+.login-atm-membership{
+  margin:27px 0 0;
+  padding:17px 0 0;
+  border-top:1px solid #ded8e1;
+}
+.login-atm-membership p{
+  color:#57515e;
+  margin:0 0 7px;
+  font:500 12px/1.65 Montserrat,Arial,sans-serif;
+}
+.login-atm-membership a{
+  display:inline-flex;
+  align-items:center;
+  gap:15px;
+  color:#4b315c;
+  font:750 12px/1.65 Montserrat,Arial,sans-serif;
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+.login-atm-membership a:focus-visible{
+  outline:3px solid #634995;
+  outline-offset:4px;
+}
