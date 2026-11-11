@@ -35,7 +35,7 @@ export default function RequestReviewRow({ request }: { request: MembershipReque
         <form action={approve}>
           <input type="hidden" name="requestId" value={request.id}/>
           <button type="submit" className="request-atm-approve" disabled={complete || approving || rejecting}>
-            {approving ? "Aprovando..." : "Aprovar e gerar convite"} <span aria-hidden="true">↗</span>
+            {approving ? "Aprovando..." : "Aprovar e enviar e-mail"} <span aria-hidden="true">↗</span>
           </button>
         </form>
         <form action={reject}>
@@ -49,16 +49,7 @@ export default function RequestReviewRow({ request }: { request: MembershipReque
       {(approval.message || rejection.message) && (
         <div className={`request-atm-review-result ${complete ? "is-success" : "is-error"}`} role="status">
           <p>{approval.message || rejection.message}</p>
-          {approval.inviteUrl && (
-            <div className="request-atm-review-invite">
-              <label htmlFor={`invite-request-${request.id}`}>Convite individual para compartilhar</label>
-              <input id={`invite-request-${request.id}`} value={approval.inviteUrl} readOnly
-                onFocus={(event) => event.target.select()}/>
-              <button type="button" onClick={() => navigator.clipboard.writeText(approval.inviteUrl!)}>
-                Copiar convite
-              </button>
-              <small>Envie por mensagem privada. O sistema ainda não envia e-mails automaticamente.</small>
-            </div>
+        </div>
           )}
         </div>
       )}
