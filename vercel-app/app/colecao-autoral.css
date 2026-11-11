@@ -1,0 +1,226 @@
+/* Biblioteca Atemporal | e-books da autoria da Escola
+   Apenas dentro das secoes bibliograficas das seis trilhas.
+   A cor principal e o amarelo da Escola; roxo somente em pequenos acentos.
+   Sem capas fotográficas ou uso de imagens inventadas. */
+.learning-page .colecao-autoral {
+  width:100%;
+  margin:clamp(26px,4vw,54px) 0 clamp(42px,5vw,70px);
+  scroll-margin-top:100px;
+  min-width:0;
+}
+.learning-page .colecao-autoral-topo {
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:22px;
+  padding-bottom:23px;
+  border-bottom:1px solid rgba(218,207,223,.34);
+}
+.learning-page .colecao-autoral-titulos {max-width:730px;min-width:0}
+.learning-page .colecao-autoral-selo {
+  color:#ffd309;
+  display:block;
+  font:700 10px/1.65 'Roboto Mono',monospace;
+  letter-spacing:.10em;
+  margin-bottom:12px;
+}
+.learning-page .colecao-autoral-topo h3 {
+  color:#fff;
+  font:700 clamp(28px,3.3vw,44px)/1.14 Montserrat,Arial,sans-serif;
+  letter-spacing:-.045em;
+  text-wrap:balance;
+  margin:0 0 16px;
+}
+.learning-page .colecao-autoral-topo h3 em {
+  color:#ffd309;
+  font-style:normal;
+}
+.learning-page .colecao-autoral-topo p {
+  color:#e0dce3;
+  font:400 14px/1.8 Montserrat,Arial,sans-serif;
+  margin:0;
+}
+.learning-page .colecao-autoral-total {
+  color:#fff;
+  min-width:84px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:4px;
+  text-align:right;
+}
+.learning-page .colecao-autoral-total strong {
+  color:#ffd309;
+  font:700 clamp(40px,4vw,57px)/1 'Roboto Mono',monospace;
+  letter-spacing:-.07em;
+}
+.learning-page .colecao-autoral-total small {
+  color:#e4dae9;
+  font:700 9px/1.5 'Roboto Mono',monospace;
+  letter-spacing:.04em;
+}
+.learning-page .colecao-autoral-aviso {
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px 14px;
+  padding:17px 19px;
+  border-left:3px solid #ffd309;
+  background:#251f29;
+  color:#e6e1e9;
+  margin:22px 0 22px;
+  font:400 12px/1.68 Montserrat,Arial,sans-serif;
+}
+.learning-page .colecao-autoral-aviso strong{
+  color:#fff;
+  font-weight:700;
+}
+.learning-page .colecao-autoral-aviso span {flex:1 1 380px}
+.learning-page .colecao-autoral-lista {
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:18px;
+}
+.learning-page .colecao-autoral-lista>li {margin:0;padding:0;min-width:0}
+.learning-page .colecao-autoral-card {
+  display:grid;
+  grid-template-columns:minmax(165px,220px) minmax(0,1fr);
+  min-height:285px;
+  background:#fff;
+  color:#1c1b20;
+  border:1px solid #e2dce5;
+  border-top:4px solid #ffd309;
+  border-radius:2px;
+  overflow:hidden;
+  box-shadow:none;
+}
+.learning-page .colecao-autoral-capa {
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:18px;
+  justify-content:space-between;
+  min-width:0;
+  background:linear-gradient(140deg,#29212e,#141414);
+  color:#fff;
+  padding:clamp(20px,2.1vw,29px);
+}
+.learning-page .colecao-autoral-capa>span:first-child,
+.learning-page .colecao-autoral-capa-rodape {
+  color:#e5ddea;
+  font:700 9px/1.6 'Roboto Mono',monospace;
+  letter-spacing:.055em;
+}
+.learning-page .colecao-autoral-capa strong {
+  color:#ffd309;
+  font:700 clamp(62px,6vw,88px)/.92 Montserrat,Arial,sans-serif;
+  letter-spacing:-.07em;
+}
+.learning-page .colecao-autoral-capa .colecao-autoral-capa-titulo {
+  color:#fff;
+  font:700 clamp(17px,1.65vw,24px)/1.24 Montserrat,Arial,sans-serif;
+  letter-spacing:-.045em;
+  overflow-wrap:anywhere;
+  max-width:100%;
+}
+.learning-page .colecao-autoral-capa .colecao-autoral-capa-rodape {
+  color:#ffd309;
+  font-size:8px;
+}
+.learning-page .colecao-autoral-texto {
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  min-width:0;
+  padding:clamp(21px,2.6vw,35px);
+}
+.learning-page .colecao-autoral-meta {
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px 13px;
+  color:#574168;
+  font:700 10px/1.55 'Roboto Mono',monospace;
+}
+.learning-page .colecao-autoral-texto h4 {
+  color:#1c1921;
+  font:750 clamp(21px,2.05vw,28px)/1.26 Montserrat,Arial,sans-serif;
+  letter-spacing:-.035em;
+  margin:14px 0 6px;
+}
+.learning-page .colecao-autoral-subtitulo {
+  color:#594a63;
+  font:600 13px/1.65 Montserrat,Arial,sans-serif;
+  margin:0 0 9px;
+}
+.learning-page .colecao-autoral-resumo{
+  color:#514b56;
+  font:400 13px/1.8 Montserrat,Arial,sans-serif;
+  margin:0 0 15px;
+}
+.learning-page .colecao-autoral-pergunta {
+  background:#f3eff7;
+  color:#302639;
+  padding:12px 15px;
+  border-left:3px solid #634995;
+  font:400 12px/1.75 Montserrat,Arial,sans-serif;
+  margin:0 0 19px;
+}
+.learning-page .colecao-autoral-pergunta strong{color:#342244}
+.learning-page .colecao-autoral-link {
+  display:inline-flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  align-self:flex-start;
+  text-decoration:none;
+  padding:13px 19px;
+  background:#ffd309;
+  color:#151515;
+  min-height:44px;
+  font:750 12px/1.5 Montserrat,Arial,sans-serif;
+  border-radius:2px;
+  margin-top:auto;
+}
+.learning-page .colecao-autoral-link:hover {background:#ffe36d;color:#111}
+.learning-page .colecao-autoral-link:focus-visible {
+  outline:3px solid #634995;
+  outline-offset:3px;
+}
+.learning-page .colecao-autoral-nota {
+  color:#6a626e;
+  font:400 11px/1.6 Montserrat,Arial,sans-serif;
+  margin-top:11px;
+}
+@media(max-width:740px){
+  .learning-page .colecao-autoral-topo {align-items:flex-start}
+  .learning-page .colecao-autoral-total {min-width:53px}
+  .learning-page .colecao-autoral-topo h3 {font-size:clamp(26px,6vw,37px)}
+  .learning-page .colecao-autoral-card {grid-template-columns:155px minmax(0,1fr)}
+  .learning-page .colecao-autoral-texto {padding:20px}
+  .learning-page .colecao-autoral-capa {padding:20px 16px}
+  .learning-page .colecao-autoral-capa strong {font-size:60px}
+  .learning-page .colecao-autoral-capa .colecao-autoral-capa-titulo {font-size:18px}
+}
+@media(max-width:560px){
+  .learning-page .colecao-autoral-topo{gap:10px}
+  .learning-page .colecao-autoral-total strong{font-size:36px}
+  .learning-page .colecao-autoral-total small{font-size:8px}
+  .learning-page .colecao-autoral-card{display:flex;flex-direction:column}
+  .learning-page .colecao-autoral-capa{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    align-items:start;
+    gap:9px 15px;
+    min-height:144px;
+  }
+  .learning-page .colecao-autoral-capa>span:first-child,
+  .learning-page .colecao-autoral-capa .colecao-autoral-capa-rodape {grid-column:1}
+  .learning-page .colecao-autoral-capa strong{grid-column:2;grid-row:1 / span 3;font-size:59px;align-self:center}
+  .learning-page .colecao-autoral-capa .colecao-autoral-capa-titulo{grid-column:1;font-size:20px}
+  .learning-page .colecao-autoral-link{width:100%;justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){
+  .learning-page .colecao-autoral-link {transition:none}
+}
