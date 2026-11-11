@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials";
-import { roleForEmail } from "./lib/access";
+import { roleForEmailAsync } from "./lib/access";
 import { autenticarComSenha, senhaConfigurada } from "./lib/password-login";
 
 const oauthReady = Boolean(
@@ -31,7 +31,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   session: { strategy: "jwt", maxAge: 60 * 60 * 8 },
   callbacks: {
     async signIn({ user, account, profile }) {
-      if (!roleForEmail(user.email)) return false;
+      if (!(await roleForEmailAsync(user.email))) return false;
       if (account?.provider === "credentials") return passwordReady;
       if (account?.provider === "google") return profile?.email_verified === true;
       return false;
