@@ -6,6 +6,7 @@ import { roleForEmailAsync } from "../../../lib/access";
 import { dbQuery, databaseConfigured } from "../../../lib/database";
 import InviteControls from "./InviteControls";
 import { setAccountActive, changeAccountRole } from "./actions";
+import RequestReviewRow, { type MembershipRequest } from "./RequestReviewRow";
 
 export const dynamic = "force-dynamic";
 export const metadata = {
@@ -35,9 +36,10 @@ export default async function UsersPanel() {
   }
   let users: MemberRow[] = [];
   let pending = 0;
+  let requests: MembershipRequest[] = [];
   let databaseUnavailable = false;
   try {
-    [users, pending] = await Promise.all([
+    [users, pending, requests] = await Promise.all([
       dbQuery<MemberRow>(
         `SELECT email,display_name,role,active,(password_hash IS NOT NULL) AS has_password,created_at
          FROM biblioteca_access_accounts ORDER BY created_at DESC LIMIT 300`,
@@ -45,6 +47,11 @@ export default async function UsersPanel() {
       dbQuery<SummaryRow>(
         "SELECT count(*)::text AS pending FROM biblioteca_access_invites WHERE used_at IS NULL AND expires_at>now()",
       ).then((r) => Number(r[0]?.pending ?? 0)),
+      dbQuery<MembershipRequest>(
+        `SELECT id,full_name,email,context,created_at::text AS created_at
+         FROM biblioteca_membership_requests
+         WHERE status='pending' ORDER BY created_at ASC LIMIT 100`,
+      ),
     ]);
   } catch { databaseUnavailable = true; }
 
@@ -66,6 +73,7 @@ export default async function UsersPanel() {
           <p>Convide pessoas, acompanhe a ativação das contas e defina quem pode acessar cada área da Biblioteca.</p>
           <div className="admin-atm-facts">
             <span><strong>{users.length}</strong> usuários cadastrados no banco</span>
+            <span><strong>{requests.length}</strong> pedidos aguardando avaliação</span>
             <span><strong>{pending}</strong> convites pendentes</span>
             <span><strong>03</strong> perfis de autorização</span>
           </div>
@@ -78,6 +86,27 @@ export default async function UsersPanel() {
           </div>
         ) : (
           <>
+            <section className="request-atm-review-section" id="solicitacoes" aria-labelledby="request-atm-review-title">
+              <div className="admin-atm-section-head">
+                <div>
+                  <span className="admin-atm-eyebrow">SOLICITAÇÕES DE PARTICIPAÇÃO</span>
+                  <h2 id="request-atm-review-title">Avaliar novos membros.</h2>
+                </div>
+                <div className="request-atm-review-intro">
+                  <p>Pedidos recebidos pelo formulário público. Aprovar gera um convite pessoal de ativação; não libera a conta imediatamente.</p>
+                  <Link href="/painel/usuarios#solicitacoes">Atualizar solicitações ↗</Link>
+                </div>
+              </div>
+              {requests.length ? (
+                <div className="request-atm-review-list">
+                  {requests.map((request) => <RequestReviewRow key={request.id} request={request}/>)}
+                </div>
+              ) : (
+                <div className="admin-atm-empty">Não há solicitações aguardando análise. O formulário público pode ser acessado em <Link href="/solicitar-acesso">Solicitar participação ↗</Link>.</div>
+              )}
+              <p className="admin-atm-privacy">Somente administradores podem aprovar ou recusar solicitações. Os convites devem ser compartilhados individualmente e não concedem acesso aos PDFs em revisão.</p>
+            </section>
+
             <InviteControls />
             <section className="admin-atm-people" aria-labelledby="admin-atm-people-title">
               <div className="admin-atm-section-head">
