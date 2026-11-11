@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
+import PresenceHeartbeat from "../components/PresenceHeartbeat";
 import { auth, authConfigured } from "../../auth";
 import { roleForEmailAsync } from "../../lib/access";
 
@@ -20,5 +21,5 @@ export default async function ProtectedTracksLayout({
   const role = await roleForEmailAsync(session.user.email);
   if (!role) redirect("/entrar");
 
-  return <>{children}</>;
+  return <><PresenceHeartbeat section="Trilhas de aprendizagem"/>{children}</>;
 }
