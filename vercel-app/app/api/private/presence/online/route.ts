@@ -1,3 +1,4 @@
+import { can } from "../../../../../lib/permissions";
 import { NextResponse } from "next/server";
 import { auth } from "../../../../../auth";
 import { roleForEmailAsync } from "../../../../../lib/access";
@@ -7,7 +8,7 @@ type PresenceRow={email:string;name:string;role:string;section:string;last_seen_
 export async function GET(){
   const headers={"Cache-Control":"private, no-store"};
   const session=await auth();
-  if(!session?.user?.email || await roleForEmailAsync(session.user.email)!=="administrador")
+  if(!session?.user?.email || !can(await roleForEmailAsync(session.user.email),"analytics:read"))
     return NextResponse.json({error:"Forbidden"},{status:403,headers});
   if(!databaseConfigured)return NextResponse.json({error:"Unavailable"},{status:503,headers});
   try{
