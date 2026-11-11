@@ -120,6 +120,13 @@ export default async function UsersPanel() {
               <p className="admin-atm-privacy">Somente administradores podem aprovar ou recusar solicitações. Os convites devem ser compartilhados individualmente e não concedem acesso aos PDFs em revisão.</p>
             </section>
 
+            <section className="admin-atm-people" aria-labelledby="intelligence-panel-link">
+              <div className="admin-atm-section-head"><div>
+                <span className="admin-atm-eyebrow">INTELIGÊNCIA DA BIBLIOTECA</span>
+                <h2 id="intelligence-panel-link">Indicadores de participação.</h2>
+              </div><p>Consulte contas ativas, convites, presença e eventos de acesso em um painel administrativo separado.</p></div>
+              <Link href="/painel/inteligencia" className="admin-atm-primary" style={{display:"inline-block",textDecoration:"none"}}>Abrir indicadores ↗</Link>
+            </section>
             <PresenceMonitor />
             <InviteControls emailReady={emailConfigured}
               manualReady={!emailConfigured && process.env.BIBLIOTECA_ADMIN_INVITES_ENABLED === "true"}/>
