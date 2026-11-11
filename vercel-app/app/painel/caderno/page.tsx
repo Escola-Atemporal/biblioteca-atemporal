@@ -15,7 +15,7 @@ export const dynamic="force-dynamic";
 export const revalidate=0;
 export const metadata={title:"Meu caderno de reflexões | Biblioteca Atemporal",robots:{index:false,follow:false,noarchive:true}};
 type Note={id:string;trail_slug:string;title:string;content:string;created_at:string;updated_at:string};
-export default async function ReflectionNotebook({searchParams}:{searchParams:Promise<{trilha?:string;pergunta?:string}>}){
+export default async function ReflectionNotebook({searchParams}:{searchParams:Promise<{trilha?:string;pergunta?:string;registro?:string}>}){
  if(!authConfigured)redirect("/entrar");
  const session=await auth();
  if(!session?.user?.email)redirect("/entrar");
@@ -40,6 +40,8 @@ export default async function ReflectionNotebook({searchParams}:{searchParams:Pr
    <p className="reflection-privacy-note">Suas anotações são privadas, vinculadas à sua conta e não aparecem no painel administrativo.</p>
   </div></section>
   <div className="admin-atm-container admin-atm-main reflection-main">
+    {params.registro==="salvo"&&<p role="status" className="learning-save-confirmation">Reflexão guardada com sucesso no seu caderno pessoal.</p>}
+    {params.registro==="excluido"&&<p role="status" className="learning-save-confirmation">Reflexão excluída do seu caderno.</p>}
     {error?<p role="alert" className="admin-atm-feedback admin-atm-failure">O caderno está temporariamente indisponível. Nenhuma anotação foi alterada.</p>:<>
      <section aria-labelledby="reflection-new-title" className="reflection-editor">
        <div><span className="admin-atm-eyebrow">NOVA REFLEXÃO</span><h2 id="reflection-new-title">O que merece permanecer?</h2><p>Escreva livremente ou retome uma pergunta encontrada nas trilhas.</p>
