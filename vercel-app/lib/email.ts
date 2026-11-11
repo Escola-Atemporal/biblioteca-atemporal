@@ -120,7 +120,7 @@ export async function deliverEmail(id: string): Promise<MailStatus> {
   if (!mail) return "pending";
   try {
     const from = String(process.env.GMAIL_FROM_EMAIL).trim();
-    if (!isEmail(from) || /[\\r\\n]/.test(from)) throw new Error("Remetente Gmail invalido");
+    if (!isEmail(from) || /[\r\n]/.test(from)) throw new Error("Remetente Gmail invalido");
     const {text,html} = decryptPayload(mail.encrypted_payload);
     const tokenResponse = await fetch("https://oauth2.googleapis.com/token", {
       method: "POST",
@@ -138,10 +138,10 @@ export async function deliverEmail(id: string): Promise<MailStatus> {
     const tokenData = await tokenResponse.json() as {access_token?:string};
     if (!tokenData.access_token) throw new Error("Gmail OAuth sem access_token");
 
-    const encodeBody = (value:string) => Buffer.from(value,"utf8").toString("base64").match(/.{1,76}/g)?.join("\\r\\n") ?? "";
+    const encodeBody = (value:string) => Buffer.from(value,"utf8").toString("base64").match(/.{1,76}/g)?.join("\r\n") ?? "";
     const safeRecipient = mail.recipient.trim().toLowerCase();
     if (!isEmail(safeRecipient)) throw new Error("Destinatario invalido");
-    const safeSubject = mail.subject.replace(/[\\r\\n]/g," ").slice(0,180);
+    const safeSubject = mail.subject.replace(/[\r\n]/g," ").slice(0,180);
     const mimeSubject = `=?UTF-8?B?${Buffer.from(safeSubject,"utf8").toString("base64")}?=`;
     const boundary = `atm-${randomUUID()}`;
     const mime = [
@@ -163,7 +163,7 @@ export async function deliverEmail(id: string): Promise<MailStatus> {
       encodeBody(html),
       `--${boundary}--`,
       "",
-    ].join("\\r\\n");
+    ].join("\r\n");
     const response = await fetch("https://gmail.googleapis.com/gmail/v1/users/me/messages/send", {
       method: "POST",
       headers: {
