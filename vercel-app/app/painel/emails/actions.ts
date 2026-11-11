@@ -1,3 +1,4 @@
+import { can } from "../../../lib/permissions";
 "use server";
 
 import {auth} from "../../../auth";
@@ -10,7 +11,7 @@ import {revalidatePath} from "next/cache";
 export type RetryState={ok:boolean;message:string};
 export async function retryEmailOutbox(_previous:RetryState):Promise<RetryState>{
   const session=await auth();
-  if(!session?.user?.email || await roleForEmailAsync(session.user.email)!=="administrador"){
+  if(!session?.user?.email || !can(await roleForEmailAsync(session.user.email), "emails:manage")){
     throw new Error("Acesso administrativo requerido");
   }
   if(!databaseConfigured || !emailConfigured)
@@ -42,7 +43,7 @@ export async function retryEmailOutbox(_previous:RetryState):Promise<RetryState>
 export async function sendTestEmail(_previous:RetryState):Promise<RetryState>{
  const session=await auth();
  const email=session?.user?.email?.toLowerCase().trim();
- if(!email||await roleForEmailAsync(email)!=="administrador")throw new Error("Administrador não autorizado");
+ if(!email||!can(await roleForEmailAsync(email), "emails:manage"))throw new Error("Administrador não autorizado");
  if(!databaseConfigured||!emailProviderConfigured)return{ok:false,message:"Configure o serviço de e-mail primeiro."};
  try{
   const id=await transaction(async(client)=>enqueueEmail(client,createEmail(
