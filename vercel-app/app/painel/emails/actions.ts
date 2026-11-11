@@ -4,7 +4,7 @@ import {auth} from "../../../auth";
 import {randomUUID} from "node:crypto";
 import {roleForEmailAsync} from "../../../lib/access";
 import {dbQuery,databaseConfigured,transaction} from "../../../lib/database";
-import {createEmail,deliverEmail,emailProviderConfigured,emailOrigin,enqueueEmail,sendEmailBatch} from "../../../lib/email";
+import {createEmail,deliverEmail,emailConfigured,emailProviderConfigured,emailOrigin,enqueueEmail,sendEmailBatch} from "../../../lib/email";
 import {revalidatePath} from "next/cache";
 
 export type RetryState={ok:boolean;message:string};
@@ -13,8 +13,8 @@ export async function retryEmailOutbox(_previous:RetryState):Promise<RetryState>
   if(!session?.user?.email || await roleForEmailAsync(session.user.email)!=="administrador"){
     throw new Error("Acesso administrativo requerido");
   }
-  if(!databaseConfigured || !emailProviderConfigured)
-    return{ok:false,message:"Configure o remetente transacional antes de reenviar mensagens."};
+  if(!databaseConfigured || !emailConfigured)
+    return{ok:false,message:"O reenvio de mensagens reais so sera liberado apos o teste Gmail e a ativacao administrativa."};
   try{
     const ready=await dbQuery<{id:string}>(
       `UPDATE biblioteca_email_outbox SET
