@@ -32,7 +32,7 @@ export async function saveReflection(form:FormData):Promise<void>{
        VALUES($1,$2,$3,$4)`,[email,trail,title,content]);
  }
  revalidatePath("/painel/caderno");
- redirect("/painel/caderno?registro=salvo#reflection-list-title");
+ redirect("/painel/caderno?registro=salvo");
 }
 export async function deleteReflection(form:FormData):Promise<void>{
  const email=await requireOwner();
@@ -40,5 +40,5 @@ export async function deleteReflection(form:FormData):Promise<void>{
  if(!UUID.test(id))throw new Error("Registro inválido.");
  await dbQuery("DELETE FROM biblioteca_reflection_notes WHERE id=$1::uuid AND email=$2",[id,email]);
  revalidatePath("/painel/caderno");
- redirect("/painel/caderno?registro=excluido#reflection-list-title");
+ redirect("/painel/caderno?registro=excluido");
 }
