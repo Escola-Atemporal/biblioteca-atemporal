@@ -5,12 +5,16 @@ import type { PoolClient } from "pg";
 import { dbQuery, databaseConfigured } from "./database";
 
 /**
- * E-mail transacional com Resend. Nenhuma API key vai para cliente/GitHub.
- * A fila guarda apenas HTML/texto cifrados (AES-256-GCM), inclusive links únicos.
+ * Entrega transacional via Gmail API OAuth2 (conta Google autorizada).
+ * O plugin Gmail do ChatGPT nao fornece credenciais ao Render.
+ * A fila permanece cifrada e acesso publico exige liberacao explicita.
  */
-/** Credentials present does not imply DNS verification or delivery success. */
 export const emailProviderConfigured = Boolean(
-  process.env.RESEND_API_KEY && process.env.RESEND_FROM_EMAIL && process.env.AUTH_SECRET,
+  process.env.GMAIL_CLIENT_ID &&
+  process.env.GMAIL_CLIENT_SECRET &&
+  process.env.GMAIL_REFRESH_TOKEN &&
+  process.env.GMAIL_FROM_EMAIL &&
+  process.env.AUTH_SECRET,
 );
 /** Only activate public onboarding after a real inbox test and explicit approval. */
 export const emailConfigured = emailProviderConfigured && process.env.BIBLIOTECA_EMAIL_ENABLED === "true";
@@ -115,24 +119,62 @@ export async function deliverEmail(id: string): Promise<MailStatus> {
   const mail = rows[0];
   if (!mail) return "pending";
   try {
-    const from = String(process.env.RESEND_FROM_EMAIL);
+    const from = String(process.env.GMAIL_FROM_EMAIL).trim();
+    if (!isEmail(from) || /[\\r\\n]/.test(from)) throw new Error("Remetente Gmail invalido");
     const {text,html} = decryptPayload(mail.encrypted_payload);
-    const response = await fetch("https://api.resend.com/emails", {
-      method:"POST",
-      headers:{
-        Authorization:`Bearer ${process.env.RESEND_API_KEY}`,
-        "Content-Type":"application/json",
-        "Idempotency-Key":`atm-${mail.id}`,
-      },
-      body:JSON.stringify({from,to:[mail.recipient],subject:mail.subject,html,text,
-        reply_to:process.env.RESEND_REPLY_TO || undefined}),
-      signal:AbortSignal.timeout(12000),
-      cache:"no-store",
+    const tokenResponse = await fetch("https://oauth2.googleapis.com/token", {
+      method: "POST",
+      headers: {"Content-Type": "application/x-www-form-urlencoded"},
+      body: new URLSearchParams({
+        client_id: String(process.env.GMAIL_CLIENT_ID),
+        client_secret: String(process.env.GMAIL_CLIENT_SECRET),
+        refresh_token: String(process.env.GMAIL_REFRESH_TOKEN),
+        grant_type: "refresh_token",
+      }),
+      signal: AbortSignal.timeout(12000),
+      cache: "no-store",
     });
-    if (!response.ok) {
-      // Avoid persisting provider error bodies or API secrets.
-      throw new Error(`Resend HTTP ${response.status}`);
-    }
+    if (!tokenResponse.ok) throw new Error(`Gmail OAuth HTTP ${tokenResponse.status}`);
+    const tokenData = await tokenResponse.json() as {access_token?:string};
+    if (!tokenData.access_token) throw new Error("Gmail OAuth sem access_token");
+
+    const encodeBody = (value:string) => Buffer.from(value,"utf8").toString("base64").match(/.{1,76}/g)?.join("\\r\\n") ?? "";
+    const safeRecipient = mail.recipient.trim().toLowerCase();
+    if (!isEmail(safeRecipient)) throw new Error("Destinatario invalido");
+    const safeSubject = mail.subject.replace(/[\\r\\n]/g," ").slice(0,180);
+    const mimeSubject = `=?UTF-8?B?${Buffer.from(safeSubject,"utf8").toString("base64")}?=`;
+    const boundary = `atm-${randomUUID()}`;
+    const mime = [
+      `From: Escola Atemporal <${from}>`,
+      `To: <${safeRecipient}>`,
+      `Subject: ${mimeSubject}`,
+      "MIME-Version: 1.0",
+      `Content-Type: multipart/alternative; boundary="${boundary}"`,
+      "",
+      `--${boundary}`,
+      "Content-Type: text/plain; charset=UTF-8",
+      "Content-Transfer-Encoding: base64",
+      "",
+      encodeBody(text),
+      `--${boundary}`,
+      "Content-Type: text/html; charset=UTF-8",
+      "Content-Transfer-Encoding: base64",
+      "",
+      encodeBody(html),
+      `--${boundary}--`,
+      "",
+    ].join("\\r\\n");
+    const response = await fetch("https://gmail.googleapis.com/gmail/v1/users/me/messages/send", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${tokenData.access_token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({raw: Buffer.from(mime,"utf8").toString("base64url")}),
+      signal: AbortSignal.timeout(15000),
+      cache: "no-store",
+    });
+    if (!response.ok) throw new Error(`Gmail API HTTP ${response.status}`);
     const data = await response.json() as {id?:string};
     await dbQuery(
       `UPDATE biblioteca_email_outbox
