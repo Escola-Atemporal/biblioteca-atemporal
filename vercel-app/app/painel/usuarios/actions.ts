@@ -39,7 +39,12 @@ export async function createAccessInvite(_previous: InviteResult, formData: Form
   const token = randomBytes(32).toString("base64url");
   const tokenHash = createHash("sha256").update(token).digest("hex");
   try {
-    await transaction(async (client) => {
+    const result = await transaction(async (client) => {
+      const existing = await client.query<{ active: boolean }>(
+        "SELECT active FROM biblioteca_access_accounts WHERE email=$1 FOR UPDATE",
+        [email],
+      );
+      if (existing.rows[0]?.active) return "already-active";
       await client.query(
         `INSERT INTO biblioteca_access_accounts(email, display_name, role, active, created_by)
            VALUES($1,$2,$3,false,$4)
@@ -62,7 +67,11 @@ export async function createAccessInvite(_previous: InviteResult, formData: Form
          VALUES($1,$2,'invitation_created',jsonb_build_object('role',$3))`,
         [actor, email, role],
       );
+      return "created";
     });
+    if (result === "already-active") {
+      return { ok: false, message: "Este e-mail já possui uma conta ativa. Para alterar o perfil, use Pessoas cadastradas. Para redefinir a senha, desative a conta antes de emitir um novo convite.", inviteUrl: null };
+    }
     revalidatePath("/painel/usuarios");
     const origin = process.env.AUTH_URL || "https://biblioteca-atemporal-web.onrender.com";
     return {
@@ -82,7 +91,7 @@ export async function setAccountActive(formData: FormData): Promise<void> {
   if (!EMAIL.test(email) || email === actor || !["activate","deactivate"].includes(action)) return;
   const active = action === "activate";
   const accounts = await dbQuery<{ email: string }>(
-    "UPDATE biblioteca_access_accounts SET active=$1,updated_at=now() WHERE email=$2 RETURNING email",
+    "UPDATE biblioteca_access_accounts SET active=$1,updated_at=now() WHERE email=$2 AND ($1::boolean=false OR password_hash IS NOT NULL) RETURNING email",
     [active,email],
   );
   if (accounts.length) {
