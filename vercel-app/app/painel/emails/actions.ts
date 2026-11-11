@@ -54,7 +54,7 @@ export async function sendTestEmail(_previous:RetryState):Promise<RetryState>{
     ],action:{label:"Abrir gestão de e-mails",url:`${emailOrigin()}/painel/emails`}},
    `test:${randomUUID()}`,
   )));
-  const result=(await sendEmailBatch([id]))[0];
+  const result=(await sendEmailBatch([id], true))[0];
   revalidatePath("/painel/emails");
   return result==="sent"
    ?{ok:true,message:"Teste aceito pelo serviço. Confira sua caixa de entrada e também a pasta spam."}
