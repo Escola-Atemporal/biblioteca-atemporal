@@ -70,6 +70,23 @@ export default async function EmailAdminPage(){
        :emailProviderConfigured
         ?"A conta Gmail está conectada ao servidor. Antes de abrir as solicitações, envie um teste para seu e-mail, confirme o recebimento e somente depois autorize BIBLIOTECA_EMAIL_ENABLED=true no Render. Credenciais configuradas não liberam cadastros."
         :"Configure uma conta Google autorizada para envio pela API do Gmail no Render: GMAIL_CLIENT_ID, GMAIL_CLIENT_SECRET, GMAIL_REFRESH_TOKEN e GMAIL_FROM_EMAIL. Habilite Gmail API e OAuth com escopo gmail.send. Até o teste de recebimento, convites e solicitações permanecem bloqueados."}</p>
+     {!emailProviderConfigured?
+       <div className="admin-atm-feedback" style={{marginTop:18}}>
+        <strong>Diagnóstico das variáveis no Render</strong>
+        <p>Verifique os nomes e a presença dos valores, sem compartilhar credenciais.</p>
+        <ul>
+         {([
+          ["GMAIL_CLIENT_ID",Boolean(process.env.GMAIL_CLIENT_ID?.trim())],
+          ["GMAIL_CLIENT_SECRET",Boolean(process.env.GMAIL_CLIENT_SECRET?.trim())],
+          ["GMAIL_REFRESH_TOKEN",Boolean(process.env.GMAIL_REFRESH_TOKEN?.trim())],
+          ["GMAIL_FROM_EMAIL",Boolean(process.env.GMAIL_FROM_EMAIL?.trim())],
+          ["AUTH_SECRET",Boolean(process.env.AUTH_SECRET?.trim())],
+         ] as [string,boolean][]).map(([key,present])=>(
+          <li key={key}><code>{key}</code>: {present?"Configurada":"Pendente"}</li>
+         ))}
+        </ul>
+        <p>Após adicionar ou corrigir as variáveis, salve no Render e aguarde o novo deployment. Os valores secretos nunca são exibidos aqui.</p>
+       </div>:null}
      {emailProviderConfigured?<RetryEmails/>:null}
     </section>
     <section className="admin-atm-people" aria-labelledby="outbox-title">
