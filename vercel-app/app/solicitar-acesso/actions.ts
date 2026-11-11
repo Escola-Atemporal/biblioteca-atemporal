@@ -1,26 +1,16 @@
 "use server";
 
-import { dbQuery, databaseConfigured } from "../../lib/database";
+import { randomUUID } from "node:crypto";
+import { databaseConfigured, transaction, dbQuery } from "../../lib/database";
+import { adminNotificationEmails, createEmail, emailOrigin, enqueueEmail, sendEmailBatch } from "../../lib/email";
 
-export type AccessRequestState = {
-  ok: boolean;
-  message: string;
-};
-
+export type AccessRequestState = { ok: boolean; message: string };
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-/**
- * Public requests do not create accounts or issue credentials.
- * Approval and invitation creation are administrator-only actions.
- */
-export async function submitAccessRequest(
-  _previous: AccessRequestState,
-  form: FormData,
-): Promise<AccessRequestState> {
+export async function submitAccessRequest(_previous: AccessRequestState, form: FormData): Promise<AccessRequestState> {
   if (!databaseConfigured) {
     return { ok: false, message: "As solicitações estão indisponíveis. Tente novamente mais tarde." };
   }
-  // Honeypot field. A human does not see or fill it.
   if (String(form.get("website") ?? "").trim()) {
     return { ok: true, message: "Seus dados foram recebidos para análise." };
   }
@@ -32,37 +22,60 @@ export async function submitAccessRequest(
       context.length > 450 || !privacyAck) {
     return { ok: false, message: "Confira nome, e-mail e autorização de uso dos dados." };
   }
+
   try {
-    // Global ceiling prevents uncontrolled write amplification on this initial public form.
     const [volume] = await dbQuery<{ total: number }>(
       "SELECT count(*)::integer AS total FROM biblioteca_membership_requests WHERE created_at > now() - interval '24 hours'",
     );
     if (Number(volume?.total || 0) >= 250) {
       return { ok: false, message: "O limite de solicitações foi atingido. Tente novamente amanhã." };
     }
-    await dbQuery(
-      `INSERT INTO biblioteca_membership_requests(full_name,email,context,privacy_ack)
-       VALUES($1,$2,$3,true)
-       ON CONFLICT(email) DO UPDATE SET
-          full_name=EXCLUDED.full_name,
-          context=EXCLUDED.context,
-          status='pending',
-          privacy_ack=true,
-          created_at=now(),
-          updated_at=now(),
-          reviewed_at=NULL,
-          reviewed_by=NULL,
-          invite_id=NULL
-       WHERE biblioteca_membership_requests.status='rejected'
-         AND biblioteca_membership_requests.updated_at < now() - interval '30 days'`,
-      [name, email, context],
-    );
-    // The identical reply avoids disclosing which email is registered or already in review.
-    return {
-      ok: true,
-      message: "Solicitação recebida. A Escola avaliará o pedido. Caso seja aprovado, um convite de ativação será enviado por um canal definido pela equipe.",
-    };
+    const ids = await transaction(async(client)=>{
+      const created = await client.query<{id:string}>(
+        `INSERT INTO biblioteca_membership_requests(full_name,email,context,privacy_ack)
+         VALUES($1,$2,$3,true)
+         ON CONFLICT(email) DO UPDATE SET
+           full_name=EXCLUDED.full_name, context=EXCLUDED.context,
+           status='pending', privacy_ack=true,created_at=now(),updated_at=now(),
+           reviewed_at=NULL, reviewed_by=NULL,invite_id=NULL
+         WHERE biblioteca_membership_requests.status='rejected'
+           AND biblioteca_membership_requests.updated_at < now() - interval '30 days'
+         RETURNING id`,
+        [name,email,context],
+      );
+      const requestId=created.rows[0]?.id;
+      if (!requestId) return [] as string[];
+      const batchId=randomUUID();
+      const queue: string[] = [];
+      const user = await enqueueEmail(client,createEmail(
+        "request_received",email,"Recebemos sua solicitação | Biblioteca Atemporal",
+        {eyebrow:"Solicitação de participação",greeting:`Olá, ${name}.`,
+         paragraphs:[
+           "Recebemos seu pedido para participar da Biblioteca Atemporal.",
+           "Nossa equipe analisará a solicitação. A decisão e, caso seja aprovado, seu convite pessoal para criar a senha chegarão por e-mail. Não é necessário entrar em contato por WhatsApp.",
+           "Sua conta não foi ativada nesta etapa."
+         ],action:{label:"Conhecer a Biblioteca",url:emailOrigin()}},
+        `request:${batchId}:receipt`,
+      ));
+      if (user) queue.push(user);
+      const adminList=adminNotificationEmails();
+      for(const [i,to] of adminList.entries()){
+        const id=await enqueueEmail(client,createEmail(
+          "request_admin",to,"Nova solicitação de participação | Biblioteca Atemporal",
+          {eyebrow:"Painel administrativo",greeting:"Nova solicitação recebida",
+           paragraphs:[`Nome: ${name}`,`E-mail: ${email}`,context?`Motivação: ${context}`:"Motivação: não informada.",
+            "Entre no painel para aprovar ou recusar. Não compartilhe dados da pessoa em canais públicos."],
+           action:{label:"Avaliar solicitação",url:`${emailOrigin()}/painel/usuarios#solicitacoes`}},
+          `request:${batchId}:admin:${i}`,
+        ));
+        if(id)queue.push(id);
+      }
+      return queue;
+    });
+    if(ids.length) await sendEmailBatch(ids).catch(()=>[]);
+    // Neutral response does not reveal if an email already has an account or request.
+    return {ok:true,message:"Sua solicitação foi registrada para análise. A Escola enviará as próximas informações por e-mail. Nenhuma conta é ativada automaticamente."};
   } catch {
-    return { ok: false, message: "Não foi possível registrar o pedido agora. Tente novamente mais tarde." };
+    return {ok:false,message:"Não foi possível registrar o pedido agora. Tente novamente mais tarde."};
   }
 }
