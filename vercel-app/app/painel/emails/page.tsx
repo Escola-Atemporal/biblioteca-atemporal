@@ -68,8 +68,8 @@ export default async function EmailAdminPage(){
      <p>{emailConfigured
        ?"O envio de mensagens de acesso está habilitado. Acompanhe a aceitação das mensagens e confirme entregas em caixas reais."
        :emailProviderConfigured
-        ?"A chave e o remetente estão presentes. Antes de abrir as solicitações, envie um teste para seu e-mail, confirme o recebimento e então configure BIBLIOTECA_EMAIL_ENABLED=true no Render. A configuração das credenciais, sozinha, não abre os cadastros."
-        :"Primeiro verifique um domínio ou subdomínio da Escola no Resend e configure RESEND_API_KEY e RESEND_FROM_EMAIL no Render. Depois será possível enviar um teste pelo botão abaixo. Até a confirmação, convites e solicitações permanecem bloqueados."}</p>
+        ?"A conta Gmail está conectada ao servidor. Antes de abrir as solicitações, envie um teste para seu e-mail, confirme o recebimento e somente depois autorize BIBLIOTECA_EMAIL_ENABLED=true no Render. Credenciais configuradas não liberam cadastros."
+        :"Configure uma conta Google autorizada para envio pela API do Gmail no Render: GMAIL_CLIENT_ID, GMAIL_CLIENT_SECRET, GMAIL_REFRESH_TOKEN e GMAIL_FROM_EMAIL. Habilite Gmail API e OAuth com escopo gmail.send. Até o teste de recebimento, convites e solicitações permanecem bloqueados."}</p>
      {emailProviderConfigured?<RetryEmails/>:null}
     </section>
     <section className="admin-atm-people" aria-labelledby="outbox-title">
