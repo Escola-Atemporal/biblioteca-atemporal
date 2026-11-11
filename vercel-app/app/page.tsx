@@ -53,6 +53,7 @@ export default function HomePage() {
         <nav aria-label="Navegação principal">
           <Link href="#trilhas">Trilhas</Link>
           <Link href="#fontes">Referências</Link>
+          <Link href="/arquivos">Arquivos</Link>
           <a href="https://escolaatemporal.com.br/" target="_blank" rel="noopener noreferrer">A Escola ↗</a>
           <Link href="/entrar" className="nav-login">Área de acesso ↗</Link>
         </nav>

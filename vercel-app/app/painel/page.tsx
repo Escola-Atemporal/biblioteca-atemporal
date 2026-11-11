@@ -35,6 +35,7 @@ export default async function Painel() {
         <BrandLogo />
         <nav aria-label="Navegação do painel">
           <Link href="/">Biblioteca</Link>
+          <Link href="/arquivos">Arquivos</Link>
           <form action={async () => { "use server"; await signOut({ redirectTo: "/entrar" }); }}>
             <button type="submit" className="dashboard-atm-logout">Sair da conta ↗</button>
           </form>
@@ -74,13 +75,13 @@ export default async function Painel() {
         <section className="dashboard-atm-editorial" aria-labelledby="dashboard-acervo">
           <div>
             <span className="dashboard-atm-eyebrow">COLEÇÃO BIBLIOTECA ATEMPORAL</span>
-            <h2 id="dashboard-acervo">E-books da <em>Escola.</em></h2>
+            <h2 id="dashboard-acervo">Arquivos da <em>Biblioteca.</em></h2>
             {canReviewDrafts
-              ? <p>Os nove volumes estão em revisão editorial. Os links de consulta aparecem nas bibliografias das trilhas; o Drive exige permissão própria para abrir os arquivos.</p>
+              ? <p>Encontre os nove e-books autorais, guias e documentos de apoio em um só lugar. Busque por tema, navegue pelas pastas e abra ou baixe os arquivos no Drive da Escola.</p>
               : <p>A coleção de e-books está em revisão editorial. O acesso às minutas é reservado à administração e à curadoria até a aprovação de distribuição.</p>}
           </div>
           {canReviewDrafts
-            ? <Link href="/trilhas/principios-e-discernimento#ebooks-escola-01" className="dashboard-atm-editorial-link">Ver e-books em revisão ↗</Link>
+            ? <Link href="/arquivos" className="dashboard-atm-editorial-link">Explorar os arquivos ↗</Link>
             : <Link href="/#trilhas" className="dashboard-atm-editorial-link">Explorar acervo público ↗</Link>}
         </section>
         {role === "administrador" && (

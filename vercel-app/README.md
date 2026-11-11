@@ -223,3 +223,13 @@ Orientacoes:
 5. Somente depois de aprovar os testes, alterar `BIBLIOTECA_EMAIL_ENABLED=true` no Render e validar convites e recuperacao usando uma conta de teste controlada.
 
 A fila continua criptografada e preservada no Neon. O reenvio de mensagens reais fica bloqueado ate a liberacao; o teste isolado do administrador pode ser executado antes. Gmail API confirma aceitacao, nao entrega final. O mecanismo anterior do Resend foi substituido no codigo, e suas variaveis antigas nao habilitam envio.
+# Arquivos da Biblioteca
+
+A seção `/arquivos`, acessível pelo menu da Biblioteca e pelo painel, consulta o índice na variável privada `BIBLIOTECA_DRIVE_CATALOG` do serviço. Não armazenar nomes, identificadores ou links privados dos arquivos neste repositório público.
+
+O catálogo permite buscar por título e filtrar por pasta e formato. Os links abrem os originais no Drive ou solicitam download; documentos nativos Google Docs são exportados em PDF. O Drive continua exigindo a permissão própria do visitante. Nenhum arquivo é copiado para o site.
+
+As minutas e os documentos de curadoria permanecem restritos aos perfis administrador e curador, com verificação no servidor antes de enviar o índice ao navegador. Contas experiencialistas recebem aviso de revisão. Visitantes sem sessão são direcionados ao login.
+
+O índice é um retrato datado, sem sincronização automática. Para refletir inclusões e exclusões, conferir novamente a pasta e suas subpastas, atualizar a variável privada e publicar. O formato é `{ updatedAt, folderUrl, folders: [{ id, name, url }], files: [{ id, name, mimeType, url, parent }] }`; `parent` é o identificador da subpasta ou `root`. A página informa a data e oferece acesso à pasta atualizada no Drive. Se a configuração estiver ausente ou inválida, o catálogo falha de forma fechada.
+
