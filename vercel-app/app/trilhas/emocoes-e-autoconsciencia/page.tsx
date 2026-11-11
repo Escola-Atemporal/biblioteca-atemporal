@@ -1,3 +1,4 @@
+import ColecaoAutoral from "../../components/ColecaoAutoral";
 import Link from "next/link";
 import type { Metadata } from "next";
 import BrandLogo from "../../components/BrandLogo";
@@ -215,6 +216,7 @@ export default function Trilha02Page() {
             <div><span className="eyebrow dark">BIBLIOTECA TEMÁTICA · TRILHA 02</span><h2>Livros para ampliar o <em>vocabulário interior.</em></h2></div>
             <p>Guias institucionais, e-books e livros de psicologia e comportamento, com indicação de acesso gratuito pelas fontes originais.</p>
           </div>
+          <ColecaoAutoral trilha="02" />
           <div className="learning-books-intro emotion-book-intro">
             <div>
               <span className="learning-books-preamble">CONHECER · QUESTIONAR · EXPERIMENTAR</span>
