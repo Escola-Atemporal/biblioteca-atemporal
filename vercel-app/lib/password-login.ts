@@ -1,4 +1,6 @@
-import { scryptSync, timingSafeEqual } from "node:crypto";
+import "server-only";
+import { randomBytes, scryptSync, timingSafeEqual } from "node:crypto";
+import { databaseConfigured, dbQuery } from "./database";
 import type { Role } from "./access";
 
 export type ContaComSenha = {
@@ -8,15 +10,18 @@ export type ContaComSenha = {
   name?: string;
 };
 
-const ROLES: Role[] = ["administrador", "curador", "experiencialista"];
+type ContaBanco = {
+  email: string;
+  display_name: string;
+  role: Role;
+  password_hash: string | null;
+  active: boolean;
+};
 
-/**
- * Never store plain-text passwords in GitHub.
- * Provision accounts with BIBLIOTECA_PASSWORD_USERS on Render only.
- *
- * Hash format: scrypt:16384:8:1:<32-hex-character-salt>:<128-hex-character-hash>
- * Passwords should be generated individually and never reused.
- */
+const ROLES: Role[] = ["administrador", "curador", "experiencialista"];
+const HASH_PATTERN = /^scrypt:16384:8:1:[0-9a-f]{32}:[0-9a-f]{128}$/;
+
+/** Only legacy/bootstrap account hashes stored as a Render environment variable. */
 export function contasComSenha(): ContaComSenha[] {
   const raw = process.env.BIBLIOTECA_PASSWORD_USERS;
   if (!raw) return [];
@@ -29,7 +34,7 @@ export function contasComSenha(): ContaComSenha[] {
       return typeof u.email === "string"
         && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(u.email)
         && typeof u.passwordHash === "string"
-        && /^scrypt:16384:8:1:[0-9a-f]{32}:[0-9a-f]{128}$/.test(u.passwordHash)
+        && HASH_PATTERN.test(u.passwordHash)
         && ROLES.includes(u.role as Role);
     }).map((u) => ({
       email: u.email.trim().toLowerCase(),
@@ -43,71 +48,84 @@ export function contasComSenha(): ContaComSenha[] {
 }
 
 export function senhaConfigurada(): boolean {
-  return Boolean(process.env.AUTH_SECRET && contasComSenha().length);
+  return Boolean(process.env.AUTH_SECRET && (databaseConfigured || contasComSenha().length));
 }
 
 const attempts = new Map<string, { failures: number; nextTry: number }>();
 const LIMIT = 7;
 const WINDOW_MS = 15 * 60_000;
-
-function isRateLimited(key: string): boolean {
-  const record = attempts.get(key);
+function isRateLimited(email: string): boolean {
+  const record = attempts.get(email);
   if (!record) return false;
   if (Date.now() >= record.nextTry) {
-    attempts.delete(key);
+    attempts.delete(email);
     return false;
   }
   return record.failures >= LIMIT;
 }
-function recordFailure(key: string) {
+function recordFailure(email: string) {
   const now = Date.now();
-  const old = attempts.get(key);
-  if (!old || old.nextTry <= now) attempts.set(key, { failures: 1, nextTry: now + WINDOW_MS });
-  else attempts.set(key, { failures: old.failures + 1, nextTry: old.nextTry });
-  // Bounded memory even if requests target many unrelated emails.
+  const old = attempts.get(email);
+  if (!old || old.nextTry <= now) attempts.set(email, { failures: 1, nextTry: now + WINDOW_MS });
+  else attempts.set(email, { failures: old.failures + 1, nextTry: old.nextTry });
   if (attempts.size > 3000) {
-    for (const [entry, value] of attempts) {
-      if (value.nextTry <= now) attempts.delete(entry);
-    }
+    for (const [key, value] of attempts) if (value.nextTry <= now) attempts.delete(key);
     if (attempts.size > 3000) attempts.delete(attempts.keys().next().value ?? "");
   }
 }
 
+export function hashPassword(password: string): string {
+  if (password.length < 12 || password.length > 256) throw new Error("Password length invalid");
+  const salt = randomBytes(16);
+  const hashed = scryptSync(password, salt, 64, { N: 16384, r: 8, p: 1, maxmem: 64 * 1024 * 1024 });
+  return `scrypt:16384:8:1:${salt.toString("hex")}:${hashed.toString("hex")}`;
+}
+
 function matchesPassword(password: string, encoded: string): boolean {
+  if (!HASH_PATTERN.test(encoded)) return false;
   const parts = encoded.split(":");
-  if (parts.length !== 6 || parts[0] !== "scrypt") return false;
   const salt = parts[4];
   const expected = Buffer.from(parts[5], "hex");
-  if (expected.length !== 64) return false;
   const actual = scryptSync(password, Buffer.from(salt, "hex"), 64, {
     N: 16384, r: 8, p: 1, maxmem: 64 * 1024 * 1024,
   });
-  return timingSafeEqual(actual, expected);
+  return expected.length === actual.length && timingSafeEqual(actual, expected);
 }
 
-/**
- * Called by Auth.js exclusively on the server.
- * Note: an in-memory rate limit protects the current Render instance;
- * a shared store will be required if we expand to multiple instances.
- */
-export function autenticarComSenha(emailInput: unknown, passwordInput: unknown) {
+/** Authenticate persistent accounts first; fall back only to existing bootstrap users. */
+export async function autenticarComSenha(emailInput: unknown, passwordInput: unknown) {
   if (typeof emailInput !== "string" || typeof passwordInput !== "string") return null;
   const email = emailInput.trim().toLowerCase();
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254) return null;
-  if (!passwordInput || passwordInput.length > 256) return null;
-  const key = email;
-  if (isRateLimited(key)) return null;
+  if (passwordInput.length < 10 || passwordInput.length > 256) return null;
+  if (isRateLimited(email)) return null;
 
-  const account = contasComSenha().find((a) => a.email === email);
-  let verified = false;
+  let account: { email: string; name: string; hash: string } | null = null;
+  if (databaseConfigured) {
+    try {
+      const [user] = await dbQuery<ContaBanco>(
+        "SELECT email, display_name, role, active, password_hash FROM biblioteca_access_accounts WHERE email = $1 LIMIT 1",
+        [email],
+      );
+      if (user) {
+        // A disabled account or a pending invitation always overrides bootstrap credentials.
+        if (!user.active || !user.password_hash) { recordFailure(email); return null; }
+        account = { email: user.email, name: user.display_name, hash: user.password_hash };
+      }
+    } catch {
+      // Never fall back to an environment-allowlisted user when revocation cannot be checked.
+      return null;
+    }
+  }
+  if (!account) {
+    const legacy = contasComSenha().find((u) => u.email === email);
+    if (legacy) account = { email: legacy.email, name: legacy.name || "Comunidade Escola Atemporal", hash: legacy.passwordHash };
+  }
+  let valid = false;
   if (account) {
-    try { verified = matchesPassword(passwordInput, account.passwordHash); }
-    catch { verified = false; }
+    try { valid = matchesPassword(passwordInput, account.hash); } catch { valid = false; }
   }
-  if (!account || !verified) {
-    recordFailure(key);
-    return null;
-  }
-  attempts.delete(key);
-  return { id: account.email, email: account.email, name: account.name ?? "Comunidade Escola Atemporal" };
+  if (!account || !valid) { recordFailure(email); return null; }
+  attempts.delete(email);
+  return { id: account.email, email: account.email, name: account.name };
 }
