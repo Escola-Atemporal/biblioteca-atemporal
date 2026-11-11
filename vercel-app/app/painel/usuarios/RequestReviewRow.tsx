@@ -13,7 +13,7 @@ export type MembershipRequest = {
 
 const initial: ReviewResult = { ok: false, message: "", inviteUrl: null };
 
-export default function RequestReviewRow({ request }: { request: MembershipRequest }) {
+export default function RequestReviewRow({ request, emailReady }: { request: MembershipRequest; emailReady:boolean }) {
   const [approval, approve, approving] = useActionState(approveMembership, initial);
   const [rejection, reject, rejecting] = useActionState(rejectMembership, initial);
   const complete = approval.ok || rejection.ok;
@@ -34,7 +34,7 @@ export default function RequestReviewRow({ request }: { request: MembershipReque
       <div className="request-atm-review-actions">
         <form action={approve}>
           <input type="hidden" name="requestId" value={request.id}/>
-          <button type="submit" className="request-atm-approve" disabled={complete || approving || rejecting}>
+          <button type="submit" className="request-atm-approve" disabled={complete || approving || rejecting || !emailReady}>
             {approving ? "Aprovando..." : "Aprovar e enviar e-mail"} <span aria-hidden="true">↗</span>
           </button>
         </form>
