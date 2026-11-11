@@ -59,6 +59,17 @@ jobs:
             "/api/private/presence/online"; do
             check_private "$path"
           done
+          # Presence writing must never be possible for an anonymous visitor.
+          post_status="$(curl --silent --show-error --retry 1 --connect-timeout 25 --max-time 115 \
+            -X POST -H 'Content-Type: application/json' \
+            -d '{"section":"Security audit"}' -o /dev/null -w '%{http_code}' \
+            "$base/api/private/presence")" || post_status="000"
+          if [[ "$post_status" == "401" || "$post_status" == "403" ]]; then
+            echo "OK private: POST /api/private/presence -> $post_status"
+          else
+            echo "::error::Anonymous presence write was not rejected (HTTP $post_status)"
+            failures=$((failures+1))
+          fi
           if (( failures > 0 )); then
             echo "::error::$failures checks failed"
             exit 1
