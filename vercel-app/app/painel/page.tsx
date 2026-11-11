@@ -2,7 +2,7 @@ import BrandLogo from "../components/BrandLogo";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { auth, authConfigured, signOut } from "../../auth";
-import { roleForEmail } from "../../lib/access";
+import { roleForEmailAsync } from "../../lib/access";
 
 export const dynamic = "force-dynamic";
 export const metadata = {
@@ -24,7 +24,7 @@ export default async function Painel() {
   if (!authConfigured) redirect("/entrar");
   const session = await auth();
   if (!session?.user?.email) redirect("/entrar");
-  const role = roleForEmail(session.user.email);
+  const role = await roleForEmailAsync(session.user.email);
   if (!role) redirect("/entrar");
 
   const canReviewDrafts = role === "administrador" || role === "curador";
