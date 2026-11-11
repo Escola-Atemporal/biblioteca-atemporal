@@ -1,36 +1,82 @@
-# Biblioteca Atemporal — Vercel + GitHub (sem Neon e sem Render)
+# Biblioteca Atemporal — Escola Atemporal
 
-Nova aplicação Next.js isolada na pasta `vercel-app/`. **Não altera o site GitHub Pages atual** nem modifica/exclui o serviço Render e o projeto Neon já existentes.
+Aplicação Next.js em `vercel-app/`, publicada no **Render** a partir do repositório `Escola-Atemporal/biblioteca-atemporal`.
 
-## O que funciona neste estágio
+## Visibilidade do acervo
 
-- Página pública com seis trilhas e descrições já aprovadas, copiadas de `data/catalogo-publico.json`.
-- Entrada com conta Google verificada, via Auth.js JWT, sem banco de dados.
-- Somente e-mails constantes das variáveis de autorização conseguem entrar. Perfis: administrador, curador e experiencialista.
-- Página `/painel` protegida no servidor. A API `/api/private/status` retorna 401 sem sessão ou 403 sem autorização.
-- **Ainda não existem** cadastro de conteúdos, favoritos sincronizados, convites, acervo interno nem publicação via GitHub API. Esses recursos não são simulados como concluídos.
+- Página inicial e seis trilhas: públicas.
+- `/entrar`: login por e-mail e senha, com alternativa Google quando configurada.
+- `/painel`: exige uma sessão autenticada e um perfil autorizado.
+- PDFs autorais ainda em **minuta interna**: os links no Drive são apresentados no servidor somente para `administrador` e `curador`; visitantes e `experiencialista` veem aviso de revisão.
+- **Importante**: o login na Biblioteca não concede permissão no Google Drive. Manter os PDFs restritos no Drive e revisar as permissões antes de publicar.
 
-## Implantar na Vercel
+## Variáveis no Render
 
-1. Criar projeto Vercel importando `https://github.com/Escola-Atemporal/biblioteca-atemporal`.
-2. Definir **Root Directory = `vercel-app`** e framework Next.js.
-3. Criar aplicativo Google OAuth (tela de consentimento apropriada), com callback `https://SEU-DOMINIO/api/auth/callback/google`.
-4. Configurar **somente nas Environment Variables da Vercel**:
-   - `AUTH_SECRET`: segredo aleatório forte de ao menos 32 caracteres.
-   - `AUTH_GOOGLE_ID` e `AUTH_GOOGLE_SECRET`: OAuth do Google.
-   - `BIBLIOTECA_ADMIN_EMAILS`: e-mails verificados de administradores, separados por vírgula.
-   - `BIBLIOTECA_CURATOR_EMAILS` e `BIBLIOTECA_MEMBER_EMAILS`: listas específicas, separadas por vírgula.
-5. Implantar e testar login, acesso negado e logout. Testar conta não autorizada. Não disponibilizar materiais internos antes de testar autorização em todas as rotas.
+Definir em Render > Serviço Biblioteca > Environment (NUNCA no GitHub):
 
-**Importante:** GitHub público armazena somente catálogo aprovado. Os dados editoriais restritos deverão permanecer em repositório privado ou Drive autorizado; nunca expor token GitHub nem conteúdo privado em Client Components ou variáveis `NEXT_PUBLIC_`.
+| Variável | Função |
+|---|---|
+| `AUTH_SECRET` | Segredo aleatório forte de autenticação (mínimo 32 bytes) |
+| `AUTH_URL` | `https://biblioteca-atemporal-web.onrender.com` |
+| `AUTH_TRUST_HOST` | `true` |
+| `BIBLIOTECA_PASSWORD_USERS` | Array JSON de usuários autorizados, com hash de senha |
+| `AUTH_GOOGLE_ID` | Opcional: ID de cliente Google OAuth |
+| `AUTH_GOOGLE_SECRET` | Opcional: segredo de cliente Google OAuth |
+| `BIBLIOTECA_ADMIN_EMAILS` | Opcional: lista CSV de e-mails administradores com Google |
+| `BIBLIOTECA_CURATOR_EMAILS` | Opcional: lista CSV de curadores com Google |
+| `BIBLIOTECA_MEMBER_EMAILS` | Opcional: lista CSV de membros com Google |
 
-## Limitações do modelo sem banco
+Exemplo de estrutura (NÃO é uma conta real nem uma senha válida):
 
-A lista de acesso é controlada por variáveis de ambiente na Vercel, não por cadastro autônomo; mudanças exigem atualização da configuração e novo deploy. O painel não salva dados neste estágio. Login Google é requisito para quem tiver acesso. Não há banco de sessões: Auth.js mantém sessão JWT protegida por `AUTH_SECRET`.
+```json
+[
+  {
+    "email": "usuario@exemplo.com",
+    "role": "administrador",
+    "name": "Equipe Editorial",
+    "passwordHash": "scrypt:16384:8:1:...salt...:...hash..."
+  }
+]
+```
 
-## Segurança operacional
+Perfis: `administrador`, `curador`, `experiencialista`.
 
-- Nunca adicionar arquivos `.env.local` ao GitHub.
-- Não colocar `AUTH_SECRET`, token Google ou token GitHub em arquivos estáticos.
-- A função `roleForEmail` é executada no servidor: ser autenticado não implica ter permissão.
-- Não apontar o novo projeto para o serviço Render antigo nem para o banco Neon.
+Para gerar hashes a partir de senha digitada sem exibir a senha no histórico do terminal:
+
+```sh
+read -rs -p "Senha: " BIB_SENHA; echo
+printf '%s' "$BIB_SENHA" | node scripts/hash-password.mjs
+unset BIB_SENHA
+```
+
+Copiar apenas o hash para `BIBLIOTECA_PASSWORD_USERS`. Nunca guardar a senha em código, commits, capturas de tela ou variáveis `NEXT_PUBLIC_`.
+
+## Segurança implementada
+
+- Auth.js / NextAuth com JWT assinado, validade de oito horas.
+- Scrypt com sal aleatório para senhas, comparação em tempo constante.
+- Contas autorizadas por perfil, sem cadastro público.
+- Limitação local de sete tentativas inválidas por e-mail em quinze minutos.
+- Login por Google exige e-mail verificado.
+- Sessões e papéis são conferidos nas rotas restritas.
+- URLs do Drive para minutas não são renderizadas para usuários sem perfil editorial.
+
+**Limite atual:** a lista de contas com senha é administrada por variável de ambiente. Alterar senhas, cadastrar membros e revogar acessos requer alterar a configuração no Render e publicar novamente. Para escalar ou criar um painel de gestão de membros com redefinição de senha, migrar a autenticação de usuários para uma base com armazenamento persistente e limitação distribuída de tentativas.
+
+## Deploy e testes
+
+O Render utiliza a branch `main` e o comando:
+
+```sh
+cd vercel-app && npm install --no-audit --no-fund && npm run build
+```
+
+Com autoDeploy desativado, é necessário iniciar um deploy no painel do Render depois de alterar o código ou variáveis.
+
+Validações recomendadas:
+1. `npm run build` aprovado.
+2. Login correto de administrador e entrada em `/painel`.
+3. Senha incorreta rejeitada sem revelar existência da conta.
+4. `/painel` inacessível sem autenticação.
+5. Minutas não visíveis para visitante ou perfil `experiencialista`.
+6. Logout encerra a sessão, e URLs do Drive respeitam suas permissões próprias.
