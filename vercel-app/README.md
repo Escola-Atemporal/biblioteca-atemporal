@@ -89,7 +89,7 @@ Os usuários adicionais agora podem ser registrados no Neon, projeto `biblioteca
 1. Entre na Biblioteca com a conta administradora.
 2. Abra `/painel/usuarios` (ou o card **Convites e permissões**).
 3. Informe nome, e-mail e perfil. A administração recebe um link de convite de uso único, válido por **48 horas**.
-4. Envie o link diretamente à pessoa. O sistema **não envia e-mails automaticamente**.
+4. Envie o link diretamente à pessoa. O envio automático depende da ativação do remetente transacional.
 5. A pessoa abre `/convite/[token]`, define uma senha de 12 ou mais caracteres e usa `/entrar`.
 6. O administrador pode consultar usuários, alterar perfis, desativar ou reativar acessos e emitir um novo convite para redefinição de senha.
 
@@ -129,7 +129,7 @@ A etapa de aprovação foi adicionada sem abrir cadastro automático.
 - **/solicitar-acesso**: a pessoa preenche nome, e-mail, contexto opcional e consentimento específico para uso dos dados na análise da solicitação.
 - O pedido entra como `pending` em `biblioteca_membership_requests`. Solicitações repetidas para o mesmo e-mail não revelam se já existe conta; nova solicitação após recusa só é aceita passados 30 dias.
 - A administração entra em **/painel/usuarios#solicitacoes** para avaliar cada pedido.
-- **Aprovar** cria conta `experiencialista` inativa e um convite de uso único, válido por 48 horas. O administrador copia e compartilha o link privadamente, pois não há envio automático de e-mail.
+- **Aprovar** cria conta `experiencialista` inativa e um convite de uso único, válido por 48 horas. o sistema envia o convite automaticamente pelo e-mail transacional quando o remetente está configurado.
 - **Recusar** marca a solicitação como `rejected` e não cria acesso.
 - O usuário aprovado define a senha em `/convite/[token]`. Só então passa a poder iniciar sessão.
 - A conta `experiencialista` não recebe acesso aos nove e-books ainda classificados como minutas internas; continuam restritos à curadoria e administração.
@@ -144,3 +144,44 @@ Aprovação administrativa tem verificação de sessão no servidor e escrita tr
 ### Verificação recomendada antes da divulgação ampla
 
 Faça um pedido de teste com um e-mail controlado pela equipe, confira sua aparição na fila, aprove, copie o convite, ative a senha e teste o perfil. Em seguida, verifique que outro visitante não consegue acessar `/painel/usuarios` e que um experiencialista não visualiza os links editoriais restritos.
+
+
+## Envio e confirmação 100% por e-mail
+
+A Biblioteca possui integração de e-mail transacional via API do **Resend**, com mensagens HTML acessíveis e alternativas em texto simples. Não há dependência de WhatsApp.
+
+**Eventos com e-mail:**
+- Recebimento de pedido: confirmação ao solicitante e aviso à administração.
+- Aprovação: convite pessoal enviado automaticamente ao e-mail aprovado, válido por 48 horas e utilizável uma vez.
+- Recusa: aviso ao solicitante sobre o resultado.
+- Convite direto: e-mail de boas-vindas com link individual de ativação.
+- Ativação de conta: confirmação de cadastro e instruções de login.
+- Recuperação: link de redefinição válido por 60 minutos; a conclusão gera aviso de alteração de senha.
+- Alterações administrativas de perfil, suspensão e reativação: e-mails transacionais de segurança.
+
+**Rotas de gerenciamento:**
+- `/esqueci-senha` e `/redefinir-senha/[token]` — recuperação sem revelar a existência de contas.
+- `/painel/emails` — visualização da fila, tentativas, erros, reenvio manual e envio de teste ao administrador.
+- `/painel/usuarios` — aprovar pedidos, cadastrar convites e consultar permissões.
+
+**Variáveis no Render (somente no Environment, nunca no GitHub):**
+- `RESEND_API_KEY`: chave com permissão de **Sending access**; a criação e a cópia do segredo são feitas na conta do provedor.
+- `RESEND_FROM_EMAIL`: endereço de remetente associado ao domínio verificado. Exemplo, **apenas depois da verificação**: `Escola Atemporal <biblioteca@escolaatemporal.com.br>`.
+- `RESEND_REPLY_TO`: opcional, e-mail institucional de contato.
+- `BIBLIOTECA_ADMIN_NOTIFICATION_EMAILS`: opcional, lista de endereços (separados por vírgula) para receber avisos de novas solicitações.
+- `AUTH_SECRET`, `AUTH_URL`, `DATABASE_URL`: já usados pelo login e Neon. **Não substitua o AUTH_SECRET** durante a ativação do e-mail, pois ele também cifra a fila persistente.
+
+**Sequência de ativação do remetente:**
+1. Criar ou acessar a conta Resend e incluir `escolaatemporal.com.br` em Domains.
+2. Verificar o domínio por meio dos registros DNS solicitados no painel Resend (SPF/DKIM, conforme apresentados pelo provedor). **Não substituir registros MX ou SPF existentes do correio institucional por suposições.**
+3. Criar uma chave com apenas permissão **Sending access**.
+4. No Render, abrir o serviço `biblioteca-atemporal-web` > Environment, informar `RESEND_API_KEY` e `RESEND_FROM_EMAIL`; salvar e implantar.
+5. Entrar em `/painel/emails`, usar **Enviar teste para meu e-mail** e confirmar chegada à caixa de entrada.
+6. Testar com um e-mail de teste autorizado: formulário, confirmação, aprovação, convite, criação da senha, login e recuperação.
+
+**Garantias e limites:**
+- Links pessoais trafegam por e-mail; na fila PostgreSQL o conteúdo é cifrado usando AES-256-GCM a partir do segredo de autenticação e cada solicitação ao Resend tem chave de idempotência.
+- Os e-mails são disparados automaticamente na ocorrência do evento e permanecem registrados. Há reprocessamento de falhas pelo painel administrativo. Um reenvio periódico independente do painel ainda não está programado.
+- O status **Aceito** no painel significa que o provedor aceitou o pedido de envio, não comprova leitura ou entrega final.
+- Até as variáveis do remetente estarem presentes, a interface pública suspende novos pedidos e o painel bloqueia convites/aprovações. O login existente e as seis trilhas continuam funcionando.
+- Novos usuários continuam sujeitos à aprovação administrativa. E-books em minuta permanecem acessíveis apenas aos perfis editoriais previamente autorizados.
