@@ -419,3 +419,57 @@
   outline:3px solid #634995;
   outline-offset:4px;
 }
+
+
+/* Comunicação transacional e status do remetente */
+.email-atm-notice{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:22px;
+  padding:19px 24px;
+  background:#fff;
+  border-left:4px solid #ffd309;
+  margin:0 0 35px;
+  color:#34293e;
+}
+.email-atm-notice strong{display:block;color:#251d2b;font:750 15px/1.4 Montserrat,Arial,sans-serif}
+.email-atm-notice p{color:#595161;font:400 12px/1.75 Montserrat,Arial,sans-serif;margin:7px 0 0}
+.email-atm-notice>a{
+  color:#443052;text-decoration:underline;text-underline-offset:4px;
+  white-space:nowrap;font:750 12px/1.6 Montserrat,Arial,sans-serif;
+}
+.email-atm-config{
+  padding:clamp(24px,3vw,39px);
+  margin:0 0 50px;
+  background:#fff;
+  border:1px solid #ded6e2;
+  border-top:4px solid #ffd309;
+}
+.email-atm-config .admin-atm-eyebrow{color:#634995}
+.email-atm-config h2{
+  margin:12px 0 15px;
+  font:750 clamp(24px,3vw,34px)/1.2 Montserrat,Arial,sans-serif;
+  letter-spacing:-.04em;
+  color:#252029;
+}
+.email-atm-config>p{
+  color:#595160;
+  max-width:780px;
+  font:400 13px/1.85 Montserrat,Arial,sans-serif;
+}
+.email-atm-retry{margin-top:22px}
+.email-atm-retry .login-atm-notice,
+.email-atm-retry .login-atm-error{margin-top:15px}
+.email-atm-status{
+  display:inline-block;
+  padding:5px 9px;
+  border-radius:2px;
+  background:#fff0d9;
+  color:#744c13;
+  font:700 11px/1.45 Montserrat,Arial,sans-serif;
+}
+.email-atm-status.is-sent{background:#e7f3e9;color:#235e31}
+.email-atm-error{display:block;margin-top:8px;max-width:195px;color:#8e2b47;overflow-wrap:anywhere;font:400 10px/1.6 Montserrat,Arial,sans-serif}
+@media(max-width:700px){
+ .email-atm-notice{flex-direction:column;align-items:flex-start}
+ .email-atm-notice>a{white-space:normal}
+}
