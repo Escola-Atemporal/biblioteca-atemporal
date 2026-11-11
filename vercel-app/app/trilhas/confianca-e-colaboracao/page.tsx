@@ -7,6 +7,9 @@ import RoteiroVideos from "../../components/RoteiroVideos";
 import BibliografiaTrilha04 from "../../components/BibliografiaTrilha04";
 import {artigosTrilha04, livrosTrilha04, videosTrilha04, movimentosTrilha04} from "../../../data/referencias-trilha-04";
 
+// Draft links depend on authenticated roles; do not statically cache this page.
+export const dynamic = "force-dynamic";
+
 export const metadata:Metadata={
   title:"Trilha 04 — Confiança e Colaboração | Biblioteca Atemporal",
   description:"Uma jornada de escuta, pertencimento e inteligência coletiva com conteúdos da Escola, referências de acesso aberto, vídeos e caderno reflexivo."
