@@ -2,14 +2,14 @@
 
 import { randomUUID } from "node:crypto";
 import { databaseConfigured, transaction, dbQuery } from "../../lib/database";
-import { adminNotificationEmails, createEmail, emailOrigin, enqueueEmail, sendEmailBatch } from "../../lib/email";
+import { adminNotificationEmails, createEmail, emailConfigured, emailOrigin, enqueueEmail, sendEmailBatch } from "../../lib/email";
 
 export type AccessRequestState = { ok: boolean; message: string };
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function submitAccessRequest(_previous: AccessRequestState, form: FormData): Promise<AccessRequestState> {
-  if (!databaseConfigured) {
-    return { ok: false, message: "As solicitações estão indisponíveis. Tente novamente mais tarde." };
+  if (!databaseConfigured || !emailConfigured) {
+    return { ok: false, message: "A confirmação automática por e-mail está sendo configurada. Solicitações ficam suspensas até a ativação do remetente." };
   }
   if (String(form.get("website") ?? "").trim()) {
     return { ok: true, message: "Seus dados foram recebidos para análise." };
