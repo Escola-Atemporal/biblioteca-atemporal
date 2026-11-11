@@ -66,6 +66,13 @@ export default async function Painel() {
           <p>Escolha um tema. Cada percurso reúne textos, referências e perguntas para experimentar na vida real.</p>
         </div>
         <ProgressCards progress={progress} unavailable={progressUnavailable}/>
+        <section className="dashboard-atm-editorial" aria-labelledby="dashboard-caderno">
+          <div><span className="dashboard-atm-eyebrow">SEU ESPAÇO DE REFLEXÃO</span>
+            <h2 id="dashboard-caderno">Um caderno para <em>revisitar suas ideias.</em></h2>
+            <p>Registre reflexões pessoais inspiradas nas seis trilhas. Suas anotações ficam vinculadas à sua conta e podem ser editadas ou excluídas por você.</p>
+          </div>
+          <Link href="/painel/caderno" className="dashboard-atm-editorial-link">Abrir meu caderno ↗</Link>
+        </section>
         <section className="dashboard-atm-editorial" aria-labelledby="dashboard-acervo">
           <div>
             <span className="dashboard-atm-eyebrow">COLEÇÃO BIBLIOTECA ATEMPORAL</span>
