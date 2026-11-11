@@ -5,6 +5,7 @@ import { auth } from "../../../auth";
 import { roleForEmailAsync, type Role } from "../../../lib/access";
 import { databaseConfigured, dbQuery, transaction } from "../../../lib/database";
 import { revalidatePath } from "next/cache";
+import { createEmail, emailConfigured, emailOrigin, enqueueEmail, sendEmailBatch } from "../../../lib/email";
 
 export type InviteResult = {
   ok: boolean;
@@ -26,61 +27,63 @@ async function requireAdmin(): Promise<string> {
 }
 
 export async function createAccessInvite(_previous: InviteResult, formData: FormData): Promise<InviteResult> {
-  const actor = await requireAdmin();
-  const email = String(formData.get("email") ?? "").trim().toLowerCase();
-  const name = String(formData.get("name") ?? "").trim().replace(/\s+/g, " ");
-  const role = String(formData.get("role") ?? "") as Role;
-  if (!EMAIL.test(email) || email.length > 254 || name.length < 2 || name.length > 120 || !ROLES.includes(role)) {
-    return { ok: false, message: "Confira o nome, o e-mail e o perfil da pessoa.", inviteUrl: null };
-  }
-  if (email === actor) {
-    return { ok: false, message: "Para preservar a conta administradora, não crie um convite para seu próprio e-mail.", inviteUrl: null };
-  }
-  const token = randomBytes(32).toString("base64url");
-  const tokenHash = createHash("sha256").update(token).digest("hex");
-  try {
-    const result = await transaction(async (client) => {
-      const existing = await client.query<{ active: boolean }>(
-        "SELECT active FROM biblioteca_access_accounts WHERE email=$1 FOR UPDATE",
-        [email],
+  const actor=await requireAdmin();
+  if(!emailConfigured)return{ok:false,message:"Configure primeiro o remetente de e-mail em E-mails transacionais. Nenhum convite foi criado.",inviteUrl:null};
+  const email=String(formData.get("email")??"").trim().toLowerCase();
+  const name=String(formData.get("name")??"").trim().replace(/\s+/g," ");
+  const role=String(formData.get("role")??"") as Role;
+  if(!EMAIL.test(email)||email.length>254||name.length<2||name.length>120||!ROLES.includes(role))
+    return{ok:false,message:"Confira nome, e-mail e perfil.",inviteUrl:null};
+  if(email===actor)return{ok:false,message:"Não é possível gerar um convite para sua própria conta administrativa.",inviteUrl:null};
+
+  const token=randomBytes(32).toString("base64url");
+  const tokenHash=createHash("sha256").update(token).digest("hex");
+  try{
+    const result=await transaction(async(client)=>{
+      const existing=await client.query<{active:boolean; password_hash:string|null}>(
+        "SELECT active,password_hash FROM biblioteca_access_accounts WHERE email=$1 FOR UPDATE",[email],
       );
-      if (existing.rows[0]?.active) return "already-active";
+      if(existing.rows[0]?.active)return{kind:"already-active",mailId:null};
       await client.query(
-        `INSERT INTO biblioteca_access_accounts(email, display_name, role, active, created_by)
-           VALUES($1,$2,$3,false,$4)
-           ON CONFLICT(email) DO UPDATE SET
-             display_name=EXCLUDED.display_name, role=EXCLUDED.role, updated_at=now()`,
-        [email, name, role, actor],
+        `INSERT INTO biblioteca_access_accounts(email,display_name,role,active,created_by)
+         VALUES($1,$2,$3,false,$4)
+         ON CONFLICT(email) DO UPDATE SET
+         display_name=EXCLUDED.display_name,role=EXCLUDED.role,updated_at=now()`,
+        [email,name,role,actor],
       );
-      // A replacement invite invalidates older invitations for the same address.
-      await client.query(
-        "UPDATE biblioteca_access_invites SET used_at=now() WHERE email=$1 AND used_at IS NULL",
-        [email],
-      );
-      await client.query(
+      await client.query("UPDATE biblioteca_access_invites SET used_at=now() WHERE email=$1 AND used_at IS NULL",[email]);
+      const rows=await client.query<{id:string}>(
         `INSERT INTO biblioteca_access_invites(email,token_hash,created_by,expires_at)
-         VALUES($1,$2,$3,now()+interval '48 hours')`,
-        [email, tokenHash, actor],
+         VALUES($1,$2,$3,now()+interval '48 hours') RETURNING id`,
+        [email,tokenHash,actor],
       );
+      const invitationId=rows.rows[0].id;
       await client.query(
         `INSERT INTO biblioteca_access_audit(actor_email,target_email,action,details)
          VALUES($1,$2,'invitation_created',jsonb_build_object('role',$3))`,
-        [actor, email, role],
+        [actor,email,role],
       );
-      return "created";
+      const mailId=await enqueueEmail(client,createEmail(
+        "invitation",email,"Convite para a Biblioteca Atemporal",
+        {eyebrow:"Convite de acesso",greeting:`Olá, ${name}.`,
+         paragraphs:[
+           "Você recebeu um convite individual para participar da Biblioteca Atemporal.",
+           `Seu perfil será ${role}. Clique no botão e crie uma senha pessoal para ativar sua conta.`,
+           "Este convite é válido por 48 horas, funciona apenas uma vez e não exige contato pelo WhatsApp.",
+         ],action:{label:"Criar senha e ativar acesso",url:`${emailOrigin()}/convite/${token}`}},
+        `invitation:direct:${invitationId}`,
+      ));
+      if(!mailId)throw new Error("Cannot queue invitation email");
+      return{kind:"created",mailId};
     });
-    if (result === "already-active") {
-      return { ok: false, message: "Este e-mail já possui uma conta ativa. Para alterar o perfil, use Pessoas cadastradas. Para redefinir a senha, desative a conta antes de emitir um novo convite.", inviteUrl: null };
-    }
+    if(result.kind==="already-active")return{ok:false,message:"Já existe uma conta ativa com esse e-mail. Use o painel para gerenciar suas permissões.",inviteUrl:null};
     revalidatePath("/painel/usuarios");
-    const origin = process.env.AUTH_URL || "https://biblioteca-atemporal-web.onrender.com";
-    return {
-      ok: true,
-      message: "Convite criado. Copie o link e envie diretamente à pessoa. Ele expira em 48 horas e funciona uma única vez.",
-      inviteUrl: `${origin.replace(/\/$/, "")}/convite/${token}`,
-    };
-  } catch {
-    return { ok: false, message: "Não foi possível registrar o convite. Tente novamente.", inviteUrl: null };
+    const status=(await sendEmailBatch([result.mailId]).catch(()=>[]))[0];
+    return{ok:true,inviteUrl:null,message:status==="sent"
+      ?"Convite gerado. O e-mail foi aceito para envio. A pessoa poderá criar a senha pelo botão recebido."
+      :"Convite registrado, mas o e-mail ainda não foi enviado. Verifique a fila de E-mails transacionais."};
+  }catch{
+    return{ok:false,message:"Não foi possível registrar o convite. Tente novamente.",inviteUrl:null};
   }
 }
 
