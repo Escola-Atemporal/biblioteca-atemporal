@@ -21,3 +21,8 @@
 .reflection-delete-confirm button{border:1px solid #895767;padding:8px 10px;border-radius:3px;background:white;color:#5b3542;cursor:pointer}
 .reflection-delete-confirm button[type=submit]{background:#793b4a;color:white}
 @media(max-width:760px){.reflection-editor{display:block;padding:24px}.reflection-editor .reflection-form{margin-top:25px}.reflection-entry{padding:23px}}
+
+
+.reflection-prompt{margin:20px 0 0;padding:16px 18px;border-left:3px solid #634995;background:#f4f0fa}
+.reflection-prompt span{font:700 10px 'Roboto Mono',monospace;letter-spacing:.08em;color:#634995}
+.reflection-prompt p{font:500 15px/1.7 Montserrat,Arial,sans-serif;color:#342b45;margin:9px 0 0}
