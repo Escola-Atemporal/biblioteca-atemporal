@@ -1,3 +1,4 @@
+import ColecaoAutoral from "../../components/ColecaoAutoral";
 import Link from "next/link";
 import type { Metadata } from "next";
 import BrandLogo from "../../components/BrandLogo";
@@ -64,7 +65,8 @@ export default function Trilha04Page(){
   </section>
   <section id="livros" className="learning-section learning-books colab-books"><div className="learning-wrap">
    <div className="learning-section-header"><div><span className="eyebrow dark">BIBLIOGRAFIA · TRILHA 04</span><h2>Leituras para <em>construir juntos.</em></h2></div><p>Uma curadoria de obras e guias de acesso aberto. Os downloads, quando disponíveis, são oferecidos nas páginas originais dos editores ou autores.</p></div>
-   <div className="learning-books-intro colab-books-intro"><div><span className="learning-books-preamble">LER · CONVERSAR · EXPERIMENTAR</span><h3>Confiança não se decreta. <em>Se cultiva.</em></h3><p>Experimente começar pela comunicação em pequenos grupos, seguir para escuta e concluir com práticas de equipes.</p></div><div className="learning-books-count"><strong>{livrosTrilha04.length}</strong><span>OBRAS<br/>E GUIAS</span></div></div>
+   <ColecaoAutoral trilha="04" />
+          <div className="learning-books-intro colab-books-intro"><div><span className="learning-books-preamble">LER · CONVERSAR · EXPERIMENTAR</span><h3>Confiança não se decreta. <em>Se cultiva.</em></h3><p>Experimente começar pela comunicação em pequenos grupos, seguir para escuta e concluir com práticas de equipes.</p></div><div className="learning-books-count"><strong>{livrosTrilha04.length}</strong><span>OBRAS<br/>E GUIAS</span></div></div>
    <BibliografiaTrilha04/>
    <p className="learning-disclaimer">Links para fontes externas; não há cópias de livros de terceiros hospedadas na Biblioteca. Acesso aberto não significa uso irrestrito: consulte os termos de cada edição antes de compartilhar, adaptar ou redistribuir arquivos.</p>
   </div></section>
