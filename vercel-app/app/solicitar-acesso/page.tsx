@@ -1,6 +1,7 @@
 import BrandLogo from "../components/BrandLogo";
 import Link from "next/link";
 import AccessRequestForm from "./AccessRequestForm";
+import {emailConfigured} from "../../lib/email";
 
 export const dynamic = "force-dynamic";
 export const metadata = {
@@ -34,7 +35,9 @@ export default function AccessRequestPage() {
             <span className="login-atm-form-eyebrow">PARTICIPAÇÃO NA BIBLIOTECA</span>
             <h2 id="request-atm-form-heading">Solicitar acesso.</h2>
             <p>Conte-nos quem você é. Sua solicitação será encaminhada à administração para avaliação. Não é necessário criar senha nesta etapa.</p>
-            <AccessRequestForm />
+            {emailConfigured
+              ? <AccessRequestForm />
+              : <p className="login-atm-notice" role="status">O serviço de confirmação por e-mail está sendo preparado. As solicitações serão reabertas quando a Escola validar o remetente.</p>}
             <Link href="/entrar" className="login-atm-back">← Já tenho convite ou conta ativa</Link>
           </div>
         </section>
