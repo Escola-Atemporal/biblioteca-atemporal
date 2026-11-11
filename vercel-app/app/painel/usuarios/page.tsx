@@ -92,7 +92,7 @@ export default async function UsersPanel() {
                 <strong>{emailConfigured ? "Comunicação por e-mail configurada" : "Envio automático aguardando configuração"}</strong>
                 <p>{emailConfigured
                   ? "Convites, decisões e confirmações serão enviados pelo provedor de e-mail."
-                  : "A gestão continua disponível, mas aprovações e convites aguardam a configuração do domínio remetente."}</p>
+                  : "A gestão de perfis continua disponível, mas novos convites e solicitações aguardam a conclusão da verificação OAuth do Google e a liberação administrativa do envio."}</p>
               </div>
               <Link href="/painel/emails">Acompanhar e-mails ↗</Link>
             </div>
