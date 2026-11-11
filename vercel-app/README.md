@@ -201,3 +201,25 @@ A presença de `RESEND_API_KEY` e `RESEND_FROM_EMAIL` **não libera automaticame
 Em qualquer instalação sem `BIBLIOTECA_EMAIL_ENABLED=true`, todos os envios de entrada de novos usuários ficam bloqueados, mesmo que exista um remetente configurado. O login já existente não depende deste recurso e permanece operacional.
 
 A ativação dessa variável confirma apenas a autorização operacional da Escola; a aceitação pela API e a entrega em caixa real devem continuar sendo acompanhadas. Não trate `status='sent'` como confirmação de entrega final.
+
+
+## Transporte Gmail API (substitui Resend) — novembro/2026
+
+**Esta secao substitui as instrucoes antigas do Resend acima.** O aplicativo usa Gmail API OAuth2 para a entrega e NAO utiliza chaves Resend. O plugin Gmail do ChatGPT nao fornece autorizacao persistente ao backend Render.
+
+Variaveis obrigatorias no Render (somente Environment, nunca no repositorio):
+- `GMAIL_CLIENT_ID`: identificador do cliente OAuth do projeto Google Cloud com Gmail API habilitada
+- `GMAIL_CLIENT_SECRET`: segredo do cliente OAuth
+- `GMAIL_REFRESH_TOKEN`: refresh token obtido por consentimento expresso da conta remetente, com escopo `https://www.googleapis.com/auth/gmail.send`
+- `GMAIL_FROM_EMAIL`: endereco exato da conta remetente ou alias verificado
+- `AUTH_SECRET`: manter o valor existente; nao alterar ou rotacionar durante a transicao
+- `BIBLIOTECA_EMAIL_ENABLED=false`: manter desativado ate teste real de recebimento
+
+Orientacoes:
+1. Criar/configurar projeto Google Cloud, tela de consentimento OAuth e Gmail API. Configurar o cliente OAuth e conceder `gmail.send` com consentimento da conta remetente. Um app OAuth em modo Testing pode ter refresh tokens que expiram; para operacao duradoura, revisar o status de publicacao, politicas e verificacao de escopos do Google.
+2. Salvar credenciais exclusivamente no Render. Nao enviar refresh token ou segredo em chat, commit ou capturas de tela.
+3. Abrir `/painel/emails` com conta administradora e usar `Enviar teste para meu e-mail`. Esse teste funciona com credenciais mesmo que a abertura publica esteja bloqueada.
+4. Confirmar recebimento em inbox (e spam), remetente, conteudo e link, alem de conferir limites de envio da conta Google.
+5. Somente depois de aprovar os testes, alterar `BIBLIOTECA_EMAIL_ENABLED=true` no Render e validar convites e recuperacao usando uma conta de teste controlada.
+
+A fila continua criptografada e preservada no Neon. O reenvio de mensagens reais fica bloqueado ate a liberacao; o teste isolado do administrador pode ser executado antes. Gmail API confirma aceitacao, nao entrega final. O mecanismo anterior do Resend foi substituido no codigo, e suas variaveis antigas nao habilitam envio.
