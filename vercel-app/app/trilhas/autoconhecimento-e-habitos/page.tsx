@@ -10,6 +10,9 @@ import {
   videosTrilha03, aprofundamentosTrilha03,
 } from "../../../data/referencias-trilha-03";
 
+// Draft links depend on authenticated roles; do not statically cache this page.
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title:"Trilha 03 — Autoconhecimento e Hábitos | Biblioteca Atemporal",
   description:"Quais padrões repetimos sem perceber? Uma jornada com 8 fontes da Escola Atemporal, 9 livros e materiais, 6 vídeos e o Diário das Pequenas Escolhas.",
