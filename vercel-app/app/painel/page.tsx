@@ -8,6 +8,7 @@ import { roleForEmailAsync } from "../../lib/access";
 import { databaseConfigured,dbQuery } from "../../lib/database";
 import type { ProgressRecord } from "../../lib/learning-progress";
 import ProgressCards from "./ProgressCards";
+import LearningOverview, { type RecentReflection } from "./LearningOverview";
 
 export const dynamic = "force-dynamic";
 export const metadata = {
@@ -29,6 +30,19 @@ export default async function Painel() {
   if(databaseConfigured)try{
     progress=await dbQuery<ProgressRecord>("SELECT trail_slug,status,section_id,updated_at::text AS updated_at FROM biblioteca_learning_progress WHERE email=$1",[session.user.email.trim().toLowerCase()]);
   }catch{progressUnavailable=true;}
+
+  let reflections:RecentReflection[]=[];
+  let reflectionCount:number|null=null;
+  let reflectionsUnavailable=!databaseConfigured;
+  if(databaseConfigured)try{
+    const [latest, counts]=await Promise.all([
+      dbQuery<RecentReflection>("SELECT id::text AS id,title,trail_slug,updated_at::text AS updated_at FROM biblioteca_reflection_notes WHERE email=$1 ORDER BY updated_at DESC LIMIT 3",[session.user.email.trim().toLowerCase()]),
+      dbQuery<{total:number}>("SELECT count(*)::int AS total FROM biblioteca_reflection_notes WHERE email=$1",[session.user.email.trim().toLowerCase()])
+    ]);
+    reflections=latest;
+    reflectionCount=counts[0]?.total??0;
+    reflectionsUnavailable=false;
+  }catch{reflectionsUnavailable=true;}
 
   return (
     <main className="dashboard-atm">
@@ -58,7 +72,8 @@ export default async function Painel() {
       </section>
 
       <div className="dashboard-atm-body dashboard-atm-container">
-        <div className="dashboard-atm-heading">
+        <LearningOverview progress={progress} progressUnavailable={progressUnavailable} reflections={reflections} reflectionsUnavailable={reflectionsUnavailable} reflectionCount={reflectionCount}/>
+        <div className="dashboard-atm-heading" id="minhas-trilhas">
           <div>
             <span className="dashboard-atm-eyebrow dark">SUAS JORNADAS</span>
             <h2>Seis trilhas para <em>seguir investigando.</em></h2>
