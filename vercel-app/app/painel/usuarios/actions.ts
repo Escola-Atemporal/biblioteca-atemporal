@@ -1,3 +1,4 @@
+import { can } from "../../../lib/permissions";
 "use server";
 
 import { createHash, randomBytes, randomUUID } from "node:crypto";
@@ -19,7 +20,7 @@ const ROLES: Role[] = ["administrador", "curador", "experiencialista"];
 async function requireAdmin(): Promise<string> {
   const session = await auth();
   const email = session?.user?.email?.toLowerCase().trim();
-  if (!email || await roleForEmailAsync(email) !== "administrador") {
+  if (!email || !can(await roleForEmailAsync(email), "users:manage")) {
     throw new Error("Acesso administrativo não autorizado.");
   }
   if (!databaseConfigured) throw new Error("A base administrativa não está configurada.");
