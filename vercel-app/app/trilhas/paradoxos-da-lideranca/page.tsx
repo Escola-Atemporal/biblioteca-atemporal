@@ -7,6 +7,9 @@ import RoteiroVideos from "../../components/RoteiroVideos";
 import BibliografiaEditorial from "../../components/BibliografiaEditorial";
 import {artigosTrilha05, tensoesTrilha05, movimentosTrilha05, obrasTrilha05, videosTrilha05} from "../../../data/referencias-trilha-05";
 
+// Draft links depend on authenticated roles; do not statically cache this page.
+export const dynamic = "force-dynamic";
+
 export const metadata:Metadata = {
  title:"Trilha 05 — Paradoxos da Liderança | Biblioteca Atemporal",
  description:"Investigue tensões entre autonomia e alinhamento, firmeza e cuidado, resultados e bem-estar. Leituras, vídeos e um caderno de reflexão original."
