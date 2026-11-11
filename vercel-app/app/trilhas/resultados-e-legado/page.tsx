@@ -1,3 +1,4 @@
+import ColecaoAutoral from "../../components/ColecaoAutoral";
 import Link from "next/link";
 import type {Metadata} from "next";
 import BrandLogo from "../../components/BrandLogo";
@@ -105,7 +106,8 @@ export default function ResultadosLegado(){
 
    <section className="learning-section learning-books legacy-books" id="bibliografia"><div className="learning-wrap">
      <div className="learning-section-header"><div><span className="eyebrow dark">BIBLIOGRAFIA DA TRILHA 06</span><h2>Estudar o impacto. <em>Revisitar o caminho.</em></h2></div><p>Livros e capítulos de acesso aberto, com autores e links para editoras e repositórios. As opções de PDF ou EPUB ficam nas fontes originais.</p></div>
-     <div className="legacy-books-lead"><div><span className="eyebrow">REPERTÓRIO · SEM DOWNLOADS NÃO AUTORIZADOS</span><h3>RESULTADOS SUSTENTÁVEIS PEDEM <em>PERGUNTAS MAIORES.</em></h3><p>Leia sobre stakeholders, responsabilidade corporativa, planejamento e aprendizagem contínua. Não é necessário seguir uma ordem fixa.</p></div><span className="legacy-books-total"><strong>{livros06.length}</strong><small>OBRAS E<br/>CAPÍTULOS</small></span></div>
+     <ColecaoAutoral trilha="06" />
+          <div className="legacy-books-lead"><div><span className="eyebrow">REPERTÓRIO · SEM DOWNLOADS NÃO AUTORIZADOS</span><h3>RESULTADOS SUSTENTÁVEIS PEDEM <em>PERGUNTAS MAIORES.</em></h3><p>Leia sobre stakeholders, responsabilidade corporativa, planejamento e aprendizagem contínua. Não é necessário seguir uma ordem fixa.</p></div><span className="legacy-books-total"><strong>{livros06.length}</strong><small>OBRAS E<br/>CAPÍTULOS</small></span></div>
      <BibliografiaEditorial trilha="06" obras={livros06.map(x=>({id:x.id,tipo:x.tipo,titulo:x.titulo,autor:x.autor,resumo:x.descricao,pergunta:x.pergunta,acesso:x.acesso,href:x.href}))}/>
      <p className="learning-disclaimer">A Biblioteca não hospeda cópias dos livros citados. O acesso às versões completas e a possibilidade de compartilhar arquivos dependem da licença de cada edição.</p>
    </div></section>
