@@ -12,7 +12,7 @@ export default function InviteControls() {
       <div className="admin-atm-invite-head">
         <span className="admin-atm-eyebrow">NOVO ACESSO</span>
         <h2>Convidar uma pessoa.</h2>
-        <p>Cadastre o e-mail, escolha o perfil e gere um convite seguro. A pessoa cria a própria senha ao abrir o link.</p>
+        <p>Cadastre o nome, o e-mail e o perfil. Após a criação, o sistema envia automaticamente um convite individual para a pessoa definir sua senha.</p>
       </div>
       <form action={action} className="admin-atm-form">
         <div className="admin-atm-fields">
@@ -34,20 +34,12 @@ export default function InviteControls() {
           </label>
         </div>
         <button className="admin-atm-primary" type="submit" disabled={pending}>
-          {pending ? "Gerando convite..." : "Criar convite de acesso"} <span aria-hidden="true">↗</span>
+          {pending ? "Enviando..." : "Criar e enviar convite por e-mail"} <span aria-hidden="true">↗</span>
         </button>
       </form>
       {state.message && (
         <div className={`admin-atm-feedback ${state.ok ? "admin-atm-success" : "admin-atm-failure"}`} role="status">
           <strong>{state.message}</strong>
-          {state.inviteUrl && (
-            <>
-              <label htmlFor="admin-invite-url">Link pessoal de ativação</label>
-              <input id="admin-invite-url" value={state.inviteUrl} readOnly onFocus={(event) => event.target.select()} />
-              <button type="button" onClick={() => navigator.clipboard.writeText(state.inviteUrl!)}>Copiar convite</button>
-              <p>Compartilhe este link em uma conversa privada. Ele não deve ser publicado em grupos ou páginas abertas.</p>
-            </>
-          )}
         </div>
       )}
     </div>
