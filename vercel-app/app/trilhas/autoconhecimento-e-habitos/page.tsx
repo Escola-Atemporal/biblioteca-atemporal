@@ -1,3 +1,4 @@
+import ColecaoAutoral from "../../components/ColecaoAutoral";
 import Link from "next/link";
 import type { Metadata } from "next";
 import BrandLogo from "../../components/BrandLogo";
@@ -128,7 +129,8 @@ export default function Trilha03Page(){
   <section className="learning-section learning-books" id="livros">
    <div className="learning-wrap">
     <div className="learning-section-header"><div><span className="eyebrow dark">ACERVO BIBLIOGRÁFICO · TRILHA 03</span><h2>Leituras para se <em>observar e transformar.</em></h2></div><p>Livros, materiais formativos e guias de acesso aberto, com contexto de publicação, perguntas reflexivas e links para as instituições de origem.</p></div>
-    <div className="learning-books-intro habit-books-intro"><div>
+    <ColecaoAutoral trilha="03" />
+          <div className="learning-books-intro habit-books-intro"><div>
      <span className="learning-books-preamble">LER · EXPERIMENTAR · REVISAR</span>
      <h3>Conhecimento que ganha forma <em>no cotidiano.</em></h3>
      <p>Os materiais não são uma sequência obrigatória. Cada um oferece outra lente: autoconhecimento, hábitos de aprendizagem, motivação, cuidado ou comportamento em organizações.</p>
