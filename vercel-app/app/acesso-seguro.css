@@ -1,0 +1,433 @@
+/* Escola Atemporal | Login e painel
+ * Referência visual: Trilha 01, fundos institucionais e cores da Escola.
+ * Sem fotos sintéticas nem elementos ornamentais desconectados.
+ */
+.login-atm,
+.dashboard-atm {
+  --access-yellow:#ffd309;
+  --access-ink:#141414;
+  --access-purple:#634995;
+  background:#141414;
+  color:#f5f3f7;
+  min-height:100vh;
+  font-family:Montserrat,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+.login-atm-topbar {
+  background:#101011;
+  color:#fff;
+  border-bottom:1px solid #36313a;
+}
+.login-atm-topbar a:not(.brand-lockup) {color:#f7f4f8}
+.login-atm-topbar .nav-login {
+  border-radius:2px;
+  color:#fff;
+  border:1px solid #6d6274;
+  background:transparent;
+  font:700 12px/1.4 Montserrat,Arial,sans-serif;
+}
+.login-atm-shell {
+  display:grid;
+  grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);
+  min-height:calc(100vh - 84px);
+}
+.login-atm-identity {
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  padding:clamp(34px,5.2vw,88px);
+  overflow:hidden;
+  background-color:#111014;
+  background-image:linear-gradient(95deg,rgba(9,9,11,.93),rgba(19,14,24,.85)),var(--school-bgl);
+  background-position:center;
+  background-size:cover;
+  border-right:1px solid #443d47;
+}
+.login-atm-eyebrow,
+.dashboard-atm-eyebrow {
+  display:block;
+  color:#ffd309;
+  font:700 11px/1.65 'Roboto Mono',monospace;
+  letter-spacing:.10em;
+}
+.login-atm-narrative {position:relative;z-index:1;margin:45px 0 60px;max-width:720px}
+.login-atm-big {
+  display:block;
+  color:#ffd309;
+  font:700 clamp(64px,8vw,118px)/1 Montserrat,Arial,sans-serif;
+  letter-spacing:-.09em;
+  margin:0 0 20px;
+}
+.login-atm-narrative h1 {
+  color:#fff;
+  font:750 clamp(38px,4.4vw,68px)/1.11 Montserrat,Arial,sans-serif;
+  letter-spacing:-.065em;
+  text-wrap:balance;
+  margin:0 0 23px;
+}
+.login-atm-narrative h1 em {font-style:normal;color:#ffd309}
+.login-atm-narrative p {
+  color:#ded6e3;
+  max-width:540px;
+  font:400 clamp(14px,1.3vw,17px)/1.85 Montserrat,Arial,sans-serif;
+  margin:0;
+}
+.login-atm-foot {
+  display:flex;flex-wrap:wrap;
+  gap:11px 18px;
+  padding-top:19px;
+  border-top:1px solid #4a414e;
+  color:#dfd7e4;
+}
+.login-atm-foot span {
+  font:700 9px/1.6 'Roboto Mono',monospace;
+  letter-spacing:.06em;
+}
+.login-atm-form-wrap {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:clamp(25px,5vw,74px);
+  background:#f6f5f7;
+  color:#1d1920;
+}
+.login-atm-panel {
+  width:min(100%,520px);
+  padding:0;
+}
+.login-atm-form-eyebrow {
+  display:block;
+  color:#634995;
+  font:750 11px/1.65 'Roboto Mono',monospace;
+  letter-spacing:.085em;
+  margin-bottom:18px;
+}
+.login-atm-panel h2 {
+  color:#171419;
+  margin:0 0 14px;
+  font:750 clamp(32px,3.6vw,47px)/1.13 Montserrat,Arial,sans-serif;
+  letter-spacing:-.05em;
+}
+.login-atm-description {
+  color:#58515e;
+  font:400 14px/1.75 Montserrat,Arial,sans-serif;
+  max-width:440px;
+  margin:0 0 32px;
+}
+.login-atm-form {display:flex;flex-direction:column}
+.login-atm-form label {
+  color:#302a35;
+  font:700 12px/1.4 Montserrat,Arial,sans-serif;
+  margin:0 0 8px;
+}
+.login-atm-form input {
+  box-sizing:border-box;
+  width:100%;
+  min-height:53px;
+  border:1px solid #bcb4c3;
+  border-radius:3px;
+  background:#fff;
+  color:#1e1b22;
+  padding:15px 16px;
+  outline:none;
+  font:500 14px/1.5 Montserrat,Arial,sans-serif;
+  margin:0 0 23px;
+}
+.login-atm-form input::placeholder {color:#837c8a}
+.login-atm-form input:focus-visible {
+  outline:3px solid #634995;
+  outline-offset:2px;
+  border-color:#634995;
+}
+.login-atm-submit,
+.login-atm-secondary {
+  box-sizing:border-box;
+  width:100%;
+  min-height:53px;
+  border:1px solid #171717;
+  border-radius:3px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  cursor:pointer;
+  padding:15px 18px;
+  font:750 13px/1.4 Montserrat,Arial,sans-serif;
+  text-decoration:none;
+}
+.login-atm-submit {
+  background:#ffd309;
+  color:#171717;
+  border-color:#ffd309;
+}
+.login-atm-submit:hover {background:#ffe16b}
+.login-atm-submit:focus-visible,
+.login-atm-secondary:focus-visible,
+.login-atm-back:focus-visible {
+  outline:3px solid #634995;
+  outline-offset:3px;
+}
+.login-atm-secondary {
+  color:#2d2336;
+  background:transparent;
+  border:1px solid #aba1b3;
+}
+.login-atm-secondary:hover {background:#ede8f2}
+.login-atm-google-form {margin-top:22px}
+.login-atm-divider {
+  display:flex;
+  align-items:center;
+  gap:13px;
+  color:#6d6373;
+  font-size:12px;
+  margin:0 0 22px;
+}
+.login-atm-divider:before,
+.login-atm-divider:after {
+  content:"";
+  height:1px;
+  flex:1;
+  background:#d3ced7;
+}
+.login-atm-error {
+  color:#8a172e;
+  background:#fff0f2;
+  border-left:3px solid #a22141;
+  padding:12px 14px;
+  margin:0 0 20px;
+  font:600 12px/1.65 Montserrat,Arial,sans-serif;
+}
+.login-atm-security {
+  display:flex;
+  gap:11px;
+  align-items:flex-start;
+  border-top:1px solid #d9d2dd;
+  margin-top:29px;
+  padding-top:19px;
+}
+.login-atm-security>span {color:#634995;font-size:11px;margin-top:4px}
+.login-atm-security p,
+.login-atm-notice {
+  margin:0;
+  color:#605766;
+  font:400 12px/1.75 Montserrat,Arial,sans-serif;
+}
+.login-atm-notice {
+  background:#f1ecf7;
+  border-left:3px solid #ffd309;
+  padding:16px 18px;
+}
+.login-atm-back {
+  display:inline-block;
+  color:#4b3957;
+  font:700 12px/1.6 Montserrat,Arial,sans-serif;
+  margin-top:25px;
+  text-decoration:underline;
+  text-underline-offset:4px;
+}
+.login-atm-connected {
+  display:flex; flex-direction:column;gap:14px;
+  color:#38303d;
+  font-size:14px;line-height:1.7;
+}
+.login-atm-connected p {margin:0;overflow-wrap:anywhere}
+.login-atm-connected>span {color:#634995;font-weight:700}
+.login-atm-connected form {margin:0}
+.dashboard-atm {background:#f5f3f6;color:#1c1a20}
+.dashboard-atm-topbar nav form {margin:0}
+.dashboard-atm-logout {
+  background:transparent;
+  border:1px solid #7c7382;
+  border-radius:2px;
+  padding:12px 17px;
+  color:#fff;
+  font:700 12px/1.4 Montserrat,Arial,sans-serif;
+}
+.dashboard-atm-logout:hover {border-color:#ffd309;color:#ffd309}
+.dashboard-atm-container {width:min(1260px,100%);margin:0 auto;padding-left:clamp(24px,6vw,90px);padding-right:clamp(24px,6vw,90px)}
+.dashboard-atm-hero {
+  background-color:#131116;
+  background-image:linear-gradient(110deg,rgba(10,10,12,.94),rgba(20,14,28,.88)),var(--school-bgl);
+  background-size:cover;
+  background-position:center;
+  color:#fff;
+  padding:clamp(68px,7vw,112px) 0 clamp(50px,5vw,85px);
+}
+.dashboard-atm-hero h1 {
+  font:750 clamp(42px,5.6vw,79px)/1.1 Montserrat,Arial,sans-serif;
+  letter-spacing:-.065em;
+  max-width:800px;
+  text-wrap:balance;
+  margin:20px 0 19px;
+  color:#fff;
+}
+.dashboard-atm-hero h1 em {font-style:normal;color:#ffd309}
+.dashboard-atm-hero .dashboard-atm-container>p {
+  max-width:620px;
+  color:#e1dce4;
+  font:400 15px/1.85 Montserrat,Arial,sans-serif;
+}
+.dashboard-atm-user {
+  border-top:1px solid #4b4351;
+  display:flex;
+  flex-wrap:wrap;
+  gap:13px 35px;
+  padding-top:19px;
+  margin-top:35px;
+  font:500 12px/1.6 Montserrat,Arial,sans-serif;
+  color:#ebe5ed;
+}
+.dashboard-atm-user span {overflow-wrap:anywhere}
+.dashboard-atm-user strong {
+  font:700 10px/1.6 'Roboto Mono',monospace;
+  color:#ffd309;
+  margin-right:7px;
+}
+.dashboard-atm-body {padding-top:clamp(56px,6vw,90px);padding-bottom:90px}
+.dashboard-atm-heading {display:flex;justify-content:space-between;gap:40px;align-items:flex-end;margin-bottom:31px}
+.dashboard-atm-eyebrow.dark {color:#634995}
+.dashboard-atm-heading h2 {
+  color:#1b1820;
+  font:750 clamp(30px,3.8vw,51px)/1.19 Montserrat,Arial,sans-serif;
+  letter-spacing:-.055em;
+  max-width:620px;
+  margin:14px 0 0;
+}
+.dashboard-atm-heading h2 em {color:#634995;font-style:normal}
+.dashboard-atm-heading>p {
+  color:#554e59;
+  font:400 13px/1.82 Montserrat,Arial,sans-serif;
+  max-width:330px;
+  margin:0;
+}
+.dashboard-atm-tracks {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.dashboard-atm-track {
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  min-height:224px;
+  padding:clamp(23px,2.4vw,32px);
+  border:1px solid #d9d2dd;
+  border-top:4px solid #ffd309;
+  background:#fff;
+}
+.dashboard-atm-track>span {
+  font:700 10px/1.5 'Roboto Mono',monospace;
+  color:#634995;
+}
+.dashboard-atm-track h3 {
+  color:#211b25;
+  font:750 clamp(19px,1.9vw,24px)/1.25 Montserrat,Arial,sans-serif;
+  letter-spacing:-.035em;
+  margin:8px 0;
+}
+.dashboard-atm-track a {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  margin-top:auto;
+  padding-top:15px;
+  border-top:1px solid #e1dce4;
+  color:#453052;
+  font:750 12px/1.5 Montserrat,Arial,sans-serif;
+}
+.dashboard-atm-track a:hover {color:#8b5400}
+.dashboard-atm-editorial {
+  background:linear-gradient(105deg,#18131d,#31253d);
+  margin-top:clamp(35px,5vw,66px);
+  padding:clamp(30px,3.5vw,49px);
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:35px;
+  color:#fff;
+  border-left:4px solid #ffd309;
+}
+.dashboard-atm-editorial h2{
+  color:#fff;
+  font:750 clamp(29px,3vw,42px)/1.15 Montserrat,Arial,sans-serif;
+  letter-spacing:-.05em;
+  margin:11px 0 17px;
+}
+.dashboard-atm-editorial h2 em {font-style:normal;color:#ffd309}
+.dashboard-atm-editorial p {color:#e0d8e4;max-width:700px;font:400 14px/1.8 Montserrat,Arial,sans-serif}
+.dashboard-atm-editorial-link {
+  min-width:225px;
+  color:#161616;
+  background:#ffd309;
+  padding:15px 20px;
+  font:700 12px/1.6 Montserrat,Arial,sans-serif;
+  text-align:center;
+  border-radius:2px;
+}
+.dashboard-atm-bottom {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:35px;
+  margin-top:48px;
+  padding-top:21px;
+  border-top:1px solid #d1cbd6;
+}
+.dashboard-atm-bottom>p {
+  color:#5d5661;
+  font:400 12px/1.75 Montserrat,Arial,sans-serif;
+  max-width:650px;
+}
+.dashboard-atm-bottom strong {color:#32253b}
+.dashboard-atm-exit {
+  border:1px solid #766a7d;
+  color:#34263d;
+  background:transparent;
+  padding:12px 19px;
+  font:750 12px/1.5 Montserrat,Arial,sans-serif;
+}
+.dashboard-atm-exit:hover {background:#efebf1}
+
+/* Private draft link preview */
+.learning-page .colecao-autoral-fechada .colecao-autoral-aviso {margin-bottom:13px}
+.learning-page .colecao-autoral-entrar {
+  display:inline-flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:22px;
+  background:#ffd309;
+  color:#171717;
+  padding:14px 19px;
+  font:750 12px/1.5 Montserrat,Arial,sans-serif;
+  border-radius:2px;
+}
+.learning-page .colecao-autoral-restricao {
+  color:#ded7e3;
+  font:400 12px/1.7 Montserrat,Arial,sans-serif;
+  margin:12px 0 0;
+}
+@media(max-width:980px){
+  .login-atm-shell {grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}
+  .dashboard-atm-tracks {grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:740px){
+  .login-atm-shell {grid-template-columns:1fr}
+  .login-atm-identity {min-height:360px;padding:40px 24px}
+  .login-atm-narrative {margin:35px 0}
+  .login-atm-big {font-size:66px}
+  .login-atm-narrative h1 {font-size:clamp(34px,8vw,51px)}
+  .login-atm-form-wrap {padding:55px 24px 70px}
+  .dashboard-atm-heading {display:block}
+  .dashboard-atm-heading>p {margin-top:15px}
+  .dashboard-atm-tracks {grid-template-columns:1fr}
+  .dashboard-atm-editorial {display:block}
+  .dashboard-atm-editorial-link {display:block;width:100%;margin-top:22px}
+  .dashboard-atm-bottom {display:block}
+  .dashboard-atm-bottom form {margin-top:18px}
+}
+@media(max-width:450px){
+  .login-atm-topbar nav {flex-wrap:wrap;gap:12px}
+  .login-atm-panel h2{font-size:33px}
+  .dashboard-atm-hero h1 {font-size:39px}
+}
+@media(prefers-reduced-motion:reduce){
+  .login-atm *, .dashboard-atm * {scroll-behavior:auto;transition:none}
+}
