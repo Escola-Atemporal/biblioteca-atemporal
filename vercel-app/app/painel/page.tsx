@@ -1,4 +1,5 @@
 import BrandLogo from "../components/BrandLogo";
+import PresenceHeartbeat from "../components/PresenceHeartbeat";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { auth, authConfigured, signOut } from "../../auth";
@@ -31,6 +32,7 @@ export default async function Painel() {
 
   return (
     <main className="dashboard-atm">
+      <PresenceHeartbeat section="Meu painel" />
       <header className="topbar login-atm-topbar">
         <BrandLogo />
         <nav aria-label="Navegação do painel">
