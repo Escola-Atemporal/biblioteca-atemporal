@@ -84,6 +84,7 @@ export async function approveMembership(_prior:ReviewResult, form:FormData):Prom
 
 export async function rejectMembership(_prior:ReviewResult,form:FormData):Promise<ReviewResult>{
   const actor=await requireAdmin();
+  if(!emailConfigured) return {ok:false,message:"Configure o e-mail transacional antes de registrar decisões. Nenhuma solicitação foi recusada.",inviteUrl:null};
   const id=String(form.get("requestId")??"");
   if(!UUID.test(id))return{ok:false,message:"Solicitação inválida.",inviteUrl:null};
   try{
