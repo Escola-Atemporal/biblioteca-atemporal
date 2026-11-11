@@ -1,0 +1,128 @@
+/* Escola Atemporal — administração editorial e ativação de convites.
+   Usa a paleta da Trilha 01, sem imagens inventadas. */
+.admin-atm-page,
+.admin-atm-activation {
+  --adm-yellow:#ffd309;
+  --adm-dark:#141414;
+  --adm-violet:#634995;
+  min-height:100vh;
+  font-family:Montserrat,Arial,sans-serif;
+}
+.admin-atm-page {background:#f7f5f8;color:#211c26}
+.admin-atm-container {width:min(1200px,100%);margin:0 auto;padding-left:clamp(23px,5vw,70px);padding-right:clamp(23px,5vw,70px)}
+.admin-atm-hero {
+  background:#141114;
+  color:#fff;
+  padding:clamp(65px,6vw,104px) 0 clamp(42px,4vw,70px);
+  border-bottom:4px solid #ffd309;
+}
+.admin-atm-eyebrow {
+  font:700 10px/1.5 'Roboto Mono',monospace;
+  color:#ffd309;letter-spacing:.1em;
+  display:block;
+}
+.admin-atm-hero h1{
+  color:#fff;font:750 clamp(40px,5vw,68px)/1.12 Montserrat,Arial,sans-serif;
+  letter-spacing:-.06em;margin:16px 0;
+}
+.admin-atm-hero h1 em{color:#ffd309;font-style:normal}
+.admin-atm-hero p{color:#dcd5e1;font:400 15px/1.85 Montserrat,Arial,sans-serif;max-width:680px}
+.admin-atm-facts{display:flex;flex-wrap:wrap;gap:14px 36px;padding-top:20px;margin-top:27px;border-top:1px solid #47414c}
+.admin-atm-facts span{color:#ede5f0;font-size:12px;line-height:1.6}
+.admin-atm-facts strong{color:#ffd309;font-size:18px;margin-right:9px}
+.admin-atm-main{padding-top:clamp(40px,5vw,64px);padding-bottom:80px}
+.admin-atm-invite{background:#fff;border:1px solid #ded7e3;border-top:4px solid #ffd309;padding:clamp(24px,4vw,43px);margin-bottom:48px}
+.admin-atm-invite .admin-atm-eyebrow,
+.admin-atm-section-head .admin-atm-eyebrow{color:#634995}
+.admin-atm-invite-head h2,
+.admin-atm-section-head h2{
+  font:750 clamp(28px,3vw,40px)/1.2 Montserrat,Arial,sans-serif;
+  letter-spacing:-.05em;color:#231e26;margin:13px 0 10px;
+}
+.admin-atm-invite-head p,
+.admin-atm-section-head p{font:400 13px/1.8 Montserrat,Arial,sans-serif;color:#5e5665;max-width:660px}
+.admin-atm-form{margin-top:30px}
+.admin-atm-fields{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr) minmax(185px,.75fr);gap:17px;align-items:end;margin-bottom:20px}
+.admin-atm-form label,
+.admin-atm-activation-form label {display:flex;flex-direction:column;gap:8px;color:#302b35;font:700 12px/1.5 Montserrat,Arial,sans-serif}
+.admin-atm-form input,
+.admin-atm-form select,
+.admin-atm-activation-form input{
+  width:100%;min-height:48px;border:1px solid #c5bccb;border-radius:2px;
+  background:#fff;color:#1e1b21;font:500 13px/1.5 Montserrat,Arial,sans-serif;
+  padding:12px 14px;box-sizing:border-box;
+}
+.admin-atm-form input:focus-visible,
+.admin-atm-form select:focus-visible,
+.admin-atm-activation-form input:focus-visible{
+  outline:3px solid #634995;outline-offset:2px;
+}
+.admin-atm-primary{
+  display:inline-flex;align-items:center;justify-content:space-between;gap:25px;
+  border:none;border-radius:2px;background:#ffd309;color:#141414;
+  font:750 12px/1.4 Montserrat,Arial,sans-serif;padding:16px 21px;min-height:49px;
+  text-decoration:none;cursor:pointer;
+}
+.admin-atm-primary:hover{background:#ffe16b}
+.admin-atm-primary:disabled{opacity:.65;cursor:wait}
+.admin-atm-primary:focus-visible{outline:3px solid #634995;outline-offset:3px}
+.admin-atm-feedback{padding:21px 23px;margin-top:24px;border-left:3px solid #634995;background:#f0edf3;color:#29232e;line-height:1.65}
+.admin-atm-feedback strong{display:block;font:600 12px/1.6 Montserrat,Arial,sans-serif}
+.admin-atm-feedback label{display:block;font:700 11px/1.5 Montserrat,Arial,sans-serif;margin:17px 0 7px}
+.admin-atm-feedback input{width:100%;padding:13px 15px;border:1px solid #cfc5d6;background:#fff;font:500 12px/1.5 'Roboto Mono',monospace;color:#29212c}
+.admin-atm-feedback button{background:#302439;color:#fff;border:0;padding:10px 17px;margin-top:10px;cursor:pointer;font:700 12px/1.6 Montserrat,Arial,sans-serif}
+.admin-atm-feedback p{font:400 12px/1.7 Montserrat,Arial,sans-serif;color:#514958;margin-bottom:0}
+.admin-atm-failure{border-color:#a91e42;background:#fff0f2}
+.admin-atm-success{border-color:#634995}
+.admin-atm-section-head {display:flex;justify-content:space-between;align-items:end;gap:20px;margin:0 0 25px}
+.admin-atm-section-head p{max-width:400px}
+.admin-atm-table-wrap{overflow:auto;border:1px solid #dfd9e2;background:#fff}
+.admin-atm-table{width:100%;border-collapse:collapse;min-width:730px}
+.admin-atm-table th{text-align:left;background:#25202b;color:#fff;font:700 10px/1.5 'Roboto Mono',monospace;letter-spacing:.06em;padding:16px 18px}
+.admin-atm-table td{vertical-align:middle;padding:17px 18px;border-bottom:1px solid #e7e1ea;font:500 12px/1.65 Montserrat,Arial,sans-serif}
+.admin-atm-table td strong{display:block;font-weight:750;color:#2a232d}
+.admin-atm-table td>span{display:block;color:#695f6e;overflow-wrap:anywhere}
+.admin-atm-inline{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin:0}
+.admin-atm-inline select{padding:9px 10px;border:1px solid #d4cbd8;background:#fff;max-width:190px;font:500 12px Montserrat,Arial,sans-serif}
+.admin-atm-inline button{background:transparent;border:1px solid #7d6b89;color:#3f3050;padding:9px 11px;font:700 11px Montserrat,Arial,sans-serif;cursor:pointer}
+.admin-atm-inline button:hover{background:#f3edf7}
+.admin-atm-state{display:inline-block;color:#664d18;background:#fff1d2;padding:5px 10px;font-weight:700;border-radius:2px}
+.admin-atm-state.is-active{background:#e8f5e9;color:#255332}
+.admin-atm-empty{padding:28px;background:#fff;border-left:3px solid #ffd309;color:#584f5f;line-height:1.8}
+.admin-atm-privacy{font:400 12px/1.8 Montserrat,Arial,sans-serif;color:#655c6b;margin-top:24px;max-width:850px}
+.admin-atm-back{display:inline-block;margin-top:35px;color:#46314c;text-decoration:underline;text-underline-offset:4px;font:700 12px/1.6 Montserrat,Arial,sans-serif}
+.admin-atm-activation{
+  background:#151316;
+  display:flex;align-items:center;justify-content:center;
+  min-height:calc(100vh - 85px);padding:50px 20px 80px;
+}
+.admin-atm-activation-panel{
+  width:min(100%,550px);box-sizing:border-box;padding:clamp(27px,4vw,50px);
+  background:#fff;border-top:5px solid #ffd309;color:#25202b;
+}
+.admin-atm-activation-panel>.admin-atm-eyebrow{color:#634995}
+.admin-atm-activation-panel h1{font:750 clamp(31px,4vw,47px)/1.14 Montserrat,Arial,sans-serif;letter-spacing:-.05em;margin:16px 0 22px}
+.admin-atm-activation-panel h1 em{font-style:normal;color:#634995}
+.admin-atm-activation-panel>p{font:400 13px/1.85 Montserrat,Arial,sans-serif;color:#5b5361;margin:0 0 15px}
+.admin-atm-activation-form{display:flex;flex-direction:column;gap:17px;margin-top:25px}
+.admin-atm-activation-form .admin-atm-primary{margin-top:4px}
+.admin-atm-activation-error{background:#fff0f2;border-left:3px solid #b32647;color:#872743;padding:12px 15px;font:600 12px/1.7 Montserrat,Arial,sans-serif}
+.admin-atm-dashboard-callout{
+  background:#1f1826;border-left:4px solid #ffd309;
+  padding:clamp(25px,3vw,43px);color:#fff;margin-top:27px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+.admin-atm-dashboard-callout h2{font:750 clamp(25px,3vw,36px)/1.22 Montserrat,Arial,sans-serif;letter-spacing:-.045em;color:#fff;margin:13px 0}
+.admin-atm-dashboard-callout p{font:400 13px/1.8 Montserrat,Arial,sans-serif;color:#e4dbe8;max-width:580px}
+.admin-atm-dashboard-callout>a{display:block;background:#ffd309;padding:15px 22px;color:#111;font:750 12px/1.5 Montserrat,Arial,sans-serif;white-space:nowrap}
+@media(max-width:900px){
+  .admin-atm-fields{grid-template-columns:1fr 1fr}
+  .admin-atm-fields label:last-child{grid-column:1/-1}
+}
+@media(max-width:680px){
+  .admin-atm-fields{grid-template-columns:1fr}
+  .admin-atm-fields label:last-child{grid-column:auto}
+  .admin-atm-section-head{display:block}
+  .admin-atm-dashboard-callout{display:block}
+  .admin-atm-dashboard-callout>a{margin-top:20px;white-space:normal;text-align:center}
+}
