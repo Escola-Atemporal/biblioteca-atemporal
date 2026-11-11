@@ -1,3 +1,4 @@
+import { can } from "../../lib/permissions";
 import BrandLogo from "../components/BrandLogo";
 import PresenceHeartbeat from "../components/PresenceHeartbeat";
 import Link from "next/link";
@@ -28,7 +29,7 @@ export default async function Painel() {
   const role = await roleForEmailAsync(session.user.email);
   if (!role) redirect("/entrar");
 
-  const canReviewDrafts = role === "administrador" || role === "curador";
+  const canReviewDrafts = can(role, "drafts:read");
 
   return (
     <main className="dashboard-atm">
@@ -86,7 +87,7 @@ export default async function Painel() {
             ? <Link href="/arquivos" className="dashboard-atm-editorial-link">Explorar os arquivos ↗</Link>
             : <Link href="/#trilhas" className="dashboard-atm-editorial-link">Explorar acervo público ↗</Link>}
         </section>
-        {role === "administrador" && (
+        {can(role, "users:manage") && (
           <section className="admin-atm-dashboard-callout">
             <div>
               <span className="dashboard-atm-eyebrow">GESTÃO ADMINISTRATIVA</span>
