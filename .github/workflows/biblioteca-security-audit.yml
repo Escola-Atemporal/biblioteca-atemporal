@@ -75,3 +75,15 @@ jobs:
             exit 1
           fi
           echo "Todas as rotas privadas testadas exigiram autorizacao."
+
+  role-policy-tests:
+    name: Testar permissoes dos tres perfis
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Testar matriz central de autorizacoes
+        run: node --experimental-strip-types --test vercel-app/tests/permissions.test.mjs
