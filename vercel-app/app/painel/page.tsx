@@ -17,13 +17,14 @@ export const metadata = {
   robots: { index: false, follow: false },
 };
 
-export default async function Painel() {
+export default async function Painel({searchParams}:{searchParams:Promise<{progresso?:string}>}) {
   if (!authConfigured) redirect("/entrar");
   const session = await auth();
   if (!session?.user?.email) redirect("/entrar");
   const role = await roleForEmailAsync(session.user.email);
   if (!role) redirect("/entrar");
 
+  const params=await searchParams;
   const canReviewDrafts = can(role, "drafts:read");
   let progress:ProgressRecord[]=[];
   let progressUnavailable=!databaseConfigured;
@@ -72,6 +73,7 @@ export default async function Painel() {
       </section>
 
       <div className="dashboard-atm-body dashboard-atm-container">
+        {params.progresso==="salvo"&&<p role="status" className="learning-save-confirmation">Progresso atualizado com sucesso. Você poderá retomar esta trilha de onde parou.</p>}
         <LearningOverview progress={progress} progressUnavailable={progressUnavailable} reflections={reflections} reflectionsUnavailable={reflectionsUnavailable} reflectionCount={reflectionCount}/>
         <div className="dashboard-atm-heading" id="minhas-trilhas">
           <div>
