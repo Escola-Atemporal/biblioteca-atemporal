@@ -1,0 +1,35 @@
+name: Biblioteca Atemporal - manter ativa em horario de uso
+
+on:
+  schedule:
+    # America/Sao_Paulo (UTC-3): 07:07-21:57, a cada 10 minutos.
+    # 10:07-23:57 UTC e 00:07-00:57 UTC do dia seguinte.
+    # Minuto 7 evita o congestionamento usual do inicio da hora.
+    - cron: "7,17,27,37,47,57 10-23 * * *"
+    - cron: "7,17,27,37,47,57 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: biblioteca-atemporal-keepalive
+  cancel-in-progress: true
+
+jobs:
+  ping:
+    name: Verificar Biblioteca (sem autenticacao)
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - name: Solicitar pagina publica, sem seguir links e sem acessar dados privados
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --location \
+            --retry 1 --retry-delay 5 \
+            --connect-timeout 15 --max-time 90 \
+            --output /dev/null \
+            --user-agent "BibliotecaAtemporal-GitHubActions-Keepalive/1.0" \
+            "https://biblioteca-atemporal-web.onrender.com/"
+          echo "Biblioteca respondeu. A presenca na plataforma nao foi modificada."
