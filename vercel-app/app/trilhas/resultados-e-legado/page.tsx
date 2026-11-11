@@ -1,3 +1,4 @@
+import ReflectionQuestionLink from "../../components/ReflectionQuestionLink";
 import ColecaoAutoral from "../../components/ColecaoAutoral";
 import Link from "next/link";
 import type {Metadata} from "next";
@@ -126,7 +127,7 @@ export default function ResultadosLegado(){
 
    <section className="learning-section learning-wrap legacy-practice" id="pratica">
      <div className="learning-section-header"><div><span className="eyebrow dark">PARA TRAZER À VIDA REAL</span><h2>Depois da meta, <em>quais perguntas permanecem?</em></h2></div><p>Use essas perguntas numa conversa individual ou coletiva de baixo risco. Não exponha dados pessoais nem transforme a reflexão em julgamento.</p></div>
-     <ol className="learning-questions">{questoes.map((q,i)=><li key={q}><span>{String(i+1).padStart(2,"0")}</span><p>{q}</p></li>)}</ol>
+     <ol className="learning-questions">{questoes.map((q,i)=><li key={q}><span>{String(i+1).padStart(2,"0")}</span><div><p>{q}</p><ReflectionQuestionLink trail="resultados-e-legado" question={q}/></div></li>)}</ol>
      <div className="learning-practice legacy-practice-banner"><div><span className="eyebrow">UMA EXPERIÊNCIA SIMPLES</span><h3>DEIXE UM COMPROMISSO, NÃO APENAS UMA ENTREGA.</h3><p>Escolha um resultado recente. Escute quem foi afetado, reconheça algo a preservar e uma consequência a reparar. Combine uma pequena prática e uma conversa futura para aprender com o que aconteceu.</p><a href="#caderno-legado">Abrir o Caderno de Continuidade ↘</a></div></div>
      <CadernoLegado/>
    </section>
