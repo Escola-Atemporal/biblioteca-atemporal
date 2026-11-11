@@ -42,7 +42,7 @@
 .admin-atm-invite-head p,
 .admin-atm-section-head p{font:400 13px/1.8 Montserrat,Arial,sans-serif;color:#5e5665;max-width:660px}
 .admin-atm-form{margin-top:30px}
-.admin-atm-fields{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr) minmax(185px,.75fr);gap:17px;align-items:end;margin-bottom:20px}
+.admin-atm-fields{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr) minmax(185px,.75fr);gap:17px;align-items:flex-end;margin-bottom:20px}
 .admin-atm-form label,
 .admin-atm-activation-form label {display:flex;flex-direction:column;gap:8px;color:#302b35;font:700 12px/1.5 Montserrat,Arial,sans-serif}
 .admin-atm-form input,
@@ -74,7 +74,7 @@
 .admin-atm-feedback p{font:400 12px/1.7 Montserrat,Arial,sans-serif;color:#514958;margin-bottom:0}
 .admin-atm-failure{border-color:#a91e42;background:#fff0f2}
 .admin-atm-success{border-color:#634995}
-.admin-atm-section-head {display:flex;justify-content:space-between;align-items:end;gap:20px;margin:0 0 25px}
+.admin-atm-section-head {display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin:0 0 25px}
 .admin-atm-section-head p{max-width:400px}
 .admin-atm-table-wrap{overflow:auto;border:1px solid #dfd9e2;background:#fff}
 .admin-atm-table{width:100%;border-collapse:collapse;min-width:730px}
