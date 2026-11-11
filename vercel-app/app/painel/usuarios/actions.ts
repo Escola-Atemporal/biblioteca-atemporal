@@ -28,13 +28,22 @@ async function requireAdmin(): Promise<string> {
 
 export async function createAccessInvite(_previous: InviteResult, formData: FormData): Promise<InviteResult> {
   const actor=await requireAdmin();
-  if(!emailConfigured)return{ok:false,message:"Configure primeiro o remetente de e-mail em E-mails transacionais. Nenhum convite foi criado.",inviteUrl:null};
+  const manualInvites = !emailConfigured && process.env.BIBLIOTECA_ADMIN_INVITES_ENABLED === "true";
+  if (!emailConfigured && !manualInvites) return {
+    ok:false,
+    message:"Convites administrativos ainda não habilitados. Nenhuma conta foi criada.",
+    inviteUrl:null
+  };
   const email=String(formData.get("email")??"").trim().toLowerCase();
   const name=String(formData.get("name")??"").trim().replace(/\s+/g," ");
   const role=String(formData.get("role")??"") as Role;
   if(!EMAIL.test(email)||email.length>254||name.length<2||name.length>120||!ROLES.includes(role))
     return{ok:false,message:"Confira nome, e-mail e perfil.",inviteUrl:null};
   if(email===actor)return{ok:false,message:"Não é possível gerar um convite para sua própria conta administrativa.",inviteUrl:null};
+  // While Google OAuth is under review, limit temporary manual invites to participants.
+  if (manualInvites && role !== "experiencialista") return {
+    ok:false,message:"Durante a validação do Gmail, o convite manual é exclusivo para experiencialistas.",inviteUrl:null
+  };
 
   const token=randomBytes(32).toString("base64url");
   const tokenHash=createHash("sha256").update(token).digest("hex");
@@ -63,7 +72,7 @@ export async function createAccessInvite(_previous: InviteResult, formData: Form
          VALUES($1,$2,'invitation_created',jsonb_build_object('role',$3))`,
         [actor,email,role],
       );
-      const mailId=await enqueueEmail(client,createEmail(
+      const mailId=manualInvites ? null : await enqueueEmail(client,createEmail(
         "invitation",email,"Convite para a Biblioteca Atemporal",
         {eyebrow:"Convite de acesso",greeting:`Olá, ${name}.`,
          paragraphs:[
@@ -73,11 +82,16 @@ export async function createAccessInvite(_previous: InviteResult, formData: Form
          ],action:{label:"Criar senha e ativar acesso",url:`${emailOrigin()}/convite/${token}`}},
         `invitation:direct:${invitationId}`,
       ));
-      if(!mailId)throw new Error("Cannot queue invitation email");
+      if(!manualInvites && !mailId)throw new Error("Cannot queue invitation email");
       return{kind:"created",mailId};
     });
     if(result.kind==="already-active")return{ok:false,message:"Já existe uma conta ativa com esse e-mail. Use o painel para gerenciar suas permissões.",inviteUrl:null};
     revalidatePath("/painel/usuarios");
+    if (manualInvites) return {
+      ok:true,
+      inviteUrl:`${emailOrigin()}/convite/${token}`,
+      message:"Convite individual criado. Copie o link abaixo e envie apenas ao e-mail da pessoa cadastrada. Expira em 48 horas e funciona uma vez."
+    };
     const status=(await sendEmailBatch([result.mailId]).catch(()=>[]))[0];
     return{ok:true,inviteUrl:null,message:status==="sent"
       ?"Convite gerado. O e-mail foi aceito para envio. A pessoa poderá criar a senha pelo botão recebido."
