@@ -1,4 +1,6 @@
 import BrandLogo from "../../components/BrandLogo";
+import PresenceHeartbeat from "../../components/PresenceHeartbeat";
+import PresenceMonitor from "./PresenceMonitor";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { auth, authConfigured, signOut } from "../../../auth";
@@ -58,6 +60,7 @@ export default async function UsersPanel() {
 
   return (
     <main className="admin-atm-page">
+      <PresenceHeartbeat section="Gestão de usuários" />
       <header className="topbar login-atm-topbar">
         <BrandLogo/>
         <nav aria-label="Navegação administrativa">
@@ -117,6 +120,7 @@ export default async function UsersPanel() {
               <p className="admin-atm-privacy">Somente administradores podem aprovar ou recusar solicitações. Os convites devem ser compartilhados individualmente e não concedem acesso aos PDFs em revisão.</p>
             </section>
 
+            <PresenceMonitor />
             <InviteControls emailReady={emailConfigured}
               manualReady={!emailConfigured && process.env.BIBLIOTECA_ADMIN_INVITES_ENABLED === "true"}/>
             <section className="admin-atm-people" aria-labelledby="admin-atm-people-title">
