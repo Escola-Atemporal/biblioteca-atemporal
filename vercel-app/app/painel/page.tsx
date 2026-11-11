@@ -5,6 +5,9 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { auth, authConfigured, signOut } from "../../auth";
 import { roleForEmailAsync } from "../../lib/access";
+import { databaseConfigured,dbQuery } from "../../lib/database";
+import type { ProgressRecord } from "../../lib/learning-progress";
+import ProgressCards from "./ProgressCards";
 
 export const dynamic = "force-dynamic";
 export const metadata = {
@@ -12,15 +15,6 @@ export const metadata = {
   description: "Espaço reservado de aprendizagem da Escola Atemporal.",
   robots: { index: false, follow: false },
 };
-
-const trilhas = [
-  { number: "01", title: "Princípios e Discernimento", slug: "principios-e-discernimento" },
-  { number: "02", title: "Emoções e Autoconsciência", slug: "emocoes-e-autoconsciencia" },
-  { number: "03", title: "Autoconhecimento e Hábitos", slug: "autoconhecimento-e-habitos" },
-  { number: "04", title: "Confiança e Colaboração", slug: "confianca-e-colaboracao" },
-  { number: "05", title: "Paradoxos da Liderança", slug: "paradoxos-da-lideranca" },
-  { number: "06", title: "Resultados e Legado", slug: "resultados-e-legado" },
-] as const;
 
 export default async function Painel() {
   if (!authConfigured) redirect("/entrar");
@@ -30,6 +24,11 @@ export default async function Painel() {
   if (!role) redirect("/entrar");
 
   const canReviewDrafts = can(role, "drafts:read");
+  let progress:ProgressRecord[]=[];
+  let progressUnavailable=!databaseConfigured;
+  if(databaseConfigured)try{
+    progress=await dbQuery<ProgressRecord>("SELECT trail_slug,status,section_id,updated_at::text AS updated_at FROM biblioteca_learning_progress WHERE email=$1",[session.user.email.trim().toLowerCase()]);
+  }catch{progressUnavailable=true;}
 
   return (
     <main className="dashboard-atm">
@@ -66,15 +65,7 @@ export default async function Painel() {
           </div>
           <p>Escolha um tema. Cada percurso reúne textos, referências e perguntas para experimentar na vida real.</p>
         </div>
-        <div className="dashboard-atm-tracks">
-          {trilhas.map((trilha) => (
-            <article className="dashboard-atm-track" key={trilha.number}>
-              <span>TRILHA {trilha.number} / 06</span>
-              <h3>{trilha.title}</h3>
-              <Link href={`/trilhas/${trilha.slug}`}>Abrir jornada <span aria-hidden="true">↗</span></Link>
-            </article>
-          ))}
-        </div>
+        <ProgressCards progress={progress} unavailable={progressUnavailable}/>
         <section className="dashboard-atm-editorial" aria-labelledby="dashboard-acervo">
           <div>
             <span className="dashboard-atm-eyebrow">COLEÇÃO BIBLIOTECA ATEMPORAL</span>
