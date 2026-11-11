@@ -1,3 +1,4 @@
+import { can } from "../../../lib/permissions";
 import BrandLogo from "../../components/BrandLogo";
 import PresenceHeartbeat from "../../components/PresenceHeartbeat";
 import PresenceMonitor from "./PresenceMonitor";
@@ -33,7 +34,7 @@ export default async function UsersPanel() {
   const session = await auth();
   const email = session?.user?.email;
   if (!email) redirect("/entrar");
-  if ((await roleForEmailAsync(email)) !== "administrador") redirect("/painel");
+  if (!can(await roleForEmailAsync(email), "users:manage")) redirect("/painel");
   if (!databaseConfigured) {
     return <main className="admin-atm-page"><header className="topbar login-atm-topbar"><BrandLogo/></header><section className="admin-atm-container"><h1>Gestão de usuários</h1><p>O banco de usuários ainda precisa ser conectado ao serviço de hospedagem.</p><Link href="/painel">← Voltar ao painel</Link></section></main>;
   }
