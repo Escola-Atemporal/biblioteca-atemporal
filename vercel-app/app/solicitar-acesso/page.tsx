@@ -37,7 +37,7 @@ export default function AccessRequestPage() {
             <p>Conte-nos quem você é. Sua solicitação será encaminhada à administração para avaliação. Não é necessário criar senha nesta etapa.</p>
             {emailConfigured
               ? <AccessRequestForm />
-              : <p className="login-atm-notice" role="status">O serviço de confirmação por e-mail está sendo preparado. As solicitações serão reabertas quando a Escola validar o remetente.</p>}
+              : <p className="login-atm-notice" role="status">O envio por e-mail já foi testado com sucesso. As solicitações públicas permanecem temporariamente suspensas enquanto a Escola conclui a verificação de autorização do Google. Pessoas convidadas devem utilizar o link individual enviado pela administração.</p>}
             <Link href="/entrar" className="login-atm-back">← Já tenho convite ou conta ativa</Link>
           </div>
         </section>
