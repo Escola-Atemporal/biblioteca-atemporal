@@ -1,3 +1,4 @@
+import { can } from "../../../lib/permissions";
 import BrandLogo from "../../components/BrandLogo";
 import Link from "next/link";
 import {redirect} from "next/navigation";
@@ -21,7 +22,7 @@ const names:Record<string,string>={
 export default async function EmailAdminPage(){
  const session=await auth();
  if(!session?.user?.email)redirect("/entrar");
- if(await roleForEmailAsync(session.user.email)!=="administrador")redirect("/painel");
+ if(!can(await roleForEmailAsync(session.user.email),"emails:manage"))redirect("/painel");
  let mails:MailRow[]=[];
  let totals:Counter[]=[];
  let failed=false;
