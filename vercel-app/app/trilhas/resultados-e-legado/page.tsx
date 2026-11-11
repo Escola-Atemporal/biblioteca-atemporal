@@ -7,6 +7,9 @@ import RoteiroVideos from "../../components/RoteiroVideos";
 import BibliografiaEditorial from "../../components/BibliografiaEditorial";
 import {fontesEscola06,movimentos06,dimensoes06,livros06,videos06} from "../../../data/referencias-trilha-06";
 
+// Draft links depend on authenticated roles; do not statically cache this page.
+export const dynamic = "force-dynamic";
+
 export const metadata:Metadata={
  title:"Trilha 06 — Resultados e Legado | Biblioteca Atemporal",
  description:"O resultado importa. O como também. Explore o Ciclo Virtuoso da Escola Atemporal, leituras abertas, palestras e um caderno reflexivo sobre o que permanece."
