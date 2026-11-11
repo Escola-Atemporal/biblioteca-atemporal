@@ -166,3 +166,7 @@ footer{background:#161616;color:#c9c9c9}
 #minhas-trilhas{scroll-margin-top:25px}
 @media(max-width:920px){.personal-learning-layout{grid-template-columns:1fr}}
 @media(max-width:610px){.personal-learning-heading{align-items:flex-start;flex-direction:column}.personal-learning-metrics>div{padding:16px 12px}.personal-learning-metrics strong{font-size:29px}.personal-learning-notes,.personal-learning-continue{padding:23px}.personal-learning-text-link{white-space:normal}}
+
+
+/* Readable, accessible confirmation after saving personal progress or reflections. */
+.learning-save-confirmation{padding:14px 18px;margin:0 0 22px;border-left:3px solid #634995;background:#f4f0fa;color:#34254d;font:600 13px/1.6 Roboto,Arial,sans-serif}
