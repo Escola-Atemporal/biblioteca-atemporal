@@ -145,7 +145,9 @@ export default async function UsersPanel() {
                             </span>
                           </td>
                           <td>
-                            {u.email === email?.trim().toLowerCase() ? <span>Esta conta</span> : (
+                            {u.email === email?.trim().toLowerCase() ? <span>Esta conta</span> : !u.has_password ? (
+                              <span>Aguardando ativação pelo convite</span>
+                            ) : (
                               <form action={setAccountActive} className="admin-atm-inline">
                                 <input name="email" type="hidden" value={u.email}/>
                                 <input name="action" type="hidden" value={u.active ? "deactivate" : "activate"}/>
