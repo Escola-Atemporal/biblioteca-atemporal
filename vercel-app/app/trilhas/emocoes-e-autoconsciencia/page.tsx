@@ -1,3 +1,4 @@
+import ReflectionQuestionLink from "../../components/ReflectionQuestionLink";
 import ColecaoAutoral from "../../components/ColecaoAutoral";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -316,6 +317,7 @@ export default function Trilha02Page() {
             <div key={pergunta}>
               <span>{String(i + 1).padStart(2, "0")}</span>
               <p>{pergunta}</p>
+              <ReflectionQuestionLink trail="emocoes-e-autoconsciencia" question={pergunta}/>
             </div>
           ))}
         </div>
