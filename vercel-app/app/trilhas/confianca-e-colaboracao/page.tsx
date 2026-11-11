@@ -1,3 +1,4 @@
+import ReflectionQuestionLink from "../../components/ReflectionQuestionLink";
 import ColecaoAutoral from "../../components/ColecaoAutoral";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -80,7 +81,7 @@ export default function Trilha04Page(){
    <p className="learning-disclaimer">Vídeos, imagens e legendas pertencem aos criadores e canais originais. Não há republicação dos conteúdos audiovisuais nesta página.</p>
   </div></section>
   <section id="pratica" className="learning-section learning-wrap"><div className="learning-section-header"><div><span className="eyebrow dark">PRÁTICA PARA O COTIDIANO</span><h2>Uma boa conversa <em>pode mudar o grupo.</em></h2></div><p>Escolha uma situação de trabalho de baixo risco e teste uma pergunta ou um acordo claro antes de propor uma solução.</p></div>
-   <ol className="learning-questions">{perguntas.map((p,i)=><li key={p}><span>{String(i+1).padStart(2,"0")}</span><p>{p}</p></li>)}</ol>
+   <ol className="learning-questions">{perguntas.map((p,i)=><li key={p}><span>{String(i+1).padStart(2,"0")}</span><div><p>{p}</p><ReflectionQuestionLink trail="confianca-e-colaboracao" question={p}/></div></li>)}</ol>
    <div className="learning-practice colab-practice"><div><span className="eyebrow">EXPERIMENTO REFLEXIVO</span><h3>UMA PERGUNTA ANTES DE UMA RESPOSTA.</h3><p>Em uma próxima conversa, experimente perguntar o que ainda não foi considerado, retomar o que você ouviu e confirmar se compreendeu. Depois, combine um gesto observável e uma forma simples de acompanhar o acordo. Não force exposições pessoais; participação também exige consentimento.</p><a href="#caderno-confianca" className="colab-practice-link">Abrir o caderno reflexivo ↘</a></div></div>
    <CadernoConfianca/>
   </section>
