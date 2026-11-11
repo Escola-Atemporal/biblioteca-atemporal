@@ -69,7 +69,7 @@ export async function createAccessInvite(_previous: InviteResult, formData: Form
       const invitationId=rows.rows[0].id;
       await client.query(
         `INSERT INTO biblioteca_access_audit(actor_email,target_email,action,details)
-         VALUES($1,$2,'invitation_created',jsonb_build_object('role',$3))`,
+         VALUES($1,$2,'invitation_created',jsonb_build_object('role',$3::text))`,
         [actor,email,role],
       );
       const mailId=manualInvites ? null : await enqueueEmail(client,createEmail(
@@ -158,7 +158,7 @@ export async function changeAccountRole(formData:FormData):Promise<void>{
     const person=updated.rows[0];if(!person)return;
     await client.query(
       `INSERT INTO biblioteca_access_audit(actor_email,target_email,action,details)
-       VALUES($1,$2,'role_changed',jsonb_build_object('role',$3))`,[actor,email,role],
+       VALUES($1,$2,'role_changed',jsonb_build_object('role',$3::text))`,[actor,email,role],
     );
     if(person.active){
       mailId=await enqueueEmail(client,createEmail(
