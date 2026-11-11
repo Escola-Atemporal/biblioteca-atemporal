@@ -15,11 +15,14 @@ export const dynamic="force-dynamic";
 export const revalidate=0;
 export const metadata={title:"Meu caderno de reflexões | Biblioteca Atemporal",robots:{index:false,follow:false,noarchive:true}};
 type Note={id:string;trail_slug:string;title:string;content:string;created_at:string;updated_at:string};
-export default async function ReflectionNotebook(){
+export default async function ReflectionNotebook({searchParams}:{searchParams:Promise<{trilha?:string;pergunta?:string}>}){
  if(!authConfigured)redirect("/entrar");
  const session=await auth();
  if(!session?.user?.email)redirect("/entrar");
  if(!can(await roleForEmailAsync(session.user.email),"tracks:read"))redirect("/painel");
+ const params=await searchParams;
+ const selectedTrail=resolveTrail(params.trilha??"");
+ const selectedQuestion=selectedTrail && typeof params.pergunta==="string" && params.pergunta.length<=500 ? params.pergunta.trim() : "";
  let notes:Note[]=[];
  let error=!databaseConfigured;
  if(databaseConfigured)try{
@@ -39,10 +42,11 @@ export default async function ReflectionNotebook(){
   <div className="admin-atm-container admin-atm-main reflection-main">
     {error?<p role="alert" className="admin-atm-feedback admin-atm-failure">O caderno está temporariamente indisponível. Nenhuma anotação foi alterada.</p>:<>
      <section aria-labelledby="reflection-new-title" className="reflection-editor">
-       <div><span className="admin-atm-eyebrow">NOVA REFLEXÃO</span><h2 id="reflection-new-title">O que merece permanecer?</h2><p>Escreva livremente ou retome uma pergunta encontrada nas trilhas.</p></div>
+       <div><span className="admin-atm-eyebrow">NOVA REFLEXÃO</span><h2 id="reflection-new-title">O que merece permanecer?</h2><p>Escreva livremente ou retome uma pergunta encontrada nas trilhas.</p>
+       {selectedQuestion&&<blockquote className="reflection-prompt"><span>PERGUNTA PARA REFLETIR</span><p>{selectedQuestion}</p></blockquote>}</div>
        <form action={saveReflection} className="reflection-form">
-        <label>Trilha relacionada<select name="trail" required>{LEARNING_TRAILS.map(t=><option key={t.slug} value={t.slug}>{t.number} — {t.title}</option>)}</select></label>
-        <label>Título da reflexão<input name="title" type="text" maxLength={120} required placeholder="Uma pergunta, uma ideia, uma descoberta..."/></label>
+        <label>Trilha relacionada<select name="trail" defaultValue={selectedTrail?.slug??LEARNING_TRAILS[0].slug} required>{LEARNING_TRAILS.map(t=><option key={t.slug} value={t.slug}>{t.number} — {t.title}</option>)}</select></label>
+        <label>Título da reflexão<input name="title" type="text" maxLength={120} defaultValue={selectedQuestion.slice(0,120)} required placeholder="Uma pergunta, uma ideia, uma descoberta..."/></label>
         <label>Meu registro<textarea name="content" minLength={1} maxLength={8000} rows={7} required placeholder="O que você percebeu? O que deseja experimentar a partir disso?"/></label>
         <button type="submit">Guardar reflexão</button>
        </form>
