@@ -1,3 +1,4 @@
+import { can } from "../../../lib/permissions";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import BrandLogo from "../../components/BrandLogo";
@@ -25,7 +26,7 @@ export default async function IntelligencePage(){
  if(!authConfigured)redirect("/entrar");
  const session=await auth();
  if(!session?.user?.email)redirect("/entrar");
- if(await roleForEmailAsync(session.user.email)!=="administrador")redirect("/painel");
+ if(!can(await roleForEmailAsync(session.user.email),"analytics:read"))redirect("/painel");
  let metrics:Counts|null=null;
  let invites:InviteCounts|null=null;
  let requests:RequestCounts|null=null;
