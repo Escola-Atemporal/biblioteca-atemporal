@@ -102,7 +102,7 @@ export async function deliverEmail(id: string): Promise<MailStatus> {
   const rows = await dbQuery<MailRow>(
     `UPDATE biblioteca_email_outbox SET status='sending',
        attempts=attempts+1,next_attempt_at=now()+interval '2 minutes'
-     WHERE id=$1 AND status IN ('pending','failed')
+     WHERE id=$1 AND status IN ('pending','failed','sending')
        AND next_attempt_at<=now() AND attempts<8
      RETURNING id,kind,recipient,subject,encrypted_payload,attempts`,
     [id],
