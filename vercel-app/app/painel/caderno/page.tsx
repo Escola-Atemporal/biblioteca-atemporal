@@ -55,7 +55,7 @@ export default async function ReflectionNotebook({searchParams}:{searchParams:Pr
        <div className="admin-atm-section-head"><div><span className="admin-atm-eyebrow">MEUS REGISTROS</span><h2 id="reflection-list-title">Reflexões para revisitar.</h2></div>
         <p>{notes.length} {notes.length===1?"reflexão registrada":"reflexões registradas"} · exibindo até 200 registros recentes</p></div>
        {!notes.length?<p className="admin-atm-empty">Seu caderno começa em branco. Registre sua primeira reflexão no formulário acima.</p>:<div className="reflection-list">
-        {notes.map(note=><article className="reflection-entry" key={note.id}>
+        {notes.map(note=><article className="reflection-entry" id={`reflexao-${note.id}`} key={note.id}>
           <div className="reflection-entry-meta"><span>{resolveTrail(note.trail_slug)?.title??"Trilha"}</span><time dateTime={note.updated_at}>Atualizado em {date(note.updated_at)}</time></div>
           <h3>{note.title}</h3><p className="reflection-entry-content">{note.content}</p>
           <details className="reflection-edit"><summary>Editar minha reflexão</summary>
