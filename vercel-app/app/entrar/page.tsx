@@ -139,6 +139,13 @@ export default async function Login({
               </>
             )}
 
+            {(!session?.user?.email || !role) && (
+              <div className="login-atm-membership">
+                <p>Ainda não recebeu um convite?</p>
+                <Link href="/solicitar-acesso">Solicitar participação na Biblioteca <span aria-hidden="true">↗</span></Link>
+              </div>
+            )}
+
             <div className="login-atm-security">
               <span aria-hidden="true">●</span>
               <p>O acesso é individual e depende de autorização da Escola. As minutas editoriais e os arquivos privados seguem suas próprias permissões.</p>
