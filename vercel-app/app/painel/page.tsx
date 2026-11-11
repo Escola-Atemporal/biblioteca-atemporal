@@ -83,6 +83,16 @@ export default async function Painel() {
             ? <Link href="/trilhas/principios-e-discernimento#ebooks-escola-01" className="dashboard-atm-editorial-link">Ver e-books em revisão ↗</Link>
             : <Link href="/#trilhas" className="dashboard-atm-editorial-link">Explorar acervo público ↗</Link>}
         </section>
+        {role === "administrador" && (
+          <section className="admin-atm-dashboard-callout">
+            <div>
+              <span className="dashboard-atm-eyebrow">GESTÃO ADMINISTRATIVA</span>
+              <h2>Convites e permissões.</h2>
+              <p>Cadastre pessoas, acompanhe ativações e gerencie quem pode acessar a Biblioteca e o acervo editorial.</p>
+            </div>
+            <Link href="/painel/usuarios">Administrar acessos ↗</Link>
+          </section>
+        )}
         <div className="dashboard-atm-bottom">
           <p><strong>O resultado importa. O como também.</strong> A Escola Atemporal valoriza escolhas conscientes, relações genuínas e aprendizado contínuo.</p>
           <form action={async () => { "use server"; await signOut({ redirectTo: "/entrar" }); }}>
