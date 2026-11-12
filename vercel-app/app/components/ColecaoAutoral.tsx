@@ -1,3 +1,4 @@
+import { permittedEmail } from "../../lib/individual-access";
 import { can } from "../../lib/permissions";
 import { ebooksDaTrilha, type TrilhaNumero } from "../../data/colecao-autoral";
 import Link from "next/link";
@@ -17,7 +18,7 @@ export default async function ColecaoAutoral({ trilha }: { trilha: TrilhaNumero 
   // Draft PDF links are delivered only to admins and curators on the server.
   const session = authConfigured ? await auth() : null;
   const role = await roleForEmailAsync(session?.user?.email);
-  const canReviewDrafts = can(role, "drafts:read");
+  const canReviewDrafts = await permittedEmail(session?.user?.email, "drafts:read");
 
   if (!canReviewDrafts) {
     return (
