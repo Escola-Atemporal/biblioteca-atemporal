@@ -1,3 +1,6 @@
+import { auth } from "../../../auth";
+import { permittedTrail } from "../../../lib/individual-access";
+import { redirect } from "next/navigation";
 import ReflectionQuestionLink from "../../components/ReflectionQuestionLink";
 import ColecaoAutoral from "../../components/ColecaoAutoral";
 import Link from "next/link";
@@ -40,7 +43,9 @@ const perguntasFinais = [
   "Qual gesto pequeno pode criar espaço entre um impulso e a escolha que você deseja sustentar?",
 ];
 
-export default function Trilha02Page() {
+export default async function Trilha02Page(){
+  const session=await auth();
+  if(!await permittedTrail(session?.user?.email,"emocoes-e-autoconsciencia")) redirect("/painel?acesso=restrito");
   return (
     <main className="learning-page emotion-page referencia-trilha01" id="topo">
       <a className="skip-to-content" href="#investigacao">Ir para a investigação</a>
