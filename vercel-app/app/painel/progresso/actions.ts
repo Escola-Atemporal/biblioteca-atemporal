@@ -6,6 +6,7 @@ import { roleForEmailAsync } from "../../../lib/access";
 import { can } from "../../../lib/permissions";
 import { databaseConfigured,dbQuery } from "../../../lib/database";
 import { resolveTrail,validSection, type LearningStatus } from "../../../lib/learning-progress";
+import { permittedTrail } from "../../../lib/individual-access";
 
 export async function saveLearningProgress(form:FormData){
   const session=await auth();
@@ -17,6 +18,7 @@ export async function saveLearningProgress(form:FormData){
   const status=String(form.get("status")??"") as LearningStatus;
   if(!resolveTrail(slug)||!validSection(slug,section)||!["iniciada","em_andamento","concluida"].includes(status))
     throw new Error("Progresso inválido.");
+  if(!await permittedTrail(email,slug))throw new Error("Esta trilha não está liberada para a sua conta.");
   await dbQuery(`INSERT INTO biblioteca_learning_progress (email,trail_slug,status,section_id,completed_at)
     VALUES ($1,$2,$3,$4,CASE WHEN $3::text='concluida' THEN now() ELSE NULL END)
     ON CONFLICT(email,trail_slug) DO UPDATE SET
