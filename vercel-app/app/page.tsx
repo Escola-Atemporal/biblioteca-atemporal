@@ -72,7 +72,7 @@ export default function HomePage() {
             </div>
           </div>
           <figure className="atemporal-masthead-visual school-real-hero">
-            <img src="https://escolaatemporal.com.br/wp-content/uploads/2026/08/DSC9619.jpg" width="1000" height="667" alt="Participantes da Escola Atemporal em uma experiência coletiva de aprendizagem" fetchPriority="high" decoding="async"/>
+            <img src="https://escolaatemporal.com.br/wp-content/uploads/2026/08/DSC9619-1024x681.jpg" width="1000" height="667" alt="Participantes da Escola Atemporal em uma experiência coletiva de aprendizagem" fetchPriority="high" decoding="async"/>
             <figcaption>EXPERIÊNCIAS REAIS · ESCOLA ATEMPORAL</figcaption>
           </figure>
         </div>
@@ -133,7 +133,7 @@ export default function HomePage() {
 
       <section className="atemporal-feature" aria-labelledby="feature-title">
         <div className="atemporal-feature-image">
-          <img src="https://escolaatemporal.com.br/wp-content/uploads/2026/08/DSC9616.jpg" alt="Experiência da Escola Atemporal com atividade coletiva Emoções em Jogo" width="1100" height="800" loading="lazy" />
+          <img src="https://escolaatemporal.com.br/wp-content/uploads/2026/08/DSC9502-1024x681.jpg" alt="Facilitadora da Escola Atemporal conduzindo uma experiência de aprendizagem com participantes" width="1100" height="800" loading="lazy" />
           <span>01 / 06 · PRIMEIRA TRILHA</span>
         </div>
         <div className="atemporal-feature-content">
