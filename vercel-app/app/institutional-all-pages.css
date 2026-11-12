@@ -1,0 +1,225 @@
+/*
+ * Biblioteca Atemporal | identidade aprovada — extensao para todas as areas
+ * Fonte visual: referencias fornecidas pelo usuario em 12/11/2026.
+ * Nao modifica WordPress, imagens, conteudo, permissoes ou dados.
+ * Esta camada e importada DEPOIS dos estilos editoriais existentes.
+ */
+:root{
+  --biblioteca-ui-violet:#634995;
+  --biblioteca-ui-violet-hover:#7859a9;
+  --biblioteca-ui-black:#101011;
+  --biblioteca-ui-graphite:#1b191d;
+  --biblioteca-ui-light:#f8f7f9;
+  --biblioteca-ui-border:#ded9e3;
+  --biblioteca-ui-text:#211c26;
+  --biblioteca-ui-muted:#675f6c;
+}
+/* Cabeçalhos em toda a Biblioteca: a mesma logo, respiro e hierarquia da capa. */
+:is(.learning-page,.dashboard-atm,.admin-atm-page,.login-atm,.arquivos-atm) .topbar{
+  min-height:76px;height:auto;padding:14px clamp(20px,5vw,88px);
+  gap:16px 26px;align-items:center;background:#151515;border-bottom:1px solid #3d393f;
+}
+:is(.learning-page,.dashboard-atm,.admin-atm-page,.login-atm,.arquivos-atm) .topbar nav{
+  display:flex;align-items:center;justify-content:flex-end;gap:clamp(12px,2vw,28px);
+  flex-wrap:wrap;
+}
+:is(.learning-page,.dashboard-atm,.admin-atm-page,.login-atm,.arquivos-atm) .topbar nav a:not(.brand-lockup){
+  font:700 12px/1.4 Montserrat,Arial,sans-serif;
+}
+:is(.learning-page,.dashboard-atm,.admin-atm-page,.login-atm,.arquivos-atm) .topbar .brand-logo{
+  background:transparent;box-shadow:none;padding:0;max-width:155px;object-fit:contain;
+}
+:is(.learning-page,.dashboard-atm,.admin-atm-page,.login-atm,.arquivos-atm) .topbar :is(a,button):focus-visible{
+  outline:3px solid #ffd309;outline-offset:4px;
+}
+:is(.learning-page,.dashboard-atm,.admin-atm-page,.login-atm,.arquivos-atm) .topbar .nav-login{
+  background:#634995;color:#fff;border:1px solid #634995;border-radius:2px;
+  padding:12px 17px;
+}
+:is(.learning-page,.dashboard-atm,.admin-atm-page,.login-atm,.arquivos-atm) .topbar .nav-login:hover{
+  color:#fff;background:#7859a9;border-color:#7859a9;
+}
+/* Trilhas 01–06: mesma tipografia condensada, painel preto e acento violeta.
+   As fotografias ja existentes mantem cortes, creditos e procedencia. */
+.learning-page .learning-hero{
+  background-color:#0a0a0b;
+  background-image:linear-gradient(110deg,rgba(0,0,0,.93),rgba(14,10,20,.86)),var(--school-bgl);
+  color:#fff;
+}
+.learning-page .learning-hero h1{
+  font:400 clamp(53px,6.4vw,100px)/1.02 'Bebas Neue',Impact,'Arial Narrow',sans-serif;
+  letter-spacing:.01em;color:#fff;text-transform:uppercase;overflow-wrap:break-word;
+}
+.learning-page .learning-hero h1 em{font-style:normal;color:#d9c6f0}
+.learning-page .learning-hero :is(.learning-lead,.learning-intro){max-width:790px}
+.learning-page .learning-hero-links :is(.primary,.outline){
+  border-radius:2px;min-height:46px;
+  font:700 13px/1.3 'Roboto Mono',monospace;
+  display:inline-flex;align-items:center;justify-content:center;gap:14px;
+}
+.learning-page .learning-hero-links .primary,.learning-page .learning-end .primary{
+  background:#634995;border-color:#634995;color:#fff;
+}
+.learning-page .learning-hero-links .primary:hover,.learning-page .learning-end .primary:hover{
+  background:#7859a9;color:#fff;
+}
+.learning-page .learning-nav{background:#151516;border-bottom:1px solid #403b45}
+.learning-page .learning-nav a{
+  color:#f5f2f6;font:600 11px/1.5 'Roboto Mono',monospace;
+  white-space:nowrap;
+}
+.learning-page .learning-nav a:hover,.learning-page .learning-nav a:focus-visible{color:#d6bdf1}
+.learning-page .learning-section{scroll-margin-top:74px}
+.learning-page .learning-section h2,.learning-page .learning-end h2{
+  font-family:'Bebas Neue',Impact,'Arial Narrow',sans-serif;
+  font-weight:400;letter-spacing:.01em;line-height:1.1;
+}
+.learning-page .learning-section h2 em,.learning-page .learning-end h2 em{
+  font-style:normal;color:#c4a4e9;
+}
+.learning-page .learning-questions li>span{color:#b49ad6}
+.learning-page .learning-reflection-save{
+  color:#d4b5ff;text-decoration:underline;text-underline-offset:4px;
+}
+.learning-page .learning-practice{background:#151217;border-left:5px solid #634995}
+.learning-page .learning-practice :is(h3,strong){color:#fff}
+/* O contraste do miolo de leitura permanece definido por cada secao da trilha:
+   nada de inverter fundos claros e textos sem verificar legibilidade. */
+/* Painel pessoal e cards de progresso: menos caixas gritantes, mais leitura. */
+.dashboard-atm .dashboard-atm-hero{
+  background-color:#111012;
+  background-image:linear-gradient(115deg,rgba(0,0,0,.92),rgba(19,12,26,.84)),var(--school-bgl);
+  border-bottom:3px solid #634995;
+}
+.dashboard-atm .dashboard-atm-hero h1{
+  font:400 clamp(54px,6.5vw,94px)/1.03 'Bebas Neue',Impact,'Arial Narrow',sans-serif;
+  letter-spacing:.01em;text-transform:uppercase;
+}
+.dashboard-atm .dashboard-atm-hero h1 em{color:#d8c5f0}
+.dashboard-atm :is(.dashboard-atm-heading h2,.personal-learning-heading h2,.dashboard-atm-editorial h2){
+  font-family:'Bebas Neue',Impact,'Arial Narrow',sans-serif;
+  font-weight:400;letter-spacing:.01em;line-height:1.08;
+}
+.dashboard-atm .personal-learning-layout{gap:18px}
+.dashboard-atm .personal-learning-primary,.dashboard-atm .personal-learning-notes{
+  border:1px solid #dcd6e1;box-shadow:none;
+}
+.dashboard-atm .dashboard-atm-track{border:1px solid #ded8e4;border-top:3px solid #634995;box-shadow:none}
+.dashboard-atm .dashboard-atm-track h3{font-weight:600;line-height:1.28}
+.dashboard-atm :is(.personal-learning-cta,.learning-progress-form button,.dashboard-atm-editorial-link){
+  border-radius:2px;
+}
+.dashboard-atm .learning-progress-form button{background:#634995;border-color:#634995}
+.dashboard-atm .learning-progress-form button:hover{background:#7859a9}
+.dashboard-atm :is(a,button,select,input):focus-visible{outline:3px solid #ffd309;outline-offset:3px}
+/* Acervo: mesmo cabeçalho escuro, tipografia de titulo e botoes violetas. */
+.arquivos-atm{background:#f8f7f9;color:#241e2a}
+.arquivos-atm .arquivos-hero{
+  background-color:#111012;
+  background-image:linear-gradient(110deg,rgba(0,0,0,.93),rgba(20,13,27,.84)),var(--school-bgl);
+  border-bottom:3px solid #634995;
+}
+.arquivos-atm .arquivos-hero h1{
+  font:400 clamp(52px,6vw,90px)/1.02 'Bebas Neue',Impact,'Arial Narrow',sans-serif;
+  letter-spacing:.01em;text-transform:uppercase;
+}
+.arquivos-atm .arquivos-hero h1 em{color:#d8c5f0}
+.arquivos-atm .arquivos-heading h2{
+  font:400 clamp(34px,4vw,57px)/1.09 'Bebas Neue',Impact,'Arial Narrow',sans-serif;
+  letter-spacing:.01em;
+}
+.arquivos-atm .arquivos-drive,.arquivos-atm .arquivo-actions a:last-child,.arquivos-atm .arquivos-empty button{
+  background:#634995;border-color:#634995;color:#fff;
+}
+.arquivos-atm .arquivo-row{border-color:#dcd5e1}
+.arquivos-atm .arquivo-format.is-pdf{background:#eee7f5;border-color:#bba9cf;color:#523778}
+/* Login e telas de ativacao: campos de alto contraste e identidade consistente. */
+.login-atm .login-atm-identity{
+  background-color:#111012;
+  background-image:linear-gradient(100deg,rgba(0,0,0,.91),rgba(18,11,26,.81)),var(--school-bgl);
+}
+.login-atm .login-atm-narrative h1{
+  font:400 clamp(43px,5vw,78px)/1.03 'Bebas Neue',Impact,'Arial Narrow',sans-serif;
+  letter-spacing:.01em;text-transform:uppercase;
+}
+.login-atm .login-atm-narrative h1 em{font-style:normal;color:#d8c5f0}
+.login-atm .login-atm-big{color:#cbb3eb}
+.login-atm .login-atm-submit{
+  background:#634995;color:#fff;border-color:#634995;border-radius:2px;
+}
+.login-atm .login-atm-submit:hover{background:#7859a9;color:#fff}
+.login-atm .login-atm-panel h2{
+  font:400 clamp(36px,4vw,53px)/1.05 'Bebas Neue',Impact,'Arial Narrow',sans-serif;
+  letter-spacing:.01em;
+}
+.login-atm .login-atm-form :is(input,select,button):focus-visible{
+  outline:3px solid #634995;outline-offset:3px;
+}
+/* Area administrativa e caderno: topo escuro, conteudo editavel com contraste claro. */
+.admin-atm-page{background:#f8f7f9;color:#241e2a}
+.admin-atm-page .admin-atm-hero{
+  background-color:#101011;
+  background-image:linear-gradient(105deg,rgba(0,0,0,.93),rgba(19,12,26,.84)),var(--school-bgl);
+  border-bottom:3px solid #634995;
+}
+.admin-atm-page .admin-atm-hero h1{
+  font:400 clamp(53px,6vw,88px)/1.03 'Bebas Neue',Impact,'Arial Narrow',sans-serif;
+  letter-spacing:.01em;text-transform:uppercase;
+}
+.admin-atm-page .admin-atm-hero h1 em{font-style:normal;color:#d8c5f0}
+.admin-atm-page .admin-atm-section-head h2,
+.admin-atm-page .reflection-editor h2,
+.admin-atm-page .reflection-list-section h2{
+  font:400 clamp(31px,3.6vw,52px)/1.08 'Bebas Neue',Impact,'Arial Narrow',sans-serif;
+  letter-spacing:.01em;
+}
+.admin-atm-page :is(.admin-atm-invite,.admin-atm-people,.reflection-editor,.reflection-entry,.email-atm-config){
+  box-shadow:none;
+}
+.admin-atm-page :is(.admin-atm-primary,.reflection-form button,.access-override-form button){
+  background:#634995;color:#fff;border-color:#634995;border-radius:2px;
+}
+.admin-atm-page :is(.admin-atm-primary,.reflection-form button,.access-override-form button):hover{
+  background:#7859a9;color:#fff;
+}
+.admin-atm-page :is(input,select,textarea,button,a,summary):focus-visible{
+  outline:3px solid #634995;outline-offset:3px;
+}
+.reflection-page .reflection-entry:target{outline-color:#634995}
+/* Controles de tela pequena: nenhum menu, formulario ou trilha transborda. */
+@media(max-width:780px){
+  :is(.learning-page,.dashboard-atm,.admin-atm-page,.login-atm,.arquivos-atm) .topbar{
+    align-items:flex-start;flex-wrap:wrap;gap:12px;padding:15px 22px;
+  }
+  :is(.learning-page,.dashboard-atm,.admin-atm-page,.login-atm,.arquivos-atm) .topbar nav{
+    gap:9px 17px;justify-content:flex-start;max-width:100%;
+  }
+  :is(.learning-page,.dashboard-atm,.admin-atm-page,.login-atm,.arquivos-atm) .topbar nav a{
+    font-size:11px;
+  }
+  .learning-page .learning-hero h1{font-size:clamp(49px,11vw,76px)}
+  .dashboard-atm .dashboard-atm-hero h1,.admin-atm-page .admin-atm-hero h1{
+    font-size:clamp(48px,10vw,69px);
+  }
+  .learning-page .learning-nav .learning-wrap{
+    overflow-x:auto;scrollbar-width:thin;gap:22px;
+  }
+  .dashboard-atm .personal-learning-layout{grid-template-columns:minmax(0,1fr)}
+  .admin-atm-page .admin-atm-table-wrap{overflow-x:auto}
+  .arquivos-atm .arquivo-row{min-width:0}
+}
+@media(max-width:480px){
+  :is(.learning-page,.dashboard-atm,.admin-atm-page,.login-atm,.arquivos-atm) .topbar .brand-logo{
+    max-width:130px;
+  }
+  .learning-page .learning-hero-links a{width:100%;justify-content:center}
+  .dashboard-atm .learning-progress-form{grid-template-columns:1fr}
+  .admin-atm-page .admin-atm-section-head{flex-direction:column;align-items:flex-start}
+  .admin-atm-page .reflection-editor{padding:22px}
+  .admin-atm-page .reflection-entry{padding:22px}
+}
+@media(prefers-reduced-motion:reduce){
+  .learning-page *,.dashboard-atm *,.admin-atm-page *,.login-atm *,.arquivos-atm *{
+    scroll-behavior:auto;
+  }
+}
