@@ -8,6 +8,8 @@ import { roleForEmailAsync } from "../../lib/access";
 import { databaseConfigured,dbQuery } from "../../lib/database";
 import type { ProgressRecord } from "../../lib/learning-progress";
 import ProgressCards from "./ProgressCards";
+import {LEARNING_TRAILS} from "../../lib/learning-progress";
+import {permittedTrail,permittedEmail} from "../../lib/individual-access";
 import LearningOverview, { type RecentReflection } from "./LearningOverview";
 
 export const dynamic = "force-dynamic";
@@ -17,7 +19,7 @@ export const metadata = {
   robots: { index: false, follow: false },
 };
 
-export default async function Painel({searchParams}:{searchParams:Promise<{progresso?:string}>}) {
+export default async function Painel({searchParams}:{searchParams:Promise<{progresso?:string;acesso?:string}>}) {
   if (!authConfigured) redirect("/entrar");
   const session = await auth();
   if (!session?.user?.email) redirect("/entrar");
@@ -25,7 +27,9 @@ export default async function Painel({searchParams}:{searchParams:Promise<{progr
   if (!role) redirect("/entrar");
 
   const params=await searchParams;
-  const canReviewDrafts = can(role, "drafts:read");
+  const canReviewDrafts = await permittedEmail(session.user.email, "drafts:read");
+  const allowedFlags=await Promise.all(LEARNING_TRAILS.map(t=>permittedTrail(session.user.email,t.slug)));
+  const allowedTrails=LEARNING_TRAILS.filter((_,i)=>allowedFlags[i]).map(t=>t.slug);
   let progress:ProgressRecord[]=[];
   let progressUnavailable=!databaseConfigured;
   if(databaseConfigured)try{
@@ -74,7 +78,8 @@ export default async function Painel({searchParams}:{searchParams:Promise<{progr
 
       <div className="dashboard-atm-body dashboard-atm-container">
         {params.progresso==="salvo"&&<p role="status" className="learning-save-confirmation">Progresso atualizado com sucesso. Você poderá retomar esta trilha de onde parou.</p>}
-        <LearningOverview progress={progress} progressUnavailable={progressUnavailable} reflections={reflections} reflectionsUnavailable={reflectionsUnavailable} reflectionCount={reflectionCount}/>
+        {params.acesso==="restrito"&&<p role="alert" className="learning-save-confirmation">Esta trilha não está liberada para sua conta. Consulte a administração da Escola.</p>}
+        <LearningOverview progress={progress} progressUnavailable={progressUnavailable} reflections={reflections} reflectionsUnavailable={reflectionsUnavailable} reflectionCount={reflectionCount} allowedTrails={allowedTrails}/>
         <div className="dashboard-atm-heading" id="minhas-trilhas">
           <div>
             <span className="dashboard-atm-eyebrow dark">SUAS JORNADAS</span>
@@ -82,7 +87,7 @@ export default async function Painel({searchParams}:{searchParams:Promise<{progr
           </div>
           <p>Escolha um tema. Cada percurso reúne textos, referências e perguntas para experimentar na vida real.</p>
         </div>
-        <ProgressCards progress={progress} unavailable={progressUnavailable}/>
+        <ProgressCards progress={progress} unavailable={progressUnavailable} allowedTrails={allowedTrails}/>
         <section className="dashboard-atm-editorial" aria-labelledby="dashboard-caderno">
           <div><span className="dashboard-atm-eyebrow">SEU ESPAÇO DE REFLEXÃO</span>
             <h2 id="dashboard-caderno">Um caderno para <em>revisitar suas ideias.</em></h2>
