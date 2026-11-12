@@ -13,19 +13,20 @@ type Props = {
   reflections: RecentReflection[];
   reflectionsUnavailable: boolean;
   reflectionCount: number | null;
+  allowedTrails: readonly string[];
 };
 export default function LearningOverview({
- progress, progressUnavailable, reflections, reflectionsUnavailable, reflectionCount
+ progress, progressUnavailable, reflections, reflectionsUnavailable, reflectionCount, allowedTrails
 }: Props) {
  const active = [...progress]
-   .filter(p => p.status !== "concluida")
+   .filter(p => p.status !== "concluida" && allowedTrails.includes(p.trail_slug))
    .sort((a,b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime())[0];
  const current = active ? LEARNING_TRAILS.find(t => t.slug === active.trail_slug) : null;
  const section = current?.sections.find(([id]) => id === active?.section_id);
- const completed = progress.filter(p => p.status === "concluida").length;
- const started = progress.length;
+ const completed = progress.filter(p => p.status === "concluida" && allowedTrails.includes(p.trail_slug)).length;
+ const started = progress.filter(p=>allowedTrails.includes(p.trail_slug)).length;
  const showProgress = !progressUnavailable;
- const next = current ?? (!started && showProgress ? LEARNING_TRAILS[0] : null);
+ const next = current ?? (!started && showProgress ? LEARNING_TRAILS.find(t=>allowedTrails.includes(t.slug)) : null);
  const nextSection = current ? section?.[0] ?? "investigacao" : "investigacao";
  const noteDate = (iso: string) => new Date(iso).toLocaleDateString("pt-BR",{
    day:"2-digit",month:"short",year:"numeric",timeZone:"America/Sao_Paulo"
