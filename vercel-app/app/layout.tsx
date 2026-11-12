@@ -18,6 +18,7 @@ import "./colecao-autoral.css";
 import "./acesso-seguro.css";
 import "./gestao-acessos.css";
 import "./institutional-design-2026.css";
+import "./institutional-all-pages.css";
 
 export const metadata: Metadata = {
   title: "Biblioteca Atemporal | Escola Atemporal",
