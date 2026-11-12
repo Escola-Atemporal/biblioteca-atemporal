@@ -223,3 +223,114 @@
     scroll-behavior:auto;
   }
 }
+
+
+/* Revisao editorial final — prompt mestre oficial, 12 novembro 2026.
+   Ajustes de acabamento; nenhuma mudanca de funcionalidade ou conteudo. */
+:root{
+  --ea-black:#101011;
+  --ea-black-deep:#090909;
+  --ea-white:#fff;
+  --ea-violet:#634995;
+  --ea-violet-hover:#7859a9;
+  --ea-lavender:#c7b0e9;
+  --ea-yellow:#ffd309;
+  --ea-gray:#d9d6dc;
+  --ea-paper:#f8f7f9;
+  --ea-text:#211c26;
+}
+:is(.biblioteca-home,.learning-page,.dashboard-atm,.admin-atm-page,.login-atm,.arquivos-atm) {
+  -webkit-font-smoothing:antialiased;
+}
+:is(.biblioteca-home,.learning-page,.dashboard-atm,.admin-atm-page,.login-atm,.arquivos-atm) :is(button,a,input,textarea,select,summary):focus-visible{
+  outline:3px solid var(--ea-violet);
+  outline-offset:3px;
+}
+:is(.biblioteca-home,.learning-page,.dashboard-atm,.admin-atm-page,.login-atm,.arquivos-atm) :is(.topbar,.learning-hero,.admin-atm-hero,.dashboard-atm-hero) :is(a,button):focus-visible{
+  outline-color:var(--ea-yellow);
+}
+/* O vinculo com o caderno precisa continuar legivel em areas claras e escuras. */
+.learning-page .learning-reflection-save{
+  color:#634995;
+  font-weight:700;
+}
+.learning-page :is(.learning-muted,.learning-books,.learning-practice) .learning-reflection-save{
+  color:#d9c4f1;
+}
+.learning-page .learning-reflection-save:hover{
+  text-decoration-thickness:2px;
+}
+.learning-page .learning-section :is(p,li){
+  overflow-wrap:break-word;
+}
+.learning-page .learning-section :is(h2,h3){
+  text-wrap:balance;
+}
+.learning-page .learning-hero h1{
+  max-width:100%;
+  text-wrap:balance;
+}
+/* Gestao: espacos consistentes em vez de faixas coloridas decorativas. */
+.admin-atm-page .admin-atm-invite,
+.admin-atm-page .email-atm-config,
+.admin-atm-page .reflection-editor{
+  border-top-color:var(--ea-violet);
+}
+.admin-atm-page .admin-atm-hero p,
+.dashboard-atm .dashboard-atm-hero p{
+  max-width:760px;
+  line-height:1.75;
+}
+.admin-atm-page .admin-atm-people,
+.admin-atm-page .admin-atm-invite,
+.reflection-page .reflection-entry{
+  border-color:var(--ea-gray);
+}
+.reflection-page .reflection-entry h3{
+  text-wrap:balance;
+}
+.reflection-page .reflection-privacy-note{
+  max-width:720px;
+}
+.arquivos-atm .arquivos-results,
+.arquivos-atm .arquivos-intro{
+  line-height:1.7;
+}
+.arquivos-atm .arquivo-copy h3{
+  text-wrap:balance;
+}
+.arquivos-atm .arquivos-filters :is(input,select):focus-visible{
+  outline-color:var(--ea-violet);
+}
+/* A navegacao deve quebrar linhas antes de ultrapassar a tela. */
+:is(.biblioteca-home,.learning-page,.dashboard-atm,.admin-atm-page,.login-atm,.arquivos-atm) .topbar{
+  max-width:100%;
+}
+:is(.biblioteca-home,.learning-page,.dashboard-atm,.admin-atm-page,.login-atm,.arquivos-atm) .topbar nav{
+  min-width:0;
+}
+:is(.biblioteca-home,.learning-page,.dashboard-atm,.admin-atm-page,.login-atm,.arquivos-atm) .topbar .brand-lockup{
+  flex-shrink:0;
+}
+@media(max-width:640px){
+  :is(.biblioteca-home,.learning-page,.dashboard-atm,.admin-atm-page,.login-atm,.arquivos-atm) .topbar nav{
+    width:100%;
+    justify-content:flex-start;
+    row-gap:9px;
+  }
+  :is(.biblioteca-home,.learning-page,.dashboard-atm,.admin-atm-page,.login-atm,.arquivos-atm) .topbar nav a{
+    overflow-wrap:anywhere;
+  }
+  .learning-page .learning-hero h1{
+    font-size:clamp(46px,10.5vw,71px);
+  }
+  .arquivos-atm .arquivo-row{
+    grid-template-columns:minmax(0,1fr);
+  }
+  .arquivos-atm .arquivo-format{
+    width:50px;
+  }
+  .arquivos-atm .arquivo-actions{
+    grid-column:1;
+  }
+}
