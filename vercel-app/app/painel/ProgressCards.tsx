@@ -2,17 +2,18 @@ import Link from "next/link";
 import { LEARNING_TRAILS, type ProgressRecord } from "../../lib/learning-progress";
 import { saveLearningProgress } from "./progresso/actions";
 
-export default function ProgressCards({progress,unavailable}:{progress:ProgressRecord[];unavailable:boolean}){
-  const completed=progress.filter(p=>p.status==="concluida").length;
+export default function ProgressCards({progress,unavailable,allowedTrails}:{progress:ProgressRecord[];unavailable:boolean;allowedTrails:readonly string[]}){
+  const completed=progress.filter(p=>p.status==="concluida"&&allowedTrails.includes(p.trail_slug)).length;
   return <>
     <section className="learning-progress-overview" aria-label="Seu progresso">
       <div><span className="dashboard-atm-eyebrow dark">ACOMPANHAMENTO INDIVIDUAL</span>
       <h3>Sua jornada, no seu ritmo.</h3><p>Marque onde parou e retome quando desejar. O registro é individual e não altera o conteúdo das trilhas.</p></div>
-      <div className="learning-progress-summary"><span><strong>{progress.length}</strong> iniciadas</span><span><strong>{completed}</strong> concluídas</span></div>
+      <div className="learning-progress-summary"><span><strong>{progress.filter(p=>allowedTrails.includes(p.trail_slug)).length}</strong> iniciadas</span><span><strong>{completed}</strong> concluídas</span></div>
     </section>
     {unavailable && <p role="status" className="learning-progress-warning">O registro de progresso está temporariamente indisponível. Você ainda pode acessar as trilhas normalmente.</p>}
+    {!allowedTrails.length&&<p className="learning-progress-warning">Nenhuma trilha está liberada para esta conta. Consulte a administração da Escola.</p>}
     <div className="dashboard-atm-tracks">
-      {LEARNING_TRAILS.map(trilha=>{
+      {LEARNING_TRAILS.filter(t=>allowedTrails.includes(t.slug)).map(trilha=>{
         const saved=progress.find(p=>p.trail_slug===trilha.slug);
         const section=trilha.sections.find(([id])=>id===saved?.section_id)?.[0]??"investigacao";
         return <article className="dashboard-atm-track learning-progress-track" key={trilha.number}>
