@@ -1,3 +1,6 @@
+import { auth } from "../../../auth";
+import { permittedTrail } from "../../../lib/individual-access";
+import { redirect } from "next/navigation";
 import ReflectionQuestionLink from "../../components/ReflectionQuestionLink";
 import ColecaoAutoral from "../../components/ColecaoAutoral";
 import Link from "next/link";
@@ -26,7 +29,9 @@ const perguntas=[
 
 const capasVideo05 = ["LIDERAR NA INCERTEZA","DECIDIR SOB PRESSÃO","MUDAR COM CONFIANÇA","FIRMEZA COM CUIDADO","CRIATIVIDADE COLETIVA","CORAGEM NA CRISE"] as const;
 
-export default function Trilha05Page(){
+export default async function Trilha05Page(){
+  const session=await auth();
+  if(!await permittedTrail(session?.user?.email,"paradoxos-da-lideranca")) redirect("/painel?acesso=restrito");
  return <main className="learning-page paradox-page referencia-trilha01" id="topo">
   <a className="skip-to-content" href="#investigacao">Ir para a investigação</a>
   <header className="topbar"><BrandLogo/><nav aria-label="Navegação principal"><Link href="/">Todas as trilhas</Link><Link href="/entrar" className="nav-login">Área de acesso ↗</Link></nav></header>
