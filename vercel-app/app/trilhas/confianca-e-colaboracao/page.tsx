@@ -1,3 +1,6 @@
+import { auth } from "../../../auth";
+import { permittedTrail } from "../../../lib/individual-access";
+import { redirect } from "next/navigation";
 import ReflectionQuestionLink from "../../components/ReflectionQuestionLink";
 import ColecaoAutoral from "../../components/ColecaoAutoral";
 import Link from "next/link";
@@ -28,7 +31,9 @@ const lentes=[
   {numero:"02",titulo:"Escuta",pergunta:"Todas as vozes têm espaço real na conversa?",texto:"Escutar envolve curiosidade, atenção e disposição para rever a própria compreensão, sem exigir concordância imediata."},
   {numero:"03",titulo:"Colaboração",pergunta:"O que só conseguimos construir juntos?",texto:"Colaboração não é apenas dividir tarefas: é construir sentido, combinar responsabilidades, lidar com diferenças e aprender no percurso."},
 ];
-export default function Trilha04Page(){
+export default async function Trilha04Page(){
+  const session=await auth();
+  if(!await permittedTrail(session?.user?.email,"confianca-e-colaboracao")) redirect("/painel?acesso=restrito");
  return <main className="learning-page colab-page referencia-trilha01" id="topo">
   <a className="skip-to-content" href="#investigacao">Ir para a investigação</a>
   <header className="topbar"><BrandLogo/><nav aria-label="Navegação principal"><Link href="/">Todas as trilhas</Link><Link href="/entrar" className="nav-login">Área de acesso ↗</Link></nav></header>
