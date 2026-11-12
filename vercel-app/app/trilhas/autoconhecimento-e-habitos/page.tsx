@@ -1,3 +1,6 @@
+import { auth } from "../../../auth";
+import { permittedTrail } from "../../../lib/individual-access";
+import { redirect } from "next/navigation";
 import ReflectionQuestionLink from "../../components/ReflectionQuestionLink";
 import ColecaoAutoral from "../../components/ColecaoAutoral";
 import Link from "next/link";
@@ -33,7 +36,9 @@ const perguntas=[
  "Como retornar a um compromisso depois de uma interrupção, sem transformar o processo em culpa?",
 ];
 
-export default function Trilha03Page(){
+export default async function Trilha03Page(){
+  const session=await auth();
+  if(!await permittedTrail(session?.user?.email,"autoconhecimento-e-habitos")) redirect("/painel?acesso=restrito");
  return <main className="learning-page habit-page referencia-trilha01" id="topo">
   <a className="skip-to-content" href="#investigacao">Ir para a investigação</a>
   <header className="topbar"><BrandLogo/><nav aria-label="Navegação principal"><Link href="/">Todas as trilhas</Link><Link href="/entrar" className="nav-login">Área de acesso ↗</Link></nav></header>
