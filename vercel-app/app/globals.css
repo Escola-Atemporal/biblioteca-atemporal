@@ -170,3 +170,18 @@ footer{background:#161616;color:#c9c9c9}
 
 /* Readable, accessible confirmation after saving personal progress or reflections. */
 .learning-save-confirmation{padding:14px 18px;margin:0 0 22px;border-left:3px solid #634995;background:#f4f0fa;color:#34254d;font:600 13px/1.6 Roboto,Arial,sans-serif}
+
+
+/* Controles individuais de acesso — densidade compacta e paleta institucional. */
+.access-override-cell{min-width:280px;vertical-align:top}
+.access-override-details summary{cursor:pointer;color:#634995;font:600 12px 'Roboto Mono',monospace;padding:8px 0}
+.access-override-details summary:focus-visible{outline:3px solid #ffd309;outline-offset:3px}
+.access-override-list{padding:12px 14px;background:#f8f7fa;border:1px solid #e3dfea;min-width:245px}
+.access-override-list>p{font:12px/1.65 Roboto,Arial,sans-serif;color:#555;margin:0 0 14px}
+.access-override-form{display:flex;flex-wrap:wrap;gap:7px 9px;align-items:flex-end;padding:11px 0;border-top:1px solid #e4e0e9}
+.access-override-form label{display:flex;flex:1 1 155px;min-width:0;flex-direction:column;gap:6px;color:#30273c;font:600 12px/1.4 Roboto,Arial,sans-serif}
+.access-override-form select{width:100%;padding:9px;border:1px solid #cbc6d4;border-radius:3px;background:#fff;color:#222;font:12px Roboto,Arial,sans-serif}
+.access-override-form button{padding:10px 11px;border:0;border-radius:3px;background:#634995;color:#fff;font:600 11px 'Roboto Mono',monospace}
+.access-override-form button:disabled{opacity:.6;cursor:wait}
+.access-override-success,.access-override-error{display:block;flex-basis:100%;font:11px/1.5 Roboto,Arial,sans-serif}
+.access-override-success{color:#3b6246}.access-override-error{color:#963b44}
