@@ -10,6 +10,9 @@ import { dbQuery, databaseConfigured } from "../../../lib/database";
 import { emailConfigured } from "../../../lib/email";
 import InviteControls from "./InviteControls";
 import { setAccountActive, changeAccountRole } from "./actions";
+import { LEARNING_TRAILS } from "../../../lib/learning-progress";
+import PermissionControl from "./PermissionControl";
+import type { AccessResource } from "../../../lib/individual-access";
 import RequestReviewRow, { type MembershipRequest } from "./RequestReviewRow";
 
 export const dynamic = "force-dynamic";
@@ -28,6 +31,7 @@ type MemberRow = {
   created_at: string;
 };
 type SummaryRow = { pending: string };
+type OverrideRow={email:string;resource:string;allowed:boolean};
 
 export default async function UsersPanel() {
   if (!authConfigured) redirect("/entrar");
@@ -41,9 +45,10 @@ export default async function UsersPanel() {
   let users: MemberRow[] = [];
   let pending = 0;
   let requests: MembershipRequest[] = [];
+  let overrides:OverrideRow[]=[];
   let databaseUnavailable = false;
   try {
-    [users, pending, requests] = await Promise.all([
+    [users, pending, requests, overrides] = await Promise.all([
       dbQuery<MemberRow>(
         `SELECT email,display_name,role,active,(password_hash IS NOT NULL) AS has_password,created_at
          FROM biblioteca_access_accounts ORDER BY created_at DESC LIMIT 300`,
@@ -56,6 +61,7 @@ export default async function UsersPanel() {
          FROM biblioteca_membership_requests
          WHERE status='pending' ORDER BY created_at ASC LIMIT 100`,
       ),
+      dbQuery<OverrideRow>("SELECT email,resource,allowed FROM biblioteca_access_overrides"),
     ]);
   } catch { databaseUnavailable = true; }
 
@@ -80,7 +86,7 @@ export default async function UsersPanel() {
             <span><strong>{users.length}</strong> usuários cadastrados no banco</span>
             <span><strong>{requests.length}</strong> pedidos aguardando avaliação</span>
             <span><strong>{pending}</strong> convites pendentes</span>
-            <span><strong>03</strong> perfis de autorização</span>
+            <span><strong>03</strong> perfis + permissões por e-mail</span>
           </div>
         </div>
       </section>
@@ -137,14 +143,14 @@ export default async function UsersPanel() {
                   <span className="admin-atm-eyebrow">CONTROLE DE PERMISSÕES</span>
                   <h2 id="admin-atm-people-title">Pessoas cadastradas.</h2>
                 </div>
-                <p>Alterações de papel e de situação são aplicadas no banco e passam a valer na próxima requisição autenticada.</p>
+                <p>Defina um perfil geral e personalize a liberação ou o bloqueio de trilhas e do acervo para cada e-mail. As mudanças são aplicadas na próxima requisição.</p>
               </div>
               {!users.length ? (
                 <p className="admin-atm-empty">Ainda não há contas persistentes. Sua conta administradora inicial permanece autorizada pelo Render. Use o formulário acima para convidar a primeira pessoa.</p>
               ) : (
                 <div className="admin-atm-table-wrap">
                   <table className="admin-atm-table">
-                    <thead><tr><th scope="col">Pessoa</th><th scope="col">Perfil</th><th scope="col">Situação</th><th scope="col">Ação</th></tr></thead>
+                    <thead><tr><th scope="col">Pessoa</th><th scope="col">Perfil</th><th scope="col">Situação</th><th scope="col">Ação</th><th scope="col">Acessos individuais</th></tr></thead>
                     <tbody>
                       {users.map((u) => (
                         <tr key={u.email}>
@@ -178,13 +184,30 @@ export default async function UsersPanel() {
                               </form>
                             )}
                           </td>
+                          <td className="access-override-cell">
+                            {u.role==="administrador" ? <span>Perfil administrativo — acesso integral</span> :
+                            <details className="access-override-details">
+                              <summary>Personalizar permissões</summary>
+                              <div className="access-override-list">
+                                <p>Escolha por área: <strong>Padrão do perfil</strong>, <strong>Liberar</strong> ou <strong>Bloquear</strong>.</p>
+                                {([
+                                  {resource:"drafts:read" as AccessResource,label:"Acervo editorial (PDFs em revisão)"},
+                                  ...LEARNING_TRAILS.map(t=>({resource:`trail:${t.slug}` as AccessResource,label:`Trilha ${t.number} — ${t.title}`}))
+                                ]).map(item=>{
+                                  const override=overrides.find(o=>o.email===u.email&&o.resource===item.resource);
+                                  return <PermissionControl key={item.resource} email={u.email} resource={item.resource}
+                                   label={item.label} mode={override?(override.allowed?"allow":"deny"):"inherit"}/>;
+                                })}
+                              </div>
+                            </details>}
+                          </td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
                 </div>
               )}
-              <p className="admin-atm-privacy">Somente administradores podem alterar contas. O acesso aos arquivos do Google Drive continua sujeito às permissões dos documentos. A ativação de login não equivale à aprovação dos e-books para distribuição.</p>
+              <p className="admin-atm-privacy">Somente administradores podem alterar contas. O acesso individual é verificado no servidor, inclusive ao abrir links diretos das trilhas. O acesso aos arquivos do Google Drive continua sujeito às permissões dos documentos. A ativação de login não equivale à aprovação dos e-books para distribuição.</p>
             </section>
           </>
         )}
