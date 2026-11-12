@@ -1,3 +1,6 @@
+import { auth } from "../../../auth";
+import { permittedTrail } from "../../../lib/individual-access";
+import { redirect } from "next/navigation";
 import ReflectionQuestionLink from "../../components/ReflectionQuestionLink";
 import ColecaoAutoral from "../../components/ColecaoAutoral";
 import { livrosTrilha01, referenciasComplementaresTrilha01 } from "../../../data/referencias-trilha-01";
@@ -124,7 +127,9 @@ const perguntas = [
   "Que microcomportamento seu ajuda a transformar valores declarados em cultura vivida?",
 ];
 
-export default function Trilha01Page() {
+export default async function Trilha01Page(){
+  const session=await auth();
+  if(!await permittedTrail(session?.user?.email,"principios-e-discernimento")) redirect("/painel?acesso=restrito");
   return (
     <main className="learning-page circulo-inspired" id="topo">
       <a className="skip-to-content" href="#investigacao">Ir para o conteúdo da trilha</a>
