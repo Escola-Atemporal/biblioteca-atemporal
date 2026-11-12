@@ -1,3 +1,6 @@
+import { auth } from "../../../auth";
+import { permittedTrail } from "../../../lib/individual-access";
+import { redirect } from "next/navigation";
 import ReflectionQuestionLink from "../../components/ReflectionQuestionLink";
 import ColecaoAutoral from "../../components/ColecaoAutoral";
 import Link from "next/link";
@@ -26,7 +29,9 @@ const questoes=[
 
 const capasVideo06 = ["METAS QUE IMPORTAM","RELAÇÕES QUE PERMANECEM","IMPACTO SOCIAL","NEGÓCIOS SUSTENTÁVEIS","PROSPERIDADE COLETIVA","SENTIDO NO TRABALHO"] as const;
 
-export default function ResultadosLegado(){
+export default async function ResultadosLegado(){
+  const session=await auth();
+  if(!await permittedTrail(session?.user?.email,"resultados-e-legado")) redirect("/painel?acesso=restrito");
  return <main className="learning-page legacy-page referencia-trilha01" id="topo">
    <a href="#investigacao" className="skip-to-content">Ir para o conteúdo</a>
    <header className="topbar"><BrandLogo/><nav aria-label="Navegação principal"><Link href="/">Todas as trilhas</Link><Link href="/entrar" className="nav-login">Área de acesso ↗</Link></nav></header>
