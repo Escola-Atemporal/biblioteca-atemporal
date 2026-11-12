@@ -23,12 +23,13 @@ export default async function Painel({searchParams}:{searchParams:Promise<{progr
   if (!authConfigured) redirect("/entrar");
   const session = await auth();
   if (!session?.user?.email) redirect("/entrar");
-  const role = await roleForEmailAsync(session.user.email);
+  const currentEmail=session.user.email;
+  const role = await roleForEmailAsync(currentEmail);
   if (!role) redirect("/entrar");
 
   const params=await searchParams;
   const canReviewDrafts = await permittedEmail(session.user.email, "drafts:read");
-  const allowedFlags=await Promise.all(LEARNING_TRAILS.map(t=>permittedTrail(session.user.email,t.slug)));
+  const allowedFlags=await Promise.all(LEARNING_TRAILS.map(t=>permittedTrail(currentEmail,t.slug)));
   const allowedTrails=LEARNING_TRAILS.filter((_,i)=>allowedFlags[i]).map(t=>t.slug);
   let progress:ProgressRecord[]=[];
   let progressUnavailable=!databaseConfigured;
