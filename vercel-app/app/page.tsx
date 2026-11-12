@@ -63,23 +63,18 @@ export default function HomePage() {
         <div className="atemporal-masthead-main">
           <div className="atemporal-masthead-content">
             <div className="atemporal-overline"><span className="square-dot" aria-hidden="true" /> ESCOLA ATEMPORAL <span className="overline-divider">/</span> ACERVO EXPERIENCIALISTA</div>
-            <h1 id="home-title">O que <span>permanece</span> nos transforma.</h1>
-            <p className="atemporal-masthead-question">O que nos orienta quando tudo muda?</p>
-            <p className="atemporal-masthead-description">Conhecimento que ganha sentido na experiência. Um espaço vivo para encontrar ideias, ampliar perspectivas e colocar princípios em movimento.</p>
+            <h1 id="home-title">O QUE NÃO MUDA <span>QUANDO TUDO MUDA?</span></h1>
+            <p className="atemporal-masthead-question">O essencial permanece. O aprendizado continua.</p>
+            <p className="atemporal-masthead-description">Uma biblioteca viva da Escola Atemporal. Seis jornadas para ampliar repertórios, investigar escolhas e transformar conhecimento em prática.</p>
             <div className="atemporal-hero-actions">
               <a href="#trilhas" className="primary">Explorar as trilhas <span aria-hidden="true">↗</span></a>
-              <Link href="/trilhas/principios-e-discernimento" className="outline">Começar pela Trilha 01 <span aria-hidden="true">→</span></Link>
+              <Link href="/entrar" className="outline">Acessar minha biblioteca <span aria-hidden="true">↗</span></Link>
             </div>
           </div>
-          <div className="atemporal-masthead-visual reference-hero-visual" aria-label="Biblioteca Atemporal: seis jornadas de investigação">
-            <div className="reference-hero-panel">
-              <span className="reference-hero-eyebrow">BIBLIOTECA ATEMPORAL / 01 — 06</span>
-              <strong className="reference-hero-number" aria-hidden="true">06</strong>
-              <div className="reference-hero-divider" aria-hidden="true" />
-              <p>SEIS JORNADAS.<br/><span>UM CONHECIMENTO QUE SE TRANSFORMA EM EXPERIÊNCIA.</span></p>
-              <span className="reference-hero-foot">PRINCÍPIOS · EMOÇÕES · HÁBITOS · RELAÇÕES · LIDERANÇA · LEGADO</span>
-            </div>
-          </div>
+          <figure className="atemporal-masthead-visual school-real-hero">
+            <img src="https://escolaatemporal.com.br/wp-content/uploads/2026/08/DSC9619.jpg" width="1000" height="667" alt="Participantes da Escola Atemporal em uma experiência coletiva de aprendizagem" fetchPriority="high" decoding="async"/>
+            <figcaption>EXPERIÊNCIAS REAIS · ESCOLA ATEMPORAL</figcaption>
+          </figure>
         </div>
         <div className="atemporal-masthead-bottom">
           <span>UM ACERVO PARA PERGUNTAS QUE VALEM A PENA</span>
@@ -104,7 +99,7 @@ export default function HomePage() {
         <div className="atemporal-container">
           <div className="atemporal-section-heading">
             <div><span className="eyebrow dark">PERCURSOS DE INVESTIGAÇÃO · 01 — 06</span><h2>Seis trilhas.<br/><span>Múltiplas perspectivas.</span></h2></div>
-            <p>Temas que se conectam e se desdobram em textos, vídeos, referências e perguntas para a vida real. As seis trilhas já estão disponíveis para exploração.</p>
+            <p>Temas que se conectam e se desdobram em textos, vídeos, referências e perguntas para a vida real. Conheça os temas das seis trilhas. O acesso ao conteúdo integral é individual e depende das permissões de cada participante.</p>
           </div>
           <div className="atemporal-tracks">
             {catalog.items.map((item) => {
@@ -138,7 +133,7 @@ export default function HomePage() {
 
       <section className="atemporal-feature" aria-labelledby="feature-title">
         <div className="atemporal-feature-image">
-          <img src="https://escolaatemporal.com.br/wp-content/uploads/2026/08/2150040143.jpg" alt="Imagem de referência usada pela Escola Atemporal na página Princípios Norteadores" width="1100" height="800" loading="lazy" />
+          <img src="https://escolaatemporal.com.br/wp-content/uploads/2026/08/DSC9616.jpg" alt="Experiência da Escola Atemporal com atividade coletiva Emoções em Jogo" width="1100" height="800" loading="lazy" />
           <span>01 / 06 · PRIMEIRA TRILHA</span>
         </div>
         <div className="atemporal-feature-content">
@@ -184,7 +179,7 @@ export default function HomePage() {
 
       <section className="atemporal-cta">
         <div className="atemporal-container atemporal-cta-inner">
-          <div><span className="eyebrow dark">UM ESPAÇO PARA CONTINUAR</span><h2>Seu percurso <span>continua aqui.</span></h2><p>A Biblioteca pública já pode ser explorada. A área reservada dos experiencialistas será disponibilizada após a conclusão do controle de acesso.</p></div>
+          <div><span className="eyebrow dark">UM ESPAÇO PARA CONTINUAR</span><h2>Seu percurso <span>continua aqui.</span></h2><p>Conheça os percursos apresentados nesta página. Para estudar, registrar reflexões e acompanhar seu progresso, entre na área de acesso individual.</p></div>
           <Link href="/entrar" className="primary">Conhecer a área de acesso <span aria-hidden="true">↗</span></Link>
         </div>
       </section>
