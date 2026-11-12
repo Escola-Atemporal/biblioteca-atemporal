@@ -1,0 +1,158 @@
+/*
+ * Biblioteca Atemporal | sistema editorial 2026
+ * Referencia: capturas fornecidas pelo usuario da Escola Atemporal.
+ * Escopo: somente Biblioteca Next.js, sem alterar WordPress.
+ */
+:root {
+ --ea-design-black:#090909;
+ --ea-design-paper:#fff;
+ --ea-design-violet:#634995;
+ --ea-design-white:#f9f7fa;
+ --ea-design-muted:#cbc6cf;
+ --ea-design-line:rgba(255,255,255,.19);
+}
+.biblioteca-home.referencia-trilha01{background:#080808;color:#fff}
+.biblioteca-home .topbar{
+ position:relative;z-index:20;min-height:76px;height:auto;
+ padding:13px clamp(22px,5vw,88px);
+ background:#151515;border-bottom:1px solid #3f3c43;
+ gap:24px;
+}
+.biblioteca-home .topbar nav{display:flex;align-items:center;gap:clamp(12px,1.8vw,28px);flex-wrap:wrap}
+.biblioteca-home .topbar nav a{font:700 12px/1.4 Montserrat,Arial,sans-serif;text-transform:uppercase;letter-spacing:-.01em}
+.biblioteca-home .topbar nav .nav-login{
+ padding:12px 17px;background:#634995;border:1px solid #634995;color:white;border-radius:2px;
+}
+.biblioteca-home .topbar nav .nav-login:hover{background:#7e5ab6;border-color:#7e5ab6;color:white}
+.biblioteca-home .topbar .brand-logo{background:transparent;padding:0;max-width:155px;object-fit:contain}
+.biblioteca-home .atemporal-masthead{
+ min-height:clamp(580px,72vh,760px);background:#111;
+}
+.biblioteca-home .atemporal-masthead:before{
+ background:linear-gradient(90deg,rgba(0,0,0,.95) 0%,rgba(0,0,0,.85) 38%,rgba(0,0,0,.32) 72%,rgba(0,0,0,.1) 100%);
+ z-index:2;
+}
+.biblioteca-home .atemporal-masthead-main{
+ max-width:none;grid-template-columns:minmax(0,1fr);
+ min-height:clamp(580px,72vh,760px);
+}
+.biblioteca-home .atemporal-masthead-content{
+ padding:clamp(92px,10vw,150px) clamp(22px,7vw,128px) 100px;
+ max-width:760px;justify-content:center;min-height:580px;z-index:3;
+}
+.biblioteca-home .atemporal-overline{
+ color:#e6ddea;font:700 11px/1.5 'Roboto Mono',monospace;letter-spacing:.12em;
+}
+.biblioteca-home .atemporal-overline .square-dot{background:#634995;width:10px;height:10px}
+.biblioteca-home.referencia-trilha01 .atemporal-masthead h1{
+ font:400 clamp(60px,7.1vw,118px)/.93 'Bebas Neue',Impact,'Arial Narrow',sans-serif;
+ letter-spacing:.004em;max-width:750px;margin:28px 0 18px;color:#fff;text-wrap:balance;
+}
+.biblioteca-home.referencia-trilha01 .atemporal-masthead h1 span{display:block;color:#fff}
+.biblioteca-home.referencia-trilha01 .atemporal-masthead-question{
+ font:600 clamp(19px,2vw,27px)/1.4 Montserrat,Arial,sans-serif;
+ max-width:590px;margin:0 0 12px;color:#fff;
+}
+.biblioteca-home.referencia-trilha01 .atemporal-masthead-description{
+ font:400 clamp(14px,1.25vw,17px)/1.7 Montserrat,Arial,sans-serif;
+ max-width:550px;color:#e7e3e8;
+}
+.biblioteca-home .atemporal-hero-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:26px}
+.biblioteca-home .atemporal-hero-actions :is(.primary,.outline){
+ min-height:46px;display:inline-flex;align-items:center;justify-content:center;
+ padding:12px 19px;font:700 13px/1.4 'Bebas Neue',Impact,sans-serif;
+ letter-spacing:.04em;border-radius:2px;text-transform:uppercase;
+}
+.biblioteca-home .atemporal-hero-actions .primary{
+ background:#634995;color:#fff;border:1px solid #634995;
+}
+.biblioteca-home .atemporal-hero-actions .primary:hover{background:#7c59b0}
+.biblioteca-home .atemporal-hero-actions .outline{background:transparent;color:#fff;border:1px solid #fff}
+.biblioteca-home .atemporal-masthead-visual.school-real-hero{
+ position:absolute;inset:0;margin:0;z-index:1;display:block;width:100%;height:100%;
+ overflow:hidden;border:0;background:#141414;
+}
+.biblioteca-home .school-real-hero img{
+ display:block;width:100%;height:100%;object-fit:cover;object-position:65% 45%;
+ filter:grayscale(1) brightness(.73) contrast(1.05);
+}
+.biblioteca-home .school-real-hero figcaption{
+ position:absolute;bottom:34px;right:clamp(22px,5vw,90px);
+ z-index:4;padding:8px 12px;background:rgba(0,0,0,.65);
+ font:600 10px/1.4 'Roboto Mono',monospace;color:#eee;letter-spacing:.08em;
+}
+.biblioteca-home .atemporal-masthead-bottom{position:relative;z-index:4}
+.biblioteca-home .spectrum-strip{position:relative;z-index:4}
+.biblioteca-home :is(.atemporal-statement,.atemporal-journeys,.atemporal-sources,.atemporal-manifesto,.atemporal-cta){
+ background-color:#0a0a0a;
+}
+.biblioteca-home :is(.atemporal-statement,.atemporal-journeys,.atemporal-sources,.atemporal-manifesto,.atemporal-cta) :is(h2,h3){
+ color:#fff;
+}
+.biblioteca-home :is(.atemporal-statement,.atemporal-section-heading,.atemporal-manifesto) h2{
+ font-family:'Bebas Neue',Impact,'Arial Narrow',sans-serif;
+ font-weight:400;line-height:1.07;letter-spacing:.006em;
+}
+.biblioteca-home :is(.atemporal-statement,.atemporal-section-heading,.atemporal-manifesto) h2 span{color:#c5a8ec}
+.biblioteca-home .atemporal-track{
+ background:#101011;border:1px solid #343037;border-top:3px solid #634995;box-shadow:none;
+}
+.biblioteca-home .atemporal-track:hover{border-color:#8263af;transform:translateY(-3px)}
+.biblioteca-home .atemporal-track h3{color:#fff;font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:clamp(27px,2.6vw,38px);letter-spacing:.015em;line-height:1.1}
+.biblioteca-home .atemporal-track :is(p,.atemporal-track-kicker){color:#c8c3cc}
+.biblioteca-home .atemporal-track-foot a{color:#efe0ff;font-family:'Roboto Mono',monospace}
+.biblioteca-home .atemporal-feature{background:#090909}
+.biblioteca-home .atemporal-feature-image img{filter:grayscale(.32);object-fit:cover}
+.biblioteca-home .atemporal-feature-content{background:#141116}
+.biblioteca-home .atemporal-feature-content h2{font-family:'Bebas Neue',Impact,sans-serif;letter-spacing:.015em;font-weight:400}
+.biblioteca-home .atemporal-source-card{background:#121213;border:1px solid #302b34}
+.biblioteca-home .atemporal-source-card .source-card-figure img{filter:saturate(.76)}
+.biblioteca-home .atemporal-source-card h3{color:#fff}
+.biblioteca-home .atemporal-values>div{background:rgba(12,12,12,.58);border-top:2px solid #634995}
+.biblioteca-home .atemporal-cta .primary,.biblioteca-home .atemporal-feature .primary{background:#634995;color:#fff}
+.biblioteca-home .atemporal-cta .primary:hover,.biblioteca-home .atemporal-feature .primary:hover{background:#7e5ab6}
+/* Elementos recorrentes nas paginas internas. Nao interferem nas regras de acesso. */
+.learning-page .topbar,.dashboard-atm .topbar,.admin-atm-page .topbar,.login-atm .topbar{
+ background:#141414;color:white;border-bottom:1px solid #363238;
+}
+.learning-page .topbar nav a,.dashboard-atm .topbar nav a,.admin-atm-page .topbar nav a{
+ font-family:Montserrat,Arial,sans-serif;font-size:12px;font-weight:700;
+}
+.learning-page .learning-hero{
+ background-color:#0b0b0b;background-image:linear-gradient(110deg,rgba(0,0,0,.96),rgba(17,12,23,.86)),var(--school-bgl);
+}
+.learning-page .learning-hero h1,.dashboard-atm .dashboard-atm-hero h1,.admin-atm-page .admin-atm-hero h1{
+ font-family:'Bebas Neue',Impact,'Arial Narrow',sans-serif;font-weight:400;
+ letter-spacing:.007em;line-height:1.03;text-transform:uppercase;
+}
+.learning-page .learning-hero h1 em,.dashboard-atm .dashboard-atm-hero h1 em,.admin-atm-page .admin-atm-hero h1 em{font-style:normal;color:#c7b0e9}
+.learning-page :is(.learning-hero-links .primary,.learning-end .primary),.dashboard-atm .personal-learning-cta{
+ background:#634995;color:white;
+}
+.learning-page .learning-hero-links .primary:hover,.dashboard-atm .personal-learning-cta:hover{background:#7855aa}
+.learning-page .learning-practice{border-left-color:#634995}
+.admin-atm-page .admin-atm-hero{background:#101011;border-bottom-color:#634995}
+.admin-atm-page .admin-atm-hero .admin-atm-eyebrow{color:#d6bcef}
+.login-atm :is(button[type=submit],.login-atm-primary){border-radius:2px}
+@media(max-width:940px){
+ .biblioteca-home .topbar{align-items:flex-start;flex-wrap:wrap}
+ .biblioteca-home .topbar nav{gap:11px 18px}
+ .biblioteca-home .atemporal-masthead-content{max-width:660px}
+ .biblioteca-home .atemporal-masthead:before{background:linear-gradient(90deg,rgba(0,0,0,.94),rgba(0,0,0,.55))}
+}
+@media(max-width:640px){
+ .biblioteca-home .topbar{padding:16px 20px}
+ .biblioteca-home .topbar nav{gap:9px 14px}
+ .biblioteca-home .topbar nav a{font-size:10px}
+ .biblioteca-home .atemporal-masthead,.biblioteca-home .atemporal-masthead-main{min-height:670px}
+ .biblioteca-home .atemporal-masthead-content{padding:100px 22px 100px;min-height:670px}
+ .biblioteca-home.referencia-trilha01 .atemporal-masthead h1{font-size:clamp(55px,14vw,79px);line-height:.94}
+ .biblioteca-home .school-real-hero img{object-position:61% center;filter:grayscale(1) brightness(.54)}
+ .biblioteca-home .atemporal-masthead:before{background:linear-gradient(90deg,rgba(0,0,0,.86),rgba(0,0,0,.57))}
+ .biblioteca-home .school-real-hero figcaption{font-size:9px;bottom:15px;right:15px}
+ .biblioteca-home .atemporal-hero-actions{align-items:stretch;flex-direction:column}
+ .biblioteca-home .atemporal-hero-actions a{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+ .biblioteca-home .atemporal-track{transition:none}
+}
