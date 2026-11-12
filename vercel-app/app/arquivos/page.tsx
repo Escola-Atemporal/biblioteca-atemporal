@@ -1,3 +1,4 @@
+import { permittedEmail } from "../../lib/individual-access";
 import { can } from "../../lib/permissions";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -21,7 +22,7 @@ export default async function ArquivosPage() {
   const session = await auth();
   const role = await roleForEmailAsync(session?.user?.email);
   if (!session?.user?.email || !role) redirect("/entrar");
-  const canReviewDrafts = can(role, "drafts:read");
+  const canReviewDrafts = await permittedEmail(session.user.email, "drafts:read");
   const index = canReviewDrafts ? getDriveCatalog() : null;
 
   return (
