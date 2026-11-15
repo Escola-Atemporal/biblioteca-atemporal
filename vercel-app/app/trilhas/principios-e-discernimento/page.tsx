@@ -135,7 +135,7 @@ export default async function Trilha01Page(){
       <a className="skip-to-content" href="#investigacao">Ir para o conteúdo da trilha</a>
       <header className="topbar">
         <BrandLogo />
-        <nav aria-label="Navegação principal da trilha"><Link href="/">Todas as trilhas</Link><Link href="/entrar" className="nav-login">Área de acesso ↗</Link></nav>
+        <nav aria-label="Navegação principal da trilha"><Link href="/">Todas as trilhas</Link><Link href="/painel" className="nav-login">Meu painel ↗</Link></nav>
       </header>
 
       <section className="learning-hero">
