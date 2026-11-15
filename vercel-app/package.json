@@ -8,8 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "check:imagens": "node scripts/validate-imagery.mjs",
-    "prebuild": "npm run check:imagens && npm run check:acessos",
-    "check:acessos": "node scripts/check-access-guards.mjs"
+    "prebuild": "npm run check:imagens && npm run check:acessos && npm run test:acessos",
+    "check:acessos": "node scripts/check-access-guards.mjs",
+    "test:acessos": "node scripts/test-access-policy.mjs"
   },
   "dependencies": {
     "next": "^15.5.0",
