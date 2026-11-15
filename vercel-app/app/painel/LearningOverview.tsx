@@ -54,9 +54,9 @@ export default function LearningOverview({
       <p>{current ? `Sua última etapa registrada: ${section?.[1]??"Investigação"}.` :
       "Você pode começar pela primeira trilha ou escolher qualquer tema abaixo."}</p>
       <Link href={`/trilhas/${next.slug}#${nextSection}`} className="personal-learning-cta">{current?"Retomar meus estudos":"Começar a investigar"} <span aria-hidden="true">↗</span></Link>
-     </> : <><h3>{progressUnavailable?"Suas trilhas continuam disponíveis.":"Um percurso para celebrar."}</h3>
-       <p>{progressUnavailable?"Não foi possível carregar seu progresso neste momento. Escolha uma trilha abaixo para continuar.":"Você concluiu todas as trilhas registradas. Releia suas reflexões ou escolha uma jornada para revisitar."}</p>
-       <Link href="#minhas-trilhas" className="personal-learning-cta">Explorar minhas trilhas ↗</Link>
+     </> : <><h3>{!allowedTrails.length?"Acesso às trilhas aguardando liberação.":progressUnavailable?"Suas trilhas continuam disponíveis.":"Um percurso para celebrar."}</h3>
+       <p>{!allowedTrails.length?"Nenhuma trilha está liberada para sua conta neste momento. A equipe da Escola pode revisar seus acessos individuais. Suas reflexões anteriores permanecem em seu caderno.":progressUnavailable?"Não foi possível carregar seu progresso neste momento. Escolha uma trilha abaixo para continuar.":"Você concluiu todas as trilhas registradas. Releia suas reflexões ou escolha uma jornada para revisitar."}</p>
+       <Link href={!allowedTrails.length?"/painel/caderno":"#minhas-trilhas"} className="personal-learning-cta">{!allowedTrails.length?"Revisitar meu caderno":"Explorar minhas trilhas"} ↗</Link>
      </>}
     </div>
    </div>
