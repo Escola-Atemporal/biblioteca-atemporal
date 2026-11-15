@@ -2,6 +2,7 @@ import "server-only";
 import { databaseConfigured, dbQuery } from "./database";
 import { roleForEmailAsync } from "./access";
 import { can } from "./permissions";
+import { resolveIndividualDecision } from "./individual-access-policy";
 import { LEARNING_TRAILS, resolveTrail } from "./learning-progress";
 
 export type AccessResource = "drafts:read" | `trail:${(typeof LEARNING_TRAILS)[number]["slug"]}`;
@@ -19,14 +20,14 @@ export async function permittedEmail(email:string|null|undefined, resource:Acces
  if(!role)return false;
  const defaultAllowed=resource==="drafts:read" ? can(role,"drafts:read") : can(role,"tracks:read");
  // Administrative authority remains controlled by the account role, never by overrides.
- if(role==="administrador")return defaultAllowed;
- if(!databaseConfigured)return defaultAllowed;
+ if(role==="administrador")return resolveIndividualDecision(role,defaultAllowed,null);
+ if(!databaseConfigured)return resolveIndividualDecision(role,defaultAllowed,null);
  try{
   const [override]=await dbQuery<{allowed:boolean}>(
    "SELECT allowed FROM biblioteca_access_overrides WHERE email=$1 AND resource=$2 LIMIT 1",
    [normalized,resource]
   );
-  return override ? override.allowed : defaultAllowed;
+  return resolveIndividualDecision(role,defaultAllowed,override ? override.allowed : null);
  }catch{
   // A failed lookup must never accidentally grant editorial access.
   return false;
