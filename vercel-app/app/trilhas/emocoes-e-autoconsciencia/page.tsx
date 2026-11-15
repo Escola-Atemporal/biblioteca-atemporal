@@ -53,7 +53,7 @@ export default async function Trilha02Page(){
         <BrandLogo />
         <nav aria-label="Navegação principal da trilha">
           <Link href="/">Todas as trilhas</Link>
-          <Link href="/entrar" className="nav-login">Área de acesso ↗</Link>
+          <Link href="/painel" className="nav-login">Meu painel ↗</Link>
         </nav>
       </header>
 
