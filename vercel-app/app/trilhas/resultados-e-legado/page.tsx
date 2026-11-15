@@ -34,7 +34,7 @@ export default async function ResultadosLegado(){
   if(!await permittedTrail(session?.user?.email,"resultados-e-legado")) redirect("/painel?acesso=restrito");
  return <main className="learning-page legacy-page referencia-trilha01" id="topo">
    <a href="#investigacao" className="skip-to-content">Ir para o conteúdo</a>
-   <header className="topbar"><BrandLogo/><nav aria-label="Navegação principal"><Link href="/">Todas as trilhas</Link><Link href="/entrar" className="nav-login">Área de acesso ↗</Link></nav></header>
+   <header className="topbar"><BrandLogo/><nav aria-label="Navegação principal"><Link href="/">Todas as trilhas</Link><Link href="/painel" className="nav-login">Meu painel ↗</Link></nav></header>
    <section className="learning-hero legacy-hero" aria-labelledby="legacy-title"><div className="learning-wrap">
      <div className="learning-hero-copy">
        <div className="learning-crumb"><Link href="/">Biblioteca</Link><span>/</span>Trilha 06</div>
