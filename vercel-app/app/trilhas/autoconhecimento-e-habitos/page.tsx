@@ -41,7 +41,7 @@ export default async function Trilha03Page(){
   if(!await permittedTrail(session?.user?.email,"autoconhecimento-e-habitos")) redirect("/painel?acesso=restrito");
  return <main className="learning-page habit-page referencia-trilha01" id="topo">
   <a className="skip-to-content" href="#investigacao">Ir para a investigação</a>
-  <header className="topbar"><BrandLogo/><nav aria-label="Navegação principal"><Link href="/">Todas as trilhas</Link><Link href="/entrar" className="nav-login">Área de acesso ↗</Link></nav></header>
+  <header className="topbar"><BrandLogo/><nav aria-label="Navegação principal"><Link href="/">Todas as trilhas</Link><Link href="/painel" className="nav-login">Meu painel ↗</Link></nav></header>
   <section className="learning-hero habit-hero" aria-labelledby="titulo-trilha-03">
    <div className="learning-wrap">
     <div className="learning-hero-copy">
