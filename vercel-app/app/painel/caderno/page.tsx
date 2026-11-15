@@ -7,6 +7,7 @@ import {roleForEmailAsync} from "../../../lib/access";
 import {can} from "../../../lib/permissions";
 import {databaseConfigured,dbQuery} from "../../../lib/database";
 import {LEARNING_TRAILS,resolveTrail} from "../../../lib/learning-progress";
+import {permittedTrail} from "../../../lib/individual-access";
 import {saveReflection} from "./actions";
 import DeleteReflection from "./DeleteReflection";
 import "./caderno.css";
@@ -21,7 +22,10 @@ export default async function ReflectionNotebook({searchParams}:{searchParams:Pr
  if(!session?.user?.email)redirect("/entrar");
  if(!can(await roleForEmailAsync(session.user.email),"tracks:read"))redirect("/painel");
  const params=await searchParams;
- const selectedTrail=resolveTrail(params.trilha??"");
+ const accessFlags=await Promise.all(LEARNING_TRAILS.map(t=>permittedTrail(session.user.email,t.slug)));
+ const allowedTrails=LEARNING_TRAILS.filter((_,i)=>accessFlags[i]);
+ const requestedTrail=resolveTrail(params.trilha??"");
+ const selectedTrail=allowedTrails.find(t=>t.slug===requestedTrail?.slug);
  const selectedQuestion=selectedTrail && typeof params.pergunta==="string" && params.pergunta.length<=500 ? params.pergunta.trim() : "";
  let notes:Note[]=[];
  let error=!databaseConfigured;
@@ -43,16 +47,16 @@ export default async function ReflectionNotebook({searchParams}:{searchParams:Pr
     {params.registro==="salvo"&&<p role="status" className="learning-save-confirmation">Reflexão guardada com sucesso no seu caderno pessoal.</p>}
     {params.registro==="excluido"&&<p role="status" className="learning-save-confirmation">Reflexão excluída do seu caderno.</p>}
     {error?<p role="alert" className="admin-atm-feedback admin-atm-failure">O caderno está temporariamente indisponível. Nenhuma anotação foi alterada.</p>:<>
-     <section aria-labelledby="reflection-new-title" className="reflection-editor">
+     {allowedTrails.length ? <section aria-labelledby="reflection-new-title" className="reflection-editor">
        <div><span className="admin-atm-eyebrow">NOVA REFLEXÃO</span><h2 id="reflection-new-title">O que merece permanecer?</h2><p>Escreva livremente ou retome uma pergunta encontrada nas trilhas.</p>
        {selectedQuestion&&<blockquote className="reflection-prompt"><span>PERGUNTA PARA REFLETIR</span><p>{selectedQuestion}</p></blockquote>}</div>
        <form action={saveReflection} className="reflection-form">
-        <label>Trilha relacionada<select name="trail" defaultValue={selectedTrail?.slug??LEARNING_TRAILS[0].slug} required>{LEARNING_TRAILS.map(t=><option key={t.slug} value={t.slug}>{t.number} — {t.title}</option>)}</select></label>
+        <label>Trilha relacionada<select name="trail" defaultValue={selectedTrail?.slug??allowedTrails[0].slug} required>{allowedTrails.map(t=><option key={t.slug} value={t.slug}>{t.number} — {t.title}</option>)}</select></label>
         <label>Título da reflexão<input name="title" type="text" maxLength={120} defaultValue={selectedQuestion.slice(0,120)} required placeholder="Uma pergunta, uma ideia, uma descoberta..."/></label>
         <label>Meu registro<textarea name="content" minLength={1} maxLength={8000} rows={7} required placeholder="O que você percebeu? O que deseja experimentar a partir disso?"/></label>
         <button type="submit">Guardar reflexão</button>
        </form>
-     </section>
+     </section> : <p className="admin-atm-feedback" role="status">Nenhuma trilha está liberada para novas reflexões nesta conta. Suas anotações anteriores continuam disponíveis para consulta.</p>}
      <section aria-labelledby="reflection-list-title" className="reflection-list-section">
        <div className="admin-atm-section-head"><div><span className="admin-atm-eyebrow">MEUS REGISTROS</span><h2 id="reflection-list-title">Reflexões para revisitar.</h2></div>
         <p>{notes.length} {notes.length===1?"reflexão registrada":"reflexões registradas"} · exibindo até 200 registros recentes</p></div>
@@ -60,15 +64,15 @@ export default async function ReflectionNotebook({searchParams}:{searchParams:Pr
         {notes.map(note=><article className="reflection-entry" id={`reflexao-${note.id}`} key={note.id}>
           <div className="reflection-entry-meta"><span>{resolveTrail(note.trail_slug)?.title??"Trilha"}</span><time dateTime={note.updated_at}>Atualizado em {date(note.updated_at)}</time></div>
           <h3>{note.title}</h3><p className="reflection-entry-content">{note.content}</p>
-          <details className="reflection-edit"><summary>Editar minha reflexão</summary>
+          {allowedTrails.some(t=>t.slug===note.trail_slug)&&<details className="reflection-edit"><summary>Editar minha reflexão</summary>
             <form action={saveReflection} className="reflection-form">
              <input type="hidden" name="id" value={note.id}/>
-             <label>Trilha<select name="trail" defaultValue={note.trail_slug}>{LEARNING_TRAILS.map(t=><option key={t.slug} value={t.slug}>{t.number} — {t.title}</option>)}</select></label>
+             <label>Trilha<select name="trail" defaultValue={note.trail_slug}>{allowedTrails.map(t=><option key={t.slug} value={t.slug}>{t.number} — {t.title}</option>)}</select></label>
              <label>Título<input name="title" defaultValue={note.title} maxLength={120} required/></label>
              <label>Reflexão<textarea name="content" defaultValue={note.content} maxLength={8000} rows={6} required/></label>
              <button type="submit">Salvar alterações</button>
             </form>
-          </details>
+          </details>}
           <DeleteReflection id={note.id}/>
         </article>)}
        </div>}
