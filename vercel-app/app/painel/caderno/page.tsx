@@ -22,7 +22,8 @@ export default async function ReflectionNotebook({searchParams}:{searchParams:Pr
  if(!session?.user?.email)redirect("/entrar");
  if(!can(await roleForEmailAsync(session.user.email),"tracks:read"))redirect("/painel");
  const params=await searchParams;
- const accessFlags=await Promise.all(LEARNING_TRAILS.map(t=>permittedTrail(session.user.email,t.slug)));
+ const ownerEmail=session.user.email;
+ const accessFlags=await Promise.all(LEARNING_TRAILS.map(t=>permittedTrail(ownerEmail,t.slug)));
  const allowedTrails=LEARNING_TRAILS.filter((_,i)=>accessFlags[i]);
  const requestedTrail=resolveTrail(params.trilha??"");
  const selectedTrail=allowedTrails.find(t=>t.slug===requestedTrail?.slug);
