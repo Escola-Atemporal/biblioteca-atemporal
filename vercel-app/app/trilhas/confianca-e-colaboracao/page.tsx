@@ -44,7 +44,7 @@ export default async function Trilha04Page(){
     <h1 id="titulo-trilha-04">Confiança <em>e Colaboração.</em></h1>
     <p className="learning-lead">O que nos permite construir com outras pessoas?</p>
     <p className="learning-intro">A sabedoria é coletiva quando diferentes pessoas podem participar de verdade. Uma jornada para praticar a escuta, reconhecer a diversidade de perspectivas e transformar encontros em compromissos compartilhados.</p>
-    <div className="learning-hero-links"><a className="primary" href="#investigacao">Começar a investigação <span aria-hidden="true">↗</span></a><a className="outline" href="#livros-referencias">Explorar livros e PDFs ↓</a></div>
+    <div className="learning-hero-links"><a className="primary" href="#investigacao">Começar a investigação <span aria-hidden="true">↗</span></a><a className="outline" href="#livros">Explorar livros e PDFs ↓</a></div>
    </div>
    <div className="learning-hero-picture colab-hero-picture">
     <img src="https://escolaatemporal.com.br/wp-content/uploads/2026/08/DSC9619-1024x681.jpg" width="1024" height="681" alt="Fotografia institucional publicada pela Escola Atemporal na página Emoções em Jogo" loading="eager" fetchPriority="high" decoding="async"/>
