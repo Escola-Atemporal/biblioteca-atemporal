@@ -6,6 +6,7 @@ import { roleForEmailAsync } from "../../../lib/access";
 import { can } from "../../../lib/permissions";
 import { databaseConfigured, dbQuery } from "../../../lib/database";
 import { resolveTrail } from "../../../lib/learning-progress";
+import { permittedTrail } from "../../../lib/individual-access";
 
 async function requireOwner(){
   const session=await auth();
@@ -23,6 +24,7 @@ export async function saveReflection(form:FormData):Promise<void>{
  const content=String(form.get("content")??"").trim();
  if(!resolveTrail(trail)||title.length<1||title.length>120||content.length<1||content.length>8000|| (id!==""&&!UUID.test(id)))
    throw new Error("Verifique título e reflexão (até 8.000 caracteres).");
+ if(!await permittedTrail(email,trail))throw new Error("Esta trilha não está liberada para sua conta.");
  if(id){
    await dbQuery(`UPDATE biblioteca_reflection_notes
        SET title=$1,content=$2,trail_slug=$3,updated_at=now()
