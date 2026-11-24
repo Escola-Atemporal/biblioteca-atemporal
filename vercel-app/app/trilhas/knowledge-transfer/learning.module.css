@@ -126,3 +126,11 @@
 .brandPage .reading h3,.brandPage .activity h3,.brandPage .reflect h3,.brandPage .quiz h3{font-weight:650;line-height:1.35}
 @media(max-width:900px){.brandPage .readerLayout{grid-template-columns:minmax(0,1fr)}.brandPage .sidebar{max-height:340px}}
 @media(max-width:540px){.brandPage .sidebar{padding:16px 10px}.brandPage .reading p,.brandPage .activity p,.brandPage .reflect p{font-size:15px;line-height:1.75}.brandPage .lessonContent{padding:22px 18px}.brandPage .readerHead h2{font-size:25px}}
+
+/* Direct study links: visible in the text and in the complementary materials. */
+.brandPage .inlineReference{color:#624993;font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;overflow-wrap:anywhere}
+.brandPage .inlineReference:hover{color:#48336f;text-decoration-thickness:2px}
+.brandPage .inlineReference:focus-visible{outline:2px solid #624993;outline-offset:3px;border-radius:2px}
+.brandPage .resourceDomain{display:block;margin-top:5px;font-size:11px;line-height:1.5;color:#5e5665;overflow-wrap:anywhere}
+.brandPage .resourceAction{color:#624993;font-size:12px;font-weight:600;white-space:nowrap;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:540px){.brandPage .resourceList a{grid-template-columns:2rem minmax(0,1fr);gap:8px 12px}.brandPage .resourceAction{grid-column:2;justify-self:start}}
