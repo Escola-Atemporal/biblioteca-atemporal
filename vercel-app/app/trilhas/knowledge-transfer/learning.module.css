@@ -101,18 +101,18 @@
 .brandPage:global(.learning-page.referencia-trilha01){background:#f4f2f5;color:#161616}
 .brandPage:global(.learning-page.referencia-trilha01) .course:global(.learning-section.learning-wrap){background:#f4f2f5;color:#161616;width:100%;max-width:1440px;min-width:0;padding-inline:clamp(16px,3vw,44px)}
 .brandPage .readerLayout{grid-template-columns:minmax(240px,300px) minmax(0,1fr);gap:clamp(20px,2.5vw,34px);min-width:0}
-.brandPage .sidebar{background:#fff;color:#242126;border:1px solid #ded9e3;border-radius:6px;padding:20px 14px;scrollbar-color:#a89bb8 #f2eff5;scrollbar-width:thin;min-width:0}
+.brandPage .sidebar{background:#fff;color:#242126;border:1px solid #ded9e3;border-radius:6px;padding:20px 14px;scrollbar-color:#B8B0C2 #F5F3F7;scrollbar-width:thin;min-width:0}
 .brandPage .sidebar nav{padding:0}.brandPage .sidebar h2{color:#161616;font:650 22px/1.3 Montserrat,Arial,sans-serif;letter-spacing:-.025em;margin:8px 0 18px}
 .brandPage .sidebar .kicker{color:#624993;font-size:11px}
 .brandPage .navModule{border-color:#e4e0e8}
 .brandPage .navModule summary{color:#242126;background:#fff;font:600 14px/1.5 Montserrat,Arial,sans-serif;padding:14px 8px;grid-template-columns:28px minmax(0,1fr) 16px;gap:8px}
-.brandPage .navModule summary:hover,.brandPage .navModule[open] summary{background:#f2eef7;color:#38254f}
+.brandPage .navModule summary:hover{background:#F5F3F7;color:#161616}.brandPage .navModule[open] summary{background:#fff;color:#161616}
 .brandPage .moduleNumber{color:#624993;font-size:15px;font-weight:700}
 .brandPage .moduleName{color:inherit;overflow-wrap:anywhere}.brandPage .moduleName small{color:#5e5665;font-size:12px;font-weight:500;margin-top:4px}
 .brandPage .navLesson,.brandPage .activeLesson{color:#302a36;background:#fff;font:500 13px/1.6 Montserrat,Arial,sans-serif;min-width:0;overflow-wrap:anywhere}
 .brandPage .navLesson:hover{background:#f4f1f8;color:#38254f}
-.brandPage .activeLesson{background:#624993;color:#fff;border-left-color:#3d285d;font-weight:600}
-.brandPage .activeLesson:hover{background:#513c7b;color:#fff}
+.brandPage .activeLesson{background:#F0EBF6;color:#624993;border-left-color:#624993;font-weight:600}
+.brandPage .activeLesson:hover{background:#E8E0F1;color:#51377C}
 .brandPage .progressHeading label,.brandPage .progressFoot{color:#302a36}
 .brandPage .reader{min-width:0;max-width:100%;background:#fff;color:#161616}
 .brandPage .readerHead h2{font:650 clamp(25px,2.7vw,39px)/1.2 Montserrat,Arial,sans-serif;letter-spacing:-.025em;max-width:26ch;text-wrap:balance;margin:8px 0 16px}
