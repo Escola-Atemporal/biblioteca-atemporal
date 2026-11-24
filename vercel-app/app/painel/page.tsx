@@ -89,6 +89,7 @@ export default async function Painel({searchParams}:{searchParams:Promise<{progr
           <p>Escolha um tema. Cada percurso reúne textos, referências e perguntas para experimentar na vida real.</p>
         </div>
         <ProgressCards progress={progress} unavailable={progressUnavailable} allowedTrails={allowedTrails}/>
+        {role === "administrador" && <section className="dashboard-atm-editorial" aria-labelledby="dashboard-institutional"><div><span className="dashboard-atm-eyebrow">FORMAÇÃO INSTITUCIONAL · TRILHA 07</span><h2 id="dashboard-institutional">Knowledge <em>Transfer.</em></h2><p>Da essência à prática. Formação reservada para continuidade do conhecimento institucional.</p></div><Link href="/trilhas/knowledge-transfer" className="dashboard-atm-editorial-link">Acessar formação ↗</Link></section>}
         <section className="dashboard-atm-editorial" aria-labelledby="dashboard-caderno">
           <div><span className="dashboard-atm-eyebrow">SEU ESPAÇO DE REFLEXÃO</span>
             <h2 id="dashboard-caderno">Um caderno para <em>revisitar suas ideias.</em></h2>
