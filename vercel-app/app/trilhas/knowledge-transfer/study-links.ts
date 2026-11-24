@@ -13,6 +13,15 @@ const allowedHosts = new Set([
   "plato.stanford.edu", "dash.harvard.edu",
   "support.google.com", "developers.google.com", "skillshop.withgoogle.com",
   "learn.wordpress.org", "elementor.com", "www.ramper.com.br",
+  "help.asana.com", "www.w3.org", "mailchimp.com",
+  "www.planalto.gov.br", "www.gov.br",
+  "www.nist.gov", "nvlpubs.nist.gov", "www.nasa.gov",
+  "openai.com", "developers.openai.com", "helpx.adobe.com",
+  "kanbanguides.org", "www.designcouncil.org.uk",
+  "www.who.int", "www.cdc.gov", "wenger-trayner.dreamhosters.com",
+  "whatsappbusiness.com", "www.dublincore.org", "creativecommons.org",
+  "cheatsheetseries.owasp.org", "guidance.publishing.service.gov.uk",
+  "owl.purdue.edu",
   "github.com", "docs.github.com", "render.com", "neon.com", "nextjs.org",
   "circulo-atemporal-api.onrender.com",
 ]);
@@ -30,6 +39,28 @@ const sourceNames: Record<string, string> = {
   "learn.wordpress.org": "Learn WordPress",
   "elementor.com": "Elementor",
   "www.ramper.com.br": "Ramper",
+  "help.asana.com": "Central de Ajuda da Asana",
+  "www.w3.org": "W3C — Acessibilidade na Web",
+  "mailchimp.com": "Mailchimp",
+  "www.planalto.gov.br": "Planalto — Legislação brasileira",
+  "www.gov.br": "Governo Federal do Brasil",
+  "www.nist.gov": "National Institute of Standards and Technology (NIST)",
+  "nvlpubs.nist.gov": "Publicações do NIST",
+  "www.nasa.gov": "NASA",
+  "openai.com": "OpenAI",
+  "developers.openai.com": "Documentação da OpenAI",
+  "helpx.adobe.com": "Central de Ajuda da Adobe",
+  "kanbanguides.org": "Kanban Guides",
+  "www.designcouncil.org.uk": "Design Council",
+  "www.who.int": "Organização Mundial da Saúde (OMS)",
+  "www.cdc.gov": "Centers for Disease Control and Prevention (CDC)",
+  "wenger-trayner.dreamhosters.com": "Wenger-Trayner — Comunidades de prática",
+  "whatsappbusiness.com": "WhatsApp Business",
+  "www.dublincore.org": "Dublin Core Metadata Initiative",
+  "creativecommons.org": "Creative Commons",
+  "cheatsheetseries.owasp.org": "OWASP Foundation",
+  "guidance.publishing.service.gov.uk": "GOV.UK — Government Digital Service",
+  "owl.purdue.edu": "Purdue OWL",
   "github.com": "GitHub",
   "docs.github.com": "Documentação do GitHub",
   "render.com": "Render",
@@ -45,6 +76,8 @@ const publicPageNames: Record<string, string> = {
   "https://escolaatemporal.com.br/hub-de-desenvolvimento-humano/nossa-metodologia/": "Nossa metodologia — Escola Atemporal",
   "https://plato.stanford.edu/entries/ethics-virtue/": "Ética das virtudes — Stanford",
   "https://dash.harvard.edu/entities/publication/13a7b031-0fdd-45ec-a7e0-2b80e2bc679f": "Segurança psicológica e aprendizagem em equipes — Amy Edmondson",
+  "https://www.gov.br/anpd/pt-br/centrais-de-conteudo/materiais-educativos-e-publicacoes/guia_legitimo_interesse.pdf/@@display-file/file": "Guia sobre legítimo interesse — ANPD",
+  "https://www.gov.br/anpd/pt-br/canais_atendimento/agente-de-tratamento/comunicado-de-incidente-de-seguranca-cis": "Comunicação de incidente de segurança — ANPD",
 };
 
 function trimUrlPunctuation(value: string): string {
@@ -67,7 +100,11 @@ function trimUrlPunctuation(value: string): string {
 
 export function studyResource(raw: string): StudyResource | null {
   try {
-    const url = new URL(trimUrlPunctuation(raw.trim()));
+    const clean = trimUrlPunctuation(raw.trim());
+    // Inspect the original authority: URL.port omits an explicit default :443.
+    const authority = /^https:\/\/([^/\\?#]+)(?:[/?#]|$)/i.exec(clean)?.[1];
+    if (!authority || /[:@]/.test(authority)) return null;
+    const url = new URL(clean);
     if (url.protocol !== "https:" || url.username || url.password || url.port ||
         !allowedHosts.has(url.hostname)) return null;
     const institutional = ["drive.google.com", "docs.google.com",
@@ -77,7 +114,7 @@ export function studyResource(raw: string): StudyResource | null {
       url: url.href,
       host: url.hostname,
       title: publicPageNames[url.href] ?? sourceNames[url.hostname],
-      kind: url.pathname.toLowerCase().endsWith(".pdf") ? "PDF" :
+      kind: /\.pdf(?:\/@@(?:display|download)-file\/file)?$/i.test(url.pathname) ? "PDF" :
         institutional ? "Fonte institucional" : "Leitura complementar",
     };
   } catch {
