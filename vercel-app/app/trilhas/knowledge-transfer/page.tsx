@@ -17,7 +17,7 @@ type Progress = {module_no:number;lesson_no:number;reflection:string;completed:b
 type Quiz = {module_no:number;question:string;options:string[]};
 type Attempt = {module_no:number;passed:boolean;attempts:number};
 
-export default async function KnowledgeTransfer() {
+export default async function KnowledgeTransfer({searchParams}:{searchParams:Promise<{aula?:string|string[]}>}) {
   const session = await auth();
   const email = session?.user?.email?.trim().toLowerCase();
   if (!email || await roleForEmailAsync(email) !== "administrador") redirect("/painel?acesso=restrito");
@@ -42,6 +42,12 @@ export default async function KnowledgeTransfer() {
   const ready=(n:number)=>{const group=lessons.filter(l=>l.module_no===n);return group.length>0&&group.every(completed);};
   const passed=modules.filter(n=>ready(n)&&attempts.some(a=>a.module_no===n&&a.passed)).length;
   const next=lessons.find(l=>!completed(l));
+  const requested=(await searchParams).aula;
+  const selected=lessons.find(l=>typeof requested==="string"&&requested===`${l.module_no}-${l.lesson_no}`)??next??lessons[0];
+  const selectedIndex=lessons.findIndex(l=>l===selected);
+  const href=(l:Lesson)=>`/trilhas/knowledge-transfer?aula=${l.module_no}-${l.lesson_no}#leitura`;
+  const previous=lessons[selectedIndex-1];
+  const following=lessons[selectedIndex+1];
   return <main className="learning-page referencia-trilha01">
     <header className="topbar"><BrandLogo/><nav aria-label="Navegação"><Link href="/painel">Meu painel ↗</Link></nav></header>
     <section className="learning-hero"><div className="learning-wrap">
@@ -50,29 +56,23 @@ export default async function KnowledgeTransfer() {
     </div></section>
     <div aria-hidden="true" style={{height:5,background:"linear-gradient(90deg,#C60344,#E35918,#FFD201,#82B41B,#0BB4D7,#624993)"}}/>
     <section className={"learning-section learning-wrap "+styles.course} aria-label="Módulos">
-      {!unavailable&&lessons.length>0&&<div className={styles.progress}><label htmlFor="institutional-progress">Seu progresso</label><progress id="institutional-progress" value={done} max={lessons.length} className={styles.progressBar}/>{next&&<a href={"#aula-"+next.module_no+"-"+next.lesson_no}>Retomar próxima aula ↗</a>}{lessons.length>0&&done===lessons.length&&passed===modules.length&&<p role="status">Percurso concluído. Certificação sujeita à validação institucional.</p>}</div>}
-      {unavailable?<p role="status">Conteúdo temporariamente indisponível. Consulte a administração.</p>:!lessons.length?<p role="status">Conteúdo em preparação.</p>:<><nav aria-label="Índice dos módulos" className={styles.index}>{modules.map(n=><a key={n} href={"#modulo-"+n} className={styles.indexItem}><strong>{String(n).padStart(2,"0")} · {lessons.find(l=>l.module_no===n)?.module_title}</strong><br/>{lessons.filter(l=>l.module_no===n&&completed(l)).length}/{lessons.filter(l=>l.module_no===n).length} aulas</a>)}</nav>{modules.map(n=>{
-        const quiz=quizzes.find(q=>q.module_no===n);
-        const attempt=attempts.find(a=>a.module_no===n);
-        return <section key={n} id={"modulo-"+n} className={styles.module}>
-          <span className={styles.kicker}>MÓDULO {String(n).padStart(2,"0")}</span><h2>{lessons.find(l=>l.module_no===n)?.module_title}</h2>
-          {lessons.filter(l=>l.module_no===n).map(l=>{
-            const saved=progress.find(p=>p.module_no===n&&p.lesson_no===l.lesson_no);
-            return <details key={l.lesson_no} id={"aula-"+n+"-"+l.lesson_no} open={next?.module_no===n&&next?.lesson_no===l.lesson_no} className={styles.lesson}>
-              <summary className={styles.lessonHeader}><span className={styles.lessonNumber}>{String(l.lesson_no).padStart(2,"0")}</span><span><small>AULA {String(n).padStart(2,"0")}.{String(l.lesson_no).padStart(2,"0")}</small><strong>{l.title}</strong></span><span className={styles.status}>{saved?.completed?"Concluída":"Estudar"}</span></summary>
-              <div className={styles.lessonContent}><article className={styles.reading}><span className={styles.kicker}>01 · MATERIAL DE ESTUDO</span>{l.body.split(/\n\s*\n/).map((paragraph,i)=><p key={i}>{paragraph}</p>)}</article><aside className={styles.resources}><h3>Material de referência</h3>{l.source_url&&/^https:\/\//.test(l.source_url)?<a href={l.source_url} target="_blank" rel="noopener noreferrer">Abrir fonte original ↗</a>:<p>Consulte as referências indicadas no texto.</p>}</aside><section className={styles.activity}><span className={styles.kicker}>02 · APLICAÇÃO</span><h3>Prática orientada</h3><p>{l.practice}</p></section><section className={styles.reflect}><span className={styles.kicker}>03 · REFLEXÃO</span><h3>Conecte à sua realidade</h3><p>{l.reflection}</p></section></div>
-              <form action={saveLesson} className={styles.form}>
-                <input type="hidden" name="module" value={n}/><input type="hidden" name="lesson" value={l.lesson_no}/>
-                <label htmlFor={"reflection-"+n+"-"+l.lesson_no}>Sua reflexão individual</label>
-                <textarea id={"reflection-"+n+"-"+l.lesson_no} name="reflection" maxLength={5000} rows={4} defaultValue={saved?.reflection??""}/>
-                <label><input type="checkbox" name="completed" defaultChecked={saved?.completed??false}/> Marcar aula como concluída</label>
-                <button className="primary" type="submit">Salvar aprendizagem</button>
-              </form>
-            </details>;
-          })}
-          {quiz&&<section className={styles.quiz}><h3>Avaliação do módulo</h3>{!ready(n)?<p>Conclua todas as aulas deste módulo para responder.</p>:attempt?.passed?<p role="status">Avaliação aprovada.</p>:<form action={submitQuiz}><input type="hidden" name="module" value={n}/><fieldset><legend>{quiz.question}</legend>{quiz.options.map((option,i)=><label key={i} style={{display:"block",padding:"0.5rem"}}><input type="radio" name="answer" value={i+1} required/> {option}</label>)}</fieldset>{attempt&&<p role="status">Resposta incorreta. Revise o módulo e tente novamente.</p>}<button className="primary" type="submit">Responder</button></form>}</section>}
-        </section>;
-      })}</>}
+      {!unavailable&&lessons.length>0&&<div className={styles.progress}><label htmlFor="institutional-progress">Seu progresso</label><progress id="institutional-progress" value={done} max={lessons.length} className={styles.progressBar}/>{next&&<a href={href(next)}>Retomar próxima aula ↗</a>}{lessons.length>0&&done===lessons.length&&passed===modules.length&&<p role="status">Percurso concluído. Certificação sujeita à validação institucional.</p>}</div>}
+      {unavailable?<p role="status">Conteúdo temporariamente indisponível. Consulte a administração.</p>:!lessons.length?<p role="status">Conteúdo em preparação.</p>:<div className={styles.readerLayout}>
+        <aside className={styles.sidebar}><nav aria-label="Navegação das aulas"><h2>Seu percurso</h2>{modules.map(n=>{
+          const group=lessons.filter(l=>l.module_no===n);
+          return <details key={n} className={styles.navModule} open={selected?.module_no===n}><summary><span>{String(n).padStart(2,"0")} · {group[0].module_title}</span><small>{group.filter(completed).length}/{group.length}</small></summary><ul>{group.map(l=><li key={l.lesson_no}><Link href={href(l)} aria-current={selected===l?"page":undefined} className={selected===l?styles.activeLesson:styles.navLesson}><span aria-hidden="true">{completed(l)?"✓":"○"}</span><span>{String(l.lesson_no).padStart(2,"0")} · {l.title}</span></Link></li>)}</ul></details>;
+        })}</nav></aside>
+        {selected&&(()=>{const l=selected,n=l.module_no;const saved=progress.find(p=>p.module_no===n&&p.lesson_no===l.lesson_no);const quiz=quizzes.find(q=>q.module_no===n);const attempt=attempts.find(a=>a.module_no===n);
+        return <div id="leitura" className={styles.reader}><header className={styles.readerHead}><span className={styles.kicker}>MÓDULO {String(n).padStart(2,"0")} · AULA {String(l.lesson_no).padStart(2,"0")}</span><p>{l.module_title}</p><h2>{l.title}</h2><span>{saved?.completed?"Concluída":"Material de estudo"} · Aula {selectedIndex+1} de {lessons.length}</span></header>
+          <nav aria-label="Seções da aula" className={styles.sectionNav}><a href="#estudo">Estudo</a><a href="#referencias">Referências</a><a href="#pratica">Prática</a><a href="#reflexao">Reflexão</a><a href="#avaliacao">Avaliação</a></nav>
+          <div className={styles.lessonContent}><article id="estudo" className={styles.reading}><span className={styles.kicker}>01 · MATERIAL DE ESTUDO</span>{l.body.split(/\n\s*\n/).map((p,i)=>p.startsWith("CADERNO DE ESTUDO")?<div key={i}><h3>{p.split("\n")[0]}</h3>{p.split("\n").slice(1).join("\n")&&<p>{p.split("\n").slice(1).join("\n")}</p>}</div>:<p key={i}>{p}</p>)}</article>
+          <aside id="referencias" className={styles.resources}><h3>Material de referência</h3>{l.source_url&&/^https:\/\//.test(l.source_url)?<a href={l.source_url} target="_blank" rel="noopener noreferrer">Abrir fonte original ↗</a>:<p>Consulte as referências indicadas no texto.</p>}</aside>
+          <section id="pratica" className={styles.activity}><span className={styles.kicker}>02 · APLICAÇÃO</span><h3>Prática orientada</h3><p>{l.practice}</p></section><section id="reflexao" className={styles.reflect}><span className={styles.kicker}>03 · REFLEXÃO</span><h3>Conecte à sua realidade</h3><p>{l.reflection}</p></section></div>
+          <form action={saveLesson} className={styles.form}><input type="hidden" name="module" value={n}/><input type="hidden" name="lesson" value={l.lesson_no}/><label htmlFor="reflection">Sua reflexão individual</label><textarea id="reflection" name="reflection" maxLength={5000} rows={4} defaultValue={saved?.reflection??""}/><label><input type="checkbox" name="completed" defaultChecked={saved?.completed??false}/> Marcar aula como concluída</label><button className="primary" type="submit">Salvar aprendizagem</button></form>
+          <section id="avaliacao" className={styles.quiz}><h3>Avaliação do módulo</h3>{!quiz?<p>Avaliação em preparação.</p>:!ready(n)?<p>Conclua todas as aulas deste módulo para responder.</p>:attempt?.passed?<p role="status">Avaliação aprovada.</p>:<form action={submitQuiz}><input type="hidden" name="module" value={n}/><input type="hidden" name="lesson" value={l.lesson_no}/><fieldset><legend>{quiz.question}</legend>{quiz.options.map((option,i)=><label key={i} style={{display:"block",padding:"0.5rem"}}><input type="radio" name="answer" value={i+1} required/> {option}</label>)}</fieldset>{attempt&&<p role="status">Resposta incorreta. Revise o módulo e tente novamente.</p>}<button className="primary" type="submit">Responder</button></form>}</section>
+          <nav aria-label="Aula anterior e próxima" className={styles.pager}>{previous?<Link href={href(previous)}>← {previous.title}</Link>:<span/>}{following?<Link href={href(following)}>{following.title} →</Link>:<span>Última aula</span>}</nav>
+        </div>})()}
+      </div>}
     </section>
   </main>;
 }
