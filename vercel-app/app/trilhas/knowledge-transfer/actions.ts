@@ -38,3 +38,13 @@ export async function submitQuiz(data: FormData) {
   revalidatePath("/trilhas/knowledge-transfer");
   redirect("/trilhas/knowledge-transfer?aula="+moduleNo+"-"+lessonNo+"#avaliacao");
 }
+
+export async function submitFormative(data: FormData) {
+  const email = await identity();
+  const moduleNo = numberField(data,"module",15);
+  const lessonNo = numberField(data,"lesson",5);
+  const answer = numberField(data,"answer",3)-1;
+  await dbQuery("INSERT INTO biblioteca_institutional_formative_attempts(email,module_no,lesson_no,last_answer,last_correct) SELECT $1,q.module_no,q.lesson_no,$4,q.correct_index=$4 FROM biblioteca_institutional_question_bank q JOIN biblioteca_institutional_lessons l USING(module_no,lesson_no) WHERE q.module_no=$2 AND q.lesson_no=$3 AND l.published=true ON CONFLICT(email,module_no,lesson_no) DO UPDATE SET last_answer=excluded.last_answer,last_correct=excluded.last_correct,attempts=biblioteca_institutional_formative_attempts.attempts+1,updated_at=now()",[email,moduleNo,lessonNo,answer]);
+  revalidatePath("/trilhas/knowledge-transfer");
+  redirect("/trilhas/knowledge-transfer?aula="+moduleNo+"-"+lessonNo+"#avaliacao-formativa");
+}
