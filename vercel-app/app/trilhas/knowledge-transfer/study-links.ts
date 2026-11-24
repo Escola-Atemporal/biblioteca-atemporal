@@ -147,17 +147,12 @@ export function resourcesFor(lesson: {
 }): StudyResource[] {
   const result: StudyResource[] = [];
   const seen = new Set<string>();
-  const primary = lesson.source_url ? studyResource(lesson.source_url) : null;
-  const candidates = [
-    primary,
-    ...studyLinkParts([lesson.body, lesson.practice, lesson.reflection].join("\n")),
-  ];
+  // Show only explicitly cited study materials; retain source_url as provenance.
+  const candidates = studyLinkParts([lesson.body, lesson.practice, lesson.reflection].join("\n"));
   for (const resource of candidates) {
     if (!resource || typeof resource === "string" || seen.has(resource.url)) continue;
     seen.add(resource.url);
-    result.push(primary?.url === resource.url
-      ? { ...resource, title: "Fonte principal da aula" }
-      : resource);
+    result.push(resource);
   }
   return result;
 }
