@@ -48,3 +48,15 @@ export async function submitFormative(data: FormData) {
   revalidatePath("/trilhas/knowledge-transfer");
   redirect("/trilhas/knowledge-transfer?aula="+moduleNo+"-"+lessonNo+"#avaliacao-formativa");
 }
+
+export async function savePractical(data: FormData) {
+  const email=await identity();
+  const moduleNo=numberField(data,"module",15);
+  const work=data.get("work");
+  const review=data.get("self_review");
+  const intent=data.get("intent");
+  if(typeof work!=="string"||!work.trim()||work.length>12000||typeof review!=="string"||review.length>4000||(intent!=="draft"&&intent!=="submitted")||(intent==="submitted"&&!review.trim())) throw new Error("Entrega inválida");
+  await dbQuery("INSERT INTO biblioteca_institutional_practical_submissions(email,module_no,version,work_text,self_review,status) SELECT $1,$2,COALESCE((SELECT max(version) FROM biblioteca_institutional_practical_submissions WHERE email=$1 AND module_no=$2),0)+1,$3,$4,$5 WHERE EXISTS (SELECT 1 FROM biblioteca_institutional_lessons WHERE module_no=$2 AND lesson_no=5 AND published=true) ON CONFLICT(email,module_no,version) DO NOTHING",[email,moduleNo,work.trim(),review.trim(),intent]);
+  revalidatePath("/trilhas/knowledge-transfer");
+  redirect("/trilhas/knowledge-transfer?aula="+moduleNo+"-5#entrega-pratica");
+}
