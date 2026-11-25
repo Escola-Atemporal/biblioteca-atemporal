@@ -60,3 +60,20 @@ export async function savePractical(data: FormData) {
   revalidatePath("/trilhas/knowledge-transfer");
   redirect("/trilhas/knowledge-transfer?aula="+moduleNo+"-5#entrega-pratica");
 }
+
+export async function reviewPractical(data: FormData) {
+  const reviewer=await identity();
+  const learner=data.get("learner");
+  const moduleNo=numberField(data,"module",15);
+  const version=numberField(data,"version",2147483647);
+  const scores=Array.from({length:6},(_,i)=>numberField(data,"score"+i,3)-1);
+  const criticalField=data.get("critical");
+  const feedback=data.get("feedback");
+  if(typeof learner!=="string"||learner.length>254||learner===reviewer||typeof feedback!=="string"||!feedback.trim()||feedback.length>4000||(criticalField!=="yes"&&criticalField!=="no")) throw new Error("Parecer inválido");
+  const critical=criticalField==="yes";
+  const decision=!critical&&scores.every(s=>s>0)&&scores.reduce((a,b)=>a+b,0)>=10?"accepted":"revision";
+  const saved=await dbQuery<{version:number}>("INSERT INTO biblioteca_institutional_practical_reviews(email,module_no,version,reviewer_email,scores,critical,feedback,decision) SELECT s.email,s.module_no,s.version,$1,$5::integer[],$6,$7,$8 FROM biblioteca_institutional_practical_submissions s JOIN biblioteca_institutional_practical_review_assignments a ON a.email=s.email AND a.module_no=s.module_no AND a.reviewer_email=$1 WHERE s.email=$2 AND s.module_no=$3 AND s.version=$4 AND s.status='submitted' AND s.email<>$1 AND EXISTS(SELECT 1 FROM biblioteca_institutional_lessons l WHERE l.module_no=s.module_no AND l.lesson_no=5 AND l.published=true) ON CONFLICT(email,module_no,version) DO NOTHING RETURNING version",[reviewer,learner,moduleNo,version,scores,critical,feedback.trim(),decision]);
+  revalidatePath("/trilhas/knowledge-transfer");
+  revalidatePath("/trilhas/knowledge-transfer/revisao");
+  redirect("/trilhas/knowledge-transfer/revisao?resultado="+(saved.length?"registrado":"indisponivel"));
+}
